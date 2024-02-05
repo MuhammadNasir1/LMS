@@ -15,7 +15,7 @@ module.exports = {
                 pink: "#D95975",
                 white: "#FFFFFF",
                 gray: "#999999",
-            },
+        },
         },
     },
     plugins: [require("flowbite/plugin")],

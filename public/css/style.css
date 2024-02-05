@@ -3,7 +3,9 @@
 * {
     font-family: "Poppins", sans-serif;
 }
-
+body {
+    background-color: whitesmoke;
+}
 .accent-color {
     accent-color: #339b96;
 }
@@ -12,3 +14,30 @@ input:focus {
     --tw-ring-color: transparent !important;
 }
 
+.dataTables_length ,
+.dataTables_filter,
+.dataTables_info,
+.dataTables_paginate  {
+    margin: 20px ;
+}
+.dataTables_info{
+ color: #ACADAE !important;
+}
+.dataTables_length select {
+    width: 60px;
+}
+
+.shadow-dark {
+    box-shadow: 0px 0px 11px 0px #00000040;
+}
+table.dataTable{
+ overflow-x: hidden !important;
+}
+table.dataTable tbody th,
+table.dataTable tbody td {
+padding: 18px 10px !important;
+color: #323C47;
+}
+table.dataTable.no-footer {
+    border-bottom: 1px solid #E1E1E166;
+}
