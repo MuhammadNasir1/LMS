@@ -1,6 +1,18 @@
-@include('layouts.header')
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>Login - LMS</title>
+    <link rel="shortcut icon" href="{{ asset('images/icon.png') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    @vite(['resources/css/app.css','resources/js/app.js'])
+</head>
 
+<body>
 <div class="flex px-10  justify-center">
     <!-- form -->
 
@@ -19,7 +31,7 @@
             <div class="relative mt-16 border-b-2 border-black">
                 <label for="email" class="text-sm text-gray">Email</label>
                 <input
-                    class="p-2 pl-6 relative focus:outline-none focus:border-transparent outline-none border-none w-full text-sm"
+                    class="p-2 pl-6 relative focus:outline-none focus:border-none focus:border-transparent outline-none border-none w-full text-sm"
                     type="email" name="email" placeholder="Enter your Email Address" id="email">
                 <img class="absolute bottom-3" width="17" src="{{ asset('images/icons/email.svg') }}"
                     alt="email">
@@ -27,11 +39,12 @@
             <div class="relative border-b-2 border-black">
                 <label for="Password" class="text-sm text-gray">Password</label>
                 <input
-                    class="passinput p-2 pl-6   focus:outline-none focus:border-transparent outline-none border-none w-full  text-sm"
+                    class="passinput p-2 pl-6  focus:outline-none focus:border-transparent outline-none border-none w-full  text-sm"
                     type="password" name="password" placeholder="Enter your Password" id="Password">
                 <img class="absolute bottom-3" width="15" src="{{ asset('images/icons/lock.svg') }}" alt="password">
                 <div>
-                    <img  class="absolute eyeicon right-0 bottom-2 cursor-pointer"  width="18px" src="{{asset('images/icons/eye-invisible.png')}}" alt="show">
+                    <img  class="eyeicon absolute right-0 bottom-2 cursor-pointer" id="eyeicon" width="18px" src="{{asset('images/icons/eye-invisible.png')}}" alt="show">
+
                 </div>
             </div>
             <a href="/forgot" class="text-primary text-[12px]/[18px]  text-end m-0">Forgot password ?</a>
@@ -61,6 +74,9 @@
     </div>
 </div>
 
+<script src="{{ asset('javascript/script.js') }}"></script>
 
+</body>
 
-@include('layouts.footer')
+</html>
+
