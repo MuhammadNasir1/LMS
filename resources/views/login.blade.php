@@ -27,11 +27,11 @@
             <div class="relative border-b-2 border-black">
                 <label for="Password" class="text-sm text-gray">Password</label>
                 <input
-                    class="p-2 pl-6  focus:outline-none focus:border-transparent outline-none border-none w-full  text-sm"
+                    class="passinput p-2 pl-6   focus:outline-none focus:border-transparent outline-none border-none w-full  text-sm"
                     type="password" name="password" placeholder="Enter your Password" id="Password">
                 <img class="absolute bottom-3" width="15" src="{{ asset('images/icons/lock.svg') }}" alt="password">
                 <div>
-                    <img cla src="{{'asset(images/icons/eye-invisible.png)'}}" alt="show">
+                    <img  class="absolute eyeicon right-0 bottom-2 cursor-pointer"  width="18px" src="{{asset('images/icons/eye-invisible.png')}}" alt="show">
                 </div>
             </div>
             <a href="/forgot" class="text-primary text-[12px]/[18px]  text-end m-0">Forgot password ?</a>

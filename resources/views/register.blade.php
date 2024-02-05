@@ -20,7 +20,7 @@
                 <label for="email" class="text-sm text-gray">User Name</label>
                 <input
                     class="p-2 pl-6 relative focus:outline-none focus:border-transparent outline-none border-none w-full text-sm"
-                    type="email" name="email" placeholder="Enter your User name" id="email">
+                    type="text" name="username" placeholder="Enter your User name" id="username">
                 <img class="absolute bottom-3" width="17" src="{{ asset('images/icons/email.svg') }}"
                     alt="email">
             </div>
@@ -28,25 +28,36 @@
                 <label for="email" class="text-sm text-gray">Email</label>
                 <input
                     class="p-2 pl-6 relative focus:outline-none focus:border-transparent outline-none border-none w-full text-sm"
-                    type="email" name="email" placeholder="Email" id="email">
+                    type="email" name="email" placeholder="Enter your email address" id="email">
                 <img class="absolute bottom-3" width="17" src="{{ asset('images/icons/email.svg') }}"
                     alt="email">
             </div>
             <div class="relative border-b-2 border-black">
                 <label for="Password" class="text-sm text-gray">Password</label>
                 <input
-                    class="p-2 pl-6  focus:outline-none focus:border-transparent outline-none border-none w-full  text-sm"
-                    type="password" name="password" placeholder="Password" id="Password">
+                    class="passinput p-2 pl-6  focus:outline-none focus:border-transparent outline-none border-none w-full  text-sm"
+                    type="password" name="password" placeholder="Enter your Password" id="Password">
                 <img class="absolute bottom-3" width="15" src="{{ asset('images/icons/lock.svg') }}" alt="password">
+                <div>
+                    <img   class="absolute  eyeicon right-0 bottom-2 cursor-pointer" id="eyeicon" width="18px" src="{{asset('images/icons/eye-invisible.png')}}" alt="show">
+                </div>
             </div>
             <div class="relative border-b-2 border-black">
                 <label for="cPassword" class="text-sm text-gray">Confrim Password</label>
                 <input
-                    class="p-2 pl-6  focus:outline-none focus:border-transparent outline-none border-none w-full  text-sm"
-                    type="password" name="cpassword" placeholder="Confrim Password" id="cPassword">
+                    class="passinput p-2 pl-6  focus:outline-none focus:border-transparent outline-none border-none w-full  text-sm"
+                    type="password" name="cpassword" placeholder="Confrim your Password" id="cPassword">
                 <img class="absolute bottom-3" width="15" src="{{ asset('images/icons/lock.svg') }}" alt="password">
+                <div>
+                    <img  class="absolute eyeicon right-0 bottom-2 cursor-pointer" id="eyeicon" width="18px" src="{{asset('images/icons/eye-invisible.png')}}" alt="show">
+                </div>
             </div>
-            <a href="/forgot" class="text-primary text-[12px]/[18px]  text-end m-0">Forgot password ?</a>
+           <div>
+           <div class="flex items-center gap-2 mt-1">
+            <input class="accent-color" type="checkbox" name="term_cond  "  id="term_condition">
+            <p class="text-sm">Agree with <a href="" class="text-primary">Terms & Condition.</a></p>
+           </div>
+           </div>
             <button type="submit" id="loginbutton"
                 class="bg-pink rounded-full w-full text-white py-4 hover:scale-105 duration-300 shadow-sm">
                 <div class=" text-center hidden" id="spinner">
