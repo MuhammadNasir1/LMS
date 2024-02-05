@@ -1,11 +1,12 @@
-/** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
     content: [
       "./resources/**/*.blade.php",
       "./resources/**/*.js",
       "./resources/**/*.vue",
+      "./node_modules/flowbite/**/*.js"
     ],
     theme: {
+
         colors: {
             transparent: 'transparent',
             current: 'currentColor',
@@ -16,7 +17,19 @@ export default {
             'gray': '#999999',
 
           },
+
       extend: {},
     },
-    plugins: [],
+    plugins: [
+        require('flowbite/plugin')
+    ],
   }
+
+
+
+
+
+
+
+
+
