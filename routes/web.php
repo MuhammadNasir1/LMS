@@ -1,6 +1,13 @@
 <?php
 
+use App\Http\Controllers\userController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\App;
+
+
+
+// language route
+Route::get('/lang', [userController::class  , 'language_change' ] );
 
 Route::get('/loginrole', function () {
     return view('loginrole');
