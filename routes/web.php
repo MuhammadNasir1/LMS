@@ -21,17 +21,8 @@ Route::get('/register', function () {
 Route::get('/forgot', function () {
     return view('forgotpass');
 });
-Route::get('/dashboard', function () {
-    return view('dashboard');
-});
 
 
-Route::get('/teacher', function () {
-    return view('teacheradd');
-});
-Route::get('/parents', function () {
-    return view('parents');
-});
 Route::get('/student', function () {
     return view('students');
 });
@@ -44,3 +35,19 @@ Route::get('/login/{role}', function(){
   return view('login');
 });
 
+
+
+
+//  admnim pages
+Route::get('/', function () {
+    return view('admin.dashboard');
+});
+
+Route::get('/teacher', function () {
+    return view('admin.teacher');
+});
+
+
+Route::get('/parents', function () {
+    return view('admin.parent');
+});

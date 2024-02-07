@@ -19,4 +19,12 @@ return [
     "level" => "级别",
     "Word" => "单词",
     "Games" => "游戏",
+
+
+    "First_Name" => "名字",
+    "Enter_First_Name" => "输入名字",
+    "Date_of_Birth" => "出生日期",
+    "Phone_no" => "电话号码",
+    "Enter_Phone" => "输入电话号码",
+    "Last_Name" => "姓氏",
 ];

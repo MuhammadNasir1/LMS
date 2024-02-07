@@ -10,10 +10,19 @@ body {
     accent-color: #339b96;
 }
 
-input:focus {
+input:focus,
+select:focus {
     --tw-ring-color: transparent !important;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number]{
+    -moz-appearance: textfield;
+}
 .dataTables_length ,
 .dataTables_filter,
 .dataTables_info,
