@@ -23,9 +23,6 @@ Route::get('/forgot', function () {
 });
 
 
-Route::get('/student', function () {
-    return view('students');
-});
 Route::get('/training', function () {
     return view('training');
 });
@@ -50,4 +47,8 @@ Route::get('/teacher', function () {
 
 Route::get('/parents', function () {
     return view('admin.parent');
+});
+
+Route::get('/student', function () {
+    return view('admin.student');
 });

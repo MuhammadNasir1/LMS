@@ -11,6 +11,7 @@ body {
 }
 
 input:focus,
+textarea:focus,
 select:focus {
     --tw-ring-color: transparent !important;
 }
