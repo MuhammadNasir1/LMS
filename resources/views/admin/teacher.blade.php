@@ -11,7 +11,7 @@
             <div class="flex justify-between px-[20px] mb-3">
                 <h3 class="text-[20px] text-black">@lang('lang.Teachers_List')</h3>
                 <button data-modal-target="addteachermodal" data-modal-toggle="addteachermodal"
-                    class="bg-primary text-white h-12 px-5 rounded-[6px]  shadow-sm font-semibold ">+
+                    class="bg-secondary text-white h-12 px-5 rounded-[6px]  shadow-sm font-semibold ">+
                     @lang('lang.Add_Teacher')</button>
             </div>
             <table id="datatable" class="overflow-scroll">
@@ -38,9 +38,9 @@
                         <td>12/30 2010</td>
 
                         <td class="flex gap-5">
-                            <a href="#"><img width="38px" src="{{ asset('images/icons/delete.svg') }}"
+                            <a class="cursor-pointer" href="#"><img width="38px" src="{{ asset('images/icons/delete.svg') }}"
                                     alt="delete"></a>
-                            <a href="#"><img width="38px" src="{{ asset('images/icons/update.svg') }}"
+                            <a class="cursor-pointer" href="#"><img width="38px" src="{{ asset('images/icons/update.svg') }}"
                                     alt="update"></a>
                             <a class="cursor-pointer" data-modal-target="teacherdetails"
                                 data-modal-toggle="teacherdetails"><img width="38px"

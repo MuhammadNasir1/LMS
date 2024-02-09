@@ -11,7 +11,7 @@
             <div class="flex justify-between px-[20px] mb-3">
                 <h3 class="text-[20px] text-black">@lang('lang.Parents_List')</h3>
                 <button data-modal-target="addparentmodal" data-modal-toggle="addparentmodal"
-                    class="bg-primary text-white h-12 px-5 rounded-[6px]  shadow-sm font-semibold ">+ @lang('lang.Add_parents')  </button>
+                    class="bg-secondary text-white h-12 px-5 rounded-[6px]  shadow-sm font-semibold ">+ @lang('lang.Add_parents')  </button>
             </div>
             <table id="datatable" class="overflow-scroll">
                 <thead class="py-6 bg-primary text-white">
@@ -37,11 +37,11 @@
                         <td>12/30 2010</td>
 
                         <td class="flex gap-5">
-                            <a href="#"><img width="38px" src="{{ asset('images/icons/delete.svg') }}"
+                            <a class="cursor-pointer" href="#"><img width="38px" src="{{ asset('images/icons/delete.svg') }}"
                                     alt="delete"></a>
-                            <a href="#"><img width="38px" src="{{ asset('images/icons/update.svg') }}"
+                            <a class="cursor-pointer" href="#"><img width="38px" src="{{ asset('images/icons/update.svg') }}"
                                     alt="update"></a>
-                            <a data-modal-target="parentdetails" data-modal-toggle="parentdetails"><img width="38px"
+                            <a class="cursor-pointer" data-modal-target="parentdetails" data-modal-toggle="parentdetails"><img width="38px"
                                     src="{{ asset('images/icons/view.svg') }}" alt="View"></a>
                         </td>
                     </tr>
