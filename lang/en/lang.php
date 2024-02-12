@@ -151,6 +151,10 @@ return [
     "Confirm_Password" => "Confirm Password",
     "Enter_Confirm_Password" => "Enter Confirm Password",
     "Update" => "Update",
+    "Total_Students" => "Total Students",
+    "Total_Parents" => "Total Parents",
+    "Total_Teachers" => "Total Teachers",
+    "Total_Revenue" => "Total Revenue",
 
 
 
