@@ -34,8 +34,9 @@ class userController extends Controller
                 'role' => $validatedData['role'],
                 'password' => Hash::make($validatedData['password']),
             ]);
-
+            $token = $user->createToken($request->email)->plainTextToken;
             return response()->json([
+                'token' => $token,
                 'message' => 'Registration successful',
                 'status' => 'success',
                 'user' => $user,
@@ -53,5 +54,56 @@ class userController extends Controller
                 'error' => $e->getMessage(),
             ], 500);
         }
+    }
+
+
+    public function login(Request $request)
+    {
+        try {
+            $validatedData = $request->validate([
+
+                'email' => "required",
+                'password' => "required",
+                'role' => 'required|in:teacher,admin,parent',
+            ]);
+
+
+            $user = User::where('email',  $request->email)->first();
+            if ($user && Hash::check($request->password, $user->password)) {
+
+                $token = $user->createToken($request->email)->plainTextToken;
+                return  response()->json([
+                    'token' => $token,
+                    'message' => 'login successful',
+                    'status' => 'success',
+                    'user' => $user,
+                ],  200);
+            } else {
+
+                return response()->json([
+                    'message' => 'Wrong credentials',
+                    'status' => 'eror',
+                ], 422);
+            }
+        } catch (\Exception $eror) {
+
+            return response()->json([
+                'message' =>  'login  failed',
+                'status' =>  'eror',
+                'error' => $eror->getMessage(),
+            ], 500);
+        }
+    }
+
+    public function logout()
+    {
+        // Delete all tokens associated with the authenticated user
+        auth()->user()->tokens()->delete();
+
+        // Return a JSON response indicating successful logout
+        return response()->json([
+            'message' =>  'Logged out successfully',
+            'status' => 'success',
+        ]);
     }
 }
