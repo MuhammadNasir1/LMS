@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use  Illuminate\Support\Facades\Hash;
+use Laravel\Sanctum\PersonalAccessToken;
 
 class userController extends Controller
 {
@@ -97,13 +98,18 @@ class userController extends Controller
 
     public function logout()
     {
-        // Delete all tokens associated with the authenticated user
-        auth()->user()->tokens()->delete();
-
-        // Return a JSON response indicating successful logout
-        return response()->json([
-            'message' =>  'Logged out successfully',
-            'status' => 'success',
-        ]);
+        try {
+            auth()->user()->tokens()->delete();
+            return response()->json([
+                'message' =>  'logout success',
+                'status' => 'success',
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' =>  'logout faild',
+                'status' => 'eror',
+                'eror' => $e->getMessage(),
+            ]);
+        }
     }
 }
