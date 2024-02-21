@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use  Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\PersonalAccessToken;
+use Illuminate\Support\Facades\DB;
 
 class userController extends Controller
 {
@@ -64,7 +65,7 @@ class userController extends Controller
             $validatedData = $request->validate([
 
                 'email' => "required",
-                'password' => "required",
+                'password' => "required|string|min:8",
                 'role' => 'required|in:teacher,admin,parent',
             ]);
 
@@ -101,15 +102,39 @@ class userController extends Controller
         try {
             auth()->user()->tokens()->delete();
             return response()->json([
-                'message' =>  'logout success',
+                'message' =>  'logout successfully',
                 'status' => 'success',
-            ]);
+            ], 200);
         } catch (\Exception $e) {
             return response()->json([
                 'message' =>  'logout faild',
                 'status' => 'eror',
                 'eror' => $e->getMessage(),
+            ],  500);
+        }
+    }
+
+
+    public function changepasword(Request $request)
+    {
+
+        try {
+            $request->validate([
+                'password' => "required|confirmed",
             ]);
+            $loginuser = auth()->user();
+            $loginuser->password = Hash::make($request->password);
+            $loginuser->save();
+            return response()->json([
+                "message" => "password change successfull",
+                'status' => 'success',
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                "message" => "password not change ",
+                'status' => 'eror',
+                'eror' => $e->getMessage(),
+            ], 500);
         }
     }
 }

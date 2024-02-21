@@ -25,4 +25,5 @@ Route::post('login', [userController::class, 'login']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('logout', [userController::class, 'logout']);
+    Route::post('changepasword', [userController::class, 'changepasword']);
 });
