@@ -23,9 +23,6 @@ Route::get('/forgot', function () {
 });
 
 
-Route::get('/training', function () {
-    return view('training');
-});
 
 // get a login  role
 Route::get('/login/{role}', function () {

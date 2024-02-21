@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Support\Facades\App;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
+use  Illuminate\Support\Facades\Hash;
 
 class userController extends Controller
 {
@@ -12,5 +15,43 @@ class userController extends Controller
         App::setLocale($request->lang);
         session()->put('locale', $request->lang);
         return redirect()->back();
+    }
+
+    public function register(Request $request)
+    {
+
+        try {
+            $validatedData = $request->validate([
+                'name' => 'required|string',
+                'email' => 'required|email|unique:users,email',
+                'password' => 'required|string|min:8',
+                'role' => 'required|in:teacher,admin,parent',
+            ]);
+
+            $user = User::create([
+                'name' => $validatedData['name'],
+                'email' => $validatedData['email'],
+                'role' => $validatedData['role'],
+                'password' => Hash::make($validatedData['password']),
+            ]);
+
+            return response()->json([
+                'message' => 'Registration successful',
+                'status' => 'success',
+                'user' => $user,
+            ], 201);
+        } catch (ValidationException $e) {
+            return response()->json([
+                'message' => 'Validation error',
+                'status' => 'fail',
+                'errors' => $e->validator->getMessageBag(),
+            ], 422);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Registration failed',
+                'status' => 'error',
+                'error' => $e->getMessage(),
+            ], 500);
+        }
     }
 }
