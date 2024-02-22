@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\DB;
 
 class userController extends Controller
 {
+
+
     public function language_change(Request $request)
     {
         App::setLocale($request->lang);
@@ -36,23 +38,30 @@ class userController extends Controller
                 'role' => $validatedData['role'],
                 'password' => Hash::make($validatedData['password']),
             ]);
+
             $token = $user->createToken($request->email)->plainTextToken;
+            session(['user_det' => [
+                'token' => $token,
+                'name' => $validatedData['name'],
+                'email' => $validatedData['email'],
+                'role' => $validatedData['role'],
+            ]]);
             return response()->json([
                 'token' => $token,
-                'message' => 'Registration successful',
-                'status' => 'success',
+                'success' => true,
                 'user' => $user,
             ], 201);
+
+
+            dd(session('user_det'));
         } catch (ValidationException $e) {
             return response()->json([
-                'message' => 'Validation error',
-                'status' => 'fail',
+                'success' => false,
                 'errors' => $e->validator->getMessageBag(),
             ], 422);
         } catch (\Exception $e) {
             return response()->json([
-                'message' => 'Registration failed',
-                'status' => 'error',
+                'success' => false,
                 'error' => $e->getMessage(),
             ], 500);
         }
@@ -66,7 +75,6 @@ class userController extends Controller
 
                 'email' => "required",
                 'password' => "required|string|min:8",
-                'role' => 'required|in:teacher,admin,parent',
             ]);
 
 
@@ -76,14 +84,14 @@ class userController extends Controller
                 $token = $user->createToken($request->email)->plainTextToken;
                 return  response()->json([
                     'token' => $token,
-                    'message' => 'login successful',
-                    'status' => 'success',
+                    'success' => true,
                     'user' => $user,
                 ],  200);
             } else {
 
                 return response()->json([
                     'message' => 'Wrong credentials',
+                    'success' => false,
                     'status' => 'eror',
                 ], 422);
             }
@@ -91,7 +99,7 @@ class userController extends Controller
 
             return response()->json([
                 'message' =>  'login  failed',
-                'status' =>  'eror',
+                'success' => false,
                 'error' => $eror->getMessage(),
             ], 500);
         }
@@ -103,12 +111,12 @@ class userController extends Controller
             auth()->user()->tokens()->delete();
             return response()->json([
                 'message' =>  'logout successfully',
-                'status' => 'success',
+                'success' => true,
             ], 200);
         } catch (\Exception $e) {
             return response()->json([
                 'message' =>  'logout faild',
-                'status' => 'eror',
+                'success' => false,
                 'eror' => $e->getMessage(),
             ],  500);
         }
@@ -127,12 +135,12 @@ class userController extends Controller
             $loginuser->save();
             return response()->json([
                 "message" => "password change successfull",
-                'status' => 'success',
+                'success' => true,
             ], 200);
         } catch (\Exception $e) {
             return response()->json([
                 "message" => "password not change ",
-                'status' => 'eror',
+                'success' => false,
                 'eror' => $e->getMessage(),
             ], 500);
         }

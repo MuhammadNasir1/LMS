@@ -25,8 +25,8 @@ Route::get('/forgot', function () {
 
 
 // get a login  role
-Route::get('/login/{role}', function () {
-    return view('login');
+Route::get('register/{role}', function () {
+    return view('register');
 });
 
 
@@ -63,3 +63,8 @@ Route::get('/studenRec', function () {
 Route::get('/setting', function () {
     return view('admin.setting');
 });
+
+
+// login routes
+
+Route::post('registerdata' , [userController::class , 'register']);

@@ -1,3 +1,7 @@
+<?php
+
+// dd(session('user_det'));
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +17,7 @@
     @vite(['resources/css/app.css','resources/js/app.js'])
 </head>
 
-<body>
+<body class="bg-white">
 
 
 <div class="flex px-10  justify-center">
@@ -24,18 +28,19 @@
             <img class="mt-5 w-[180px]" src="{{ asset('images/logo.svg') }}" alt="logo">
         </div>
 
-        <h2 class="font-semibold text-2xl mt-16 text-[#000000]">Log In</h2>
+        <h2 class="font-semibold text-2xl mt-16 text-[#000000]">Register Here</h2>
         <div>
             <p class="font-normal  leading-8 ">If you already have an account register <br> You can <a href="login"
                     class="text-primary">Login here !</a></p>
         </div>
-        <form action="/" id="login-form" method="post" class="flex flex-col gap-4">
+        <form action="../registerdata"  method="post" class="flex flex-col gap-4">
             @csrf
+            <input type="hidden" name="role" value="admin">
             <div class="relative mt-12 border-b-2 border-black">
                 <label for="email" class="text-sm text-gray">User Name</label>
                 <input
                     class="p-2 pl-6 relative focus:outline-none focus:border-transparent outline-none border-none w-full text-sm"
-                    type="text" name="username" placeholder="Enter your User name" id="username">
+                    type="text" name="name" placeholder="Enter your User name" id="username">
                 <img class="absolute bottom-3" width="17" src="{{ asset('images/icons/email.svg') }}"
                     alt="email">
             </div>
@@ -87,7 +92,7 @@
                     </svg>
                 </div>
                 <div class="text-white font-semibold" id="text">
-                    Login
+                    Register
                 </div>
             </button>
         </form>
@@ -101,7 +106,13 @@
 
 
 <script src="{{ asset('javascript/script.js') }}"></script>
+<script src="{{ asset('javascript/jquery.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+<script>
+
+
+</script>
 </body>
 
 </html>
