@@ -155,6 +155,7 @@ return [
     "Total_Parents" => "Total Parents",
     "Total_Teachers" => "Total Teachers",
     "Total_Revenue" => "Total Revenue",
+    "logout" => "Logout",
 
 
 

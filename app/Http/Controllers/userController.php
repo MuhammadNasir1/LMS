@@ -9,6 +9,7 @@ use Illuminate\Validation\ValidationException;
 use  Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\PersonalAccessToken;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class userController extends Controller
 {
@@ -20,6 +21,7 @@ class userController extends Controller
         session()->put('locale', $request->lang);
         return redirect()->back();
     }
+
 
     public function register(Request $request)
     {
@@ -50,13 +52,12 @@ class userController extends Controller
                 'token' => $token,
                 'success' => true,
                 'user' => $user,
+                'message' => 'Register successful',
             ], 201);
-
-
-            dd(session('user_det'));
         } catch (ValidationException $e) {
             return response()->json([
                 'success' => false,
+                'message' => 'Invalid credentials',
                 'errors' => $e->validator->getMessageBag(),
             ], 422);
         } catch (\Exception $e) {
@@ -79,14 +80,23 @@ class userController extends Controller
 
 
             $user = User::where('email',  $request->email)->first();
+            $role = $user->role;
             if ($user && Hash::check($request->password, $user->password)) {
 
                 $token = $user->createToken($request->email)->plainTextToken;
+                session(['user_det' => [
+                    'token' => $token,
+                    'email' => $validatedData['email'],
+                    'role'=>  $role,
+                ]]);
                 return  response()->json([
                     'token' => $token,
+                    'message' => 'login  Successful',
                     'success' => true,
                     'user' => $user,
                 ],  200);
+
+
             } else {
 
                 return response()->json([
@@ -98,7 +108,7 @@ class userController extends Controller
         } catch (\Exception $eror) {
 
             return response()->json([
-                'message' =>  'login  failed',
+                'message' =>  'login failed',
                 'success' => false,
                 'error' => $eror->getMessage(),
             ], 500);
@@ -144,5 +154,14 @@ class userController extends Controller
                 'eror' => $e->getMessage(),
             ], 500);
         }
+    }
+
+
+    public function weblogout(Request $request)
+    {
+
+        $request->session()->forget('user_det');
+        $request->session()->regenerate();
+        return redirect('/');
     }
 }

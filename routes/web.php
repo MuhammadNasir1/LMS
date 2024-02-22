@@ -3,7 +3,7 @@
 use App\Http\Controllers\userController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\App;
-
+use Illuminate\Support\Facades\Auth;
 
 
 // language route
@@ -31,7 +31,7 @@ Route::get('register/{role}', function () {
 
 
 
-
+Route::middleware('auth.custom')->group(function () {
 //  admnim pages
 Route::get('/', function () {
     return view('admin.dashboard');
@@ -65,6 +65,8 @@ Route::get('/setting', function () {
 });
 
 
+});
 // login routes
-
 Route::post('registerdata' , [userController::class , 'register']);
+Route::post('login' , [userController::class , 'login']);
+Route::match(['get' ,  'post'] ,'weblogout' , [userController::class , 'weblogout']);
