@@ -35,7 +35,7 @@
             </div>
             <form id="register_data" method="post" class="flex flex-col gap-4">
                 @csrf
-                <input type="hidden" name="role" value="teacher">
+                <input type="hidden" name="role" value="parent">
                 <div class="relative mt-12 border-b-2 border-black">
                     <label for="email" class="text-sm text-gray">User Name</label>
                     <input
@@ -137,10 +137,16 @@
                     success: function(response) {
                         // Handle the success response here
                         if (response.success == true) {
-                            // Redirect to the dashboard or do something else
                             $('#text').removeClass('hidden');
                             $('#spinner').addClass('hidden');
-                            window.location.href = "/";
+                            // Redirect to the  specfic role dashboard
+                            if (response.user.role == "parent") {
+
+                                window.location.href = '/';
+                            } else {
+
+                                window.location.href = response.user.role;
+                            }
                         } else if (response.success == false) {
                             Swal.fire(
                                 'Warning!',

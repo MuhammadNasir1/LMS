@@ -38,40 +38,54 @@ Route::get('register/{role}', function () {
 Route::middleware('custom')->group(function () {
     //  admnim pages
     Route::middleware('adminAuth')->group(function () {
-        Route::get('/', function () {
+        Route::get('/admin', function () {
             return view('admin.dashboard');
         });
 
-        Route::get('/teacher', function () {
+        Route::get('/admin/teacher', function () {
             return view('admin.teacher');
         });
 
 
-        Route::get('/parents', function () {
+        Route::get('/admin/parents', function () {
             return view('admin.parent');
         });
 
-        Route::get('/student', function () {
+        Route::get('/admin/student', function () {
             return view('admin.student');
         });
 
-        Route::get('/course', function () {
+        Route::get('/admin/course', function () {
             return view('admin.course');
         });
 
-        Route::get('/training', function () {
+        Route::get('/admin/training', function () {
             return view('admin.training');
         });
-        Route::get('/studenRec', function () {
+        Route::get('/admin/studenRec', function () {
             return view('admin.std_recording');
         });
-        Route::get('/setting', function () {
+        Route::get('/admin/setting', function () {
             return view('admin.setting');
         });
     });
-    // teachers pages
 
 
 
     // parent pages
+    Route::middleware('parentAuth')->group(function () {
+        Route::get('/', function () {
+            return view('parent.dashboard');
+        });
+    });
+
+    // teachers pages
+    Route::middleware('teacherAuth')->group(function () {
+        Route::get('/teacher', function () {
+            return view("teacher");
+        });
+    });
+
+
+
 });
