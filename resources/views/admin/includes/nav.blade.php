@@ -344,7 +344,7 @@
             {{-- =============language dropdown======================== --}}
             <button type="button" data-dropdown-toggle="language-dropdown-menu"
                 class="inline-flex items-center font-medium justify-center px-4 py-2 text-sm text-gray-900 dark:text-white rounded-lg cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
-                @if (session()->get('locale') == 'en')
+                @if (session()->get('locale') !== 'zh')
                     <svg class="w-6 h-6 rounded-full me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                         xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 3900 3900">
                         <path fill="#b22234" d="M0 0h7410v3900H0z" />
@@ -473,8 +473,8 @@
                 </button>
                 <div class="flex items-center gap-2">
                     <div class="leading-tight  text-end">
-                        <h2 class="text-md">Lorum Ipsum</h2>
-                        <p class="text-xs  text-gray">Administrator</p>
+                        <h2 class="text-md">{{session('user_det')['name'];}}</h2>
+                        <p class="text-xs  text-gray">{{session('user_det')['role'];}}</p>
                     </div>
                     <div>
                         <img height="42px" width="42px" class="rounded-[5px]"

@@ -6,6 +6,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -25,6 +26,18 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@gmail.com',
             'password' => Hash::make('12345678'),
             'role' => 'admin',
+        ]);
+        DB::table('users')->insert([
+            'name' => 'Parent',
+            'email' => 'parent@gmail.com',
+            'password' => Hash::make('12345678'),
+            'role' => 'parent',
+        ]);
+        DB::table('users')->insert([
+            'name' => 'Teacher',
+            'email' => 'teacher@gmail.com',
+            'password' => Hash::make('12345678'),
+            'role' => 'teacher',
         ]);
     }
 }

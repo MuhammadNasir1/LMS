@@ -43,7 +43,6 @@ class userController extends Controller
 
             $token = $user->createToken($request->email)->plainTextToken;
             session(['user_det' => [
-                'token' => $token,
                 'name' => $validatedData['name'],
                 'email' => $validatedData['email'],
                 'role' => $validatedData['role'],
@@ -81,11 +80,12 @@ class userController extends Controller
 
             $user = User::where('email',  $request->email)->first();
             $role = $user->role;
+            $name = $user->name;
             if ($user && Hash::check($request->password, $user->password)) {
 
                 $token = $user->createToken($request->email)->plainTextToken;
                 session(['user_det' => [
-                    'token' => $token,
+                    'name'=> $name,
                     'email' => $validatedData['email'],
                     'role'=>  $role,
                 ]]);
