@@ -164,6 +164,16 @@ return [
     "Pending_Lessons" => "Pending Lessons",
     "Teaching_Page" => "Teaching Page",
     "Enter_Games" => "Enter Games",
+    "Daily_Lessons" => "Daily Lessons",
+    "Earning" => "Earning",
+    "Top_Performer" => "Top Performer",
+    "Monthly" => "Monthly",
+    "Weekly" => "Weekly",
+    "Today" => "Today",
+    "Photo" => "Photo",
+    "Standard" => "Standard",
+    "Rank" => "Rank",
+    "Attendance" => "Attendance",
 
 
 
