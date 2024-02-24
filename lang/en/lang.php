@@ -156,6 +156,14 @@ return [
     "Total_Teachers" => "Total Teachers",
     "Total_Revenue" => "Total Revenue",
     "logout" => "Logout",
+    "Todays_Lesson" => "Todays Lesson",
+    "Complete_Lessons" => "Complete Lessons",
+    "Training_Videos" => "Training Videos",
+    "Recorded_Videos" => "Recorded Videos ",
+    "Children" => "Children",
+    "Pending_Lessons" => "Pending Lessons",
+    "Teaching_Page" => "Teaching Page",
+    "Enter_Games" => "Enter Games",
 
 
 

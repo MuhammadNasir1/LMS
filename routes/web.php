@@ -77,12 +77,51 @@ Route::middleware('custom')->group(function () {
         Route::get('/', function () {
             return view('parent.dashboard');
         });
+        Route::get('/student', function () {
+            return view('parent.student');
+        });
+        Route::get('/studentRec', function () {
+            return view('parent.student_rec');
+        });
+        Route::get('/games', function () {
+            return view('parent.games');
+        });
+        Route::get('/setting', function () {
+            return view('parent.setting');
+        });
+        Route::get('/help', function () {
+            return view('parent.help');
+        });
     });
 
     // teachers pages
     Route::middleware('teacherAuth')->group(function () {
         Route::get('/teacher', function () {
-            return view("teacher");
+            return view("teacher.dashboard");
+        });
+        Route::get('/teacher/courses', function () {
+            return view("teacher.courses");
+        });
+        Route::get('/teacher/teachingpage', function () {
+            return view("teacher.teachingpage");
+        });
+        Route::get('/teacher/games', function () {
+            return view("teacher.games");
+        });
+        Route::get('/teacher/studenRec', function () {
+            return view("teacher.student_Rec");
+        });
+        Route::get('/teacher/reports', function () {
+            return view("teacher.reports");
+        });
+        Route::get('/teacher/training', function () {
+            return view("teacher.training");
+        });
+        Route::get('/teacher/setting', function () {
+            return view("teacher.setting");
+        });
+        Route::get('/teacher/help', function () {
+            return view("teacher.help");
         });
     });
 
