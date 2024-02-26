@@ -213,13 +213,13 @@
                 <div id="attendanceChart" class="mt-4" style="height: 270px; width: 100%;"></div>
                 <div  class="mt-8 mx-10">
                     <div class="flex justify-around">
-                        <div>
+                        <div class="flex flex-col items-center">
                             <p class="text-[#CECECE] text-lg font-semibold">@lang('lang.Students')</p>
                             <h2 class="text-secondary text-3xl  mt-2 font-bold">84%</h2>
                         </div>
-                        <div>
+                        <div class="flex flex-col items-center">
                             <p class="text-[#CECECE] text-lg font-semibold">@lang('lang.Teachers')</p>
-                            <h2 class="text-secondary text-3xl  mt-2  font-bold">34%</h2>
+                            <h2 class="text-pink text-3xl  mt-2  font-bold">34%</h2>
                         </div>
 
                     </div>

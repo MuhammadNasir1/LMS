@@ -1,5 +1,5 @@
 @include('layouts.header')
-@include('parent.includes.nav')
+@include('admin.includes.nav')
 
 <div class="mx-4 mt-12">
     <div>
@@ -103,4 +103,10 @@
 
     </div>
 </div>
+
+
+
+
+
+
 @include('layouts.footer')

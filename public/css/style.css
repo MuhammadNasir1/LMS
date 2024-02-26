@@ -41,7 +41,7 @@ input[type="number"] {
     box-shadow: 0px 0px 11px 0px #00000040;
 }
 .shadow-med {
-    box-shadow: 0px 0px 11px 0px rgba(0, 0, 0, 0.070);
+    box-shadow: 0px 0px 11px 0px rgba(0, 0, 0, 0.07);
 }
 table.dataTable {
     overflow-x: hidden !important;
@@ -57,4 +57,9 @@ table.dataTable.no-footer {
 
 .canvasjs-chart-credit {
     display: none !important;
+}
+
+/* game card hover  */
+.game-card:hover .gc_heading {
+    color: white !important;
 }

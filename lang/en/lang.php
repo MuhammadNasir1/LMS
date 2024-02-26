@@ -174,6 +174,18 @@ return [
     "Standard" => "Standard",
     "Rank" => "Rank",
     "Attendance" => "Attendance",
+    "All_Games" => "All Games",
+    "Random_Cards" => "Random Cards",
+    "Game_1" => "Game 1",
+    "Game_2" => "Game 2",
+    "Game_3" => "Game 3",
+    "Lets_Go" => "Lets Go!",
+    "Game_4" => "Game 4",
+    "Flip_Cards" => "Flip Cards",
+    "Flash_cards" => "Flash cards",
+    "Add_words" => "Add words",
+    "Read_and_Select_a_Cards" => "Read and Select a Cards",
+    "Select_Word" => "Select Word",
 
 
 

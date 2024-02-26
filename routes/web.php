@@ -71,6 +71,9 @@ Route::middleware('custom')->group(function () {
         Route::get('/admin/help', function () {
             return view('admin.help');
         });
+        Route::get('/admin/games', function () {
+            return view('admin.games');
+        });
     });
 
 
@@ -127,6 +130,14 @@ Route::middleware('custom')->group(function () {
             return view("teacher.help");
         });
     });
+    // games routes
+    Route::get('startMenu', function () {
+        return view("games.g_start_men");
+    });
+    Route::get('game1', function () {
+        return view("games.game1");
+    });
+
 
 
 
