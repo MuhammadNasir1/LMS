@@ -68,6 +68,9 @@ Route::middleware('custom')->group(function () {
         Route::get('/admin/setting', function () {
             return view('admin.setting');
         });
+        Route::get('/admin/help', function () {
+            return view('admin.help');
+        });
     });
 
 

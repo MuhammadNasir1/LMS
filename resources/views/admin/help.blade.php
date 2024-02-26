@@ -1,5 +1,6 @@
 @include('layouts.header')
-@include('parent.includes.nav')
+@include('admin.includes.nav')
+
 <div class="mx-4 mt-12">
     <div>
         <h1 class=" font-semibold   text-2xl ">@lang('lang.Help')</h1>
@@ -136,5 +137,10 @@
         </div>
     </div>
 </div>
+
+
+
+
+
 
 @include('layouts.footer')

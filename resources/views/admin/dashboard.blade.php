@@ -200,7 +200,7 @@
 
             <div>
                 <div class="flex justify-between px-6">
-                    <h2 class="text-xl  font-semibold ">@lang('lang.Top_Performer')</h2>
+                    <h2 class="text-xl  font-semibold ">@lang('lang.Attendance')</h2>
                     <button>
                         <svg width="5" height="25" viewBox="0 0 5 25" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
