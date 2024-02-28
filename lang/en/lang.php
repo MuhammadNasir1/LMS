@@ -186,6 +186,16 @@ return [
     "Add_words" => "Add words",
     "Read_and_Select_a_Cards" => "Read and Select a Cards",
     "Select_Word" => "Select Word",
+    "Audio" => "Audio",
+    "All_Audios" => "All Audios",
+    "Audios_List" => "Audios List",
+    "Add_Audio" => "Add Audio",
+    "Add_Audio" => "Add Audio",
+    "Teaching_Page" => "Teaching Page",
+    "Select_Student" => "Select Student",
+    "Lesson_date" => "Lesson date",
+    "Enter_Word" => "Enter Word",
+    "Start_Teaching" => "Start Teaching",
 
 
 

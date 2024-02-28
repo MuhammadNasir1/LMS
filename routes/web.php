@@ -74,6 +74,9 @@ Route::middleware('custom')->group(function () {
         Route::get('/admin/games', function () {
             return view('admin.games');
         });
+        Route::get('/admin/audio', function () {
+            return view('admin.audio');
+        });
     });
 
 

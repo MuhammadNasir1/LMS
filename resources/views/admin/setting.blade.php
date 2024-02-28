@@ -3,7 +3,7 @@
 
 <div class="mx-4 mt-12">
     <div>
-        <h1 class=" font-semibold   text-2xl ">@lang('lang.All_Courses')</h1>
+        <h1 class=" font-semibold   text-2xl ">@lang('lang.Setting')</h1>
     </div>
 
     <div class="shadow-dark mt-3  rounded-xl pt-8  bg-white">
@@ -13,8 +13,8 @@
                 <div class="flex items-center flex-col gap-2">
                     <div class="h-[200px] w-[200px] relative  rounded-[50%]">
                         <img id="img_view" height="200px" width="200px"
-                            class="h-[200px] w-[200px]   rounded-[50%] cursor-pointer object-cover "
-                            src="{{ asset('images/maleuser.png') }}" alt="user">
+                            class="h-[200px] w-[200px]  border border-primary  rounded-[50%] cursor-pointer object-contain "
+                            src="{{ asset('images/owlicon.svg') }}" alt="user">
                         <input class="absolute top-0 opacity-0     h-[210px] w-[200px] z-50 cursor-pointer " type="file"
                             name="user_image" id="user_image">
                         <div class="absolute bottom-[6px] right-5  z-10">

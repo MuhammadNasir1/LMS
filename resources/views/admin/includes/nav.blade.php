@@ -201,7 +201,7 @@
                     <span class="flex-1 ms-3 whitespace-nowrap">@lang('lang.Games')</span>
                 </a>
             </li>
-            <li>
+            {{-- <li>
                 <button type="button"
                     class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                     aria-controls="dropdown-example1" data-collapse-toggle="dropdown-example1">
@@ -238,9 +238,9 @@
                     </li>
 
                 </ul>
-            </li>
+            </li> --}}
             <li>
-                <a href="training"
+                <a href="../admin/training"
                     class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                     <svg width="21" height="21" viewBox="0 0 21 21" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
@@ -263,8 +263,8 @@
                     <span class="flex-1 ms-3 whitespace-nowrap">@lang('lang.Taining_Videos')</span>
                 </a>
             </li>
-            <li>
-                <a href="#"
+            {{-- <li>
+                <a href="../admin/audio"
                     class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
@@ -275,11 +275,11 @@
                             fill="white" />
                     </svg>
 
-                    <span class="flex-1 ms-3 whitespace-nowrap"> @lang('lang.Permission_Page')</span>
+                    <span class="flex-1 ms-3 whitespace-nowrap"> @lang('lang.Audio')</span>
                 </a>
-            </li>
+            </li> --}}
             <li>
-                <a href="setting"
+                <a href="../admin/setting"
                     class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                     <svg width="20" height="22" viewBox="0 0 20 22" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
