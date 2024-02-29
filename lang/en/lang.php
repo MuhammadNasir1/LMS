@@ -196,6 +196,11 @@ return [
     "Lesson_date" => "Lesson date",
     "Enter_Word" => "Enter Word",
     "Start_Teaching" => "Start Teaching",
+    "Teaching_Card" => "Teaching Card",
+    "Start_Recording" => "Start Recording",
+    "Restart" => "Restart",
+    "Previous" => "Previous",
+    "Next" => "Next",
 
 
 

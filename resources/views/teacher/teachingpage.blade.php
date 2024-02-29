@@ -37,8 +37,11 @@
         </div>
         <div></div>
         <div class="2 flex justify-end  mt-8">
-            <button class="bg-secondary cursor-pointer text-white h-12 px-5 rounded-[6px]  shadow-sm font-semibold ">
-                @lang('lang.Start_Teaching')</button>
+            <a href="../video">
+                <button
+                    class="bg-secondary cursor-pointer text-white h-12 px-5 rounded-[6px]  shadow-sm font-semibold ">
+                    @lang('lang.Start_Teaching')</button>
+            </a>
         </div>
     </div>
     <div class="shadow-dark mt-3  rounded-xl pt-8  bg-white">
@@ -83,14 +86,23 @@
                                     @lang('lang.Select')</button>
                                 <div class=" cursor-pointer right-3 top-[42px]" data-modal-target="addstudentmodal"
                                     data-modal-toggle="addstudentmodal">
-                                    <svg width="35" height="35" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M5.98016 15.9997C1.87899 15.9997 1 15.1207 1 11.0195" stroke="#EDBD58" stroke-linecap="round"/>
-                                        <path d="M16.0007 11.0195C16.0007 15.1207 15.1216 15.9997 11.0205 15.9997" stroke="#EDBD58" stroke-linecap="round"/>
-                                        <path d="M11.0205 1C15.1216 1 16.0007 1.87899 16.0007 5.98016" stroke="#EDBD58" stroke-linecap="round"/>
-                                        <path d="M1 5.98016C1 1.87899 1.87899 1 5.98016 1" stroke="#EDBD58" stroke-linecap="round"/>
-                                        <path d="M8.27359 8.39875C9.76442 8.39875 10.973 7.1902 10.973 5.69937C10.973 4.20855 9.76442 3 8.27359 3C6.78277 3 5.57422 4.20855 5.57422 5.69937C5.57422 7.1902 6.78277 8.39875 8.27359 8.39875Z" fill="#EDBD58"/>
-                                        <path d="M12.5475 13.6381C12.5006 11.0594 10.6069 8.98438 8.27375 8.98438C5.94063 8.98438 4.04625 11.06 4 13.6381H12.5475Z" fill="#EDBD58"/>
-                                        </svg>
+                                    <svg width="35" height="35" viewBox="0 0 17 17" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M5.98016 15.9997C1.87899 15.9997 1 15.1207 1 11.0195" stroke="#EDBD58"
+                                            stroke-linecap="round" />
+                                        <path d="M16.0007 11.0195C16.0007 15.1207 15.1216 15.9997 11.0205 15.9997"
+                                            stroke="#EDBD58" stroke-linecap="round" />
+                                        <path d="M11.0205 1C15.1216 1 16.0007 1.87899 16.0007 5.98016" stroke="#EDBD58"
+                                            stroke-linecap="round" />
+                                        <path d="M1 5.98016C1 1.87899 1.87899 1 5.98016 1" stroke="#EDBD58"
+                                            stroke-linecap="round" />
+                                        <path
+                                            d="M8.27359 8.39875C9.76442 8.39875 10.973 7.1902 10.973 5.69937C10.973 4.20855 9.76442 3 8.27359 3C6.78277 3 5.57422 4.20855 5.57422 5.69937C5.57422 7.1902 6.78277 8.39875 8.27359 8.39875Z"
+                                            fill="#EDBD58" />
+                                        <path
+                                            d="M12.5475 13.6381C12.5006 11.0594 10.6069 8.98438 8.27375 8.98438C5.94063 8.98438 4.04625 11.06 4 13.6381H12.5475Z"
+                                            fill="#EDBD58" />
+                                    </svg>
 
                                 </div>
                             </div>
@@ -125,14 +137,16 @@
             </div>
             <div class="py-8 flex justify-center">
 
-                <div>
+                <div class="relative">
+                    <div  style="transform: translate(-51%); left: 50%;top: 15%;"  class="absolute h-[128px] w-[128px]"  id="qrcode">
+
+                    </div>
                     <svg width="180" height="180" viewBox="0 0 80 80" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M6.66667 6.66667V20H0V6.66667C0 4.89856 0.702379 3.20286 1.95262 1.95262C3.20286 0.702379 4.89856 0 6.66667 0L20 0V6.66667H6.66667ZM73.3333 0C75.1014 0 76.7971 0.702379 78.0474 1.95262C79.2976 3.20286 80 4.89856 80 6.66667V20H73.3333V6.66667H60V0H73.3333ZM6.66667 60V73.3333H20V80H6.66667C4.89856 80 3.20286 79.2976 1.95262 78.0474C0.702379 76.7971 0 75.1014 0 73.3333V60H6.66667ZM73.3333 73.3333V60H80V73.3333C80 75.1014 79.2976 76.7971 78.0474 78.0474C76.7971 79.2976 75.1014 80 73.3333 80H60V73.3333H73.3333Z"
                             fill="#EDBD58" fill-opacity="0.6" />
                     </svg>
-
                 </div>
 
             </div>
@@ -143,3 +157,14 @@
 </div>
 
 @include('layouts.footer')
+<script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script>
+<script>
+    const qrcode = new QRCode(document.getElementById('qrcode'), {
+        text: 'muhammadnasir.dev@gmail.com',
+        width: 128,
+        height: 128,
+        colorDark: '#000',
+        colorLight: '#fff',
+        correctLevel: QRCode.CorrectLevel.H
+    });
+</script>

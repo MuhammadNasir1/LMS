@@ -141,6 +141,12 @@ Route::middleware('custom')->group(function () {
         return view("games.game1");
     });
 
+    // live  video
+    Route::get('video', function () {
+        return view("video.startvideo");
+    });
+
+
 
 
 

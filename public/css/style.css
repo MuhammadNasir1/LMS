@@ -7,9 +7,9 @@ body {
     background-color: whitesmoke;
 }
 
-::selection{
-background-color: #339b96  !important;
-color: white;
+::selection {
+    background-color: #339b96 !important;
+    color: white;
 }
 .accent-color {
     accent-color: #339b96;
@@ -74,4 +74,20 @@ table.dataTable.no-footer {
 #lessonDate::-webkit-datetime-edit-day-field,
 #lessonDate::-webkit-datetime-edit-year-field {
     color: #edbd58;
+}
+
+.range::-webkit-slider-thumb {
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    width: 16px !important;
+    height: 16px !important;
+    background: white !important;
+    cursor: pointer !important;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px !important;
+    height: 25px !important;
+    background: red !important;
+    cursor: pointer !important;
 }
