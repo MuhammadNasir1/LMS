@@ -91,3 +91,39 @@ table.dataTable.no-footer {
     background: red !important;
     cursor: pointer !important;
 }
+
+ /* select 2  styling */
+
+.select2-results__option[aria-selected="true"] {
+    background-color: #339b96 !important;
+}
+
+.select2-container--default
+    .select2-selection--single
+    .select2-selection__rendered {
+    color: #444 !important;
+    line-height: 34px !important;
+    text-align: left !important;
+}
+
+.select2-container--default .select2-selection--single {
+    border: 1px solid #dee2e6 !important;
+    height: 36px !important;
+    border-radius: 0.375rem;
+}
+
+.select2-container--default .select2-selection--single:focus {
+    border: 2px solid #339b96 !important;
+}
+
+.select2-container--default
+    .select2-selection--single
+    .select2-selection__arrow {
+    top: 6px !important;
+}
+
+.dataTables_length label {
+    display: flex !important;
+    gap: 10px;
+    align-items: center;
+}

@@ -92,7 +92,7 @@
                             <label class="text-[14px] font-normal" for="firstName">@lang('lang.First_Name')</label>
                             <input type="text"
                                 class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                name="first_name" id="firstName" placeholder=" @lang('lang.Enter_Student_Name')">
+                                name="full_name" id="fullName" placeholder=" @lang('lang.Enter_Student_Name')">
                         </div>
 
                         <div class="grid grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
@@ -124,7 +124,7 @@
                             <label class="text-[14px] font-normal" for="personName">@lang('lang.person')</label>
                             <input type="text"
                                 class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                name="personname" id="personName" placeholder=" @lang('lang.Enter_Person_Name')">
+                                name="em_person" id="personName" placeholder=" @lang('lang.Enter_Person_Name')">
                         </div>
 
                         <div class="grid grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
@@ -185,7 +185,7 @@
                                 <select
                                     class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
                                     name="Campus" id="Campus">
-                                    <option value="">@lang('lang.Select_Subject')</option>
+                                    <option value="">@lang('lang.Select_Campus')</option>
                                 </select>
                                 <div>
                                     <button type="button"

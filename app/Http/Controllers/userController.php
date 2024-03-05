@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\students;
 use App\Models\User;
 use Illuminate\Support\Facades\App;
 use Illuminate\Http\Request;
@@ -85,9 +86,9 @@ class userController extends Controller
 
                 $token = $user->createToken($request->email)->plainTextToken;
                 session(['user_det' => [
-                    'name'=> $name,
+                    'name' => $name,
                     'email' => $validatedData['email'],
-                    'role'=>  $role,
+                    'role' =>  $role,
                 ]]);
                 return  response()->json([
                     'token' => $token,
@@ -95,8 +96,6 @@ class userController extends Controller
                     'success' => true,
                     'user' => $user,
                 ],  200);
-
-
             } else {
 
                 return response()->json([
@@ -163,5 +162,44 @@ class userController extends Controller
         $request->session()->forget('user_det');
         $request->session()->regenerate();
         return redirect('/');
+    }
+
+
+    // add student
+
+    public function addstudent(Request $request)
+    {
+        try {
+            $validatedData = $request->validate([
+                "full_name" => "required",
+                "gender" => "required",
+                "dob" => "required|date",
+                "phone_no" => "required",
+                "address" => "required",
+                "Campus" => "required",
+                "student_no" => "required",
+                "grade" => "required",
+            ]);
+            $student = Students::create([
+                'full_name' => $validatedData['full_name'],
+                'chinese_name' => $request['chinese_name'],
+                'gender' => $validatedData['gender'],
+                'dob' => $validatedData['dob'],
+                'phone_no' => $validatedData['phone_no'],
+                'adress' => $validatedData['address'],
+                'em_person' => $request['em_person'],
+                'em_relation' => $request['relation'],
+                'em_phone' => $request['em_phone'],
+                'campus' => $validatedData['Campus'],
+                'School_attending' => $request['sch_attending'],
+                'student_no' => $validatedData['student_no'],
+                'grade' => $validatedData['grade'],
+            ]);
+
+
+            return response()->json(['success' => true, 'message' => 'Data added successfully', 'student'  => $student], 200);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
+        }
     }
 }
