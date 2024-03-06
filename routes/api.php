@@ -28,3 +28,5 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('changepasword', [userController::class, 'changepasword']);
 });
 ROute::post('addStudent', [userController::class, 'addstudent']);
+Route::match(['get', 'post'], 'delStudent/{std_id}', [userController::class, 'delstudent']);
+ROute::post('updateStudent/{std_id}', [userController::class, 'updatestudent']);
