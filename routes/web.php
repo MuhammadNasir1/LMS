@@ -151,3 +151,5 @@ Route::middleware('custom')->group(function () {
 
 
 });
+
+Route::get('/sendemail', [userController::class, 'sendWelcomeEmail']);

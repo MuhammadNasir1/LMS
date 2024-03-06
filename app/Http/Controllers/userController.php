@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\parents;
 use App\Models\students;
 use App\Models\User;
 use GuzzleHttp\Psr7\Message;
@@ -9,10 +10,9 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use  Illuminate\Support\Facades\Hash;
-use Laravel\Sanctum\PersonalAccessToken;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Mail;
+use App\Mail\WelcomeMail;
+use App\Mail\OtpMail;
 class userController extends Controller
 {
 
@@ -239,5 +239,33 @@ class userController extends Controller
         } catch (\Exception $e) {
             return response()->json(['success' => false,  'error' => 'Error updating student record'], 500);
         }
+    }
+
+
+    // add parent
+    public function addparent(Request $request)
+    {
+        $validatedData = $request->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'gender' => 'required',
+            'email' => 'required',
+            'phone_no' => 'required',
+            'contact' => 'required',
+            'address' => 'required',
+            'child_ren' => 'required',
+        ]);
+
+        $parent = parents::create([]);
+    }
+    // send opt in parent email
+    public function sendWelcomeEmail()
+    {
+        $title = 'LMS';
+        $body = 'Thank you for participating!';
+
+        Mail::to('nmian7080@gmail.com')->send(new OtpMail($title, $body));
+
+        return "Email sent successfully!";
     }
 }
