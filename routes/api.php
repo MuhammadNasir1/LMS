@@ -1,9 +1,10 @@
 <?php
 
+use App\Http\Controllers\authController;
+use App\Http\Controllers\studentController;
 use App\Http\Controllers\userController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -20,18 +21,18 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::post('register', [userController::class, 'register']);
-Route::post('login', [userController::class, 'login']);
+Route::post('register', [authController::class, 'register']);
+Route::post('login', [authController::class, 'login']);
 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::post('logout', [userController::class, 'logout']);
+    Route::post('logout', [authController::class, 'logout']);
     Route::post('changepasword', [userController::class, 'changepasword']);
 });
 
 // student CRUD
-ROute::post('addStudent', [userController::class, 'addstudent']);
-Route::match(['get', 'post'], 'delStudent/{std_id}', [userController::class, 'delstudent']);
-ROute::post('updateStudent/{std_id}', [userController::class, 'updatestudent']);
+ROute::post('addStudent', [studentController::class, 'addstudent']);
+Route::match(['get', 'post'], 'delStudent/{std_id}', [studentController::class, 'delstudent']);
+ROute::post('updateStudent/{std_id}', [studentController::class, 'updatestudent']);
 
 
 // parent CRUD
