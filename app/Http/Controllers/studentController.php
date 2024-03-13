@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use  App\Models\students;
 use Illuminate\Validation\ValidationException;
+
 class studentController extends Controller
 {
     // add student
@@ -76,6 +77,20 @@ class studentController extends Controller
             return response()->json(['success' => true,  'message' => 'Student updated successfully'], 200);
         } catch (\Exception $e) {
             return response()->json(['success' => false,  'error' => 'Error updating student record'], 500);
+        }
+    }
+
+    // get Student data from data base
+
+    public function getStdData()
+    {
+        try {
+
+            $students = students::all();
+            return response()->json(['success' => false,  'student' => $students], 200);
+        } catch (\Exception $e) {
+
+            return response()->json(['success' => false,  'error' => $e->getMessage()], 500);
         }
     }
 }

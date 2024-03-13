@@ -33,7 +33,7 @@ Route::middleware('auth:sanctum')->group(function () {
 ROute::post('addStudent', [studentController::class, 'addstudent']);
 Route::match(['get', 'post'], 'delStudent/{std_id}', [studentController::class, 'delstudent']);
 ROute::post('updateStudent/{std_id}', [studentController::class, 'updatestudent']);
-
+Route::get('studentData'  , [studentController::class  , 'getStdData']);
 
 // parent CRUD
 
