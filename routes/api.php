@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\authController;
+use App\Http\Controllers\parentController;
 use App\Http\Controllers\studentController;
 use App\Http\Controllers\userController;
 use Illuminate\Http\Request;
@@ -37,4 +38,4 @@ Route::get('studentData'  , [studentController::class  , 'getStdData']);
 
 // parent CRUD
 
-Route::post('addParent' , [userController::class , 'addparent']);
+Route::post('addParent' , [parentController::class , 'addparent']);

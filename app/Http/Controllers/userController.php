@@ -48,22 +48,7 @@ class userController extends Controller
     }
 
 
-    // add parent
-    public function addparent(Request $request)
-    {
-        $validatedData = $request->validate([
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'gender' => 'required',
-            'email' => 'required',
-            'phone_no' => 'required',
-            'contact' => 'required',
-            'address' => 'required',
-            'child_ren' => 'required',
-        ]);
 
-        $parent = parents::create([]);
-    }
     // send opt in parent email
     public function sendWelcomeEmail()
     {
