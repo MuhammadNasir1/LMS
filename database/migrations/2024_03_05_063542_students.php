@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('full_name');
             $table->string('chinese_name')->nullable();;
             $table->string('gender');
-            $table->string('dob');
+            $table->date('dob');
             $table->string('phone_no');
             $table->text('adress');
             $table->string('em_person')->nullable();

@@ -16,7 +16,7 @@ class parentMail extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct(private string $title, private string  $body)
+    public function __construct(private string $email, private string  $Mpassword)
     {
         //
     }
@@ -37,10 +37,10 @@ class parentMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'welcome',
+            view: 'emails.parent',
             with: [
-                'title' => $this->title,
-                'body' => $this->body,
+                'email' => $this->email,
+                'Mpassword' => $this->Mpassword,
             ],
         );
     }

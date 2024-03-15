@@ -87,10 +87,10 @@ class studentController extends Controller
         try {
 
             $students = students::all();
-            return response()->json(['success' => true,  'student' => $students], 200);
+            return response()->json(['success' => true, 'message' => 'Data Get successfully',  'student' => $students], 200);
         } catch (\Exception $e) {
 
-            return response()->json(['success' => false,  'error' => $e->getMessage()], 500);
+            return response()->json(['success' => false,   'message' => $e->getMessage()], 500);
         }
     }
 }

@@ -6,7 +6,8 @@ use App\Models\parents;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\parentMail;
-use Illuminate\Support\Facades\DB;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class parentController extends Controller
 {
@@ -36,22 +37,22 @@ class parentController extends Controller
                 'child_ren' => $request['child_ren'],
             ]);
 
-            // Generate a password reset token
-            $token = \Illuminate\Support\Str::random(60);
+            // Generate a password
+            $password = \Illuminate\Support\Str::random(8);
 
-            // Save the token in the password_resets table
-            DB::table('password_reset_tokens')->insert([
+            $user = User::create([
+                'name' => $validatedData['first_name'] . $validatedData['last_name'],
                 'email' => $validatedData['email'],
-                'token' => \Illuminate\Support\Facades\Hash::make($token),
-                'created_at' => now(),
+                'role' => 'parent',
+                'password' => Hash::make($password),
+
             ]);
 
-            // Send welcome email with password reset link
-            $title = 'Welcome to LMS';
-            $body = 'Thank you for participating! Please set your password by clicking the link below: ' . $validatedData['email'];
-            Mail::to($validatedData['email'])->send(new parentMail($title, $body));
-
-            return response()->json(['success' => true, 'message' => 'Parent added successfully! Welcome email sent.'], 200);
+            // Send welcome email with password
+            $email = $validatedData['email'];
+            $Mpassword = $password;
+            Mail::to($validatedData['email'])->send(new parentMail($email, $Mpassword));
+            return response()->json(['success' => true, 'message' => 'Parent added successfully!  email sent.'], 200);
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
         }
