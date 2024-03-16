@@ -19,7 +19,7 @@ class parentController extends Controller
                 'first_name' => 'required',
                 'last_name' => 'required',
                 'gender' => 'required',
-                'email' => 'required',
+                'email' => 'required|email|unique:parents,email',
                 'phone_no' => 'required',
                 'contact' => 'required',
                 'address' => 'required',
@@ -48,11 +48,66 @@ class parentController extends Controller
 
             ]);
 
-            // Send welcome email with password
+            // Send  email with password
             $email = $validatedData['email'];
             $Mpassword = $password;
             Mail::to($validatedData['email'])->send(new parentMail($email, $Mpassword));
             return response()->json(['success' => true, 'message' => 'Parent added successfully!  email sent.'], 200);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
+        }
+    }
+
+    // get parent data from  data  base
+    public function parantdata()
+    {
+        try {
+            $parantdate = parents::all();
+            return response()->json(['success' => true, 'message' => 'Data get successfully', 'parent' => $parantdate], 200);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
+        }
+    }
+
+
+    // delete parant
+    public function  delparent($parent_id)
+    {
+        try {
+
+            $parent = parents::find($parent_id);
+            if (!$parent) {
+                return response()->json(['success' => false, 'message' => 'parent not found'], 500);
+            }
+
+            $parent->delete();
+            return response()->json(['success' => true, 'message' => 'parent successfully delete'], 200);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
+        }
+    }
+
+    // Update parant
+
+    public function updateparent(Request $request,  $parent_id)
+    {
+
+        try {
+            $parent = parents::find($parent_id);
+            if (!$parent) {
+                return response()->json(['success' => false, 'message' => 'Parent not found'], 500);
+            }
+            // Generate a password
+            $password = \Illuminate\Support\Str::random(8);
+
+            $user = User::where('email', $parent->email);
+            $user->update(['email' => $request->email, 'password' => hash::make($password)]);
+            $parent->update($request->all());
+
+            $email = $request['email'];
+            $Mpassword = $password;
+            Mail::to($request['email'])->send(new parentMail($email, $Mpassword));
+            return response()->json(['success' => true, 'message' => 'Parent successfully updated and new mail send'], 200);
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
         }

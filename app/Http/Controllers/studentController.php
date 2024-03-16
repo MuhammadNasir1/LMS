@@ -56,7 +56,7 @@ class studentController extends Controller
             $student->delete();
             return response()->json(['success' => true, 'message' => 'Student successfully delete'], 200);
         } catch (\Exception $e) {
-            return response()->json(['success' => false, 'message' => $e->getMessage()], 200);
+            return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
         }
     }
 
