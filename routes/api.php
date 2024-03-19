@@ -46,3 +46,6 @@ ROute::post('updateParent/{parent_id}', [parentController::class, 'updateparent'
 // teacher CRUD
 
 ROute::post('addTeacher', [teacherController::class, 'addteacher']);
+Route::get('teacherData', [teacherController::class, 'teacherdata']);
+Route::match(['get', 'post'], 'delTeacher/{teacher_id}', [teacherController::class, 'delTeacher']);
+ROute::post('updateTeacher/{teacher_id}', [teacherController::class, 'updateteacher']);
