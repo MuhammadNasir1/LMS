@@ -3,6 +3,7 @@
 use App\Http\Controllers\authController;
 use App\Http\Controllers\parentController;
 use App\Http\Controllers\studentController;
+use App\Http\Controllers\teacherController;
 use App\Http\Controllers\userController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -41,3 +42,7 @@ Route::post('addParent', [parentController::class, 'addparent']);
 Route::get('parentData', [parentController::class, 'parantdata']);
 Route::match(['get', 'post'], 'delParent/{parent_id}', [parentController::class, 'delparent']);
 ROute::post('updateParent/{parent_id}', [parentController::class, 'updateparent']);
+
+// teacher CRUD
+
+ROute::post('addTeacher', [teacherController::class, 'addteacher']);
