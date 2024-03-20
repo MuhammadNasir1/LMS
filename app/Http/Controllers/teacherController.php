@@ -92,7 +92,7 @@ class teacherController extends Controller
             $teacher = Teacher::find($teacher_id);
 
             if (!$teacher) {
-                return response()->json(['success' => false, 'error' => 'Teacher not found'], 404);
+                return response()->json(['success' => false, 'message' => 'Teacher not found'], 404);
             }
 
             // Handle file upload
@@ -109,7 +109,7 @@ class teacherController extends Controller
 
             return response()->json(['success' => true, 'message' => 'Teacher updated successfully'], 200);
         } catch (\Exception $e) {
-            return response()->json(['success' => false, 'error' => 'Error updating teacher record'], 500);
+            return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
         }
     }
 }

@@ -4,6 +4,7 @@ use App\Http\Controllers\authController;
 use App\Http\Controllers\parentController;
 use App\Http\Controllers\studentController;
 use App\Http\Controllers\teacherController;
+use App\Http\Controllers\trainingController;
 use App\Http\Controllers\userController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -44,8 +45,13 @@ Route::match(['get', 'post'], 'delParent/{parent_id}', [parentController::class,
 ROute::post('updateParent/{parent_id}', [parentController::class, 'updateparent']);
 
 // teacher CRUD
-
 ROute::post('addTeacher', [teacherController::class, 'addteacher']);
 Route::get('teacherData', [teacherController::class, 'teacherdata']);
 Route::match(['get', 'post'], 'delTeacher/{teacher_id}', [teacherController::class, 'delTeacher']);
 ROute::post('updateTeacher/{teacher_id}', [teacherController::class, 'updateteacher']);
+
+// training  CRUD
+ROute::post('addTraining', [trainingController::class, 'addtraining']);
+Route::get('trainingData', [trainingController::class, 'trainingdata']);
+Route::match(['get', 'post'], 'delTraining/{training_id}', [trainingController::class, 'deltraining']);
+ROute::post('updateTraining/{training_id}', [trainingController::class, 'updatetraining']);
