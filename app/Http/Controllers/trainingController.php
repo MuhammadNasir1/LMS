@@ -51,12 +51,49 @@ class trainingController extends Controller
     }
 
 
-    public function  delTraining($training_id)
+    public function  deltraining($training_id)
     {
+        try {
+
+            $training = training::find($training_id);
+            if (!$training) {
+                return response()->json(['success' => false, 'message' => 'training not found'], 500);
+            }
+            // Delete  file from storage if it exists
+            if (!empty($training->video)) {
+                $file_path = public_path($training->video);
+                if (file_exists($file_path)) {
+                    unlink($file_path);
+                }
+            }
+            $training->delete();
+            return response()->json(['success' => true, 'message' => 'training successfully delete'], 200);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
+        }
     }
 
 
-    public function  updateTraining(Request $request, $training_id)
+    public function  updatetraining(Request $request, $training_id)
     {
+        try {
+            $training = training::find($training_id);
+            if (!$training) {
+                return response()->json(['success' => false, 'message' => 'training not found'], 500);
+            }
+
+            if ($request->hasFile('video')) {
+                $training_video = $request->file('video');
+                $videoName = time() . '.' . $training_video->getClientOriginalExtension();
+                $training_video->storeAs('public/trainingVideo', $videoName);
+                $training->video = 'storage/trainingVideo/' . $videoName;
+            }
+
+
+            $training->update($request->except('video'));
+            return response()->json(['success' => true, 'message' => 'training Updated successfully '], 200);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
+        }
     }
 }
