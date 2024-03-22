@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('email');
             $table->string('subject');
             $table->string('skill');
-            $table->string('join_date');
+            $table->date('join_date');
             $table->text('address');
             $table->string('teacher_cv')->nullable();
             $table->timestamps();

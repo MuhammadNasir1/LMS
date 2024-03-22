@@ -55,7 +55,7 @@ class teacherController extends Controller
     {
         try {
             $teacherdata = teacher::all();
-            return response()->json(['success' => true, 'message' => 'Data get successfully', 'parent' => $teacherdata], 200);
+            return response()->json(['success' => true, 'message' => 'Data get successfully', 'teacher' => $teacherdata], 200);
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
         }

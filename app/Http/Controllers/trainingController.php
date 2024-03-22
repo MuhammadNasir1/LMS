@@ -43,8 +43,8 @@ class trainingController extends Controller
     {
 
         try {
-
-            return response()->json(['success' => true, 'message' => 'Training data  successfully'], 200);
+            $training = training::all();
+            return response()->json(['success' => true, 'message' => 'Training data  successfully', 'training'  => $training], 200);
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
         }
