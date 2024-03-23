@@ -9,6 +9,56 @@ use Illuminate\Validation\ValidationException;
 
 class authController extends Controller
 {
+
+    // update UserDetails
+    public function updateSettings(Request $request)
+    {
+        try {
+            $user = Auth()->user();
+
+            if (!$user) {
+                return response()->json(['success' => false, 'message' => 'User not authenticated.'], 401);
+            }
+
+            $validatedData = $request->validate([
+                'name' => 'nullable',
+                'phone' => 'nullable',
+                'city' => 'nullable',
+                'country' => 'nullable',
+                'language' => 'nullable',
+                'old_password' => 'nullable',
+                'confirm_password' => 'nullable',
+                'upload_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:1024',
+            ]);
+
+            $user->name = $validatedData['name'];
+            $user->phone = $validatedData['phone'];
+            $user->city = $validatedData['city'];
+            $user->country = $validatedData['country'];
+            $user->language = $validatedData['language'];
+
+            if (isset($validatedData['old_password'])) {
+                if (Hash::check($validatedData['old_password'], $user->password)) {
+                    $user->password = Hash::make($validatedData['confirm_password']);
+                }
+            }
+
+            if ($request->hasFile('upload_image')) {
+                $image = $request->file('upload_image');
+                $imageName = time() . '.' . $image->getClientOriginalExtension();
+                $image->storeAs('public/user_images', $imageName); // Adjust storage path as needed
+                $user->user_image = 'storage/user_images/' . $imageName;
+            }
+
+            $user->save();
+
+            return response()->json(['success' => true, 'message' => 'Profile Updated!'], 200);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => $e->getMessage()], 400);
+        }
+    }
+    // update UserDetails
+
     public function register(Request $request)
     {
 

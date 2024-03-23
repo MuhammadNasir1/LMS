@@ -30,6 +30,7 @@ Route::post('login', [authController::class, 'login']);
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('logout', [authController::class, 'logout']);
     Route::post('changepasword', [userController::class, 'changepasword']);
+    Route::post('/updateSettings', [authController::class, 'updateSettings']);
 });
 
 // student CRUD
