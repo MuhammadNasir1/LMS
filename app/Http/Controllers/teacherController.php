@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\TeacherMail;
 use App\Models\teacher;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Hash;
 
 class teacherController extends Controller
 {
@@ -36,6 +40,22 @@ class teacherController extends Controller
                 'join_date' => $validatedData['join_date'],
                 'address' => $validatedData['address'],
             ]);
+
+            // Generate a password
+            $password = \Illuminate\Support\Str::random(8);
+
+            $user = User::create([
+                'name' => $validatedData['first_name'] . $validatedData['last_name'],
+                'email' => $validatedData['email'],
+                'role' => 'teacher',
+                'password' => Hash::make($password),
+
+            ]);
+
+            // Send  email with password
+            $email = $validatedData['email'];
+            $Mpassword = $password;
+            Mail::to($validatedData['email'])->send(new TeacherMail($email, $Mpassword));
 
             if ($request->hasFile('teacher_cv')) {
                 $teacher_cv = $request->file('teacher_cv');
@@ -106,6 +126,19 @@ class teacherController extends Controller
             }
 
             $teacher->update($request->except('teacher_cv')); // Exclude teacher_cv from updating
+
+
+            // Generate a password
+            $password = \Illuminate\Support\Str::random(8);
+
+            $user = User::where('email', $teacher->email);
+            $user->update(['email' => $request->email, 'password' => hash::make($password)]);
+            $teacher->update($request->all());
+
+            $email = $request['email'];
+            $Mpassword = $password;
+            Mail::to($request['email'])->send(new TeacherMail($email, $Mpassword));
+
 
             return response()->json(['success' => true, 'message' => 'Teacher updated successfully'], 200);
         } catch (\Exception $e) {
