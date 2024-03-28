@@ -38,10 +38,10 @@
                         <td>12/30 2010</td>
 
                         <td class="flex gap-5">
-                            <a class="cursor-pointer" href="#"><img width="38px" src="{{ asset('images/icons/delete.svg') }}"
-                                    alt="delete"></a>
-                            <a class="cursor-pointer" href="#"><img width="38px" src="{{ asset('images/icons/update.svg') }}"
-                                    alt="update"></a>
+                            <a class="cursor-pointer" href="#"><img width="38px"
+                                    src="{{ asset('images/icons/delete.svg') }}" alt="delete"></a>
+                            <a class="cursor-pointer" href="#"><img width="38px"
+                                    src="{{ asset('images/icons/update.svg') }}" alt="update"></a>
                             <a class="cursor-pointer" data-modal-target="teacherdetails"
                                 data-modal-toggle="teacherdetails"><img width="38px"
                                     src="{{ asset('images/icons/view.svg') }}" alt="View"></a>
@@ -59,7 +59,8 @@
 <div id="addteachermodal" data-modal-backdrop="static"
     class="hidden overflow-y-auto overflow-x-hidden fixed  left-0 z-50 justify-center  w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
     <div class="relative p-4 w-full max-w-7xl max-h-full ">
-        <form action="#" method="post">
+        <form id="teacher_data" method="post
+        ">
             @csrf
             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700  ">
                 <div class="flex items-center  justify-center  p-5  rounded-t dark:border-gray-600 bg-primary">
@@ -99,33 +100,44 @@
                                 name="phone_no" id="phoneNo" placeholder="@lang('lang.Enter_Phone')">
                         </div>
 
-                        <div class="grid grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
+                        <div class="grid select-container grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
                             <label class="text-[14px] font-normal" for="subject">@lang('lang.subject')</label>
                             <div class="flex gap-4">
-                                <select
-                                    class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
+                                <div class="select-feild w-full">
+                                    <select
+                                        class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
+                                        name="subject" id="subject">
+                                        <option value="">@lang('lang.subject')</option>
+                                    </select>
+                                </div>
+                                <input type="text"
+                                    class="w-full hidden border-[#DEE2E6] rounded-[4px] focus:border-primary input-field   h-[40px] text-[14px]"
                                     name="subject" id="subject">
-                                    <option value="">@lang('lang.Select_Subject')</option>
-                                </select>
                                 <div>
                                     <button type="button"
-                                        class="bg-secondary h-[40px] rounded-[4px] w-[40px] font-bold text-white text-2xl"
+                                        class="bg-secondary toggle-button h-[40px] rounded-[4px] w-[40px] font-bold text-white text-2xl"
                                         style="width: 42px">+</button>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="grid grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
+
+                        <div class="grid select-container grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
                             <label class="text-[14px] font-normal" for="skill">@lang('lang.Skills')</label>
                             <div class="flex gap-4">
-                                <select
-                                    class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
+                                <div class="select-feild w-full">
+                                    <select
+                                        class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
+                                        name="skill" id="skill">
+                                        <option value="">@lang('lang.add_Skills')</option>
+                                    </select>
+                                </div>
+                                <input type="text"
+                                    class="w-full hidden border-[#DEE2E6] rounded-[4px] focus:border-primary input-field   h-[40px] text-[14px]"
                                     name="skill" id="skill">
-                                    <option value="">@lang('lang.add_Skills')</option>
-                                </select>
                                 <div>
                                     <button type="button"
-                                        class="bg-secondary h-[40px] rounded-[4px] w-[40px] font-bold text-white text-2xl"
+                                        class="bg-secondary toggle-button h-[40px] rounded-[4px] w-[40px] font-bold text-white text-2xl"
                                         style="width: 42px">+</button>
                                 </div>
                             </div>
@@ -318,4 +330,61 @@
 </div>
 
 
+<script>
+    var selectContainers = document.querySelectorAll('.select-container');
+
+    selectContainers.forEach(function(container) {
+        var select = container.querySelector('.select-feild');
+        var inputField = container.querySelector('.input-field');
+        var toggleButton = container.querySelector('.toggle-button');
+
+        toggleButton.addEventListener('click', function() {
+            if (select.style.display !== 'none') {
+                select.style.display = 'none';
+                inputField.style.display = 'block';
+            } else {
+                select.style.display = 'block';
+                inputField.style.display = 'none';
+            }
+        });
+    });
+</script>
 @include('layouts.footer')
+
+<script>
+    $(document).ready(function() {
+        $("#student_data").submit(function(event) {
+            event.preventDefault();
+            // Serialize the form data into a JSON object
+            var formData = $(this).serialize();
+            // Send the AJAX request
+            $.ajax({
+                type: "POST",
+                url: "../addStudent",
+                data: formData,
+                dataType: "json",
+                success: function(response) {
+                    if (response.success == true) {
+                        window.location.href = '../admin/student';
+                    } else if (response.success == false) {
+                        Swal.fire(
+                            'Warning!',
+                            response.message,
+                            'warning'
+                        )
+                    }
+                },
+                error: function(jqXHR) {
+
+                    let response = JSON.parse(jqXHR.responseText);
+                    console.log("eror");
+                    Swal.fire(
+                        'Warning!',
+                        response.message,
+                        'warning'
+                    )
+                }
+            });
+        });
+    });
+</script>

@@ -1,13 +1,13 @@
 <?php
 
 use App\Http\Controllers\authController;
+use App\Http\Controllers\parentController;
 use App\Http\Controllers\studentController;
 use App\Http\Controllers\userController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
-
-
+use Illuminate\Testing\ParallelConsoleOutput;
 
 // language route
 Route::get('/lang', [userController::class, 'language_change']);
@@ -48,14 +48,8 @@ Route::middleware('custom')->group(function () {
             return view('admin.teacher');
         });
 
-
-        Route::get('/admin/parents', function () {
-            return view('admin.parent');
-        });
-
-        Route::get('/admin/student', function () {
-            return view('admin.student');
-        });
+        Route::get('/admin/student', [studentController::class , 'getstudentdata']);
+        Route::get('/admin/parents', [parentController::class , 'getparentdata']);
 
         Route::get('/admin/course', function () {
             return view('admin.course');
@@ -80,6 +74,7 @@ Route::middleware('custom')->group(function () {
             return view('admin.audio');
         });
         Route::post('addStudent',[studentController::class,'addstudent']);
+        Route::post('addParent',[parentController::class,'addparent']);
     });
 
 

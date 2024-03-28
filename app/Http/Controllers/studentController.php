@@ -93,4 +93,13 @@ class studentController extends Controller
             return response()->json(['success' => false,   'message' => $e->getMessage()], 500);
         }
     }
+
+
+    //  get student data form data base
+
+    public  function getstudentdata()
+    {
+        $students = students::all();
+        return view('admin.student', ['students' => $students]);
+    }
 }

@@ -11,7 +11,8 @@
             <div class="flex justify-between px-[20px] mb-3">
                 <h3 class="text-[20px] text-black">@lang('lang.Parents_List')</h3>
                 <button data-modal-target="addparentmodal" data-modal-toggle="addparentmodal"
-                    class="bg-secondary text-white h-12 px-5 rounded-[6px]  shadow-sm font-semibold ">+ @lang('lang.Add_parents')  </button>
+                    class="bg-secondary text-white h-12 px-5 rounded-[6px]  shadow-sm font-semibold ">+ @lang('lang.Add_parents')
+                </button>
             </div>
             <table id="datatable" class="overflow-scroll">
                 <thead class="py-6 bg-primary text-white">
@@ -22,29 +23,31 @@
                         <th>@lang('lang.Address')</th>
                         <th>@lang('lang.gender')</th>
                         <th>@lang('lang.Child')</th>
-                        <th>@lang('lang.Join_Date')</th>
                         <th>@lang('lang.Action')</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="pt-4">
-                        <td>John Smith</td>
-                        <td>abc@email.com</td>
-                        <td>1234565 54</td>
-                        <td>Town, City, Country</td>
-                        <td>Male</td>
-                        <td>Math</td>
-                        <td>12/30 2010</td>
 
-                        <td class="flex gap-5">
-                            <a class="cursor-pointer" href="#"><img width="38px" src="{{ asset('images/icons/delete.svg') }}"
-                                    alt="delete"></a>
-                            <a class="cursor-pointer" href="#"><img width="38px" src="{{ asset('images/icons/update.svg') }}"
-                                    alt="update"></a>
-                            <a class="cursor-pointer" data-modal-target="parentdetails" data-modal-toggle="parentdetails"><img width="38px"
-                                    src="{{ asset('images/icons/view.svg') }}" alt="View"></a>
-                        </td>
-                    </tr>
+                    @foreach ($parents as $x => $parent)
+                        <tr class="pt-4">
+                            <td>{{ $x + 1 }}</td>
+                            <td>{{ $parent->email }}</td>
+                            <td>{{ $parent->phone_no }}</td>
+                            <td>{{ $parent->address }}</td>
+                            <td>{{ $parent->gender }}</td>
+                            <td>{{ $parent->child_ren }}</td>
+
+                            <td class="flex gap-5">
+                                <a class="cursor-pointer" href="#"><img width="38px"
+                                        src="{{ asset('images/icons/delete.svg') }}" alt="delete"></a>
+                                <a class="cursor-pointer" href="#"><img width="38px"
+                                        src="{{ asset('images/icons/update.svg') }}" alt="update"></a>
+                                <a class="cursor-pointer" data-modal-target="parentdetails"
+                                    data-modal-toggle="parentdetails"><img width="38px"
+                                        src="{{ asset('images/icons/view.svg') }}" alt="View"></a>
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
 
@@ -57,7 +60,7 @@
 <div id="addparentmodal" data-modal-backdrop="static"
     class="hidden overflow-y-auto overflow-x-hidden fixed  left-0 z-50 justify-center  w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
     <div class="relative p-4 w-full max-w-7xl max-h-full ">
-        <form action="#" method="post">
+        <form id="parent_data" method="post">
             @csrf
             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700  ">
                 <div class="flex items-center justify-center  p-5  rounded-t dark:border-gray-600 bg-primary">
@@ -65,7 +68,7 @@
                         @lang('lang.Add_parents')
                     </h3>
                     <button type="button"
-                          class="cursor-pointer absolute right-2 text-white bg-transparent rounded-lg text-sm w-8 h-8 ms-auto "
+                        class="cursor-pointer absolute right-2 text-white bg-transparent rounded-lg text-sm w-8 h-8 ms-auto "
                         data-modal-hide="addparentmodal">
                         <svg class="w-4 h-4 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                             fill="none" viewBox="0 0 14 14">
@@ -136,20 +139,27 @@
                                 name="contact" id="contact" placeholder="@lang('lang.Enter_Emergency_Phone')">
                         </div>
 
-                        <div class="grid grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
+                        <div class="grid select-container grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
                             <label class="text-[14px] font-normal" for="child">@lang('lang.Child')</label>
+
                             <div class="flex gap-4">
-                                <select
-                                    class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                    name="child_ren" id="child">
-                                    <option value="">@lang('lang.sel_Child')</option>
-                                </select>
+                                <div class="select-feild w-full">
+                                    <select
+                                        class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
+                                        name="child_ren" id="child">
+                                        <option value="">@lang('lang.sel_Child')</option>
+                                    </select>
+                                </div>
+                                <input type="text"
+                                    class="w-full hidden border-[#DEE2E6] rounded-[4px] focus:border-primary input-field   h-[40px] text-[14px]"
+                                    name="child_ren" id="child_ren">
                                 <div>
                                     <button type="button"
-                                        class="bg-secondary h-[40px] rounded-[4px] w-[40px] font-bold text-white text-2xl"
+                                        class="bg-secondary toggle-button h-[40px] rounded-[4px] w-[40px] font-bold text-white text-2xl"
                                         style="width: 42px">+</button>
                                 </div>
                             </div>
+
                         </div>
 
 
@@ -178,109 +188,146 @@
 <div id="parentdetails" data-modal-backdrop="static"
     class="hidden overflow-y-auto overflow-x-hidden fixed  left-0 z-50 justify-center  w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
     <div class="relative p-4 w-full max-w-7xl max-h-full ">
-        <form action="#" method="post">
-            @csrf
-            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700  ">
-                <div class="flex items-center   justify-endjustify-start  p-5  rounded-t dark:border-gray-600 bg-primary">
-                    <h3 class="text-xl font-semibold text-white text-center">
-                        @lang('lang.About_Parent')
-                    </h3>
-                    <button type="button"
-                          class=" absolute right-2 text-white bg-transparent rounded-lg text-sm w-8 h-8 ms-auto "
-                        data-modal-hide="parentdetails">
-                        <svg class="w-4 h-4 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                            fill="none" viewBox="0 0 14 14">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                        </svg>
-                    </button>
+        @csrf
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700  ">
+            <div class="flex items-center   justify-endjustify-start  p-5  rounded-t dark:border-gray-600 bg-primary">
+                <h3 class="text-xl font-semibold text-white text-center">
+                    @lang('lang.About_Parent')
+                </h3>
+                <button type="button"
+                    class=" absolute right-2 text-white bg-transparent rounded-lg text-sm w-8 h-8 ms-auto "
+                    data-modal-hide="parentdetails">
+                    <svg class="w-4 h-4 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                        fill="none" viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                    </svg>
+                </button>
+            </div>
+            <div class="flex flex-col gap-5  items-center mt-4  pb-4">
+                <h2 class="text-pink text-[32px] font-semibold "><span
+                        class="border-b-4 border-pink py-1">@lang('lang.About') </span>@lang('lang.Parent')
+                </h2>
+                <div class="flex items-center justify-end  mt-5">
+                    <div class="w-[200px]">
+                        <h3 class="text-[18px] font-normal">@lang('lang.Name'):</h3>
+                    </div>
+                    <div class="w-[150px]  ">
+                        <p class="text-[14px] text-[#323C47]">Emily Davis</p>
+                    </div>
                 </div>
-                <div class="flex flex-col gap-5  items-center mt-4  pb-4">
-                    <h2 class="text-pink text-[32px] font-semibold "><span class="border-b-4 border-pink py-1">@lang('lang.About') </span>@lang('lang.Parent')
-                    </h2>
-                    <div class="flex items-center justify-end  mt-5">
-                        <div class="w-[200px]">
-                            <h3 class="text-[18px] font-normal">@lang('lang.Name'):</h3>
-                        </div>
-                        <div class="w-[150px]  ">
-                                <p  class="text-[14px] text-[#323C47]">Emily Davis</p>
-                        </div>
+                <div class="flex items-center justify-end ">
+                    <div class="w-[200px]">
+                        <h3 class="text-[18px] font-normal">@lang('lang.gender'):</h3>
                     </div>
-                    <div class="flex items-center justify-end ">
-                        <div class="w-[200px]">
-                            <h3 class="text-[18px] font-normal">@lang('lang.gender'):</h3>
-                        </div>
-                        <div class="w-[150px]  ">
-                                <p  class="text-[14px] text-[#323C47]">Male</p>
-                        </div>
+                    <div class="w-[150px]  ">
+                        <p class="text-[14px] text-[#323C47]">Male</p>
                     </div>
-                    <div class="flex items-center justify-end ">
-                        <div class="w-[200px]">
-                            <h3 class="text-[18px] font-normal">@lang('lang.Phone_no'):</h3>
-                        </div>
-                        <div class="w-[150px]  ">
-                                <p  class="text-[14px] text-[#323C47]">123 456 789</p>
-                        </div>
+                </div>
+                <div class="flex items-center justify-end ">
+                    <div class="w-[200px]">
+                        <h3 class="text-[18px] font-normal">@lang('lang.Phone_no'):</h3>
                     </div>
-                    <div class="flex items-center justify-end ">
-                        <div class="w-[200px]">
-                            <h3 class="text-[18px] font-normal">@lang('lang.Emergency') <br> @lang('lang.Contact_No') :</h3>
-                        </div>
-                        <div class="w-[150px]  ">
-                                <p  class="text-[14px] text-[#323C47]">12 5454 575</p>
-                        </div>
+                    <div class="w-[150px]  ">
+                        <p class="text-[14px] text-[#323C47]">123 456 789</p>
                     </div>
-                    <div class="flex items-center justify-end ">
-                        <div class="w-[200px]">
-                            <h3 class="text-[18px] font-normal">@lang('lang.E-mail'):</h3>
-                        </div>
-                        <div class="w-[150px]  ">
-                                <p  class="text-[14px] text-[#323C47]">xyz@email.com</p>
-                        </div>
+                </div>
+                <div class="flex items-center justify-end ">
+                    <div class="w-[200px]">
+                        <h3 class="text-[18px] font-normal">@lang('lang.Emergency') <br> @lang('lang.Contact_No') :</h3>
                     </div>
+                    <div class="w-[150px]  ">
+                        <p class="text-[14px] text-[#323C47]">12 5454 575</p>
+                    </div>
+                </div>
+                <div class="flex items-center justify-end ">
+                    <div class="w-[200px]">
+                        <h3 class="text-[18px] font-normal">@lang('lang.E-mail'):</h3>
+                    </div>
+                    <div class="w-[150px]  ">
+                        <p class="text-[14px] text-[#323C47]">xyz@email.com</p>
+                    </div>
+                </div>
 
 
-                    <div class="flex items-center justify-end ">
-                        <div class="w-[200px]">
-                            <h3 class="text-[18px] font-normal">@lang('lang.Address'):</h3>
-                        </div>
-                        <div class="w-[150px]  ">
-                                <p  class="text-[14px] text-[#323C47]">Town, City, Country</p>
-                        </div>
+                <div class="flex items-center justify-end ">
+                    <div class="w-[200px]">
+                        <h3 class="text-[18px] font-normal">@lang('lang.Address'):</h3>
                     </div>
-                    <div class="flex items-center justify-end ">
-                        <div class="w-[200px]">
-                            <h3 class="text-[18px] font-normal">@lang('lang.Child'):</h3>
-                        </div>
-                        <div class="w-[150px]  ">
-                                <p  class="text-[14px] text-[#323C47]">lorem ipsum</p>
-                        </div>
+                    <div class="w-[150px]  ">
+                        <p class="text-[14px] text-[#323C47]">Town, City, Country</p>
+                    </div>
+                </div>
+                <div class="flex items-center justify-end ">
+                    <div class="w-[200px]">
+                        <h3 class="text-[18px] font-normal">@lang('lang.Child'):</h3>
+                    </div>
+                    <div class="w-[150px]  ">
+                        <p class="text-[14px] text-[#323C47]">lorem ipsum</p>
                     </div>
                 </div>
             </div>
-        </form>
+        </div>
         <div>
 
         </div>
 
     </div>
 </div>
-
-
 <script>
-const inputGroups = document.querySelectorAll('.input-group');
+    var selectContainers = document.querySelectorAll('.select-container');
 
-inputGroups.forEach((inputGroup, index) => {
-  inputGroup.addEventListener('keydown', (e) => {
-    if (e.key === 'Tab') {
-      e.preventDefault();
-      const inputs = inputGroup.querySelectorAll('.input');
-      const currentIndex = Array.from(inputs).findIndex(input => document.activeElement === input);
-      const nextIndex = (currentIndex + 1) % inputs.length;
-      inputs[nextIndex].focus();
-    }
-  });
-});
+    selectContainers.forEach(function(container) {
+        var select = container.querySelector('.select-feild');
+        var inputField = container.querySelector('.input-field');
+        var toggleButton = container.querySelector('.toggle-button');
 
+        toggleButton.addEventListener('click', function() {
+            if (select.style.display !== 'none') {
+                select.style.display = 'none';
+                inputField.style.display = 'block';
+            } else {
+                select.style.display = 'block';
+                inputField.style.display = 'none';
+            }
+        });
+    });
 </script>
 @include('layouts.footer')
+<script>
+    $(document).ready(function() {
+        $("#parent_data").submit(function(event) {
+            event.preventDefault();
+            // Serialize the form data into a JSON object
+            var formData = $(this).serialize();
+            // Send the AJAX request
+            $.ajax({
+                type: "POST",
+                url: "../addParent",
+                data: formData,
+                dataType: "json",
+                success: function(response) {
+                    if (response.success == true) {
+                        window.location.href = '../admin/parents';
+                    } else if (response.success == false) {
+                        Swal.fire(
+                            'Warning!',
+                            response.message,
+                            'warning'
+                        )
+                    }
+                },
+                error: function(jqXHR) {
+
+                    let response = JSON.parse(jqXHR.responseText);
+                    console.log("eror");
+                    Swal.fire(
+                        'Warning!',
+                        response.message,
+                        'warning'
+                    )
+                }
+            });
+        });
+    });
+</script>

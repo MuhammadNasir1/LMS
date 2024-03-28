@@ -22,36 +22,38 @@
                         <th>@lang('lang.Chinese_Name')</th>
                         <th>@lang('lang.Parent_Name')</th>
                         <th>@lang('lang.gender')</th>
-                        <th>@lang('lang.age')</th>
+                        <th>@lang('lang.Date_of_Birth')</th>
                         <th>@lang('lang.Grade')</th>
                         <th>@lang('lang.Phone_no')</th>
                         <th>@lang('lang.Address')</th>
-
                         <th>@lang('lang.Action')</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="pt-4">
-                        <td>1</td>
-                        <td>John Smith</td>
-                        <td>1约翰·史密斯</td>
-                        <td>james</td>
-                        <td>Male</td>
-                        <td>1</td>
-                        <td>-</td>
-                        <td>134 548 878</td>
-                        <td>Town, City, Country</td>
 
-                        <td class="flex gap-5">
-                            <a class="cursor-pointer" href="#"><img width="38px"
-                                    src="{{ asset('images/icons/delete.svg') }}" alt="delete"></a>
-                            <a class="cursor-pointer" href="#"><img width="38px"
-                                    src="{{ asset('images/icons/update.svg') }}" alt="update"></a>
-                            <a class="cursor-pointer" data-modal-target="studendetails"
-                                data-modal-toggle="studendetails"><img width="38px"
-                                    src="{{ asset('images/icons/view.svg') }}" alt="View"></a>
-                        </td>
-                    </tr>
+                    @foreach ($students as $x => $student)
+                        <tr class="pt-4">
+                            <td>{{ $x + 1 }}</td>
+                            <td>{{ $student->full_name }}</td>
+                            <td>{{ $student->chinese_name }}</td>
+                            <td>{{ $student->chinese_name }}</td>
+                            <td>{{ $student->gender }}</td>
+                            <td>{{ $student->dob }}</td>
+                            <td>{{ $student->grade }}</td>
+                            <td>{{ $student->phone_no }}</td>
+                            <td>{{ $student->adress }}</td>
+
+                            <td class="flex gap-5">
+                                <a class="cursor-pointer" href="#"><img width="38px"
+                                        src="{{ asset('images/icons/delete.svg') }}" alt="delete"></a>
+                                <a class="cursor-pointer" href="#"><img width="38px"
+                                        src="{{ asset('images/icons/update.svg') }}" alt="update"></a>
+                                <a class="cursor-pointer" data-modal-target="studendetails"
+                                    data-modal-toggle="studendetails"><img width="38px"
+                                        src="{{ asset('images/icons/view.svg') }}" alt="View"></a>
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
 

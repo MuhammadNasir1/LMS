@@ -23,7 +23,6 @@ class parentController extends Controller
                 'phone_no' => 'required',
                 'contact' => 'required',
                 'address' => 'required',
-                'child_ren' => 'required',
             ]);
 
             $parent = parents::create([
@@ -111,5 +110,13 @@ class parentController extends Controller
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
         }
+    }
+
+    // get parent data
+    public function getparentdata()
+    {
+
+        $parents = parents::all();
+        return view('admin.parent', ['parents' => $parents]);
     }
 }
