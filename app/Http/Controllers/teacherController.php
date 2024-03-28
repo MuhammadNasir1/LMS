@@ -29,24 +29,24 @@ class teacherController extends Controller
             ]);
 
             $teacher = teacher::create([
-                'first_name' => $validatedData['first_name'],
-                'last_name' => $validatedData['last_name'],
-                'dob' => $validatedData['dob'],
-                'gender' => $validatedData['gender'],
-                'phone_no' => $validatedData['phone_no'],
-                'email' => $validatedData['email'],
-                'subject' => $validatedData['subject'],
-                'skill' => $validatedData['skill'],
-                'join_date' => $validatedData['join_date'],
-                'address' => $validatedData['address'],
+                'first_name' => $request['first_name'],
+                'last_name' => $request['last_name'],
+                'dob' => $request['dob'],
+                'gender' => $request['gender'],
+                'phone_no' => $request['phone_no'],
+                'email' => $request['email'],
+                'subject' => $request['subject'],
+                'skill' => $request['skill'],
+                'join_date' => $request['join_date'],
+                'address' => $request['address'],
             ]);
 
             // Generate a password
             $password = \Illuminate\Support\Str::random(8);
 
             $user = User::create([
-                'name' => $validatedData['first_name'] . $validatedData['last_name'],
-                'email' => $validatedData['email'],
+                'name' => $request['first_name'] . $request['last_name'],
+                'email' => $request['email'],
                 'role' => 'teacher',
                 'password' => Hash::make($password),
 
@@ -55,7 +55,7 @@ class teacherController extends Controller
             // Send  email with password
             $email = $validatedData['email'];
             $Mpassword = $password;
-            Mail::to($validatedData['email'])->send(new TeacherMail($email, $Mpassword));
+            Mail::to($request['email'])->send(new TeacherMail($email, $Mpassword));
 
             if ($request->hasFile('teacher_cv')) {
                 $teacher_cv = $request->file('teacher_cv');
