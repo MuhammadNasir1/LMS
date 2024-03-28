@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\authController;
+use App\Http\Controllers\studentController;
 use App\Http\Controllers\userController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\App;
@@ -78,6 +79,7 @@ Route::middleware('custom')->group(function () {
         Route::get('/admin/audio', function () {
             return view('admin.audio');
         });
+        Route::post('addStudent',[studentController::class,'addstudent']);
     });
 
 

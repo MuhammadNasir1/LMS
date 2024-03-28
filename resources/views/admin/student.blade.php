@@ -43,10 +43,10 @@
                         <td>Town, City, Country</td>
 
                         <td class="flex gap-5">
-                            <a class="cursor-pointer" href="#"><img width="38px" src="{{ asset('images/icons/delete.svg') }}"
-                                    alt="delete"></a>
-                            <a class="cursor-pointer" href="#"><img width="38px" src="{{ asset('images/icons/update.svg') }}"
-                                    alt="update"></a>
+                            <a class="cursor-pointer" href="#"><img width="38px"
+                                    src="{{ asset('images/icons/delete.svg') }}" alt="delete"></a>
+                            <a class="cursor-pointer" href="#"><img width="38px"
+                                    src="{{ asset('images/icons/update.svg') }}" alt="update"></a>
                             <a class="cursor-pointer" data-modal-target="studendetails"
                                 data-modal-toggle="studendetails"><img width="38px"
                                     src="{{ asset('images/icons/view.svg') }}" alt="View"></a>
@@ -64,7 +64,7 @@
 <div id="addstudentmodal" data-modal-backdrop="static"
     class="hidden overflow-y-auto overflow-x-hidden fixed  left-0 z-50 justify-center  w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
     <div class="relative p-4 w-full max-w-7xl max-h-full ">
-        <form action="#" method="post">
+        <form id="student_data" method="post">
             @csrf
             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700  ">
                 <div class="flex items-center  justify-center  p-5  rounded-t dark:border-gray-600 bg-primary">
@@ -179,17 +179,22 @@
                     <div>
 
                         {{-- Campus --}}
-                        <div class="grid grid-cols-[100px_minmax(100px,_1fr)] items-center ">
+                        <div class="select-container grid grid-cols-[100px_minmax(100px,_1fr)] items-center ">
                             <label class="text-[14px] font-normal" for="Campus">@lang('lang.Campus')</label>
                             <div class="flex gap-4">
-                                <select
-                                    class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                    name="Campus" id="Campus">
-                                    <option value="">@lang('lang.Select_Campus')</option>
-                                </select>
+                                <div class="select-feild w-full">
+                                    <select
+                                        class=" border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
+                                        name="Campus" id="campus">
+                                        <option value="">@lang('lang.Select_Campus')</option>
+                                    </select>
+                                </div>
+                                <input type="text"
+                                    class="w-full hidden border-[#DEE2E6] rounded-[4px] focus:border-primary input-field   h-[40px] text-[14px]"
+                                    name="Campus" id="campus">
                                 <div>
                                     <button type="button"
-                                        class="bg-secondary h-[40px] rounded-[4px] w-[40px] font-bold text-white text-2xl"
+                                        class="bg-secondary toggle-button h-[40px] rounded-[4px] w-[40px] font-bold text-white text-2xl"
                                         style="width: 42px">+</button>
                                 </div>
                             </div>
@@ -197,9 +202,9 @@
 
                         <div class="grid grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
                             <label class="text-[14px] font-normal" for="stud_no">@lang('lang.Student_No')</label>
-                            <input type="text"
+                            <input type="number"
                                 class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                name="stud_no" id="stud_no" placeholder=" @lang('lang.Enter_Roll_no')">
+                                name="student_no" id="stud_no" placeholder=" @lang('lang.Enter_Roll_no')">
                         </div>
 
                     </div>
@@ -207,33 +212,44 @@
                     <div>
                         {{-- Campus --}}
 
-                        <div class="grid grid-cols-[100px_minmax(100px,_1fr)] items-center   ">
-                            <label class="text-[14px] font-normal" for="sAttending">@lang('lang.School_Attending')</label>
+                        <div class="grid select-container grid-cols-[100px_minmax(100px,_1fr)] items-center   ">
+                            <label class="text-[14px] font-normal" for="School_attending">@lang('lang.School_Attending')</label>
+
                             <div class="flex gap-4">
-                                <select
-                                    class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                    name="sch_attending" id="sAttending">
-                                    <option value="">@lang('lang.Select')</option>
-                                </select>
+                                <div class="select-feild w-full">
+                                    <select
+                                        class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
+                                        name="School_attending" id="sAttending">
+                                        <option value="">@lang('lang.Select')</option>
+                                    </select>
+                                </div>
+                                <input type="text"
+                                    class="w-full hidden border-[#DEE2E6] rounded-[4px] focus:border-primary input-field   h-[40px] text-[14px]"
+                                    name="School_attending" id="School_attending">
                                 <div>
                                     <button type="button"
-                                        class="bg-secondary h-[40px] rounded-[4px] w-[40px] font-bold text-white text-2xl"
+                                        class="bg-secondary toggle-button h-[40px] rounded-[4px] w-[40px] font-bold text-white text-2xl"
                                         style="width: 42px">+</button>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="grid grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
+                        <div class="grid select-container grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
                             <label class="text-[14px] font-normal" for="grade">@lang('lang.Grade')</label>
                             <div class="flex gap-4">
-                                <select
-                                    class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
+                                <div class="select-feild w-full">
+                                    <select
+                                        class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
+                                        name="grade" id="grade">
+                                        <option value="">@lang('lang.Select')</option>
+                                    </select>
+                                </div>
+                                <input type="text"
+                                    class="w-full hidden border-[#DEE2E6] rounded-[4px] focus:border-primary input-field   h-[40px] text-[14px]"
                                     name="grade" id="grade">
-                                    <option value="">@lang('lang.Select')</option>
-                                </select>
                                 <div>
                                     <button type="button"
-                                        class="bg-secondary h-[40px] rounded-[4px] w-[40px] font-bold text-white text-2xl"
+                                        class="bg-secondary toggle-button h-[40px] rounded-[4px] w-[40px] font-bold text-white text-2xl"
                                         style="width: 42px">+</button>
                                 </div>
                             </div>
@@ -309,7 +325,7 @@
                             <p class="text-[14px] text-[#323C47]">Male</p>
                         </div>
                     </div>
-                    <div     class="flex items-center justify-end ">
+                    <div class="flex items-center justify-end ">
                         <div class="w-[200px]">
                             <h3 class="text-[18px] font-normal">@lang('lang.Date_of_Birth'):</h3>
                         </div>
@@ -407,5 +423,61 @@
     </div>
 </div>
 
+<script>
+    var selectContainers = document.querySelectorAll('.select-container');
 
+    selectContainers.forEach(function(container) {
+        var select = container.querySelector('.select-feild');
+        var inputField = container.querySelector('.input-field');
+        var toggleButton = container.querySelector('.toggle-button');
+
+        toggleButton.addEventListener('click', function() {
+            if (select.style.display !== 'none') {
+                select.style.display = 'none';
+                inputField.style.display = 'block';
+            } else {
+                select.style.display = 'block';
+                inputField.style.display = 'none';
+            }
+        });
+    });
+</script>
 @include('layouts.footer')
+
+<script>
+    $(document).ready(function() {
+        $("#student_data").submit(function(event) {
+            event.preventDefault();
+            // Serialize the form data into a JSON object
+            var formData = $(this).serialize();
+            // Send the AJAX request
+            $.ajax({
+                type: "POST",
+                url: "../addStudent",
+                data: formData,
+                dataType: "json",
+                success: function(response) {
+                    if (response.success == true) {
+                        window.location.href = '../admin/student';
+                    } else if (response.success == false) {
+                        Swal.fire(
+                            'Warning!',
+                            response.message,
+                            'warning'
+                        )
+                    }
+                },
+                error: function(jqXHR) {
+
+                    let response = JSON.parse(jqXHR.responseText);
+                    console.log("eror");
+                    Swal.fire(
+                        'Warning!',
+                        response.message,
+                        'warning'
+                    )
+                }
+            });
+        });
+    });
+</script>
