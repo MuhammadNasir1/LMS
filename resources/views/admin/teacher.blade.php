@@ -59,8 +59,7 @@
 <div id="addteachermodal" data-modal-backdrop="static"
     class="hidden overflow-y-auto overflow-x-hidden fixed  left-0 z-50 justify-center  w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
     <div class="relative p-4 w-full max-w-7xl max-h-full ">
-        <form id="teacher_data" method="post
-        ">
+        <form id="teacher_data" enctype="multipart/form-data" method="post" >
             @csrf
             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700  ">
                 <div class="flex items-center  justify-center  p-5  rounded-t dark:border-gray-600 bg-primary">
@@ -184,7 +183,7 @@
                             <label class="text-[14px] font-normal" for="joindate">@lang('lang.Join_Date')</label>
                             <input type="date"
                                 class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                name="joindate" id="joindate">
+                                name="join_date" id="joindate">
                         </div>
 
                         <div class="grid grid-cols-[100px_minmax(100px,_1fr)]  my-6  ">
@@ -217,111 +216,109 @@
 <div id="teacherdetails" data-modal-backdrop="static"
     class="hidden overflow-y-auto overflow-x-hidden fixed  left-0 z-50 justify-center  w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
     <div class="relative p-4 w-full max-w-7xl max-h-full ">
-        <form action="#" method="post">
-            @csrf
-            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700  ">
-                <div
-                    class="flex items-center   justify-endjustify-start  p-5  rounded-t dark:border-gray-600 bg-primary">
-                    <h3 class="text-xl font-semibold text-white text-center">
-                        @lang('lang.Teacher_Details')
-                    </h3>
-                    <button type="button"
-                        class="cursor-pointer absolute right-2 text-white bg-transparent rounded-lg text-sm w-8 h-8 ms-auto "
-                        data-modal-hide="teacherdetails">
-                        <svg class="w-4 h-4 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                            fill="none" viewBox="0 0 14 14">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                        </svg>
-                    </button>
+
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700  ">
+            <div class="flex items-center   justify-endjustify-start  p-5  rounded-t dark:border-gray-600 bg-primary">
+                <h3 class="text-xl font-semibold text-white text-center">
+                    @lang('lang.Teacher_Details')
+                </h3>
+                <button type="button"
+                    class="cursor-pointer absolute right-2 text-white bg-transparent rounded-lg text-sm w-8 h-8 ms-auto "
+                    data-modal-hide="teacherdetails">
+                    <svg class="w-4 h-4 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                        fill="none" viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                    </svg>
+                </button>
+            </div>
+            <div class="flex flex-col gap-5  items-center mt-4  pb-4">
+                <h2 class="text-pink text-[32px] font-semibold "><span
+                        class="border-b-4 border-pink py-1">@lang('lang.About') </span> @lang('lang.Teacher')
+                </h2>
+                <div class="flex items-center justify-end  mt-5">
+                    <div class="w-[200px]">
+                        <h3 class="text-[18px] font-normal">@lang('lang.Name'):</h3>
+                    </div>
+                    <div class="w-[150px]  ">
+                        <p class="text-[14px] text-[#323C47]">Emily Davis</p>
+                    </div>
                 </div>
-                <div class="flex flex-col gap-5  items-center mt-4  pb-4">
-                    <h2 class="text-pink text-[32px] font-semibold "><span
-                            class="border-b-4 border-pink py-1">@lang('lang.About') </span> @lang('lang.Teacher')
-                    </h2>
-                    <div class="flex items-center justify-end  mt-5">
-                        <div class="w-[200px]">
-                            <h3 class="text-[18px] font-normal">@lang('lang.Name'):</h3>
-                        </div>
-                        <div class="w-[150px]  ">
-                            <p class="text-[14px] text-[#323C47]">Emily Davis</p>
-                        </div>
+                <div class="flex items-center justify-end ">
+                    <div class="w-[200px]">
+                        <h3 class="text-[18px] font-normal">@lang('lang.gender'):</h3>
                     </div>
-                    <div class="flex items-center justify-end ">
-                        <div class="w-[200px]">
-                            <h3 class="text-[18px] font-normal">@lang('lang.gender'):</h3>
-                        </div>
-                        <div class="w-[150px]  ">
-                            <p class="text-[14px] text-[#323C47]">Male</p>
-                        </div>
+                    <div class="w-[150px]  ">
+                        <p class="text-[14px] text-[#323C47]">Male</p>
                     </div>
-                    <div class="flex items-center justify-end ">
-                        <div class="w-[200px]">
-                            <h3 class="text-[18px] font-normal">@lang('lang.Date_of_Birth'):</h3>
-                        </div>
-                        <div class="w-[150px]  ">
-                            <p class="text-[14px] text-[#323C47]">10/30/2010</p>
-                        </div>
+                </div>
+                <div class="flex items-center justify-end ">
+                    <div class="w-[200px]">
+                        <h3 class="text-[18px] font-normal">@lang('lang.Date_of_Birth'):</h3>
                     </div>
-                    <div class="flex items-center justify-end ">
-                        <div class="w-[200px]">
-                            <h3 class="text-[18px] font-normal">@lang('lang.Phone_no'):</h3>
-                        </div>
-                        <div class="w-[150px]  ">
-                            <p class="text-[14px] text-[#323C47]">123 456 789</p>
-                        </div>
+                    <div class="w-[150px]  ">
+                        <p class="text-[14px] text-[#323C47]">10/30/2010</p>
                     </div>
-                    <div class="flex items-center justify-end ">
-                        <div class="w-[200px]">
-                            <h3 class="text-[18px] font-normal">@lang('lang.E-mail'):</h3>
-                        </div>
-                        <div class="w-[150px]  ">
-                            <p class="text-[14px] text-[#323C47]">xyz@email.com</p>
-                        </div>
+                </div>
+                <div class="flex items-center justify-end ">
+                    <div class="w-[200px]">
+                        <h3 class="text-[18px] font-normal">@lang('lang.Phone_no'):</h3>
                     </div>
-                    <div class="flex items-center justify-end ">
-                        <div class="w-[200px]">
-                            <h3 class="text-[18px] font-normal">@lang('lang.subject'):</h3>
-                        </div>
-                        <div class="w-[150px]  ">
-                            <p class="text-[14px] text-[#323C47]">English</p>
-                        </div>
+                    <div class="w-[150px]  ">
+                        <p class="text-[14px] text-[#323C47]">123 456 789</p>
                     </div>
-                    <div class="flex items-center justify-end ">
-                        <div class="w-[200px]">
-                            <h3 class="text-[18px] font-normal">@lang('lang.Skills'):</h3>
-                        </div>
-                        <div class="w-[150px]  ">
-                            <p class="text-[14px] text-[#323C47]">SKILL HERE</p>
-                        </div>
+                </div>
+                <div class="flex items-center justify-end ">
+                    <div class="w-[200px]">
+                        <h3 class="text-[18px] font-normal">@lang('lang.E-mail'):</h3>
                     </div>
-                    <div class="flex items-center justify-end ">
-                        <div class="w-[200px]">
-                            <h3 class="text-[18px] font-normal">@lang('lang.Join_Date'):</h3>
-                        </div>
-                        <div class="w-[150px]  ">
-                            <p class="text-[14px] text-[#323C47]">10/30/2010</p>
-                        </div>
+                    <div class="w-[150px]  ">
+                        <p class="text-[14px] text-[#323C47]">xyz@email.com</p>
                     </div>
-                    <div class="flex items-center justify-end ">
-                        <div class="w-[200px]">
-                            <h3 class="text-[18px] font-normal">@lang('lang.Address'):</h3>
-                        </div>
-                        <div class="w-[150px]  ">
-                            <p class="text-[14px] text-[#323C47]">Town, City, Country</p>
-                        </div>
+                </div>
+                <div class="flex items-center justify-end ">
+                    <div class="w-[200px]">
+                        <h3 class="text-[18px] font-normal">@lang('lang.subject'):</h3>
                     </div>
-                    <div class="flex items-center justify-end ">
-                        <div class="w-[200px]">
-                            <h3 class="text-[18px] font-normal">@lang('lang.Teacher_CV'):</h3>
-                        </div>
-                        <div class="w-[150px]  ">
-                            <p class="text-[14px] text-[#323C47]">SV File here can open</p>
-                        </div>
+                    <div class="w-[150px]  ">
+                        <p class="text-[14px] text-[#323C47]">English</p>
+                    </div>
+                </div>
+                <div class="flex items-center justify-end ">
+                    <div class="w-[200px]">
+                        <h3 class="text-[18px] font-normal">@lang('lang.Skills'):</h3>
+                    </div>
+                    <div class="w-[150px]  ">
+                        <p class="text-[14px] text-[#323C47]">SKILL HERE</p>
+                    </div>
+                </div>
+                <div class="flex items-center justify-end ">
+                    <div class="w-[200px]">
+                        <h3 class="text-[18px] font-normal">@lang('lang.Join_Date'):</h3>
+                    </div>
+                    <div class="w-[150px]  ">
+                        <p class="text-[14px] text-[#323C47]">10/30/2010</p>
+                    </div>
+                </div>
+                <div class="flex items-center justify-end ">
+                    <div class="w-[200px]">
+                        <h3 class="text-[18px] font-normal">@lang('lang.Address'):</h3>
+                    </div>
+                    <div class="w-[150px]  ">
+                        <p class="text-[14px] text-[#323C47]">Town, City, Country</p>
+                    </div>
+                </div>
+                <div class="flex items-center justify-end ">
+                    <div class="w-[200px]">
+                        <h3 class="text-[18px] font-normal">@lang('lang.Teacher_CV'):</h3>
+                    </div>
+                    <div class="w-[150px]  ">
+                        <p class="text-[14px] text-[#323C47]">SV File here can open</p>
                     </div>
                 </div>
             </div>
-        </form>
+        </div>
+
         <div>
 
         </div>
@@ -352,39 +349,43 @@
 @include('layouts.footer')
 
 <script>
-    $(document).ready(function() {
-        $("#student_data").submit(function(event) {
-            event.preventDefault();
-            // Serialize the form data into a JSON object
-            var formData = $(this).serialize();
-            // Send the AJAX request
-            $.ajax({
-                type: "POST",
-                url: "../addStudent",
-                data: formData,
-                dataType: "json",
-                success: function(response) {
-                    if (response.success == true) {
-                        window.location.href = '../admin/student';
-                    } else if (response.success == false) {
-                        Swal.fire(
-                            'Warning!',
-                            response.message,
-                            'warning'
-                        )
-                    }
-                },
-                error: function(jqXHR) {
+   $(document).ready(function() {
+    $("#teacher_data").submit(function(event) {
+        event.preventDefault();
 
-                    let response = JSON.parse(jqXHR.responseText);
-                    console.log("eror");
+        // Create FormData object to handle multipart form data
+        var formData = new FormData(this);
+
+        // Send the AJAX request
+        $.ajax({
+            type: "POST",
+            url: "../addteacher",
+            data: formData,
+            dataType: "json",
+            contentType: false, // Set contentType to false when using FormData
+            processData: false, // Set processData to false when using FormData
+            success: function(response) {
+                if (response.success == true) {
+                    window.location.href = '../admin/teacher';
+                } else if (response.success == false) {
                     Swal.fire(
                         'Warning!',
                         response.message,
                         'warning'
-                    )
+                    );
                 }
-            });
+            },
+            error: function(jqXHR) {
+                let response = JSON.parse(jqXHR.responseText);
+                console.log("error");
+                Swal.fire(
+                    'Warning!',
+                    response.message,
+                    'warning'
+                );
+            }
         });
     });
+});
+
 </script>

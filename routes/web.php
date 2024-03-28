@@ -3,6 +3,7 @@
 use App\Http\Controllers\authController;
 use App\Http\Controllers\parentController;
 use App\Http\Controllers\studentController;
+use App\Http\Controllers\teacherController;
 use App\Http\Controllers\userController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\App;
@@ -75,6 +76,7 @@ Route::middleware('custom')->group(function () {
         });
         Route::post('addStudent',[studentController::class,'addstudent']);
         Route::post('addParent',[parentController::class,'addparent']);
+        Route::post('addteacher',[teacherController::class,'addteacher']);
     });
 
 

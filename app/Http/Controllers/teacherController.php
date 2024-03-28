@@ -52,11 +52,6 @@ class teacherController extends Controller
 
             ]);
 
-            // Send  email with password
-            $email = $validatedData['email'];
-            $Mpassword = $password;
-            Mail::to($validatedData['email'])->send(new TeacherMail($email, $Mpassword));
-
             if ($request->hasFile('teacher_cv')) {
                 $teacher_cv = $request->file('teacher_cv');
                 $cvName = time() . '.' . $teacher_cv->getClientOriginalExtension();
@@ -64,6 +59,11 @@ class teacherController extends Controller
                 $teacher->teacher_cv = 'storage/teacherCv/' . $cvName;
             }
             $teacher->save();
+            // Send  email with password
+            $email = $validatedData['email'];
+            $Mpassword = $password;
+            Mail::to($validatedData['email'])->send(new TeacherMail($email, $Mpassword));
+
             return response()->json(['success' => true, 'message' => 'Teacher add successfully'], 200);
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
