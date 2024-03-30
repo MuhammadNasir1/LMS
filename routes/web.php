@@ -45,12 +45,9 @@ Route::middleware('custom')->group(function () {
             return view('admin.dashboard');
         });
 
-        Route::get('/admin/teacher', function () {
-            return view('admin.teacher');
-        });
-
-        Route::get('/admin/student', [studentController::class , 'getstudentdata']);
-        Route::get('/admin/parents', [parentController::class , 'getparentdata']);
+        Route::get('/admin/teacher', [teacherController::class, 'getsteacherdata']);
+        Route::get('/admin/student', [studentController::class, 'getstudentdata']);
+        Route::get('/admin/parents', [parentController::class, 'getparentdata']);
 
         Route::get('/admin/course', function () {
             return view('admin.course');
@@ -74,9 +71,9 @@ Route::middleware('custom')->group(function () {
         Route::get('/admin/audio', function () {
             return view('admin.audio');
         });
-        Route::post('addStudent',[studentController::class,'addstudent']);
-        Route::post('addParent',[parentController::class,'addparent']);
-        Route::post('addteacher',[teacherController::class,'addteacher']);
+        Route::post('addStudent', [studentController::class, 'addstudent']);
+        Route::post('addParent', [parentController::class, 'addparent']);
+        Route::post('addteacher', [teacherController::class, 'addteacher']);
     });
 
 
@@ -145,11 +142,6 @@ Route::middleware('custom')->group(function () {
     Route::get('video', function () {
         return view("video.startvideo");
     });
-
-
-
-
-
 });
 
 Route::get('/sendemail', [userController::class, 'sendWelcomeEmail']);

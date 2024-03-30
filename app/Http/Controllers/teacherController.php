@@ -25,7 +25,8 @@ class teacherController extends Controller
                 'skill' => 'required',
                 'join_date' => 'required|date',
                 'address' => 'required',
-                'teacher_cv' => 'nullable|image|mimes:jpeg,png,jpg,JPG,pdf',
+                // 'teacher_cv' => 'nullable|image|mimes:jpeg,png,jpg,JPG,pdf',
+                'teacher_cv' => 'nullable',
             ]);
 
             $teacher = teacher::create([
@@ -97,8 +98,10 @@ class teacherController extends Controller
                 }
             }
             $teacher->delete();
+            return redirect('../admin/teacher');
             return response()->json(['success' => true, 'message' => 'teacher successfully delete'], 200);
         } catch (\Exception $e) {
+            return redirect('../admin/teacher');
             return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
         }
     }
@@ -144,5 +147,11 @@ class teacherController extends Controller
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
         }
+    }
+
+    public function getsteacherdata()
+    {
+        $teachers = teacher::all();
+        return view('admin.teacher', ['teachers' => $teachers]);
     }
 }
