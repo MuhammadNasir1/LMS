@@ -10,7 +10,7 @@
         <div>
             <div class="flex justify-between px-[20px] mb-3">
                 <h3 class="text-[20px] text-black">@lang('lang.Teachers_List')</h3>
-                <button data-modal-target="addteachermodal" data-modal-toggle="addteachermodal"
+                <button id="addmodal" data-modal-target="addteachermodal" data-modal-toggle="addteachermodal"
                     class="bg-secondary text-white h-12 px-5 rounded-[6px]  shadow-sm font-semibold ">+
                     @lang('lang.Add_Teacher')</button>
             </div>
@@ -29,7 +29,7 @@
                 </thead>
                 <tbody>
 
-                    @foreach ($teachers as $teacher)
+                    @foreach ($teachers as $i => $teacher)
                         <tr class="pt-4">
                             <td>{{ $teacher->first_name }} {{ $teacher->last_name }}</td>
                             <td>{{ $teacher->phone_no }}</td>
@@ -44,11 +44,131 @@
                                         width="38px" src="{{ asset('images/icons/delete.svg') }}" alt="delete"></a>
                                 <a class="cursor-pointer" href="#"><img width="38px"
                                         src="{{ asset('images/icons/update.svg') }}" alt="update"></a>
-                                <a class="cursor-pointer" data-modal-target="teacherdetails"
-                                    data-modal-toggle="teacherdetails"><img width="38px"
-                                        src="{{ asset('images/icons/view.svg') }}" alt="View"></a>
+                                <span class="cursor-pointer" data-modal-target="teacherdetails{{ $i }}"
+                                    data-modal-toggle="teacherdetails{{ $i }}"><img width="38px"
+                                        src="{{ asset('images/icons/view.svg') }}" alt="View"></span>
                             </td>
                         </tr>
+
+
+
+                        <!--  Teacher  Details  modal -->
+                        <div id="teacherdetails{{ $i }}" data-modal-backdrop="static"
+                            class="hidden overflow-y-auto overflow-x-hidden fixed  left-0 z-50 justify-center  w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                            <div class="relative p-4 w-full max-w-7xl max-h-full ">
+
+                                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700  ">
+                                    <div
+                                        class="flex items-center   justify-endjustify-start  p-5  rounded-t dark:border-gray-600 bg-primary">
+                                        <h3 class="text-xl font-semibold text-white text-center">
+                                            @lang('lang.Teacher_Details')
+                                        </h3>
+                                        <button type="button"
+                                            class="cursor-pointer absolute right-2 text-white bg-transparent rounded-lg text-sm w-8 h-8 ms-auto "
+                                            data-modal-hide="teacherdetails{{ $i }}">
+                                            <svg class="w-4 h-4 text-white" aria-hidden="true"
+                                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                                <path stroke="currentColor" stroke-linecap="round"
+                                                    stroke-linejoin="round" stroke-width="2"
+                                                    d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <div class="flex flex-col gap-5  items-center mt-4  pb-4">
+                                        <h2 class="text-pink text-[32px] font-semibold "><span
+                                                class="border-b-4 border-pink py-1">@lang('lang.About') </span>
+                                            @lang('lang.Teacher')
+                                        </h2>
+                                        <div class="flex items-center justify-end  mt-5">
+                                            <div class="w-[200px]">
+                                                <h3 class="text-[18px] font-normal">@lang('lang.Name'):</h3>
+                                            </div>
+                                            <div class="w-[150px]  ">
+                                                <p class="text-[14px] text-[#323C47]">{{ $teacher->first_name }}
+                                                    {{ $teacher->last_name }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center justify-end ">
+                                            <div class="w-[200px]">
+                                                <h3 class="text-[18px] font-normal">@lang('lang.gender'):</h3>
+                                            </div>
+                                            <div class="w-[150px]  ">
+                                                <p class="text-[14px] text-[#323C47]"> {{ $teacher->gender }} </p>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center justify-end ">
+                                            <div class="w-[200px]">
+                                                <h3 class="text-[18px] font-normal">@lang('lang.Date_of_Birth'):</h3>
+                                            </div>
+                                            <div class="w-[150px]  ">
+                                                <p class="text-[14px] text-[#323C47]">{{ $teacher->dob }} </p>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center justify-end ">
+                                            <div class="w-[200px]">
+                                                <h3 class="text-[18px] font-normal">@lang('lang.Phone_no'):</h3>
+                                            </div>
+                                            <div class="w-[150px]  ">
+                                                <p class="text-[14px] text-[#323C47]">{{ $teacher->phone_no }} </p>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center justify-end ">
+                                            <div class="w-[200px]">
+                                                <h3 class="text-[18px] font-normal">@lang('lang.E-mail'):</h3>
+                                            </div>
+                                            <div class="w-[150px]  ">
+                                                <p class="text-[14px] text-[#323C47]">{{ $teacher->email }} </p>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center justify-end ">
+                                            <div class="w-[200px]">
+                                                <h3 class="text-[18px] font-normal">@lang('lang.subject'):</h3>
+                                            </div>
+                                            <div class="w-[150px]  ">
+                                                <p class="text-[14px] text-[#323C47]">{{ $teacher->subject }} </p>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center justify-end ">
+                                            <div class="w-[200px]">
+                                                <h3 class="text-[18px] font-normal">@lang('lang.Skills'):</h3>
+                                            </div>
+                                            <div class="w-[150px]  ">
+                                                <p class="text-[14px] text-[#323C47]">{{ $teacher->skill }} </p>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center justify-end ">
+                                            <div class="w-[200px]">
+                                                <h3 class="text-[18px] font-normal">@lang('lang.Join_Date'):</h3>
+                                            </div>
+                                            <div class="w-[150px]  ">
+                                                <p class="text-[14px] text-[#323C47]">{{ $teacher->join_date }} </p>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center justify-end ">
+                                            <div class="w-[200px]">
+                                                <h3 class="text-[18px] font-normal">@lang('lang.Address'):</h3>
+                                            </div>
+                                            <div class="w-[150px]  ">
+                                                <p class="text-[14px] text-[#323C47]">{{ $teacher->address }} </p>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center justify-end ">
+                                            <div class="w-[200px]">
+                                                <h3 class="text-[18px] font-normal">@lang('lang.Teacher_CV'):</h3>
+                                            </div>
+                                            <div class="w-[150px]  ">
+                                                <p class="text-[14px] text-[#323C47]">CV File here can open</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div>
+
+                                </div>
+
+                            </div>
+                        </div>
                     @endforeach
                 </tbody>
             </table>
@@ -74,8 +194,8 @@
                         data-modal-hide="addteachermodal">
                         <svg class="w-4 h-4 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                             fill="none" viewBox="0 0 14 14">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                         </svg>
                     </button>
                 </div>
@@ -230,121 +350,6 @@
     </div>
 </div>
 
-
-
-<!--  Teacher  Details  modal -->
-<div id="teacherdetails" data-modal-backdrop="static"
-    class="hidden overflow-y-auto overflow-x-hidden fixed  left-0 z-50 justify-center  w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-    <div class="relative p-4 w-full max-w-7xl max-h-full ">
-
-        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700  ">
-            <div class="flex items-center   justify-endjustify-start  p-5  rounded-t dark:border-gray-600 bg-primary">
-                <h3 class="text-xl font-semibold text-white text-center">
-                    @lang('lang.Teacher_Details')
-                </h3>
-                <button type="button"
-                    class="cursor-pointer absolute right-2 text-white bg-transparent rounded-lg text-sm w-8 h-8 ms-auto "
-                    data-modal-hide="teacherdetails">
-                    <svg class="w-4 h-4 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                        fill="none" viewBox="0 0 14 14">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                    </svg>
-                </button>
-            </div>
-            <div class="flex flex-col gap-5  items-center mt-4  pb-4">
-                <h2 class="text-pink text-[32px] font-semibold "><span
-                        class="border-b-4 border-pink py-1">@lang('lang.About') </span> @lang('lang.Teacher')
-                </h2>
-                <div class="flex items-center justify-end  mt-5">
-                    <div class="w-[200px]">
-                        <h3 class="text-[18px] font-normal">@lang('lang.Name'):</h3>
-                    </div>
-                    <div class="w-[150px]  ">
-                        <p class="text-[14px] text-[#323C47]">Emily Davis</p>
-                    </div>
-                </div>
-                <div class="flex items-center justify-end ">
-                    <div class="w-[200px]">
-                        <h3 class="text-[18px] font-normal">@lang('lang.gender'):</h3>
-                    </div>
-                    <div class="w-[150px]  ">
-                        <p class="text-[14px] text-[#323C47]">Male</p>
-                    </div>
-                </div>
-                <div class="flex items-center justify-end ">
-                    <div class="w-[200px]">
-                        <h3 class="text-[18px] font-normal">@lang('lang.Date_of_Birth'):</h3>
-                    </div>
-                    <div class="w-[150px]  ">
-                        <p class="text-[14px] text-[#323C47]">10/30/2010</p>
-                    </div>
-                </div>
-                <div class="flex items-center justify-end ">
-                    <div class="w-[200px]">
-                        <h3 class="text-[18px] font-normal">@lang('lang.Phone_no'):</h3>
-                    </div>
-                    <div class="w-[150px]  ">
-                        <p class="text-[14px] text-[#323C47]">123 456 789</p>
-                    </div>
-                </div>
-                <div class="flex items-center justify-end ">
-                    <div class="w-[200px]">
-                        <h3 class="text-[18px] font-normal">@lang('lang.E-mail'):</h3>
-                    </div>
-                    <div class="w-[150px]  ">
-                        <p class="text-[14px] text-[#323C47]">xyz@email.com</p>
-                    </div>
-                </div>
-                <div class="flex items-center justify-end ">
-                    <div class="w-[200px]">
-                        <h3 class="text-[18px] font-normal">@lang('lang.subject'):</h3>
-                    </div>
-                    <div class="w-[150px]  ">
-                        <p class="text-[14px] text-[#323C47]">English</p>
-                    </div>
-                </div>
-                <div class="flex items-center justify-end ">
-                    <div class="w-[200px]">
-                        <h3 class="text-[18px] font-normal">@lang('lang.Skills'):</h3>
-                    </div>
-                    <div class="w-[150px]  ">
-                        <p class="text-[14px] text-[#323C47]">SKILL HERE</p>
-                    </div>
-                </div>
-                <div class="flex items-center justify-end ">
-                    <div class="w-[200px]">
-                        <h3 class="text-[18px] font-normal">@lang('lang.Join_Date'):</h3>
-                    </div>
-                    <div class="w-[150px]  ">
-                        <p class="text-[14px] text-[#323C47]">10/30/2010</p>
-                    </div>
-                </div>
-                <div class="flex items-center justify-end ">
-                    <div class="w-[200px]">
-                        <h3 class="text-[18px] font-normal">@lang('lang.Address'):</h3>
-                    </div>
-                    <div class="w-[150px]  ">
-                        <p class="text-[14px] text-[#323C47]">Town, City, Country</p>
-                    </div>
-                </div>
-                <div class="flex items-center justify-end ">
-                    <div class="w-[200px]">
-                        <h3 class="text-[18px] font-normal">@lang('lang.Teacher_CV'):</h3>
-                    </div>
-                    <div class="w-[150px]  ">
-                        <p class="text-[14px] text-[#323C47]">SV File here can open</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div>
-
-        </div>
-
-    </div>
-</div>
 
 
 <script>
