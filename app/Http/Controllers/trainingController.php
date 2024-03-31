@@ -11,6 +11,7 @@ class trainingController extends Controller
 {
     public function  addTraining(Request $request)
     {
+        $currentDate = date('Y-m-d');
         try {
             $validatedData  = $request->validate([
                 'title' => 'required',
@@ -22,7 +23,7 @@ class trainingController extends Controller
                 'title' => $validatedData['title'],
                 'description' => $validatedData['description'],
                 'duration' => $request['duration'],
-                'date' => $request['date'],
+                'date' => $currentDate,
             ]);
             if ($request->hasFile('video')) {
                 $training_video = $request->file('video');
@@ -95,5 +96,11 @@ class trainingController extends Controller
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
         }
+    }
+
+    public function gettrainingdata()
+    {
+        $trainings = training::all();
+        return view('admin.training', ['trainings' => $trainings]);
     }
 }

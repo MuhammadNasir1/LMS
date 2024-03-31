@@ -52,7 +52,7 @@ Route::match(['get', 'post'], 'delTeacher/{teacher_id}', [teacherController::cla
 ROute::post('updateTeacher/{teacher_id}', [teacherController::class, 'updateteacher']);
 
 // training  CRUD
-ROute::post('addTraining', [trainingController::class, 'addtraining']);
+Route::post('addTraining', [trainingController::class, 'addtraining']);
 Route::get('trainingData', [trainingController::class, 'trainingdata']);
 Route::match(['get', 'post'], 'delTraining/{training_id}', [trainingController::class, 'deltraining']);
 ROute::post('updateTraining/{training_id}', [trainingController::class, 'updatetraining']);

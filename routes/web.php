@@ -4,7 +4,9 @@ use App\Http\Controllers\authController;
 use App\Http\Controllers\parentController;
 use App\Http\Controllers\studentController;
 use App\Http\Controllers\teacherController;
+use App\Http\Controllers\trainingController;
 use App\Http\Controllers\userController;
+use App\Models\training;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
@@ -53,9 +55,7 @@ Route::middleware('custom')->group(function () {
             return view('admin.course');
         });
 
-        Route::get('/admin/training', function () {
-            return view('admin.training');
-        });
+        Route::get('/admin/training', [trainingController::class, 'gettrainingdata']);
         Route::get('/admin/studenRec', function () {
             return view('admin.std_recording');
         });
@@ -74,6 +74,7 @@ Route::middleware('custom')->group(function () {
         Route::post('addStudent', [studentController::class, 'addstudent']);
         Route::post('addParent', [parentController::class, 'addparent']);
         Route::post('addteacher', [teacherController::class, 'addteacher']);
+        Route::post('addtraining', [trainingController::class, 'addtraining']);
     });
 
 

@@ -35,18 +35,18 @@
                 <div class="flex gap-[30px] mt-3">
                     <div class="w-[50%] mt-4">
                         <label class="text-[16px] font-semibold block  text-[#452C88]"
-                            for="username">@lang('lang.full_name')</label>
+                            for="name">@lang('lang.full_name')</label>
                         <input type="text"
                             class="w-full mt-2  border-2 border-[#DEE2E6] rounded-[6px] focus:border-primary   h-[46px] text-[14px]"
-                            name="username" id="username" placeholder="@lang('lang.Enter_Your_Name')">
+                            name="name" id="name" placeholder="@lang('lang.Enter_Your_Name')">
                     </div>
 
                     <div class="w-[50%] mt-4">
                         <label class="text-[16px] font-semibold block  text-[#452C88]"
-                            for="phone_no">@lang('lang.Phone_number')</label>
+                            for="phone">@lang('lang.Phone_number')</label>
                         <input type="number"
                             class="w-full mt-2  border-2 border-[#DEE2E6] rounded-[6px] focus:border-primary   h-[46px] text-[14px]"
-                            name="phone_no" id="phone_no" placeholder="@lang('lang.Enter_Your_Number')">
+                            name="phone" id="phone" placeholder="@lang('lang.Enter_Your_Number')">
                     </div>
                 </div>
 
@@ -86,8 +86,9 @@
                             for="oldPass">@lang('lang.Old_Password')</label>
                         <input type="password"
                             class="w-full mt-2  border-2 border-[#DEE2E6] rounded-[6px] focus:border-primary   h-[46px] text-[14px]"
-                            name="old_pass" id="oldPass" placeholder="@lang('lang.Enter_Old_Password')">
+                            name="old_password" id="oldPass" placeholder="@lang('lang.Enter_Old_Password')">
                     </div>
+
                     <div class="w-[50%] mt-4">
                         <label class="text-[16px] font-semibold block  text-[#452C88]"
                             for="newPass">@lang('lang.New_Password')</label>
