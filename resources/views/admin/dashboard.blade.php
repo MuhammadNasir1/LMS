@@ -14,7 +14,7 @@
                         <h2 class="text-2xl font-semibold mt-1">5,732</h2>
                     </div>
                     <div>
-                        <img width="80px" height="80px" src="{{ asset('images/student1.svg') }}" alt="students">
+                        <img width="90px" height="90px" src="{{ asset('images/totall_student.svg') }}" alt="students">
                     </div>
                 </div>
             </div>
@@ -28,7 +28,7 @@
                         <h2 class="text-2xl font-semibold mt-1">8,754</h2>
                     </div>
                     <div>
-                        <img width="80px" height="80px" src="{{ asset('images/student1.svg') }}" alt="students">
+                        <img width="90px" height="90px" src="{{ asset('images/total_prent.svg') }}" alt="students">
                     </div>
                 </div>
             </div>
@@ -42,7 +42,7 @@
                         <h2 class="text-2xl font-semibold mt-1">5,732</h2>
                     </div>
                     <div>
-                        <img width="80px" height="80px" src="{{ asset('images/teacher.svg') }}" alt="teacher">
+                        <img width="90px" height="90px" src="{{ asset('images/total_teacher.svg') }}" alt="teacher">
                     </div>
                 </div>
             </div>
@@ -56,7 +56,7 @@
                         <h2 class="text-2xl font-semibold mt-1">5,732</h2>
                     </div>
                     <div>
-                        <img width="80px" height="80px" src="{{ asset('images/student1.svg') }}" alt="Revenue">
+                        <img width="90px" height="90px" src="{{ asset('images/total_rev.svg') }}" alt="Revenue">
                     </div>
                 </div>
             </div>
