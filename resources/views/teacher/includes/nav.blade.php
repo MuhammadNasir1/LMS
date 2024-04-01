@@ -140,7 +140,7 @@
                 </a>
             </li>
             <li>
-                <a href="../teacher/setting"
+                <a href="../setting"
                     class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                     <svg width="20" height="22" viewBox="0 0 20 22" fill="none"
                         xmlns="http://www.w3.org/2000/svg">

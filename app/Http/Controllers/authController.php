@@ -79,6 +79,7 @@ class authController extends Controller
 
             $token = $user->createToken($request->email)->plainTextToken;
             session(['user_det' => [
+                'user_id' => $user->id,
                 'name' => $validatedData['name'],
                 'email' => $validatedData['email'],
                 'role' => $validatedData['role'],
@@ -121,6 +122,7 @@ class authController extends Controller
 
                 $token = $user->createToken($request->email)->plainTextToken;
                 session(['user_det' => [
+                    'user_id' => $user->id,
                     'name' => $name,
                     'email' => $validatedData['email'],
                     'role' =>  $role,
@@ -172,5 +174,56 @@ class authController extends Controller
         $request->session()->forget('user_det');
         $request->session()->regenerate();
         return redirect('/');
+    }
+    public function updateSet(Request $request)
+    {
+        try {
+            $validatedData = $request->validate([
+                'user_id' => 'required',
+                'name' => 'nullable',
+                'phone' => 'nullable',
+                'city' => 'nullable',
+                'country' => 'nullable',
+                'language' => 'nullable',
+                'old_password' => 'nullable',
+                'confirm_password' => 'nullable',
+                'upload_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:1024',
+            ]);
+
+            $user = User::where('id', $validatedData['user_id'])->first();
+            $user->name = $validatedData['name'];
+            $user->phone = $validatedData['phone'];
+            $user->city = $validatedData['city'];
+            $user->country = $validatedData['country'];
+            $user->language = $validatedData['language'];
+
+            if (isset($validatedData['old_password'])) {
+                if (Hash::check($validatedData['old_password'], $user->password)) {
+                    $user->password = Hash::make($validatedData['confirm_password']);
+                }
+            }
+
+            if ($request->hasFile('upload_image')) {
+                $image = $request->file('upload_image');
+                $imageName = time() . '.' . $image->getClientOriginalExtension();
+                $image->storeAs('public/user_images', $imageName); // Adjust storage path as needed
+                $user->user_image = 'storage/user_images/' . $imageName;
+            }
+
+            $user->save();
+
+            return response()->json(['success' => true, 'message' => 'Profile Updated!', 'updated_data' => $user], 200);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => $e->getMessage()], 400);
+        }
+    }
+
+
+    public function settingdata()
+    {
+        $user_id  = session('user_det')['user_id'];
+        $user = User::where('id', $user_id)->first();
+
+        return view('setting', ['user' => $user]);
     }
 }
