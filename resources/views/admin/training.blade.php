@@ -66,7 +66,7 @@
                                     <div class="flex justify-around gap-10">
                                         <div class="my-4 pl-6">
                                             <video class=" rounded-[4px] w-full" controls width="320px"
-                                                src="{{ isset($training->video) ? asset($training->video) : '' }}""></video>
+                                                src="{{ isset($training->video) ? asset($training->video) : '' }}"></video>
                                         </div>
                                         <div class="flex flex-col gap-5  items-center mt-4  pb-4">
                                             <h2 class="text-pink text-[32px] font-semibold "><span

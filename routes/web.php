@@ -72,7 +72,6 @@ Route::middleware('custom')->group(function () {
         Route::post('addParent', [parentController::class, 'addparent']);
         Route::post('addteacher', [teacherController::class, 'addteacher']);
         Route::post('addtraining', [trainingController::class, 'addtraining']);
-        Route::post('updateSettings', [authController::class, 'updateSet']);
     });
 
 
@@ -138,6 +137,8 @@ Route::middleware('custom')->group(function () {
 
 
     Route::get('/setting', [authController::class, 'settingdata']);
+
+    Route::post('updateSettings', [authController::class, 'updateSet']);
 });
 
 Route::get('/sendemail', [userController::class, 'sendWelcomeEmail']);

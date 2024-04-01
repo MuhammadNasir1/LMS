@@ -23,7 +23,7 @@
                         <img id="img_view" height="200px" width="200px"
                             class="h-[200px] w-[200px]  border border-primary  rounded-[50%] cursor-pointer object-contain "
                             class="h-[200px] w-[200px]  border border-primary  rounded-[50%] cursor-pointer object-contain "
-                            src="{{ asset('images/owlicon.svg') }}" alt="user">
+                            src=" {{ isset($user->user_image) ? asset($user->user_image) : 'images/owlicon.svg' }}" alt="user">
                         <input class="absolute top-0 opacity-0     h-[210px] w-[200px] z-50 cursor-pointer "
                             type="file" name="upload_image" id="user_image">
                         <div class="absolute bottom-[6px] right-5  z-10">
@@ -73,7 +73,8 @@
                             for="country">@lang('lang.Country')</label>
                         <input type="text"
                             class="w-full mt-2  border-2 border-[#DEE2E6] rounded-[6px] focus:border-primary   h-[46px] text-[14px]"
-                            name="country" id="country" placeholder="@lang('lang.Enter_country')" value="{{ $user['country'] }}">
+                            name="country" id="country" placeholder="@lang('lang.Enter_country')"
+                            value="{{ $user['country'] }}">
                     </div>
                 </div>
 
@@ -165,41 +166,42 @@
     $(document).ready(function() {
         $("#setting_data").submit(function(event) {
             event.preventDefault();
-            var formData = $(this).serialize();
+            var formData = new FormData(this);
             $.ajax({
                 type: "POST",
                 url: "../updateSettings",
                 data: formData,
                 dataType: "json",
+                contentType: false,
+                processData: false,
                 beforeSend: function() {
                     $('#spinner').removeClass('hidden');
                     $('#text').addClass('hidden');
-                    $('#loginbutton').attr('disabled', true);
+                    $('#addBts.attr('disabled', true);
                 },
                 success: function(response) {
-                    // Handle the success response here
                     if (response.success == true) {
-                        $('#text').removeClass('hidden');
-                        $('#spinner').addClass('hidden');
-                        // Redirect to the  specfic role dashboard
                         window.location.href = '../setting';
+                    } else if (response.success == false) {
+                        Swal.fire(
+                            'Warning!',
+                            response.message,
+                            'warning'
+                        );
                     }
-
-
                 },
                 error: function(jqXHR) {
-
                     let response = JSON.parse(jqXHR.responseText);
-
+                    console.log("error");
                     Swal.fire(
                         'Warning!',
                         response.message,
                         'warning'
-                    )
-                    // Handle the error here
+                    );
+
                     $('#text').removeClass('hidden');
                     $('#spinner').addClass('hidden');
-                    $('#loginbutton').attr('disabled', false);
+                    $('#addBtn').attr('disabled', false);
                 }
             });
         });
