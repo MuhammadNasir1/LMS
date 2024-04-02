@@ -57,8 +57,22 @@ class authController extends Controller
             return response()->json(['success' => false, 'message' => $e->getMessage()], 400);
         }
     }
-    // update UserDetails
+    // get UserDetails
+    public function getUserProfile()
+    {
 
+        try {
+            $user = Auth()->user();
+
+            if (!$user) {
+                return response()->json(['success' => false, 'message' => 'User not authenticated.'], 401);
+            }
+            return response()->json(['success' => true, 'message' => 'Data succesfully Get!', 'userdata' => $user], 200);
+        } catch (\Exception $e) {
+
+            return response()->json(['success' => false, 'message' => $e->getMessage()], 400);
+        }
+    }
     public function register(Request $request)
     {
 
