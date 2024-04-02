@@ -68,21 +68,24 @@ class authController extends Controller
             }
 
             $userdata = [
-                'id' => $user->id,
-                'name' => $user->name,
-                'email' => $user->email,
-                'role' => $user->role,
-                'phone' => $user->phone,
-                'city' => $user->city,
-                'country' => $user->country,
-                'language' => $user->language,
-                'user_image' => $user->user_image,
+                [
+                    'id' => $user->id,
+                    'name' => $user->name,
+                    'email' => $user->email,
+                    'role' => $user->role,
+                    'phone' => $user->phone,
+                    'city' => $user->city,
+                    'country' => $user->country,
+                    'language' => $user->language,
+                    'user_image' => $user->user_image,
+                ]
             ];
 
             return response()->json(['success' => true, 'message' => 'Data retrieved successfully!', 'userdata' => $userdata], 200);
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => $e->getMessage()], 400);
         }
+
     }
 
     public function register(Request $request)
