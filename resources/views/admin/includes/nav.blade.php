@@ -164,7 +164,7 @@
                 </a>
             </li>
             <li>
-                <a href="../admin/studenRec"
+                <a href="../studentRec"
                     class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                     <svg width="20" height="13" viewBox="0 0 20 13" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
@@ -240,7 +240,7 @@
                 </ul>
             </li> --}}
             <li>
-                <a href="../admin/training"
+                <a href="../training"
                     class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                     <svg width="21" height="21" viewBox="0 0 21 21" fill="none"
                         xmlns="http://www.w3.org/2000/svg">

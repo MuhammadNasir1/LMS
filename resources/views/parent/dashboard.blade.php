@@ -14,7 +14,7 @@
                         <h2 class="text-2xl font-semibold mt-1">05</h2>
                     </div>
                     <div>
-                        <img width="80px" height="80px" src="{{ asset('images/lessonicon.svg') }}" alt="Children">
+                        <img width="80px" height="80px" src="{{ asset('images/totall_student.svg') }}" alt="Children">
                     </div>
                 </div>
             </div>
@@ -50,20 +50,7 @@
             </div>
         </div>
 
-        <div class="card-1 ">
-            <div class="bg-white  border border-secondary rounded-[10px] py-5 px-8">
-                <div class="flex gap-1 justify-between items-center">
-                    <div>
-                        <p class="text-sm text-[#808191]">@lang('lang.Training_Videos')</p>
-                        <h2 class="text-2xl font-semibold mt-1">03</h2>
-                    </div>
-                    <div>
-                        <img width="80px" height="80px" src="{{ asset('images/tainingicon.svg') }}"
-                            alt="Training Vidwi">
-                    </div>
-                </div>
-            </div>
-        </div>
+
 
 
     </div>

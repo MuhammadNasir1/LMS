@@ -101,6 +101,6 @@ class trainingController extends Controller
     public function gettrainingdata()
     {
         $trainings = training::all();
-        return view('admin.training', ['trainings' => $trainings]);
+        return view('training', ['trainings' => $trainings]);
     }
 }

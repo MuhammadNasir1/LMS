@@ -55,10 +55,6 @@ Route::middleware('custom')->group(function () {
             return view('admin.course');
         });
 
-        Route::get('/admin/training', [trainingController::class, 'gettrainingdata']);
-        Route::get('/admin/studenRec', function () {
-            return view('admin.std_recording');
-        });
         Route::get('/admin/help', function () {
             return view('admin.help');
         });
@@ -84,9 +80,6 @@ Route::middleware('custom')->group(function () {
         Route::get('/student', function () {
             return view('parent.student');
         });
-        Route::get('/studentRec', function () {
-            return view('parent.student_rec');
-        });
         Route::get('/games', function () {
             return view('parent.games');
         });
@@ -108,9 +101,6 @@ Route::middleware('custom')->group(function () {
         });
         Route::get('/teacher/games', function () {
             return view("teacher.games");
-        });
-        Route::get('/teacher/studenRec', function () {
-            return view("teacher.student_Rec");
         });
         Route::get('/teacher/reports', function () {
             return view("teacher.reports");
@@ -139,6 +129,10 @@ Route::middleware('custom')->group(function () {
     Route::get('/setting', [authController::class, 'settingdata']);
 
     Route::post('updateSettings', [authController::class, 'updateSet']);
+    Route::get('training', [trainingController::class, 'gettrainingdata']);
+    Route::get('/studentRec', function () {
+        return view('std_recording');
+    });
 });
 
 Route::get('/sendemail', [userController::class, 'sendWelcomeEmail']);
@@ -146,3 +140,4 @@ Route::get('/sendemail', [userController::class, 'sendWelcomeEmail']);
 Route::get('email', function () {
     return view("emails.parent");
 });
+`
