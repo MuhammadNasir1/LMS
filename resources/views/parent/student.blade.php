@@ -11,9 +11,6 @@
         <div>
             <div class="flex justify-between px-[20px] mb-3">
                 <h3 class="text-[20px] text-black">@lang('lang.Students_List')</h3>
-                <button data-modal-target="addstudentmodal" data-modal-toggle="addstudentmodal"
-                    class="bg-secondary cursor-pointer text-white h-12 px-5 rounded-[6px]  shadow-sm font-semibold ">+
-                    @lang('lang.Add_Student')</button>
             </div>
             <table id="datatable" class="overflow-scroll">
                 <thead class="py-6 bg-primary text-white">
@@ -26,10 +23,7 @@
                         <th>@lang('lang.age')</th>
                         <th>@lang('lang.Grade')</th>
                         <th>@lang('lang.Phone_no')</th>
-                        <th>@lang('lang.Address')</th>
-
-                        <th>@lang('lang.Action')</th>
-                    </tr>
+                        <th>@lang('lang.Address')</th </tr>
                 </thead>
                 <tbody>
                     <tr class="pt-4">
@@ -43,15 +37,6 @@
                         <td>134 548 878</td>
                         <td>Town, City, Country</td>
 
-                        <td class="flex gap-5">
-                            <a class="cursor-pointer" href="#"><img width="38px" src="{{ asset('images/icons/delete.svg') }}"
-                                    alt="delete"></a>
-                            <a class="cursor-pointer" href="#"><img width="38px" src="{{ asset('images/icons/update.svg') }}"
-                                    alt="update"></a>
-                            <a class="cursor-pointer" data-modal-target="studendetails"
-                                data-modal-toggle="studendetails"><img width="38px"
-                                    src="{{ asset('images/icons/view.svg') }}" alt="View"></a>
-                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -310,7 +295,7 @@
                             <p class="text-[14px] text-[#323C47]">Male</p>
                         </div>
                     </div>
-                    <div     class="flex items-center justify-end ">
+                    <div class="flex items-center justify-end ">
                         <div class="w-[200px]">
                             <h3 class="text-[18px] font-normal">@lang('lang.Date_of_Birth'):</h3>
                         </div>

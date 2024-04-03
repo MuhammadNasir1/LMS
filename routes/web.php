@@ -68,6 +68,10 @@ Route::middleware('custom')->group(function () {
         Route::post('addParent', [parentController::class, 'addparent']);
         Route::post('addteacher', [teacherController::class, 'addteacher']);
         Route::post('addtraining', [trainingController::class, 'addtraining']);
+
+
+        Route::get('teacherUpdataData/{id}', [teacherController::class, 'teacherUpdataData']);
+        Route::post('teacherUpdataData/{id}', [teacherController::class, 'updateteacher']);
     });
 
 

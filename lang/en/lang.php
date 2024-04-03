@@ -201,5 +201,6 @@ return [
     "Restart" => "Restart",
     "Previous" => "Previous",
     "Next" => "Next",
+    "Update_Teacher" => "Update Teacher",
 
 ];
