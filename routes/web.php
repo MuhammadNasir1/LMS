@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\authController;
+use App\Http\Controllers\coursesController;
 use App\Http\Controllers\parentController;
 use App\Http\Controllers\studentController;
 use App\Http\Controllers\teacherController;
@@ -72,6 +73,12 @@ Route::middleware('custom')->group(function () {
 
         Route::get('teacherUpdataData/{id}', [teacherController::class, 'teacherUpdataData']);
         Route::post('teacherUpdataData/{id}', [teacherController::class, 'updateteacher']);
+
+
+        // add  course
+
+        Route::post('addCourse', [coursesController::class, 'addcourse']);
+        Route::post('updateCourse/{id}', [coursesController::class, 'updatecourse']);
     });
 
 

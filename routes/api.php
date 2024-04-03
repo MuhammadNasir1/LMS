@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\authController;
+use App\Http\Controllers\coursesController;
 use App\Http\Controllers\parentController;
 use App\Http\Controllers\studentController;
 use App\Http\Controllers\teacherController;
@@ -57,3 +58,10 @@ Route::post('addTraining', [trainingController::class, 'addtraining']);
 Route::get('trainingData', [trainingController::class, 'trainingdata']);
 Route::match(['get', 'post'], 'delTraining/{training_id}', [trainingController::class, 'deltraining']);
 ROute::post('updateTraining/{training_id}', [trainingController::class, 'updatetraining']);
+
+
+// Courses  CRUD
+Route::post('addCourse', [coursesController::class, 'addcourse']);
+Route::get('courseData', [coursesController::class, 'coursedata']);
+Route::match(['get', 'post'], 'delCourse/{course_id}', [coursesController::class, 'delcourse']);
+ROute::post('updateCourse/{course_id}', [coursesController::class, 'updatecourse']);
