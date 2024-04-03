@@ -39,7 +39,7 @@ class coursesController extends Controller
                 $audioFieldName = "audio_$i";
                 if ($request->hasFile($audioFieldName)) {
                     $audioFile = $request->file($audioFieldName);
-                    $audioName = time() . "_audio_$i." . $audioFile->getClientOriginalExtension();
+                    $audioName = time() . $audioFile->getClientOriginalExtension();
                     $audioFile->storeAs('public/audio', $audioName);
                     $word->$audioFieldName = 'storage/audio/' . $audioName; // Assign the file path to the dynamic field name
                 }
