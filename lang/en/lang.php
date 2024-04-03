@@ -202,5 +202,16 @@ return [
     "Previous" => "Previous",
     "Next" => "Next",
     "Update_Teacher" => "Update Teacher",
+    "Level" => "Level",
+    "Course_ID" => "Course Id",
+    "Lesson" => "Lesson",
+    "Enter_Word" => "Enter Word",
+    "Language" => "Language",
+    "Enter_Course_Name" => "Enter  Course  Name",
+    "Enter_Level_No" => "Enter Level No.",
+    "Enter_Lesson_No" => "Enter Lesson No.",
+    "Audio_1" => "Audio 1",
+    "Audio_2" => "Audio 2",
+    "Audio_3" => "Audio 3",
 
 ];
