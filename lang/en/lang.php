@@ -213,5 +213,6 @@ return [
     "Audio_1" => "Audio 1",
     "Audio_2" => "Audio 2",
     "Audio_3" => "Audio 3",
+    "Update_Student" => "Update Student",
 
 ];

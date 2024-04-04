@@ -75,7 +75,7 @@
 <div id="addcoursemodal" data-modal-backdrop="static"
     class="hidden overflow-y-auto overflow-x-hidden fixed  left-0 z-50 justify-center  w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
     <div class="relative p-4 w-full max-w-7xl max-h-full ">
-        <form action="#" method="post">
+        <form action="../addCourse" method="post" enctype="multipart/form-data">
             @csrf
             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700  ">
                 <div class="flex items-center justify-center  p-5  rounded-t dark:border-gray-600 bg-primary">
@@ -108,6 +108,7 @@
                             </button>
                         </div>
                     </div>
+                    <div id="wordInput"></div>
                 </div>
                 <div>
                     <table class="overflow-scroll w-full text-center">
@@ -188,8 +189,8 @@
                                     <div class="flex gap-5 justify-center">
                                         <a class="cursor-pointer" href="#"><img width="38px"
                                                 src="{{ asset('images/icons/delete.svg') }}" alt="delete"></a>
-                                        <a class="cursor-pointer" href="#"><img width="38px"
-                                                src="{{ asset('images/icons/update.svg') }}" alt="update"></a>
+                                        {{-- <a class="cursor-pointer" href="#"><img width="38px"
+                                                src="{{ asset('images/icons/update.svg') }}" alt="update"></a> --}}
 
                                     </div>
                                 </td>
@@ -220,80 +221,74 @@
 <div id="addwordmodal" data-modal-backdrop="static"
     class="hidden overflow-y-auto overflow-x-hidden fixed  left-0 z-50 justify-center  w-full md:inset-0 h-[calc(100%-1rem)] max-h-full shadow-2xl">
     <div class="relative p-4 w-full max-w-2xl max-h-full ">
-        <form action="#" method="post">
-            @csrf
-            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700  ">
-                <div class="flex items-center   p-5  rounded-t dark:border-gray-600 bg-primary">
-                    <h3 class="text-xl font-semibold text-white text-center">
-                        @lang('lang.Word')
-                    </h3>
-                    <button type="button"
-                        class="cursor-pointer absolute right-2 text-white bg-transparent rounded-lg text-sm w-8 h-8 ms-auto "
-                        data-modal-hide="addwordmodal">
-                        <svg class="w-4 h-4 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                            fill="none" viewBox="0 0 14 14">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                        </svg>
-                    </button>
-                </div>
-
-                <div class="mx-5">
-                    <div class="mt-5">
-                        <label class="text-[14px] font-semibold mb-1  block" for="Level">@lang('lang.Level')</label>
-                        <input type="text"
-                            class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                            name="Level" id="Level" placeholder="@lang('lang.Enter_Level_No')">
-                    </div>
-                    <div class="mt-5">
-                        <label class="text-[14px] font-semibold mb-1 ml-1 block"
-                            for="Lesson">@lang('lang.Lesson')</label>
-                        <input type="text"
-                            class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                            name="Lesson" id="Lesson" placeholder="@lang('lang.Enter_Lesson_No')">
-                    </div>
-                    <div class="mt-5">
-                        <label class="text-[14px] font-semibold mb-1 ml-1 block"
-                            for="Word">@lang('lang.Word')</label>
-                        <input type="text"
-                            class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                            name="Word" id="Word" placeholder="@lang('lang.Enter_Word')">
-                    </div>
-                    <div class="mt-8">
-                        <input type="file"
-                            class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                            name="aud-1" id="Word">
-                    </div>
-                    <div class="mt-8">
-                        <input type="file"
-                            class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                            name="aud-2" id="Word">
-                    </div>
-                    <div class="mt-8">
-                        <input type="file"
-                            class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                            name="aud-3" id="Word">
-                    </div>
-
-                </div>
-
-
-                <div class=" pt-4">
-                    <hr class="border-[#DEE2E6] ">
-                </div>
-                <div class="flex justify-end ">
-                    <button
-                        class="bg-secondary text-white py-2 px-6 my-4 rounded-[4px]  mx-6  font-semibold">@lang('lang.Update')</button>
-                </div>
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700  ">
+            <div class="flex items-center   p-5  rounded-t dark:border-gray-600 bg-primary">
+                <h3 class="text-xl font-semibold text-white text-center">
+                    @lang('lang.Word')
+                </h3>
+                <button type="button"
+                    class="cursor-pointer absolute right-2 text-white bg-transparent rounded-lg text-sm w-8 h-8 ms-auto "
+                    data-modal-hide="addwordmodal">
+                    <svg class="w-4 h-4 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                        fill="none" viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                    </svg>
+                </button>
             </div>
-        </form>
+
+            <div class="mx-5">
+                <div class="mt-5">
+                    <label class="text-[14px] font-semibold mb-1  block" for="Level">@lang('lang.Level')</label>
+                    <input type="text"
+                        class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
+                        name="Level" id="Levelinput" placeholder="@lang('lang.Enter_Level_No')">
+                </div>
+                <div class="mt-5">
+                    <label class="text-[14px] font-semibold mb-1 ml-1 block" for="Lesson">@lang('lang.Lesson')</label>
+                    <input type="text"
+                        class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
+                        name="Lesson" id="Lessoninput" placeholder="@lang('lang.Enter_Lesson_No')">
+                </div>
+                <div class="mt-5">
+                    <label class="text-[14px] font-semibold mb-1 ml-1 block" for="Word">@lang('lang.Word')</label>
+                    <input type="text"
+                        class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
+                        name="Word" id="Wordinput" placeholder="@lang('lang.Enter_Word')">
+                </div>
+                <div class="mt-8">
+                    <input type="file"
+                        class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
+                        name="aud-1" id="audio_1">
+                </div>
+                <div class="mt-8">
+                    <input type="file"
+                        class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
+                        name="aud-2" id="audio_2">
+                </div>
+                <div class="mt-8">
+                    <input type="file"
+                        class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
+                        name="aud-3" id="audio_3">
+                </div>
+
+            </div>
+
+
+            <div class=" pt-4">
+                <hr class="border-[#DEE2E6] ">
+            </div>
+            <div class="flex justify-end ">
+                <button id="addwordbtn" type="button"
+                    class="bg-secondary text-white py-2 px-6 my-4 rounded-[4px]  mx-6  font-semibold">@lang('lang.Update')</button>
+            </div>
+        </div>
         <div>
 
         </div>
 
     </div>
 </div>
-
 <!--  course  Details  modal -->
 <div id="coursedetails" data-modal-backdrop="static"
     class="hidden overflow-y-auto overflow-x-hidden fixed  left-0 z-50 justify-center  w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
@@ -389,3 +384,24 @@
 </div>
 
 @include('layouts.footer')
+<script>
+    $('#addwordbtn').click(function() {
+        var level = $('#Levelinput').val();
+        var lesson = $('#Lessoninput').val();
+        var word = $('#Wordinput').val();
+        var audio_1 = $('#audio_1').val();
+        var audio_2 = $('#audio_2').val();
+        var audio_3 = $('#audio_3').val();
+
+        var inputsCon = `<div>
+    <input type="text" name="level[]" value="${level}">
+    <input type="text" name="lesson[]" value="${lesson}">
+    <input type="text" name="word[]" value="${word}">
+    <input type="file" name="audio_1[]" value="${audio_1}">
+    <input type="file" name="audio_2[]" value="${audio_2}">
+    <input type="file" name="audio_3[]" value="${audio_3}">
+</div>`
+        $('#wordInput').append(inputsCon);
+
+    })
+</script>
