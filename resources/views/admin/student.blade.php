@@ -747,11 +747,11 @@
         });
     })
 
-       // update teacher data
-       $(document).ready(function() {
+    // update Student  data
+    $(document).ready(function() {
         $("#studentupdatedata").submit(function(event) {
             var updateId = $('#update_id').val();
-            var url = "../studentUpdataData/" + updateId;
+            var url = "../studentUpdata/" + updateId;
             event.preventDefault();
             var formData = new FormData(this);
             $.ajax({
