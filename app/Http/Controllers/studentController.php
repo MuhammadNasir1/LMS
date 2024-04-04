@@ -102,4 +102,15 @@ class studentController extends Controller
         $students = students::all();
         return view('admin.student', ['students' => $students]);
     }
+
+    public function studentUpdataData(Request $request, $id)
+    {
+        try {
+            $student = students::find($id);
+            return response()->json(['success' => true,  'message' => 'Data get successfull', 'student' => $student], 200);
+        } catch (\Exception $e) {
+            return response()->json(['success' => true,  'message' => $e->getMessage()], 500);
+            //throw $th;
+        }
+    }
 }

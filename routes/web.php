@@ -76,9 +76,11 @@ Route::middleware('custom')->group(function () {
 
 
         // add  course
-
         Route::post('addCourse', [coursesController::class, 'addcourse']);
         Route::post('updateCourse/{id}', [coursesController::class, 'updatecourse']);
+
+        Route::get('studentUpdataData/{id}', [studentController::class, 'studentUpdataData']);
+        Route::post('studentUpdataData/{id}', [studentController::class, 'updatestudent']);
     });
 
 

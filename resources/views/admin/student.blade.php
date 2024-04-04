@@ -47,10 +47,10 @@
                                 <button id="delbtn" class="cursor-pointer" delId="{{ $student->id }}"><img
                                         width="38px" src="{{ asset('images/icons/delete.svg') }}"
                                         alt="delete"></button>
-                                <button  updateId="{{ $student->id }}"
-                                    data-modal-target="updatestudentmodal" data-modal-toggle="updatestudentmodal"
-                                    class="cursor-pointer updateBtn" href="#"><img width="38px"
-                                        src="{{ asset('images/icons/update.svg') }}" alt="update"></button>
+                                <button updateId="{{ $student->id }}" data-modal-target="updatestudentmodal"
+                                    data-modal-toggle="updatestudentmodal" class="cursor-pointer updateBtn"
+                                    href="#"><img width="38px" src="{{ asset('images/icons/update.svg') }}"
+                                        alt="update"></button>
                                 <a class="cursor-pointer" data-modal-target="studendetails{{ $i }}"
                                     data-modal-toggle="studendetails{{ $i }}"><img width="38px"
                                         src="{{ asset('images/icons/view.svg') }}" alt="View"></a>
@@ -224,10 +224,11 @@
 {{-- ============================= --}}
 <!-- update  Student  modal -->
 <div id="updatestudentmodal" data-modal-backdrop="static"
-    class=" overflow-y-auto overflow-x-hidden fixed  left-0 z-50 justify-center  w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    class="hidden overflow-y-auto overflow-x-hidden fixed  left-0 z-50 justify-center  w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
     <div class="relative p-4 w-full max-w-7xl max-h-full ">
-        <form id="student_data" method="post">
+        <form id="studentupdatedata" method="post">
             @csrf
+            <input type="text" id="update_id">
             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700  ">
                 <div class="flex items-center  justify-center  p-5  rounded-t dark:border-gray-600 bg-primary">
                     <h3 class="text-xl font-semibold text-white text-center">
@@ -347,7 +348,7 @@
                                 <div class="select-feild w-full hidden">
                                     <select
                                         class=" border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                        name="Campus" id="campus">
+                                        name="Campus" id="">
                                         <option value="">@lang('lang.Select_Campus')</option>
                                     </select>
                                 </div>
@@ -387,7 +388,7 @@
                                 </div>
                                 <input type="text"
                                     class="w-full  border-[#DEE2E6] rounded-[4px] focus:border-primary input-field   h-[40px] text-[14px]"
-                                    name="School_attending" id="School_attending">
+                                    name="School_attending" id="School_attendings">
                                 <div>
                                     <button type="button"
                                         class="bg-secondary toggle-button h-[40px] rounded-[4px] w-[40px] font-bold text-white text-2xl"
@@ -402,7 +403,7 @@
                                 <div class="select-feild w-full hidden">
                                     <select
                                         class="w-full  border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                        name="grade" id="grade">
+                                        name="grade" id="">
                                         <option value="">@lang('lang.Select')</option>
                                     </select>
                                 </div>
@@ -423,8 +424,8 @@
                     <hr class="border-[#DEE2E6] ">
                 </div>
                 <div class="flex justify-end ">
-                    <button class="bg-secondary text-white py-2 px-6 my-4 rounded-[4px]  mx-6  font-semibold">
-                        <div class=" text-center hidden" id="spinner">
+                    <button class="bg-secondary text-white py-2 px-6 my-4 rounded-[4px]  mx-6 uaddBtn  font-semibold">
+                        <div class=" text-center hidden" id="uspinner">
                             <svg aria-hidden="true"
                                 class="w-5 h-5 mx-auto text-center text-gray-200 animate-spin fill-primary"
                                 viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -436,8 +437,8 @@
                                     fill="currentFill" />
                             </svg>
                         </div>
-                        <div id="text">
-                            @lang('lang.Add')
+                        <div id="utext">
+                            @lang('lang.Update')
                         </div>
 
                     </button>
@@ -708,10 +709,10 @@
 @include('layouts.footer')
 
 <script>
-        // get selected update  data
-        $('.updateBtn').click(function() {
+    // get selected update  data
+    $('.updateBtn').click(function() {
         var updateId = $(this).attr('updateId');
-        var url = "../teacherUpdataData/" + updateId;
+        var url = "../studentUpdataData/" + updateId;
 
         $.ajax({
             type: "GET",
@@ -719,22 +720,79 @@
             dataType: "json",
             success: function(response) {
                 console.log(response);
-                var student = response.teacher;
-                $('#update_id').val(teacher.id);
+                var student = response.student;
+                $('#update_id').val(student.id);
+                $('#fullName').val(student.full_name);
+                $('#phoneNo').val(student.phone_no);
+                $('#personName').val(student.phone_no);
+                $('#emPhone').val(student.em_phone);
+                $('#chName').val(student.chinese_name);
+                $('#dob').val(student.dob);
+                $('#address').val(student.adress);
+                $('#Relation').val(student.em_relation);
+                $('#campus').val(student.campus);
+                $('#stud_no').val(student.student_no);
+                $('#School_attendings').val(student.School_attending);
+                $('#grade').val(student.grade);
             },
             error: function(jqXHR) {
                 let response = JSON.parse(jqXHR.responseText);
                 console.log("error");
                 Swal.fire(
                     'Warning!',
-                    'Teacher Not Found',
+                    'Student Not Found',
                     'warning'
                 );
             }
-
         });
-
     })
+
+       // update teacher data
+       $(document).ready(function() {
+        $("#studentupdatedata").submit(function(event) {
+            var updateId = $('#update_id').val();
+            var url = "../studentUpdataData/" + updateId;
+            event.preventDefault();
+            var formData = new FormData(this);
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: formData,
+                dataType: "json",
+                contentType: false,
+                processData: false,
+                beforeSend: function() {
+                    $('#uspinner').removeClass('hidden');
+                    $('#utext').addClass('hidden');
+                    $('#uaddBtn').attr('disabled', true);
+                },
+                success: function(response) {
+                    if (response.success == true) {
+                        window.location.href = '../admin/student';
+                    } else if (response.success == false) {
+                        Swal.fire(
+                            'Warning!',
+                            response.message,
+                            'warning'
+                        );
+                    }
+                },
+                error: function(jqXHR) {
+                    let response = JSON.parse(jqXHR.responseText);
+                    console.log("error");
+                    Swal.fire(
+                        'Warning!',
+                        response.message,
+                        'warning'
+                    );
+
+                    $('#utext').removeClass('hidden');
+                    $('#uspinner').addClass('hidden');
+                    $('#uaddBtn').attr('disabled', false);
+                }
+            });
+        });
+    });
     // delete studeny
     $('#delbtn').click(function() {
         var updateId = $(this).attr('delId');
