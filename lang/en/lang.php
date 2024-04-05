@@ -215,5 +215,6 @@ return [
     "Audio_3" => "Audio 3",
     "Update_Student" => "Update Student",
     "Update_parents" => "Update parents",
+    "add_more_word" => "Add More Word",
 
 ];
