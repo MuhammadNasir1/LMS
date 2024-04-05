@@ -40,9 +40,8 @@
                             <td>{{ $teacher->join_date }}</td>
 
                             <td class="flex gap-5">
-                                <button delId="{{ $teacher->id }}" class="cursor-pointer delbtn"><img
-                                        width="38px" src="{{ asset('images/icons/delete.svg') }}"
-                                        alt="delete"></button>
+                                <button delId="{{ $teacher->id }}" class="cursor-pointer delbtn"><img width="38px"
+                                        src="{{ asset('images/icons/delete.svg') }}" alt="delete"></button>
                                 <button updateId="{{ $teacher->id }}" class="cursor-pointer updateBtn"
                                     data-modal-target="updateteachermodal" data-modal-toggle="updateteachermodal"><img
                                         width="38px" src="{{ asset('images/icons/update.svg') }}"
@@ -498,8 +497,9 @@
                 <div class=" pt-4">
                     <hr class="border-[#DEE2E6] ">
                 </div>
-                <div class="flex justify-end " id="uaddBtn">
-                    <button class="bg-secondary text-white py-2 px-6 my-4 rounded-[4px]  mx-6  font-semibold">
+                <div class="flex justify-end ">
+                    <button id="uaddBtn"
+                        class="bg-secondary text-white py-2 px-6 my-4 rounded-[4px]  mx-6  font-semibold">
                         <div class=" text-center hidden" id="uspinner">
                             <svg aria-hidden="true"
                                 class="w-5 h-5 mx-auto text-center text-gray-200 animate-spin fill-primary"
