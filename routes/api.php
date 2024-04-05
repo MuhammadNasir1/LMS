@@ -36,7 +36,7 @@ Route::middleware('auth:sanctum')->group(function () {
 });
 
 // student CRUD
-ROute::post('addStudent', [studentController::class, 'addstudent']);
+Route::post('addStudent', [studentController::class, 'addstudent']);
 Route::match(['get', 'post'], 'delStudent/{std_id}', [studentController::class, 'delstudent']);
 ROute::post('updateStudent/{std_id}', [studentController::class, 'updatestudent']);
 Route::get('studentData', [studentController::class, 'getStdData']);
@@ -45,23 +45,23 @@ Route::get('studentData', [studentController::class, 'getStdData']);
 Route::post('addParent', [parentController::class, 'addparent']);
 Route::get('parentData', [parentController::class, 'parantdata']);
 Route::match(['get', 'post'], 'delParent/{parent_id}', [parentController::class, 'delparent']);
-ROute::post('updateParent/{parent_id}', [parentController::class, 'updateparent']);
+Route::post('updateParent/{parent_id}', [parentController::class, 'updateparent']);
 
 // teacher CRUD
 ROute::post('addTeacher', [teacherController::class, 'addteacher']);
 Route::get('teacherData', [teacherController::class, 'teacherdata']);
 Route::match(['get', 'post'], 'delTeacher/{teacher_id}', [teacherController::class, 'delTeacher']);
-ROute::post('updateTeacher/{teacher_id}', [teacherController::class, 'updateteacher']);
+Route::post('updateTeacher/{teacher_id}', [teacherController::class, 'updateteacher']);
 
 // training  CRUD
 Route::post('addTraining', [trainingController::class, 'addtraining']);
 Route::get('trainingData', [trainingController::class, 'trainingdata']);
 Route::match(['get', 'post'], 'delTraining/{training_id}', [trainingController::class, 'deltraining']);
-ROute::post('updateTraining/{training_id}', [trainingController::class, 'updatetraining']);
+Route::post('updateTraining/{training_id}', [trainingController::class, 'updatetraining']);
 
 
 // Courses  CRUD
 Route::post('addCourse', [coursesController::class, 'addcourse']);
 Route::get('courseData', [coursesController::class, 'coursedata']);
 Route::match(['get', 'post'], 'delCourse/{course_id}', [coursesController::class, 'delcourse']);
-ROute::post('updateCourse/{course_id}', [coursesController::class, 'updatecourse']);
+Route::post('updateCourse/{course_id}', [coursesController::class, 'updatecourse']);

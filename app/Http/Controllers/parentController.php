@@ -118,4 +118,15 @@ class parentController extends Controller
         $parents = parents::all();
         return view('admin.parent', ['parents' => $parents]);
     }
+
+    public function parentUpdataData(Request $request, $parent_id)
+    {
+
+        try {
+            $parent = parents::find($parent_id);
+            return response()->json(['success' => true,  'message' => 'Data get successfull', 'parent' => $parent], 200);
+        } catch (\Exception $e) {
+            return response()->json(['success' => true,  'message' => $e->getMessage()], 500);
+        }
+    }
 }

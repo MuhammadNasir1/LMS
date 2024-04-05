@@ -40,7 +40,7 @@
                             <td>{{ $teacher->join_date }}</td>
 
                             <td class="flex gap-5">
-                                <button delId="{{ $teacher->id }}" class="cursor-pointer" id="delbtn"><img
+                                <button delId="{{ $teacher->id }}" class="cursor-pointer delbtn"><img
                                         width="38px" src="{{ asset('images/icons/delete.svg') }}"
                                         alt="delete"></button>
                                 <button updateId="{{ $teacher->id }}" class="cursor-pointer updateBtn"
@@ -551,7 +551,7 @@
 
 <script>
     // del teacher
-    $('#delbtn').click(function() {
+    $('.delbtn').click(function() {
         var updateId = $(this).attr('delId');
         var url = "../api/delTeacher/" + updateId;
 

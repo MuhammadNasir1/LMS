@@ -44,7 +44,7 @@
                             <td>{{ $student->adress }}</td>
 
                             <td class="flex gap-5">
-                                <button id="delbtn" class="cursor-pointer" delId="{{ $student->id }}"><img
+                                <button  class="cursor-pointer delbtn" delId="{{ $student->id }}"><img
                                         width="38px" src="{{ asset('images/icons/delete.svg') }}"
                                         alt="delete"></button>
                                 <button updateId="{{ $student->id }}" data-modal-target="updatestudentmodal"
@@ -228,7 +228,7 @@
     <div class="relative p-4 w-full max-w-7xl max-h-full ">
         <form id="studentupdatedata" method="post">
             @csrf
-            <input type="text" id="update_id">
+            <input type="hidden" id="update_id">
             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700  ">
                 <div class="flex items-center  justify-center  p-5  rounded-t dark:border-gray-600 bg-primary">
                     <h3 class="text-xl font-semibold text-white text-center">
@@ -794,7 +794,7 @@
         });
     });
     // delete studeny
-    $('#delbtn').click(function() {
+    $('.delbtn').click(function() {
         var updateId = $(this).attr('delId');
         var url = "../api/delStudent/" + updateId;
 

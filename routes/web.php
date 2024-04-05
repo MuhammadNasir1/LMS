@@ -81,6 +81,12 @@ Route::middleware('custom')->group(function () {
 
         Route::get('studentUpdataData/{id}', [studentController::class, 'studentUpdataData']);
         Route::post('studentUpdata/{id}', [studentController::class, 'updatestudent']);
+
+        // paraent
+        Route::match(['get', 'post'], 'delParent/{parent_id}', [parentController::class, 'delparent']);
+        Route::get('parentUpdataData/{parent_id}', [parentController::class, 'parentUpdataData']);
+        Route::post('parentUpdate/{parent_id}', [parentController::class, 'updateparent']);
+
     });
 
 
