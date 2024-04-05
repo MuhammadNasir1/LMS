@@ -108,6 +108,146 @@
                             </button>
                         </div>
                     </div>
+                    <div class="px-10 grid grid-cols-3 gap-10">
+                        <div class="my-4">
+                            <label class="text-[14px] font-semibold mb-1  block"
+                                for="Level">@lang('lang.Level')</label>
+                            <input type="text"
+                                class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
+                                name="level[]" id="Levelinput" placeholder="@lang('lang.Enter_Level_No')">
+                        </div>
+                        <div class="my-4">
+                            <label class="text-[14px] font-semibold mb-1 ml-1 block"
+                                for="Lesson">@lang('lang.Lesson')</label>
+                            <input type="text"
+                                class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
+                                name="lesson[]" id="Lessoninput" placeholder="@lang('lang.Enter_Lesson_No')">
+                        </div>
+                        <div class="my-4">
+                            <label class="text-[14px] font-semibold mb-1 ml-1 block"
+                                for="Word">@lang('lang.Word')</label>
+                            <input type="text"
+                                class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
+                                name="word[]" id="Wordinput" placeholder="@lang('lang.Enter_Word')">
+                        </div>
+                    </div>
+                    <div class="px-10 my-5 mt-3 grid grid-cols-3 gap-10">
+                        <div class="recording-set">
+                            <label class="text-[14px] font-semibold mb-1 ml-1 block">@lang('lang.Audio_1')</label>
+                            <div
+                                class="h-10 w-full border border-[#DEE2E6] rounded-[4px]  gap-2 flex justify-between px-2 items-center">
+                                <button type="button"
+                                    class="h-8 w-full max-h-8 max-w-8 bg-[#339b965b] rounded-full flex justify-center items-center ">
+                                    <svg width="14" height="16" viewBox="0 0 9 11" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M8.26713 6.82375L2.36687 10.3073C1.41714 10.868 0.25 10.1381 0.25 8.9835V2.01645C0.25 0.861837 1.41714 0.132013 2.36687 0.692738L8.26713 4.17625C9.24425 4.75325 9.24425 6.24675 8.26713 6.82375Z"
+                                            fill="#339B96" />
+                                    </svg>
+
+                                </button>
+                                <div class="w-full  border-2  border-gray">
+
+                                </div>
+                                <button type="button" class="recordButton">
+                                    <svg width="32" height="32" viewBox="0 0 29 29" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M28.667 14.167C28.667 21.8989 22.3989 28.167 14.667 28.167C6.935 28.167 0.666992 21.8989 0.666992 14.167C0.666992 6.435 6.935 0.166992 14.667 0.166992C22.3989 0.166992 28.667 6.435 28.667 14.167ZM16.4353 13.7985C16.4353 15.0217 15.4479 16.0091 14.2249 16.0091C13.0017 16.0091 12.0143 15.0217 12.0143 13.7985V9.37752C12.0143 8.15436 13.0017 7.16699 14.2249 7.16699C15.4479 7.16699 16.4353 8.15436 16.4353 9.37752V13.7985ZM14.2249 8.6407C13.8196 8.6407 13.4881 8.97228 13.4881 9.37755V13.7987C13.4881 14.2038 13.8196 14.5355 14.2249 14.5355C14.6375 14.5355 14.9617 14.2112 14.9617 13.7987V9.37755C14.9617 8.97228 14.63 8.6407 14.2249 8.6407ZM19.3828 13.7985H18.1302C18.1302 16.0091 16.2585 17.5564 14.2249 17.5564C12.1912 17.5564 10.3196 16.0091 10.3196 13.7985H9.06699C9.06699 16.3112 11.0712 18.3891 13.4881 18.7502V21.167H14.9617V18.7502C17.3785 18.3891 19.3828 16.3112 19.3828 13.7985Z"
+                                            fill="#EDBD58" />
+                                    </svg>
+                                </button>
+
+                            </div>
+                            {{-- ==== hidden audio and file ====== --}}
+                            <div class="invisible absolute">
+                                <input type="file" name="audio_1[]" class="audioFileInput" accept="audio/*" />
+                                <div>
+                                    <audio class="audioElement" controls></audio>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="recording-set">
+                            <label class="text-[14px] font-semibold mb-1 ml-1 block">@lang('lang.Audio_2')</label>
+                            <div
+                                class="h-10 w-full border border-[#DEE2E6] rounded-[4px]  gap-2 flex justify-between px-2 items-center">
+                                <button type="button"
+                                    class="h-8 w-full max-h-8 max-w-8 bg-[#339b965b] rounded-full flex justify-center items-center ">
+                                    <svg width="14" height="16" viewBox="0 0 9 11" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M8.26713 6.82375L2.36687 10.3073C1.41714 10.868 0.25 10.1381 0.25 8.9835V2.01645C0.25 0.861837 1.41714 0.132013 2.36687 0.692738L8.26713 4.17625C9.24425 4.75325 9.24425 6.24675 8.26713 6.82375Z"
+                                            fill="#339B96" />
+                                    </svg>
+
+                                </button>
+                                <div class="w-full  border-2  border-gray">
+
+                                </div>
+                                <button type="button" class="recordButton">
+                                    <svg width="32" height="32" viewBox="0 0 29 29" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M28.667 14.167C28.667 21.8989 22.3989 28.167 14.667 28.167C6.935 28.167 0.666992 21.8989 0.666992 14.167C0.666992 6.435 6.935 0.166992 14.667 0.166992C22.3989 0.166992 28.667 6.435 28.667 14.167ZM16.4353 13.7985C16.4353 15.0217 15.4479 16.0091 14.2249 16.0091C13.0017 16.0091 12.0143 15.0217 12.0143 13.7985V9.37752C12.0143 8.15436 13.0017 7.16699 14.2249 7.16699C15.4479 7.16699 16.4353 8.15436 16.4353 9.37752V13.7985ZM14.2249 8.6407C13.8196 8.6407 13.4881 8.97228 13.4881 9.37755V13.7987C13.4881 14.2038 13.8196 14.5355 14.2249 14.5355C14.6375 14.5355 14.9617 14.2112 14.9617 13.7987V9.37755C14.9617 8.97228 14.63 8.6407 14.2249 8.6407ZM19.3828 13.7985H18.1302C18.1302 16.0091 16.2585 17.5564 14.2249 17.5564C12.1912 17.5564 10.3196 16.0091 10.3196 13.7985H9.06699C9.06699 16.3112 11.0712 18.3891 13.4881 18.7502V21.167H14.9617V18.7502C17.3785 18.3891 19.3828 16.3112 19.3828 13.7985Z"
+                                            fill="#EDBD58" />
+                                    </svg>
+                                </button>
+
+                            </div>
+                            {{-- ==== hidden audio and file ====== --}}
+                            <div class="invisible absolute">
+                                <input name="audio_2[]" type="file" class="audioFileInput" accept="audio/*" />
+                                <div>
+                                    <audio class="audioElement" controls></audio>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="recording-set">
+                            <label class="text-[14px] font-semibold mb-1 ml-1 block">@lang('lang.Audio_3')</label>
+                            <div class="flex gap-2 items-center">
+                                {{-- ================ --}}
+                                <div
+                                    class="h-10 w-full border border-[#DEE2E6] rounded-[4px]  gap-2 flex justify-between px-2 items-center">
+                                    <button type="button"
+                                        class="h-8 w-full max-h-8 max-w-8 bg-[#339b965b] rounded-full flex justify-center items-center ">
+                                        <svg width="14" height="16" viewBox="0 0 9 11" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8.26713 6.82375L2.36687 10.3073C1.41714 10.868 0.25 10.1381 0.25 8.9835V2.01645C0.25 0.861837 1.41714 0.132013 2.36687 0.692738L8.26713 4.17625C9.24425 4.75325 9.24425 6.24675 8.26713 6.82375Z"
+                                                fill="#339B96" />
+                                        </svg>
+
+                                    </button>
+                                    <div class="w-full  border-2  border-gray">
+
+                                    </div>
+                                    <button type="button" class="recordButton">
+                                        <svg width="32" height="32" viewBox="0 0 29 29" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M28.667 14.167C28.667 21.8989 22.3989 28.167 14.667 28.167C6.935 28.167 0.666992 21.8989 0.666992 14.167C0.666992 6.435 6.935 0.166992 14.667 0.166992C22.3989 0.166992 28.667 6.435 28.667 14.167ZM16.4353 13.7985C16.4353 15.0217 15.4479 16.0091 14.2249 16.0091C13.0017 16.0091 12.0143 15.0217 12.0143 13.7985V9.37752C12.0143 8.15436 13.0017 7.16699 14.2249 7.16699C15.4479 7.16699 16.4353 8.15436 16.4353 9.37752V13.7985ZM14.2249 8.6407C13.8196 8.6407 13.4881 8.97228 13.4881 9.37755V13.7987C13.4881 14.2038 13.8196 14.5355 14.2249 14.5355C14.6375 14.5355 14.9617 14.2112 14.9617 13.7987V9.37755C14.9617 8.97228 14.63 8.6407 14.2249 8.6407ZM19.3828 13.7985H18.1302C18.1302 16.0091 16.2585 17.5564 14.2249 17.5564C12.1912 17.5564 10.3196 16.0091 10.3196 13.7985H9.06699C9.06699 16.3112 11.0712 18.3891 13.4881 18.7502V21.167H14.9617V18.7502C17.3785 18.3891 19.3828 16.3112 19.3828 13.7985Z"
+                                                fill="#EDBD58" />
+                                        </svg>
+                                    </button>
+
+                                </div>
+                                {{-- ================ --}}
+                                {{-- ==== hidden audio and file ====== --}}
+                                <div class="invisible absolute">
+                                    <input name="audio_3[]" type="file" class="audioFileInput"
+                                        accept="audio/*" />
+                                    <div>
+                                        <audio class="audioElement" controls></audio>
+                                    </div>
+                                </div>
+                                <div>
+                                    <button type="button"
+                                        class="bg-secondary toggle-button h-[40px] rounded-[4px] w-[40px] font-bold text-white text-2xl"
+                                        style="width: 42px">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div id="wordInput"></div>
                 </div>
                 <div>
@@ -256,7 +396,28 @@
                         class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
                         name="Word" id="Wordinput" placeholder="@lang('lang.Enter_Word')">
                 </div>
-                <div class="mt-8">
+                <div class="recording-set">
+                    <button class="recordButton">Start Recording</button>
+                    <div>
+                        <audio class="audioElement" controls></audio>
+                    </div>
+                    <input type="file" class="audioFileInput" accept="audio/*" />
+                </div>
+                <div class="recording-set">
+                    <button class="recordButton">Start Recording</button>
+                    <div>
+                        <audio class="audioElement" controls></audio>
+                    </div>
+                    <input type="file" class="audioFileInput" accept="audio/*" />
+                </div>
+                <div class="recording-set">
+                    <button class="recordButton">Start Recording</button>
+                    <div>
+                        <audio class="audioElement" controls></audio>
+                    </div>
+                    {{-- <input type="file" class="audioFileInput" accept="audio/*" /> --}}
+                </div>
+                {{-- <div class="mt-8">
                     <input type="file"
                         class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
                         name="aud-1" id="audio_1">
@@ -270,7 +431,7 @@
                     <input type="file"
                         class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
                         name="aud-3" id="audio_3">
-                </div>
+                </div> --}}
 
             </div>
 
@@ -383,7 +544,80 @@
     </div>
 </div>
 
+
+
 @include('layouts.footer')
+<script>
+    const recordingSets = document.querySelectorAll(".recording-set");
+    const fileoutput = document.querySelector("#wordInput");
+    recordingSets.forEach((set, index) => {
+        const recordButton = set.querySelector(".recordButton");
+        const audioElement = set.querySelector(".audioElement");
+        const audioFileInput = set.querySelector(".audioFileInput");
+        // const audiofile = document.createElement('input');
+        // audiofile.type = "file";
+        // audiofile.classList.add('audioFileInput');
+        // fileoutput.append(audiofile);
+        let mediaRecorder;
+
+        recordButton.addEventListener("click", () => toggleRecording(index));
+
+        function toggleRecording(index) {
+            if (mediaRecorder && mediaRecorder.state === "recording") {
+                stopRecording();
+            } else {
+                startRecording();
+            }
+        }
+
+        function startRecording() {
+            navigator.mediaDevices
+                .getUserMedia({
+                    audio: true
+                })
+                .then(function(stream) {
+                    mediaRecorder = new MediaRecorder(stream);
+                    mediaRecorder.chunks = [];
+
+                    mediaRecorder.ondataavailable = function(event) {
+                        mediaRecorder.chunks.push(event.data);
+                    };
+
+                    mediaRecorder.onstop = function() {
+                        const audioBlob = new Blob(mediaRecorder.chunks, {
+                            type: "audio/ogg; codecs=opus",
+                        });
+
+                        const audioFile = new File([audioBlob], `recording_${Date.now()}.ogg`, {
+                            type: "audio/ogg",
+                        });
+
+                        const fileList = new DataTransfer();
+                        fileList.items.add(audioFile);
+                        audioFileInput.files = fileList.files;
+
+                        const audioUrl = URL.createObjectURL(audioBlob);
+                        audioElement.src = audioUrl;
+                    };
+
+                    mediaRecorder.start();
+                    recordButton.textContent = "Stop Recording";
+                })
+                .catch(function(err) {
+                    console.error("Error accessing microphone", err);
+                });
+        }
+
+        function stopRecording() {
+            mediaRecorder.stop();
+            recordButton.textContent = "Start Recording";
+
+            // Stop the microphone stream
+            const tracks = mediaRecorder.stream.getTracks();
+            tracks.forEach((track) => track.stop());
+        }
+    });
+</script>
 <script>
     $('#addwordbtn').click(function() {
         var level = $('#Levelinput').val();
@@ -397,9 +631,9 @@
     <input type="text" name="level[]" value="${level}">
     <input type="text" name="lesson[]" value="${lesson}">
     <input type="text" name="word[]" value="${word}">
-    <input type="file" name="audio_1[]" value="${audio_1}">
-    <input type="file" name="audio_2[]" value="${audio_2}">
-    <input type="file" name="audio_3[]" value="${audio_3}">
+    {{-- <input type="file" name="audio_1[]" value="${audio_1}">
+<input type="file" name="audio_2[]" value="${audio_2}">
+<input type="file" name="audio_3[]" value="${audio_3}"> --}}
 </div>`
         $('#wordInput').append(inputsCon);
 
