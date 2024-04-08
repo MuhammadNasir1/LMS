@@ -152,7 +152,7 @@
                 class=" bg-secondary px-4 rounded-md h-12 text-white font-semibold text-xl">@lang('lang.Teaching_Page')</button>
             <button
                 class=" bg-secondary px-4 rounded-md h-12 text-white font-semibold text-xl">@lang('lang.Games')</button>
-            <button
+            <button id="recordButton"
                 class=" bg-secondary px-4 rounded-md h-12 text-white font-semibold text-xl flex gap-2 items-center">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
@@ -168,10 +168,91 @@
                 class=" bg-secondary px-4 rounded-md h-12 text-white font-semibold text-xl">@lang('lang.Restart')</button>
         </div>
     </div>
+    <div id="fileInputContainer">
 
+    </div>
+    <video id="recordedVideo" controls width="200px"></video>
+    <a id="downloadLink" style="display: none">Download Recorded Video</a>
 </section>
 @include('layouts.footer')
+<script src="https://cdn.WebRTC-Experiment.com/RecordRTC.js"></script>
+<script>
+    let tabStream;
+    let audioStream;
+    let recorder;
+    let isRecording = false;
+    const recordButton = document.getElementById("recordButton");
+    const recordedVideo = document.getElementById("recordedVideo");
+    const downloadLink = document.getElementById("downloadLink");
+    const fileInputContainer = document.getElementById("fileInputContainer");
 
+    recordButton.addEventListener("click", toggleRecording);
+
+    async function toggleRecording() {
+        if (!isRecording) {
+            startRecording();
+        } else {
+            stopRecording();
+        }
+    }
+
+    async function startRecording() {
+        tabStream = await navigator.mediaDevices.getDisplayMedia({
+            video: {
+                mediaSource: "tab"
+            },
+        });
+        audioStream = await navigator.mediaDevices.getUserMedia({
+            audio: true,
+        });
+
+        const combinedStream = new MediaStream([
+            ...tabStream.getTracks(),
+            ...audioStream.getTracks(),
+        ]);
+
+        recorder = RecordRTC(combinedStream, {
+            type: "video"
+        });
+        recorder.startRecording();
+
+        isRecording = true;
+        recordButton.innerHTML = "Stop Recording";
+    }
+
+    function stopRecording() {
+        recorder.stopRecording(() => {
+            const blob = recorder.getBlob();
+            const url = URL.createObjectURL(blob);
+            recordedVideo.src = url;
+
+            downloadLink.href = url;
+            downloadLink.download = "recording.webm";
+            downloadLink.style.display = "block";
+
+            const file = new File([blob], "recording.webm", {
+                type: "video/webm",
+            });
+
+            const fileInput = document.createElement("input");
+            fileInput.type = "file";
+            fileInput.accept = "video/webm";
+            fileInput.multiple = false;
+
+            const dataTransfer = new DataTransfer();
+            dataTransfer.items.add(file);
+            fileInput.files = dataTransfer.files;
+
+            fileInputContainer.appendChild(fileInput);
+
+            isRecording = false;
+            recordButton.textContent = "Start Recording";
+        });
+
+        tabStream.getTracks().forEach((track) => track.stop());
+        audioStream.getTracks().forEach((track) => track.stop());
+    }
+</script>
 <script>
     let Cnextbtn = document.getElementById('CNexbtn')
     let Cprebtn = document.getElementById('CPrebtn')

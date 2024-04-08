@@ -29,10 +29,10 @@
             <button
                 class="w-32 bg-secondary rounded-md h-12 text-white font-semibold text-xl">@lang('lang.Page')</button> --}}
         </div>
-        <div>
+        {{-- <div>
             <button data-modal-target="addwordmodal" data-modal-toggle="addwordmodal"
                 class="w-32 bg-secondary rounded-md h-12 text-white font-semibold text-lg">@lang('lang.Add_words')</button>
-        </div>
+        </div> --}}
     </div>
 </section>
 
