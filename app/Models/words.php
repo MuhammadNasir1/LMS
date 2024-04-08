@@ -12,6 +12,7 @@ class words extends Model
     protected $table = "words";
     protected $fillable = [
         'course_id',
+        'course_name',
         'level',
         'lesson',
         'word',

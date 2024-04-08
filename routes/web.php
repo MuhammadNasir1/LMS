@@ -52,9 +52,7 @@ Route::middleware('custom')->group(function () {
         Route::get('/admin/student', [studentController::class, 'getstudentdata']);
         Route::get('/admin/parents', [parentController::class, 'getparentdata']);
 
-        Route::get('/admin/course', function () {
-            return view('admin.course');
-        });
+        Route::get('/admin/course', [coursesController::class,'getcoursedata']);
 
         Route::get('/admin/help', function () {
             return view('admin.help');

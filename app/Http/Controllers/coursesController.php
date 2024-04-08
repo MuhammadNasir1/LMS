@@ -28,6 +28,7 @@ class coursesController extends Controller
             foreach ($request['word'] as $j => $wordData) {
                 $word = words::create([
                     'course_id' => $course->id,
+                    'course_name' => $course->course_name,
                     'level' => $validatedData['level'][$j],
                     'lesson' => $validatedData['lesson'][$j],
                     'word' => $validatedData['word'][$j],
@@ -64,19 +65,8 @@ class coursesController extends Controller
     public function coursedata()
     {
         try {
-            $courses = courses::all(); // Assuming 'Course' is your model for the 'courses' table
-            $words = []; // Initialize an empty array to store words related to each course
-
-            foreach ($courses as $course) {
-                $words[$course->id] = words::where('course_id', $course->id)->get(); // Assuming 'Word' is your model for the 'words' table
-            }
-
-            $data = [
-                'courses' => $courses,
-                'words' => $words
-            ];
-
-            return response()->json(['success' => true, 'message' => "Course add successful", 'data' => $data], 200);
+            $courses = words::all();
+            return response()->json(['success' => true, 'message' => "Course get successful", 'courses' => $courses], 200);
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
         }
@@ -88,5 +78,13 @@ class coursesController extends Controller
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
         }
+    }
+
+    public function getcoursedata()
+    {
+        $courses =  words::all();
+
+
+        return view('admin.course', ['courses' => $courses]);
     }
 }
