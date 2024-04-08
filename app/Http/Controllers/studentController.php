@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use  App\Models\students;
+use App\Models\words;
 use Illuminate\Validation\ValidationException;
 
 class studentController extends Controller
@@ -118,6 +119,7 @@ class studentController extends Controller
     public function teachingStudentData()
     {
         $students = students::all();
-        return view('teacher.teachingpage', ['students' => $students]);
+        $words = words::all();
+        return view('teacher.teachingpage', ['students' => $students, 'words' =>  $words]);
     }
 }

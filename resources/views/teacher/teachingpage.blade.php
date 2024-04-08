@@ -26,7 +26,10 @@
             <label for="course" class="text-[#808191] text-md ml-1 font-semibold ">@lang('lang.Course')</label>
             <select class="w-full border-3  font-bold mt-2 rounded-[10px] focus:border-primary   h-[40px] text-[14px]"
                 name="course" id="course">
-                <option value="">@lang('lang.Select_course')</option>
+                <option value="" selected>@lang('lang.Select_course')</option>
+                @foreach ($words as $i => $words)
+                    <option value="" course_id="{{ $words->id }}">{{ $words->course_name }}</option>
+                @endforeach
             </select>
         </div>
         <div>
