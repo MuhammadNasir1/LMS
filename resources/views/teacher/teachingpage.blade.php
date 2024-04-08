@@ -7,33 +7,34 @@
         <h1 class=" font-semibold   text-2xl ">@lang('lang.Teaching_Page')</h1>
     </div>
     <div class="grid grid-cols-3 my-8  gap-5">
-        <div>
-            <label for="campus" class="text-[#808191] text-md ml-1 font-semibold ">@lang('lang.Campus')</label>
-            <select
-                class="w-full border-3 text-secondary font-bold border-secondary mt-2 rounded-[10px] focus:border-primary   h-[40px] text-[14px]"
-                name="Campus" id="Campus">
-                <option value="">@lang('lang.Select_Campus')</option>
-            </select>
-        </div>
         <div class="relative">
-            <label for="Student" class="text-[#808191] text-md ml-1 font-semibold ">@lang('lang.Student')</label>
+            <label for="Student" class="text-[#808191] text-md ml-1 font-semibold ">@lang('lang.Student') <span
+                    class="text-sm text-primary">(@lang('lang.read_only'))</span> </label>
 
             <input type="text"
-                class="w-full  border-3 mt-2  border-secondary rounded-[10px] focus:border-primary   h-[40px] text-[14px] placeholder:text-secondary  placeholder:fon-sm"
-                name="Student" id="Student" placeholder=" @lang('lang.Select_Student')">
+                class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]" name="relation"
+                id="Relation" placeholder=" @lang('lang.select_student_from_table')" readonly>
 
         </div>
         <div>
             <label for="lessonDate" class="text-[#808191] text-md ml-1 font-semibold ">@lang('lang.Lesson_date')</label>
             <input type="date"
-                class="w-full  border-3 mt-2  border-secondary rounded-[10px] focus:border-primary   h-[40px] text-[14px] placeholder:text-secondary  placeholder:fon-sm"
-                name="lesson_date" id="lessonDate">
+                class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
+                name="relation" id="Relation">
         </div>
         <div>
-            <label for="lessonDate" class="text-[#808191] text-md ml-1 font-semibold ">@lang('lang.Add_words')</label>
-            <input type="text"
-                class="w-full  border-3 mt-2  border-secondary rounded-[10px] focus:border-primary   h-[40px] text-[14px] placeholder:text-secondary  placeholder:fon-sm"
-                name="word" id="word" placeholder="@lang('lang.Enter_Word')">
+            <label for="course" class="text-[#808191] text-md ml-1 font-semibold ">@lang('lang.Course')</label>
+            <select class="w-full border-3  font-bold mt-2 rounded-[10px] focus:border-primary   h-[40px] text-[14px]"
+                name="course" id="course">
+                <option value="">@lang('lang.Select_course')</option>
+            </select>
+        </div>
+        <div>
+            <label for="word" class="text-[#808191] text-md ml-1 font-semibold ">@lang('lang.Add_words')</label>
+            <select class="w-full border-3  font-bold mt-2 rounded-[10px] focus:border-primary   h-[40px] text-[14px]"
+                name="word" id="word">
+                <option value="">@lang('lang.select_word')</option>
+            </select>
         </div>
         <div></div>
         <div class="2 flex justify-end  mt-8">

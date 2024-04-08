@@ -216,5 +216,9 @@ return [
     "Update_Student" => "Update Student",
     "Update_parents" => "Update parents",
     "add_more_word" => "Add More Word",
+    "read_only" => "Read only",
+    "Select_course" => "Select Course",
+    "select_word" => "Select Word",
+    "select_student_from_table" => "Select student from table",
 
 ];
