@@ -113,4 +113,11 @@ class studentController extends Controller
             //throw $th;
         }
     }
+
+
+    public function teachingStudentData()
+    {
+        $students = students::all();
+        return view('teacher.teachingpage', ['students' => $students]);
+    }
 }

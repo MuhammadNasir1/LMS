@@ -113,9 +113,7 @@ Route::middleware('custom')->group(function () {
         Route::get('/teacher/courses', function () {
             return view("teacher.courses");
         });
-        Route::get('/teacher/teachingpage', function () {
-            return view("teacher.teachingpage");
-        });
+        Route::get('/teacher/teachingpage', [studentController::class , 'teachingStudentData']);
         Route::get('/teacher/games', function () {
             return view("teacher.games");
         });
