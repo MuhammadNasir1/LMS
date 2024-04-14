@@ -111,7 +111,6 @@ class studentController extends Controller
             return response()->json(['success' => true,  'message' => 'Data get successfull', 'student' => $student], 200);
         } catch (\Exception $e) {
             return response()->json(['success' => true,  'message' => $e->getMessage()], 500);
-            //throw $th;
         }
     }
 
@@ -122,4 +121,6 @@ class studentController extends Controller
         $words = words::all();
         return view('teacher.teachingpage', ['students' => $students, 'words' =>  $words]);
     }
+
+
 }

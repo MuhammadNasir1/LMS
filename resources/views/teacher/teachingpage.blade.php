@@ -13,8 +13,7 @@
 
             <input type="text"
                 class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]" name="relation"
-                id="Relation" placeholder=" @lang('lang.select_student_from_table')" readonly>
-
+                id="student" placeholder=" @lang('lang.select_student_from_table')" readonly>
         </div>
         <div>
             <label for="lessonDate" class="text-[#808191] text-md ml-1 font-semibold ">@lang('lang.Lesson_date')</label>
@@ -28,7 +27,8 @@
                 name="course" id="course">
                 <option value="" selected>@lang('lang.Select_course')</option>
                 @foreach ($words as $i => $words)
-                    <option value="" course_id="{{ $words->id }}">{{ $words->course_name }}</option>
+                    <option value="{{ $words->course_name }}" course_id="{{ $words->id }}">{{ $words->course_name }}
+                    </option>
                 @endforeach
             </select>
         </div>
@@ -86,8 +86,8 @@
                             <td>
                                 <div class="flex gap-5 items-center">
 
-                                    <button student_id="{{ $students->full_name }}"
-                                        class="bg-secondary cursor-pointer text-white h-10 px-5 rounded-[6px]  shadow-sm font-semibold ">
+                                    <button student_id="{{ $students->id }}" student_name="{{ $students->full_name }}"
+                                        class="bg-secondary cursor-pointer text-white h-10 px-5 rounded-[6px]  shadow-sm font-semibold std_select_btn">
                                         @lang('lang.Select')</button>
                                     <div class=" cursor-pointer right-3 top-[42px]" data-modal-target="addstudentmodal"
                                         data-modal-toggle="addstudentmodal">
@@ -174,4 +174,22 @@
         colorLight: '#fff',
         correctLevel: QRCode.CorrectLevel.H
     });
+
+    $(document).ready(function() {
+        $('.std_select_btn').click(function() {
+            var student_id = $(this).attr('student_id');
+            var student_name = $(this).attr('student_name');
+            $('#student').val(student_name)
+        })
+
+        $('#course').change(function() {
+            var selectedOption = $(this).find(':selected');
+
+            // Get the value of the course_id attribute
+            var courseId = selectedOption.attr('course_id');
+
+            console.log(courseId);
+        });
+
+    })
 </script>
