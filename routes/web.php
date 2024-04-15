@@ -5,6 +5,7 @@ use App\Http\Controllers\coursesController;
 use App\Http\Controllers\parentController;
 use App\Http\Controllers\studentController;
 use App\Http\Controllers\teacherController;
+use App\Http\Controllers\teachingController;
 use App\Http\Controllers\trainingController;
 use App\Http\Controllers\userController;
 use App\Models\training;
@@ -52,7 +53,7 @@ Route::middleware('custom')->group(function () {
         Route::get('/admin/student', [studentController::class, 'getstudentdata']);
         Route::get('/admin/parents', [parentController::class, 'getparentdata']);
 
-        Route::get('/admin/course', [coursesController::class,'getcoursedata']);
+        Route::get('/admin/course', [coursesController::class, 'getcoursedata']);
 
         Route::get('/admin/help', function () {
             return view('admin.help');
@@ -84,7 +85,6 @@ Route::middleware('custom')->group(function () {
         Route::match(['get', 'post'], 'delParent/{parent_id}', [parentController::class, 'delparent']);
         Route::get('parentUpdataData/{parent_id}', [parentController::class, 'parentUpdataData']);
         Route::post('parentUpdate/{parent_id}', [parentController::class, 'updateparent']);
-
     });
 
 
@@ -113,7 +113,7 @@ Route::middleware('custom')->group(function () {
         Route::get('/teacher/courses', function () {
             return view("teacher.courses");
         });
-        Route::get('/teacher/teachingpage', [studentController::class , 'teachingStudentData']);
+        Route::get('/teacher/teachingpage', [studentController::class, 'teachingStudentData']);
         Route::get('/teacher/games', function () {
             return view("teacher.games");
         });
@@ -148,7 +148,12 @@ Route::middleware('custom')->group(function () {
     Route::get('/studentRec', function () {
         return view('std_recording');
     });
+
+    Route::get('/getWords/{id}', [coursesController::class, 'getteachingWords']);
+
+    // teaching  page
 });
+Route::post('/addteaching', [teachingController::class, 'addteachingdata']);
 
 Route::get('/sendemail', [userController::class, 'sendWelcomeEmail']);
 

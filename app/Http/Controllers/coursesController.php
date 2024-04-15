@@ -87,4 +87,10 @@ class coursesController extends Controller
 
         return view('admin.course', ['courses' => $courses]);
     }
+
+    public function getteachingWords($id){
+        $words = words::where('id' , $id)->first();
+        return response()->json(['success'=> true,'words'=> $words]);
+
+    }
 }

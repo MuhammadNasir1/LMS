@@ -6,48 +6,84 @@
     <div>
         <h1 class=" font-semibold   text-2xl ">@lang('lang.Teaching_Page')</h1>
     </div>
-    <div class="grid grid-cols-3 my-8  gap-5">
-        <div class="relative">
-            <label for="Student" class="text-[#808191] text-md ml-1 font-semibold ">@lang('lang.Student') <span
-                    class="text-sm text-primary">(@lang('lang.read_only'))</span> </label>
+    <form action="../addteaching" method="POST">
+        @csrf
+        <input type="hidden" id="studentId" name="studentid">
+        <div class="grid grid-cols-3 my-8  gap-5">
+            <div class="relative">
+                <label for="Student" class="text-[#808191] text-md ml-1 font-semibold ">@lang('lang.Student') <span
+                        class="text-sm text-primary">(@lang('lang.read_only'))</span> </label>
 
-            <input type="text"
-                class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]" name="relation"
-                id="student" placeholder=" @lang('lang.select_student_from_table')" readonly>
+                <input type="text"
+                    class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
+                    name="student_name" id="student" placeholder=" @lang('lang.select_student_from_table')"  readonly>
+            </div>
+            <div>
+                <label for="lessonDate" class="text-[#808191] text-md ml-1 font-semibold ">@lang('lang.Lesson_date')</label>
+                <input type="date"
+                    class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
+                    name="lesson_date" id="lessonDate">
+            </div>
+            <div>
+                <label for="course" class="text-[#808191] text-md ml-1 font-semibold ">@lang('lang.Course')</label>
+                <select
+                    class="w-full border-3  font-bold mt-2 rounded-[10px] focus:border-primary   h-[40px] text-[14px]"
+                    name="course" id="course">
+                    <option value="" selected>@lang('lang.Select_course')</option>
+                    @foreach ($words as $i => $course)
+                        <option value="{{ $course->course_name }}" course_id="{{ $course->id }}">
+                            {{ $course->course_name }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+            <div>
+                <label for="word" class="text-[#808191] text-md ml-1 font-semibold ">@lang('lang.select_word')</label>
+                <select
+                    class="w-full border-3  font-bold mt-2 rounded-[10px] focus:border-primary   h-[40px] text-[14px]" id="word">
+                    <option value="">@lang('lang.select_word')</option>
+
+                    @foreach ($words as $i => $words)
+                        <option value="{{ $words->word }}" word_id="{{ $words->id }}">{{ $words->word }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+            <div id="worksContainer"></div>
+            <div class="2 flex justify-end  mt-8">
+                <a href="../video">
+                    <button
+                        class="bg-secondary cursor-pointer text-white h-12 px-5 rounded-[6px]  shadow-sm font-semibold ">
+                        @lang('lang.Start_Teaching')</button>
+                </a>
+            </div>
         </div>
+    </form>
+    <div class="shadow-dark mt-3  rounded-xl mb-6   bg-white hidden" id="wordsContainer">
         <div>
-            <label for="lessonDate" class="text-[#808191] text-md ml-1 font-semibold ">@lang('lang.Lesson_date')</label>
-            <input type="date"
-                class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                name="relation" id="Relation">
-        </div>
-        <div>
-            <label for="course" class="text-[#808191] text-md ml-1 font-semibold ">@lang('lang.Course')</label>
-            <select class="w-full border-3  font-bold mt-2 rounded-[10px] focus:border-primary   h-[40px] text-[14px]"
-                name="course" id="course">
-                <option value="" selected>@lang('lang.Select_course')</option>
-                @foreach ($words as $i => $words)
-                    <option value="{{ $words->course_name }}" course_id="{{ $words->id }}">{{ $words->course_name }}
-                    </option>
-                @endforeach
-            </select>
-        </div>
-        <div>
-            <label for="word" class="text-[#808191] text-md ml-1 font-semibold ">@lang('lang.Add_words')</label>
-            <select class="w-full border-3  font-bold mt-2 rounded-[10px] focus:border-primary   h-[40px] text-[14px]"
-                name="word" id="word">
-                <option value="">@lang('lang.select_word')</option>
-            </select>
-        </div>
-        <div></div>
-        <div class="2 flex justify-end  mt-8">
-            <a href="../video">
-                <button
-                    class="bg-secondary cursor-pointer text-white h-12 px-5 rounded-[6px]  shadow-sm font-semibold ">
-                    @lang('lang.Start_Teaching')</button>
-            </a>
+            <div>
+                <table class="overflow-scroll w-full text-center">
+                    <thead class="py-6 bg-primary text-white">
+                        <tr>
+                            <th scope="col" class="px-6 py-3">A
+                                @lang('lang.Course_ID')
+                            </th>
+                            <th>@lang('lang.Word')</th>
+                            <th>@lang('lang.Audio_1')</th>
+                            <th>@lang('lang.Audio_2')</th>
+                            <th>@lang('lang.Audio_3')</th>
+
+                            <th>@lang('lang.Action')</th>
+                        </tr>
+                    </thead>
+                    <tbody id="wordsbody">
+
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
+
     <div class="shadow-dark mt-3  rounded-xl pt-8  bg-white">
         <div>
             <div class="flex justify-between px-[20px] mb-3">
@@ -162,7 +198,6 @@
 
     </div>
 </div>
-
 @include('layouts.footer')
 <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script>
 <script>
@@ -180,15 +215,78 @@
             var student_id = $(this).attr('student_id');
             var student_name = $(this).attr('student_name');
             $('#student').val(student_name)
+            $('#studentId').val(student_id)
         })
 
         $('#course').change(function() {
             var selectedOption = $(this).find(':selected');
-
-            // Get the value of the course_id attribute
             var courseId = selectedOption.attr('course_id');
 
             console.log(courseId);
+        });
+
+        $('#word').change(function() {
+            var selectedOption = $(this).find(':selected');
+            var wordId = selectedOption.attr('word_id');
+            var url = "../getWords/" + wordId;
+            $.ajax({
+                type: "GET",
+                url: url,
+                success: function(response) {
+                    console.log(response);
+                    $('#wordsContainer').css('display', 'block');
+
+                    var wordsInputs = `<input type="hidden" name="course_id[]" value="${response.words.course_id}">
+                        <input type="text" name="word_id[]" value="${response.words.id}">
+                        <input type="text" name="word[]" value="${response.words.word}">
+                        <input type="text" name="audio1[]" value="${response.words.audio_1}">
+                        <input type="text" name="audio2[]" value="${response.words.audio_2}">
+                        <input type="text" name="audio3[]" value="${response.words.audio_3}">`;
+                    var wordsOutput = `<tr >
+                            <td class="px-6 py-5" >
+                                ${response.words.course_id}</td>
+                            <td>${response.words.word}</td>
+                            <td>
+                                <div class="flex justify-center">
+                                    <img height="40px" width="40px" src="{{ asset('images/icons/audio-1.svg') }}" alt="audio">
+                                </div>
+                            </td>
+
+                            <td>
+                                <div class="flex justify-center">
+                                    <img height="40px" width="40px" src="{{ asset('images/icons/audio-1.svg') }}" alt="audio">
+                                </div>
+                            </td>
+
+                            <td>
+                                <div class="flex justify-center">
+                                    <img height="40px" width="40px" src="{{ asset('images/icons/audio-1.svg') }}" alt="audio">
+                                </div>
+                            </td>
+
+                            <td class="">
+                                <div class="flex gap-5 justify-center">
+                                    <a class="cursor-pointer" href="#"><img width="38px"
+                                            src="{{ asset('images/icons/delete.svg') }}" alt="delete"></a>
+
+                                </div>
+                            </td>
+                        </tr>`
+                    $('#worksContainer').append(wordsInputs)
+                    $('#wordsbody').append(wordsOutput)
+                },
+                error: function(jqXHR) {
+                    let response = JSON.parse(jqXHR.responseText);
+                    console.log("error");
+                    Swal.fire(
+                        'Warning!',
+                        response.message,
+                        'warning'
+                    );
+                }
+
+            });
+
         });
 
     })
