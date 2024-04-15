@@ -124,7 +124,7 @@
                         d="M10 0C4.5 0 0 4.5 0 10C0 15.5 4.5 20 10 20C15.5 20 20 15.5 20 10C20 4.5 15.5 0 10 0ZM10 14.2857C7.64286 14.2857 5.71429 12.3571 5.71429 10C5.71429 7.64286 7.64286 5.71429 10 5.71429C12.3571 5.71429 14.2857 7.64286 14.2857 10C14.2857 12.3571 12.3571 14.2857 10 14.2857Z"
                         fill="white" />
                 </svg>
-                @lang('lang.Start_Recording')</button>
+                <span id="recordBtnText">@lang('lang.Start_Recording')</span></button>
             <button
                 class=" bg-secondary px-4 rounded-md h-12 text-white font-semibold text-xl">@lang('lang.Restart')</button>
         </div>
@@ -143,6 +143,7 @@
     let recorder;
     let isRecording = false;
     const recordButton = document.getElementById("recordButton");
+    const recordBtnText = document.getElementById("recordBtnText");
     const recordedVideo = document.getElementById("recordedVideo");
     const downloadLink = document.getElementById("downloadLink");
     const fileInputContainer = document.getElementById("fileInputContainer");
@@ -178,7 +179,7 @@
         recorder.startRecording();
 
         isRecording = true;
-        recordButton.innerHTML = "Stop Recording";
+        recordBtnText.innerHTML = "Stop Recording";
     }
 
     function stopRecording() {
@@ -207,7 +208,7 @@
             fileInputContainer.appendChild(fileInput);
 
             isRecording = false;
-            recordButton.textContent = "Start Recording";
+            recordBtnText.textContent = "Start Recording";
         });
 
         tabStream.getTracks().forEach((track) => track.stop());

@@ -65,9 +65,7 @@
                 <table class="overflow-scroll w-full text-center">
                     <thead class="py-6 bg-primary text-white">
                         <tr>
-                            <th scope="col" class="px-6 py-3">A
-                                @lang('lang.Course_ID')
-                            </th>
+                            <th scope="col" class="px-6 py-3">@lang('lang.Course_ID')</th>
                             <th>@lang('lang.Word')</th>
                             <th>@lang('lang.Audio_1')</th>
                             <th>@lang('lang.Audio_2')</th>
