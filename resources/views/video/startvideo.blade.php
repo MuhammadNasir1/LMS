@@ -237,10 +237,8 @@
             }
         });
     });
-
-
-    // adjut audio volume
     var volumeRanges = document.querySelectorAll('.audio-volume-range');
+
     var audioElements = document.querySelectorAll('.audio-player');
 
     function updateAllRanges(value) {
@@ -249,13 +247,14 @@
         });
     }
     volumeRanges.forEach(function(range) {
-    var volumeValue = range.value;
-    audioElements.forEach(function(audio) {
-        if (audio) {
-            audio.volume = volumeValue;
-        }
-    });
-    updateAllRanges(volumeValue);
-    });
+        range.addEventListener('input', function() {
+            var volumeValue = range.value;
+            audioElements.forEach(function(audio) {
+                if (audio) {
+                    audio.volume = volumeValue;
+                }
+            });
+            updateAllRanges(volumeValue);
+        });
     });
 </script>
