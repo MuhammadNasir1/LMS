@@ -145,9 +145,8 @@ Route::middleware('custom')->group(function () {
 
     Route::post('updateSettings', [authController::class, 'updateSet']);
     Route::get('training', [trainingController::class, 'gettrainingdata']);
-    Route::get('/studentRec', function () {
-        return view('std_recording');
-    });
+
+    Route::get('/studentRec', [teachingController::class, 'getteacherrecording']);
 
     Route::get('/getWords/{id}', [coursesController::class, 'getteachingWords']);
 

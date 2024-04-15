@@ -11,6 +11,7 @@ class teacher_rec extends Model
     protected $table  = "teacher_rec";
     protected $fillable = [
         'student_id',
+        'student_name',
         'teacher_id',
         'lesson_date',
         'teacher_name',

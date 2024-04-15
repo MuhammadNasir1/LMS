@@ -140,7 +140,7 @@
 <div id="recordingDel" data-modal-backdrop="static"
     class="hidden overflow-y-auto overflow-x-hidden fixed  left-0 z-50 justify-center  w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
     <div class="relative w-full max-w-5xl max-h-full bg-white shadow-dark ">
-        <form action="../teacherRec" id="teacherRec" method="post" enctype="multipart/form-data">
+        <form id="teacherRec" method="post">
             @csrf
             <div id="fileInputContainer" class="invisible  absolute">
 
@@ -159,7 +159,7 @@
                     <textarea name="teacher_comment" id="" class="h-28 w-[70%] rounded-md  border-gray focus:border-black"
                         placeholder="@lang('lang.Enter_Comment')"></textarea>
                 </div>
-                <button class="bg-secondary text-white py-2 px-8 my-4 rounded-[4px]    mx-6  font-semibold">
+                <button class="bg-secondary text-white py-2 px-8 my-4 rounded-[4px]    mx-6  font-semibold w-[102px]">
                     <div class=" text-center hidden" id="spinner">
                         <svg aria-hidden="true"
                             class="w-5 h-5 mx-auto text-center text-gray-200 animate-spin fill-primary"
@@ -272,8 +272,7 @@
             console.log("Video duration: " + video.duration + " seconds");
         };
     }
-</script>
-<script>
+
     let Cnextbtn = document.getElementById('CNexbtn')
     let Cprebtn = document.getElementById('CPrebtn')
     let prebtn = document.getElementById('preBtn')
@@ -314,6 +313,51 @@
                 }
             });
             updateAllRanges(volumeValue);
+        });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $("#teacherRec").submit(function(event) {
+            event.preventDefault();
+            var formData = new FormData(this);
+            $.ajax({
+                type: "POST",
+                url: "../teacherRec",
+                data: formData,
+                dataType: "json",
+                contentType: false,
+                processData: false,
+                beforeSend: function() {
+                    $('#spinner').removeClass('hidden');
+                    $('#text').addClass('hidden');
+                    $('#addBtn').attr('disabled', true);
+                },
+                success: function(response) {
+                    if (response.success == true) {
+                        window.location.href = '../studentRec';
+                    } else if (response.success == false) {
+                        Swal.fire(
+                            'Warning!',
+                            response.message,
+                            'warning'
+                        );
+                    }
+                },
+                error: function(jqXHR) {
+                    let response = JSON.parse(jqXHR.responseText);
+                    console.log("error");
+                    Swal.fire(
+                        'Warning!',
+                        response.message,
+                        'warning'
+                    );
+
+                    $('#text').removeClass('hidden');
+                    $('#spinner').addClass('hidden');
+                    $('#addBtn').attr('disabled', false);
+                }
+            });
         });
     });
 </script>

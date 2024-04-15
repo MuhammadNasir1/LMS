@@ -64,6 +64,7 @@ class teachingController extends Controller
             ]);
             $teacherRec = teacher_rec::create([
                 'student_id' => session("wordDet")['student_id'],
+                'student_name' => session("wordDet")['student_name'],
                 'teacher_id' => $userId,
                 'lesson_date' => session("wordDet")['lesson_date'],
                 'teacher_name' => session("user_det")['name'],
@@ -81,5 +82,13 @@ class teachingController extends Controller
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
         }
+    }
+
+
+    public  function  getteacherrecording()
+    {
+
+        $recordingData = teacher_rec::all();
+        return view('std_recording',  ['recordingData' => $recordingData]);
     }
 }

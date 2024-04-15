@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('teacher_rec', function (Blueprint $table) {
             $table->id();
             $table->integer("student_id");
+            $table->string('student_name');
             $table->integer("teacher_id");
             $table->date("lesson_date");
             $table->string("teacher_name");
