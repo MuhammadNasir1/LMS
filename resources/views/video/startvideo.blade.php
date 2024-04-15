@@ -140,12 +140,12 @@
 <div id="recordingDel" data-modal-backdrop="static"
     class="hidden overflow-y-auto overflow-x-hidden fixed  left-0 z-50 justify-center  w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
     <div class="relative w-full max-w-5xl max-h-full bg-white shadow-dark ">
-        <form id="teacherRec" method="post">
+        <form  action="../teacherRec" id="teacherRec" method="post"  enctype="multipart/form-data">
             @csrf
             <div id="fileInputContainer" class="invisible  absolute">
 
             </div>
-            <video id="recordedVideo" src="" height="700px" width="100%" controls></video>
+            <video id="recordedVideo" class="recordedvideo" src="" height="700px" width="100%" controls></video>
             <a id="downloadLink" class=" absolute right-2 mt-3 mr-3 cursor-pointer" style="display: none"> <svg
                     width="30px" xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 551 551"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
@@ -155,7 +155,7 @@
             <div class="flex  mt-7  pb-6  justify-between items-end">
                 <div class="w-[80%] px-4 flex  items-start gap-5">
                     <label for=""> @lang('lang.Teacher_comment')</label>
-                    <textarea name="" id="" class="h-28 w-[70%] rounded-md  border-gray focus:border-black"
+                    <textarea name="teacher_comment" id="" class="h-28 w-[70%] rounded-md  border-gray focus:border-black"
                         placeholder="@lang('lang.Enter_Comment')"></textarea>
                 </div>
                 <button class="bg-secondary text-white py-2 px-8 my-4 rounded-[4px]    mx-6  font-semibold">
@@ -249,7 +249,7 @@
             const fileInput = document.createElement("input");
             fileInput.type = "file";
             fileInput.accept = "video/webm";
-            fileInput.name = "teacherRecording";
+            fileInput.name = "video";
             fileInput.multiple = false;
 
             const dataTransfer = new DataTransfer();

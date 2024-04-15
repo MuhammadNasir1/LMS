@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\teacher;
+use App\Models\teacher_rec;
 use App\Models\teaching;
 use Illuminate\Http\Request;
 
@@ -39,11 +41,48 @@ class teachingController extends Controller
                 $teachingData->save();
             }
             session(['teachingData' => $teachingDataArray]);
-
+            session(['wordDet' => [
+                "student_id" => $request['studentid'],
+                "student_name" => $validatedData['student_name'],
+                "lesson_date" => $validatedData['lesson_date'],
+            ]]);
             // return response()->json(['success' => true, 'message'  => "data add successfully", 'teachingData'  =>   $teachingData], 200);
             return redirect('../video');
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message'  => $e->getMessage()], 500);
+        }
+    }
+    //  add  teacher recording
+    public function teacherRecdata(Request $request)
+    {
+        $userId   = session("user_det")['user_id'];
+        $currentDate = date('Y-m-d');
+        try {
+            $validatedData  = $request->validate([
+                'teacher_comment' => 'required',
+                'video' => 'nullable',
+
+            ]);
+
+            $teacherRec = teacher_rec::create([
+                'student_id' => session("wordDet")['student_id'],
+                'teacher_id' => $userId,
+                'lesson_date' => session("wordDet")['lesson_date'],
+                'teacher_name' => session("wordDet")['student_id'],
+                'teacher_comment' => $validatedData['teacher_comment'],
+                'duration' => '1:2',
+            ]);
+            if ($request->hasFile('video')) {
+                $teaching_video = $request->file('video');
+                $videoName = time() . '.' . $teaching_video->getClientOriginalExtension();
+                $teaching_video->storeAs('public/teacherVideo', $videoName); // Adjust storage path as needed
+                $teacherRec->video = 'storage/teacherVideo/' . $videoName;
+            }
+
+            $teacherRec->save();
+            return response()->json(['success' => true, 'message' => 'Recording add successfully'], 200);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
         }
     }
 }

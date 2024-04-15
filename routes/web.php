@@ -154,6 +154,7 @@ Route::middleware('custom')->group(function () {
     // teaching  page
 });
 Route::post('/addteaching', [teachingController::class, 'addteachingdata']);
+Route::post('/teacherRec', [teachingController::class, 'teacherRecdata']);
 
 Route::get('/sendemail', [userController::class, 'sendWelcomeEmail']);
 
