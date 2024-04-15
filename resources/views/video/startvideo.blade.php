@@ -30,17 +30,30 @@
                                                 class="w-32 bg-secondary rounded-md h-12 text-white font-semibold text-xl">@lang('lang.Previous')</button>
                                         </div>
                                         <div class="flex gap-4">
-                                            <button>
-                                                <img src="{{ asset('images/icons/audio-1.svg') }}" alt="audio-1">
-                                            </button>
-                                            <button>
-                                                <img src="{{ asset('images/icons/audio-2.svg') }}" alt="audio-2">
 
-                                            </button>
-                                            <button>
-                                                <img src="{{ asset('images/icons/audio-3.svg') }}" alt="audio-3">
+                                            <div>
+                                                <audio class="audio-player"
+                                                    src="../{{ $teachingData->audio_1 }}"></audio>
+                                                <button class="play-button">
+                                                    <img src="{{ asset('images/icons/audio-1.svg') }}" alt="audio-1">
+                                                </button>
+                                            </div>
 
-                                            </button>
+                                            <div>
+                                                <audio class="audio-player"
+                                                    src="../{{ $teachingData->audio_2 }}"></audio>
+                                                <button class="play-button">
+                                                    <img src="{{ asset('images/icons/audio-2.svg') }}" alt="audio-2">
+                                                </button>
+                                            </div>
+                                            <div>
+                                                <audio class="audio-player"
+                                                    src="../{{ $teachingData->audio_3 }}"></audio>
+                                                <button class="play-button">
+                                                    <img src="{{ asset('images/icons/audio-3.svg') }}" alt="audio-3">
+
+                                                </button>
+                                            </div>
                                             <button
                                                 class="w-[140px] h-[45px] rounded-full bg-primary flex justify-center gap-2  items-center">
                                                 <img src="{{ asset('images/icons/audio.svg') }}" alt="audio-3">
@@ -211,5 +224,16 @@
     nbtn.addEventListener('click', () => {
 
         Cnextbtn.click()
+    });
+    var playButtons = document.querySelectorAll('.play-button');
+
+    // play  words audio
+    playButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            var audio = button.parentElement.querySelector('.audio-player');
+            if (audio) {
+                audio.play();
+            }
+        });
     });
 </script>
