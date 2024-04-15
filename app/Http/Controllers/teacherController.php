@@ -154,7 +154,7 @@ class teacherController extends Controller
     }
 
     public function teacherUpdataData(Request $request, $id)
-    {
+{
         try {
             $teacher = Teacher::find($id);
             return response()->json(['success' => true,  'message' => 'Data get successfull', 'teacher' => $teacher], 200);

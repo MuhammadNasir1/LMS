@@ -237,11 +237,11 @@
                     $('#wordsContainer').css('display', 'block');
 
                     var wordsInputs = `<input type="hidden" name="course_id[]" value="${response.words.course_id}">
-                        <input type="text" name="word_id[]" value="${response.words.id}">
-                        <input type="text" name="word[]" value="${response.words.word}">
-                        <input type="text" name="audio1[]" value="${response.words.audio_1}">
-                        <input type="text" name="audio2[]" value="${response.words.audio_2}">
-                        <input type="text" name="audio3[]" value="${response.words.audio_3}">`;
+                        <input type="hidden" name="word_id[]" value="${response.words.id}">
+                        <input type="hidden" name="word[]" value="${response.words.word}">
+                        <input type="hidden" name="audio1[]" value="${response.words.audio_1}">
+                        <input type="hidden" name="audio2[]" value="${response.words.audio_2}">
+                        <input type="hidden" name="audio3[]" value="${response.words.audio_3}">`;
                     var wordsOutput = `<tr >
                             <td class="px-6 py-5" >
                                 ${response.words.course_id}</td>
