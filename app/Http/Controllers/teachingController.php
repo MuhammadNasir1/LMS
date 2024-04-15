@@ -56,21 +56,18 @@ class teachingController extends Controller
     public function teacherRecdata(Request $request)
     {
         $userId   = session("user_det")['user_id'];
-        $currentDate = date('Y-m-d');
         try {
             $validatedData  = $request->validate([
                 'teacher_comment' => 'required',
                 'video' => 'nullable',
 
             ]);
-
             $teacherRec = teacher_rec::create([
                 'student_id' => session("wordDet")['student_id'],
                 'teacher_id' => $userId,
                 'lesson_date' => session("wordDet")['lesson_date'],
-                'teacher_name' => session("wordDet")['student_id'],
+                'teacher_name' => session("user_det")['name'],
                 'teacher_comment' => $validatedData['teacher_comment'],
-                'duration' => '1:2',
             ]);
             if ($request->hasFile('video')) {
                 $teaching_video = $request->file('video');

@@ -140,12 +140,13 @@
 <div id="recordingDel" data-modal-backdrop="static"
     class="hidden overflow-y-auto overflow-x-hidden fixed  left-0 z-50 justify-center  w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
     <div class="relative w-full max-w-5xl max-h-full bg-white shadow-dark ">
-        <form  action="../teacherRec" id="teacherRec" method="post"  enctype="multipart/form-data">
+        <form action="../teacherRec" id="teacherRec" method="post" enctype="multipart/form-data">
             @csrf
             <div id="fileInputContainer" class="invisible  absolute">
 
             </div>
-            <video id="recordedVideo" class="recordedvideo" src="" height="700px" width="100%" controls></video>
+            <video id="recordedVideo" class="recordedvideotag" src="" height="700px" width="100%"
+                controls></video>
             <a id="downloadLink" class=" absolute right-2 mt-3 mr-3 cursor-pointer" style="display: none"> <svg
                     width="30px" xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 551 551"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
@@ -264,6 +265,12 @@
         recordingModalBtn.click();
         tabStream.getTracks().forEach((track) => track.stop());
         audioStream.getTracks().forEach((track) => track.stop());
+
+        let video = document.getElementsByClassName('recordedvideotag')[0];
+        console.log(video);
+        video.onloadedmetadata = function() {
+            console.log("Video duration: " + video.duration + " seconds");
+        };
     }
 </script>
 <script>

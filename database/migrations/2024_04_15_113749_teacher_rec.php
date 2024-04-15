@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string("teacher_name");
             $table->text("teacher_comment");
             $table->string("video")->nullable();
-            $table->time("duration");
+            $table->time("duration")->nullable();
             $table->timestamps();
         });
     }
