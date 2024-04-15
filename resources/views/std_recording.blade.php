@@ -44,16 +44,18 @@
                             <td>{{ $data->lesson_date }}</td>
                             <td>
                                 <div class="flex gap-5 items-center justify-center">
-                                    <a href="#"><img width="38px" src="{{ asset('images/icons/delete.svg') }}"
-                                            alt="delete"></a>
-                                    <a class="cursor-pointer" data-modal-target="videodetails{{$x}}"
-                                        data-modal-toggle="videodetails{{$x}}"><img width="38px"
+                                    @if (session('user_det')['role'] == 'admin')
+                                        <a href="#"><img width="38px"
+                                                src="{{ asset('images/icons/delete.svg') }}" alt="delete"></a>
+                                    @endif
+                                    <a class="cursor-pointer" data-modal-target="videodetails{{ $x }}"
+                                        data-modal-toggle="videodetails{{ $x }}"><img width="38px"
                                             src="{{ asset('images/icons/view.svg') }}" alt="View"></a>
                                 </div>
                             </td>
                         </tr>
 
-                        <div id="videodetails{{$x}}" data-modal-backdrop="static"
+                        <div id="videodetails{{ $x }}" data-modal-backdrop="static"
                             class="hidden overflow-y-auto overflow-x-hidden fixed  left-0 z-50 justify-center  w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
                             <div class="relative p-4 w-full   max-w-4xl max-h-full ">
                                 <form action="registerdata" method="post">
@@ -66,7 +68,7 @@
                                             </h3>
                                             <button type="button"
                                                 class=" absolute right-2 text-white bg-transparent rounded-lg text-sm w-8 h-8 ms-auto "
-                                                data-modal-hide="videodetails{{$x}}">
+                                                data-modal-hide="videodetails{{ $x }}">
                                                 <svg class="w-4 h-4 text-white" aria-hidden="true"
                                                     xmlns="http://www.w3.org/2000/svg" fill="none"
                                                     viewBox="0 0 14 14">
@@ -92,7 +94,8 @@
                                                         <h3 class="text-[18px] font-normal">@lang('lang.Student_No'):</h3>
                                                     </div>
                                                     <div class="w-[200px]  ">
-                                                        <p class="text-[14px] text-[#323C47]">{{ $data->student_id }}</p>
+                                                        <p class="text-[14px] text-[#323C47]">{{ $data->student_id }}
+                                                        </p>
                                                     </div>
                                                 </div>
                                                 <div class="flex items-center justify-end  mt-2">
@@ -108,7 +111,8 @@
                                                         <h3 class="text-[18px] font-normal">@lang('lang.Lesson_Date'):</h3>
                                                     </div>
                                                     <div class="w-[200px]  ">
-                                                        <p class="text-[14px] text-[#323C47]">{{ $data->lesson_date }}</p>
+                                                        <p class="text-[14px] text-[#323C47]">{{ $data->lesson_date }}
+                                                        </p>
                                                     </div>
                                                 </div>
                                                 <div class="flex items-center justify-end  mt-2">
@@ -116,7 +120,8 @@
                                                         <h3 class="text-[18px] font-normal">@lang('lang.Teacher'):</h3>
                                                     </div>
                                                     <div class="w-[200px]  ">
-                                                        <p class="text-[14px] text-[#323C47]">{{ $data->teacher_name }}</p>
+                                                        <p class="text-[14px] text-[#323C47]">{{ $data->teacher_name }}
+                                                        </p>
                                                     </div>
                                                 </div>
                                                 <div class="flex items-center justify-end  mt-2">
@@ -125,7 +130,8 @@
                                                             @lang('lang.Comment')</h3>
                                                     </div>
                                                     <div class="w-[200px]  ">
-                                                        <p class="text-[14px] text-[#323C47]">{{ $data->teacher_comment }} </p>
+                                                        <p class="text-[14px] text-[#323C47]">
+                                                            {{ $data->teacher_comment }} </p>
                                                     </div>
                                                 </div>
 
@@ -166,8 +172,8 @@
                         data-modal-hide="videodetails">
                         <svg class="w-4 h-4 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                             fill="none" viewBox="0 0 14 14">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                         </svg>
                     </button>
                 </div>

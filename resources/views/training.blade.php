@@ -37,10 +37,12 @@
                             <td>{{ $training->training }}</td>
                             <td>{{ $training->date }}</td>
                             <td class="flex gap-5">
+                                @if (session('user_det')['role'] == 'admin')
                                 <a class="cursor-pointer" href="#"><img width="38px"
                                         src="{{ asset('images/icons/delete.svg') }}" alt="delete"></a>
                                 <a class="cursor-pointer" href="#"><img width="38px"
                                         src="{{ asset('images/icons/update.svg') }}" alt="update"></a>
+                                        @endif
                                 <a class="cursor-pointer" data-modal-target="videodetails{{ $i }}"
                                     data-modal-toggle="videodetails{{ $i }}"><img width="38px"
                                         src="{{ asset('images/icons/view.svg') }}" alt="View"></a>

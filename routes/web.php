@@ -43,6 +43,7 @@ Route::get('register/{role}', function () {
 
 
 Route::middleware('custom')->group(function () {
+    Route::post('addtraining', [trainingController::class, 'addtraining']);
     //  admnim pages
     Route::middleware('adminAuth')->group(function () {
         Route::get('/admin', function () {
@@ -67,7 +68,7 @@ Route::middleware('custom')->group(function () {
         Route::post('addStudent', [studentController::class, 'addstudent']);
         Route::post('addParent', [parentController::class, 'addparent']);
         Route::post('addteacher', [teacherController::class, 'addteacher']);
-        Route::post('addtraining', [trainingController::class, 'addtraining']);
+
 
 
         Route::get('teacherUpdataData/{id}', [teacherController::class, 'teacherUpdataData']);
