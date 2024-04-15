@@ -57,8 +57,10 @@
                                             <button
                                                 class="w-[140px] h-[45px] rounded-full bg-primary flex justify-center gap-2  items-center">
                                                 <img src="{{ asset('images/icons/audio.svg') }}" alt="audio-3">
-                                                <input class="w-[80px] appearance-none rounded-full bg-white h-1 range"
-                                                    type="range" name="" id="">
+                                                <input
+                                                    class="w-[80px] appearance-none rounded-full bg-white h-1 range audio-volume-range"
+                                                    type="range" min="0" max="1" step="0.01"
+                                                    value="1">
                                             </button>
                                         </div>
                                         <div>
@@ -226,7 +228,6 @@
         Cnextbtn.click()
     });
     var playButtons = document.querySelectorAll('.play-button');
-
     // play  words audio
     playButtons.forEach(function(button) {
         button.addEventListener('click', function() {
@@ -235,5 +236,26 @@
                 audio.play();
             }
         });
+    });
+
+
+    // adjut audio volume
+    var volumeRanges = document.querySelectorAll('.audio-volume-range');
+    var audioElements = document.querySelectorAll('.audio-player');
+
+    function updateAllRanges(value) {
+        volumeRanges.forEach(function(range) {
+            range.value = value;
+        });
+    }
+    volumeRanges.forEach(function(range) {
+    var volumeValue = range.value;
+    audioElements.forEach(function(audio) {
+        if (audio) {
+            audio.volume = volumeValue;
+        }
+    });
+    updateAllRanges(volumeValue);
+    });
     });
 </script>
