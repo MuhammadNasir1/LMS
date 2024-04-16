@@ -222,6 +222,8 @@ return [
     "Enter_Comment" => "Enter Comment",
     "Select_course" => "Select Course",
     "select_word" => "Select Word",
+    "level_select" => "Select Level",
+    "Select_lesson" => "Select Lesson",
     "select_student_from_table" => "Select student from table",
 
 ];

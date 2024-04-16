@@ -73,7 +73,7 @@ table.dataTable.no-footer {
 #lessonDate::-webkit-datetime-edit-month-field,
 #lessonDate::-webkit-datetime-edit-day-field,
 #lessonDate::-webkit-datetime-edit-year-field {
-    color: #edbd58;
+    color: gray;
 }
 
 .range::-webkit-slider-thumb {

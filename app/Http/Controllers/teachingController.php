@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\students;
 use App\Models\teacher;
 use App\Models\teacher_rec;
 use App\Models\teaching;
+use App\Models\words;
 use Illuminate\Http\Request;
 
 class teachingController extends Controller
@@ -90,5 +92,15 @@ class teachingController extends Controller
 
         $recordingData = teacher_rec::all();
         return view('std_recording',  ['recordingData' => $recordingData]);
+    }
+
+
+    public function teachingData()
+    {
+        $students = students::all();
+
+
+        $words = words::all();
+        return view('teacher.teachingpage', ['students' => $students, 'words' =>  $words]);
     }
 }
