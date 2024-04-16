@@ -105,7 +105,7 @@ class teachingController extends Controller
     }
 
 
-    public function filterwords('')
+    public function filterwords()
     {
     }
 }

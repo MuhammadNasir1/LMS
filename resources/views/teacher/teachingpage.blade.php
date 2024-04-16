@@ -7,7 +7,7 @@
         <h1 class=" font-semibold   text-2xl ">@lang('lang.Teaching_Page')</h1>
     </div>
     <form action="../filterwords" method="POST">
-    {{-- <form action="../addteaching" method="POST"> --}}
+        {{-- <form action="../addteaching" method="POST"> --}}
         @csrf
         <input type="hidden" id="studentId" name="studentid">
         <div class="grid grid-cols-3 mt-8  gap-5">
