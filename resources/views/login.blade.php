@@ -6,18 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Login - LMS</title>
-    <link rel="shortcut icon" href="{{ asset('images/icon.png') }}" type="image/x-icon">
+    <title>Login - Enlighteningedu</title>
+    <link rel="shortcut icon" href="{{ asset('images/owl_face.png') }}" type="image/x-icon">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body class="bg-white">
-    {{-- <form id="login_data" method="post">
-        @csrf --}}
     <div class="flex px-10  justify-center">
-        <!-- form -->
-
         <div class="md:w-1/2 px-8  sm:px-16  ">
             <div>
                 <img class="mt-5 w-[180px]" src="{{ asset('images/logo.svg') }}" alt="logo">
@@ -80,19 +76,14 @@
             <img class="rounded-2xl  h-full" src="{{ asset('images/loginpage.svg') }}">
         </div>
     </div>
-    {{-- </form> --}}
     <script src="{{ asset('javascript/jquery.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
         $(document).ready(function() {
             $("#login_data").submit(function(event) {
-                // Prevent the default form submission
                 event.preventDefault();
-
-                // Serialize the form data into a JSON object
                 var formData = $(this).serialize();
-
                 // Send the AJAX request
                 $.ajax({
                     type: "POST",
@@ -134,7 +125,6 @@
                             response.message,
                             'warning'
                         )
-                        // Handle the error here
                         $('#text').removeClass('hidden');
                         $('#spinner').addClass('hidden');
                         $('#loginbutton').attr('disabled', false);
