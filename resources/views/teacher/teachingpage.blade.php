@@ -6,17 +6,18 @@
     <div>
         <h1 class=" font-semibold   text-2xl ">@lang('lang.Teaching_Page')</h1>
     </div>
-    <form action="../addteaching" method="POST">
+    <form action="../filterwords" method="POST">
+    {{-- <form action="../addteaching" method="POST"> --}}
         @csrf
         <input type="hidden" id="studentId" name="studentid">
-        <div class="grid grid-cols-3 my-8  gap-5">
+        <div class="grid grid-cols-3 mt-8  gap-5">
             <div class="relative">
                 <label for="Student" class="text-[#808191] text-md ml-1 font-semibold ">@lang('lang.Student') <span
                         class="text-sm text-primary">(@lang('lang.read_only'))</span> </label>
 
                 <input type="text"
                     class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                    name="student_name" id="student" placeholder=" @lang('lang.select_student_from_table')"  readonly>
+                    name="student_name" id="student" placeholder=" @lang('lang.select_student_from_table')" readonly>
             </div>
             <div>
                 <label for="lessonDate" class="text-[#808191] text-md ml-1 font-semibold ">@lang('lang.Lesson_date')</label>
@@ -30,7 +31,7 @@
                     class="w-full border-3  font-bold mt-2 rounded-[10px] focus:border-primary   h-[40px] text-[14px]"
                     name="course" id="course">
                     <option value="" selected>@lang('lang.Select_course')</option>
-                    @foreach ($words as $i => $course)
+                    @foreach ($courses as $i => $course)
                         <option value="{{ $course->course_name }}" course_id="{{ $course->id }}">
                             {{ $course->course_name }}
                         </option>
@@ -38,25 +39,48 @@
                 </select>
             </div>
             <div>
+                <label for="level" class="text-[#808191] text-md ml-1 font-semibold ">@lang('lang.Level')</label>
+                <select
+                    class="w-full border-3  font-bold mt-2 rounded-[10px] focus:border-primary   h-[40px] text-[14px]"
+                    name="level" id="level">
+                    <option value="" selected>@lang('lang.level_select')</option>
+                    @foreach ($words as $level)
+                        <option value="{{ $level->level }}" word_id="{{ $level->id }}">
+                            {{ $level->level }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+            <div>
+                <label for="lesson" class="text-[#808191] text-md ml-1 font-semibold ">@lang('lang.Lesson')</label>
+                <select
+                    class="w-full border-3  font-bold mt-2 rounded-[10px] focus:border-primary   h-[40px] text-[14px]"
+                    name="lesson" id="lesson">
+                    <option value="" selected>@lang('lang.Select_lesson')</option>
+                    @foreach ($words as $lesson)
+                        <option value="{{ $lesson->lesson }}" word_id="{{ $lesson->id }}">
+                            {{ $lesson->lesson }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+            <div>
                 <label for="word" class="text-[#808191] text-md ml-1 font-semibold ">@lang('lang.select_word')</label>
                 <select
-                    class="w-full border-3  font-bold mt-2 rounded-[10px] focus:border-primary   h-[40px] text-[14px]" id="word">
+                    class="w-full border-3  font-bold mt-2 rounded-[10px] focus:border-primary   h-[40px] text-[14px]"
+                    id="word">
                     <option value="">@lang('lang.select_word')</option>
-
-                    @foreach ($words as $i => $words)
-                        <option value="{{ $words->word }}" word_id="{{ $words->id }}">{{ $words->word }}
+                    @foreach ($words as $word)
+                        <option value="{{ $word->word }}" word_id="{{ $word->id }}">{{ $word->word }}
                         </option>
                     @endforeach
                 </select>
             </div>
             <div id="worksContainer"></div>
-            <div class="2 flex justify-end  mt-8">
-                <a href="../video">
-                    <button
-                        class="bg-secondary cursor-pointer text-white h-12 px-5 rounded-[6px]  shadow-sm font-semibold ">
-                        @lang('lang.Start_Teaching')</button>
-                </a>
-            </div>
+        </div>
+        <div class=" flex justify-end  my-2">
+            <button class="bg-secondary cursor-pointer text-white h-12 px-5 rounded-[6px]  shadow-sm font-semibold ">
+                @lang('lang.Start_Teaching')</button>
         </div>
     </form>
     <div class="shadow-dark mt-3  rounded-xl mb-6   bg-white hidden" id="wordsContainer">
@@ -168,8 +192,8 @@
                 <button type="button"
                     class="cursor-pointer absolute right-2 text-white bg-transparent rounded-lg text-sm w-8 h-8 ms-auto "
                     data-modal-hide="addstudentmodal">
-                    <svg class="w-4 h-4 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 14 14">
+                    <svg class="w-4 h-4 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                        fill="none" viewBox="0 0 14 14">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                     </svg>

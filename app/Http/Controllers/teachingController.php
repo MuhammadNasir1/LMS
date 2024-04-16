@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\courses;
 use App\Models\students;
 use App\Models\teacher;
 use App\Models\teacher_rec;
@@ -98,9 +99,13 @@ class teachingController extends Controller
     public function teachingData()
     {
         $students = students::all();
-
-
         $words = words::all();
-        return view('teacher.teachingpage', ['students' => $students, 'words' =>  $words]);
+        $courses = courses::all();
+        return view('teacher.teachingpage', ['students' => $students, 'courses' =>  $courses, 'words' => $words]);
+    }
+
+
+    public function filterwords('')
+    {
     }
 }
