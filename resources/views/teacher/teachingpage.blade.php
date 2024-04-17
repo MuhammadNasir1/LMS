@@ -45,7 +45,7 @@
                     name="level" id="level">
                     <option value="" selected>@lang('lang.level_select')</option>
                     @foreach ($words as $level)
-                        <option value="{{ $level->level }}" word_id="{{ $level->id }}">
+                        <option value="{{ $level->level }}" level_id="{{ $level->id }}">
                             {{ $level->level }}
                         </option>
                     @endforeach
@@ -240,12 +240,12 @@
             $('#studentId').val(student_id)
         })
 
-        $('#course').change(function() {
-            var selectedOption = $(this).find(':selected');
-            var courseId = selectedOption.attr('course_id');
+        // $('#course').change(function() {
+        //     var selectedOption = $(this).find(':selected');
+        //     var courseId = selectedOption.attr('course_id');
 
-            console.log(courseId);
-        });
+        //     console.log(courseId);
+        // });
 
         $('#word').change(function() {
             var selectedOption = $(this).find(':selected');
@@ -312,4 +312,59 @@
         });
 
     })
+</script>
+
+
+<script>
+    $(document).ready(function() {
+        $('#course').change(function() {
+            var selectedOption = $(this).find(':selected');
+            var courseId = selectedOption.attr('course_id');
+
+            console.log(courseId);
+            // AJAX request to get levels
+            $.ajax({
+                url: '../filter-options',
+                type: 'GET',
+                data: {
+                    course_id: courseId
+                },
+                success: function(response) {
+                    var levels = response.levels;
+                    console.log(levels);
+                    var options = '<option value="" selected>Select Level</option>';
+                    for (var i = 0; i < levels.length; i++) {
+                        options += '<option value="' + levels[i].id + '" level_id="' + levels[i].id + '">' + levels[i]
+                            .level + '</option>';
+                    }
+                    $('#level').html(options);
+                    $('#lesson').html('<option value="" selected>Select Lesson</option>');
+                }
+            });
+        });
+
+        $('#level').change(function() {
+            // var levelId = $(this).val();
+            var selectedOption = $(this).find(':selected');
+            var levelId = selectedOption.attr('level_id');
+            console.log(levelId);
+            // AJAX request to get lessons
+            $.ajax({
+                url: '/filter-options',
+                type: 'GET',
+                data: {
+                    level_id: levelId
+                },
+                success: function(response) {
+                    var lessons = response.lessons;
+                    var options = '<option value="" selected>Select Lesson</option>';
+                    for (var i = 0; i < lessons.length; i++) {
+                        options += '<option value="' + lessons[i].id + '">' + lessons[i]
+                            .lesson + '</option>';
+                    }
+                    $('#lesson').html(options);
+                }
+            });
+        });
+    });
 </script>

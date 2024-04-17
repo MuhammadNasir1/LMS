@@ -152,7 +152,7 @@ Route::middleware('custom')->group(function () {
     Route::get('/getWords/{id}', [coursesController::class, 'getteachingWords']);
 
     // teaching  page
-    Route::post('filterwords', [teachingController::class, 'filterwords']);
+    Route::get('filter-options', [teachingController::class, 'filterOptions']);
 });
 Route::post('/addteaching', [teachingController::class, 'addteachingdata']);
 Route::post('/teacherRec', [teachingController::class, 'teacherRecdata']);
