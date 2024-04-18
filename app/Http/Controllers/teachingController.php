@@ -108,15 +108,15 @@ class teachingController extends Controller
     public function filterOptions(Request $request)
     {
         if ($request->has('course_id')) {
-            // Get levels based on the selected course
+            // Get levels  adn lesson based on the selected course
             $courseId = $request->input('course_id');
             $levels = words::where('course_id', $courseId)->get();
-            return response()->json(['levels' => $levels]);
+            return response()->json(['levels' => $levels, 'lessons' => $levels ,  'words' => $levels]);
         } elseif ($request->has('level_id')) {
             // Get lessons based on the selected level
             $levelId = $request->input('level_id');
-            $lessons = words::where('id', $levelId)->get();
-            return response()->json(['lessons' => $lessons]);
+            $lessons = words::where('level', $levelId)->get();
+            return response()->json(['lessons' => $lessons , 'words' => $lessons]);
         }
     }
 }

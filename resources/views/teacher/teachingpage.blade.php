@@ -331,14 +331,33 @@
                 },
                 success: function(response) {
                     var levels = response.levels;
-                    console.log(levels);
                     var options = '<option value="" selected>Select Level</option>';
                     for (var i = 0; i < levels.length; i++) {
-                        options += '<option value="' + levels[i].id + '" level_id="' + levels[i].id + '">' + levels[i]
+                        options += '<option value="' + levels[i].id + '" level_id="' +
+                            levels[i].id +
+                            '">' + levels[i]
                             .level + '</option>';
                     }
                     $('#level').html(options);
                     $('#lesson').html('<option value="" selected>Select Lesson</option>');
+
+                    var lessons = response.lessons;
+                    var options = '<option value="" selected>Select Lesson</option>';
+                    for (var i = 0; i < lessons.length; i++) {
+                        options += '<option value="' + lessons[i].lesson + '">' + lessons[i]
+                            .lesson + '</option>';
+                    }
+                    $('#lesson').html(options);
+
+                    var words = response.words;
+                    console.log(response.words);
+                    var options = '<option value="" selected>Select Word</option>';
+                    for (var i = 0; i < lessons.length; i++) {
+                        options += '<option word_id="' + words[i].id + '" value="' + words[
+                                i].word + '">' + words[i]
+                            .word + '</option>';
+                    }
+                    $('#word').html(options);
                 }
             });
         });
@@ -346,7 +365,8 @@
         $('#level').change(function() {
             // var levelId = $(this).val();
             var selectedOption = $(this).find(':selected');
-            var levelId = selectedOption.attr('level_id');
+            // var levelId = selectedOption.attr('level_id');
+            var levelId = selectedOption.html();
             console.log(levelId);
             // AJAX request to get lessons
             $.ajax({
@@ -359,10 +379,20 @@
                     var lessons = response.lessons;
                     var options = '<option value="" selected>Select Lesson</option>';
                     for (var i = 0; i < lessons.length; i++) {
-                        options += '<option value="' + lessons[i].id + '">' + lessons[i]
+                        options += '<option value="' + lessons[i].lesson + '">' + lessons[i]
                             .lesson + '</option>';
                     }
                     $('#lesson').html(options);
+
+                    var words = response.words;
+                    console.log(response.words);
+                    var options = '<option value="" selected>Select Word</option>';
+                    for (var i = 0; i < lessons.length; i++) {
+                        options += '<option word_id="' + words[i].id + '" value="' + words[
+                                i].word + '">' + words[i]
+                            .word + '</option>';
+                    }
+                    $('#word').html(options);
                 }
             });
         });
