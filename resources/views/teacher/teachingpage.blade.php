@@ -267,7 +267,7 @@
                             <td class="px-6 py-5" >
                                 ${response.words.course_id}</td>
                             <td>${response.words.word}</td>
-                            <td>s
+                            <td>
                                 <div class="flex justify-center">
         <div>
             ${response.words.audio_1 ? `

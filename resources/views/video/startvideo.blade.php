@@ -75,30 +75,37 @@
                                             </div>
                                         @endif
                                         <div class="flex gap-4">
+                                            @if ($teachingData->audio_1 !== 'null')
+                                                <div>
+                                                    <audio class="audio-player"
+                                                        src="../{{ $teachingData->audio_1 }}"></audio>
+                                                    <button class="play-button">
+                                                        <img src="{{ asset('images/icons/audio-1.svg') }}"
+                                                            alt="audio-1">
+                                                    </button>
+                                                </div>
+                                            @endif
+                                            @if ($teachingData->audio_2 !== 'null')
+                                                <div>
+                                                    <audio class="audio-player"
+                                                        src="../{{ $teachingData->audio_2 }}"></audio>
+                                                    <button class="play-button">
+                                                        <img src="{{ asset('images/icons/audio-2.svg') }}"
+                                                            alt="audio-2">
+                                                    </button>
+                                                </div>
+                                            @endif
+                                            @if ($teachingData->audio_3 !== 'null')
+                                                <div>
+                                                    <audio class="audio-player"
+                                                        src="../{{ $teachingData->audio_3 }}"></audio>
+                                                    <button class="play-button">
+                                                        <img src="{{ asset('images/icons/audio-3.svg') }}"
+                                                            alt="audio-3">
 
-                                            <div>
-                                                <audio class="audio-player"
-                                                    src="../{{ $teachingData->audio_1 }}"></audio>
-                                                <button class="play-button">
-                                                    <img src="{{ asset('images/icons/audio-1.svg') }}" alt="audio-1">
-                                                </button>
-                                            </div>
-
-                                            <div>
-                                                <audio class="audio-player"
-                                                    src="../{{ $teachingData->audio_2 }}"></audio>
-                                                <button class="play-button">
-                                                    <img src="{{ asset('images/icons/audio-2.svg') }}" alt="audio-2">
-                                                </button>
-                                            </div>
-                                            <div>
-                                                <audio class="audio-player"
-                                                    src="../{{ $teachingData->audio_3 }}"></audio>
-                                                <button class="play-button">
-                                                    <img src="{{ asset('images/icons/audio-3.svg') }}" alt="audio-3">
-
-                                                </button>
-                                            </div>
+                                                    </button>
+                                                </div>
+                                            @endif
                                             <button
                                                 class="w-[140px] h-[45px] rounded-full bg-primary flex justify-center gap-2  items-center">
                                                 <img src="{{ asset('images/icons/audio.svg') }}" alt="audio-3">
@@ -237,6 +244,41 @@
 @include('layouts.footer')
 <script src="https://cdn.WebRTC-Experiment.com/RecordRTC.js"></script>
 <script>
+    function audioplayer() {
+        var playButtons = document.querySelectorAll('.play-button');
+        playButtons.forEach(function(button) {
+            button.addEventListener('click', function() {
+                var audio = button.parentElement.querySelector('.audio-player');
+                if (audio) {
+                    audio.play();
+                }
+            });
+        });
+        var volumeRanges = document.querySelectorAll('.audio-volume-range');
+
+        var audioElements = document.querySelectorAll('.audio-player');
+
+        function updateAllRanges(value) {
+            volumeRanges.forEach(function(range) {
+                range.value = value;
+            });
+        }
+        volumeRanges.forEach(function(range) {
+            range.addEventListener('input', function() {
+                var volumeValue = range.value;
+                audioElements.forEach(function(audio) {
+                    if (audio) {
+                        audio.volume = volumeValue;
+                    }
+                });
+                updateAllRanges(volumeValue);
+            });
+        });
+
+    }
+    audioplayer()
+
+
     let tabStream;
     let audioStream;
     let recorder;
@@ -322,46 +364,18 @@
         };
     }
 
-    let Cnextbtn = document.getElementById('CNexbtn')
-    let Cprebtn = document.getElementById('CPrebtn')
-    let prebtn = document.getElementById('preBtn')
-    let nbtn = document.getElementById('nBtn')
-    prebtn.addEventListener('click', () => {
+    $(document).ready(function() {
+        let Cnextbtn = $('#CNexbtn');
+        let Cprebtn = $('#CPrebtn');
+        let prebtn = $('#preBtn');
+        let nbtn = $('#nBtn');
 
-        Cprebtn.click()
-    });
-    nbtn.addEventListener('click', () => {
-
-        Cnextbtn.click()
-    });
-    var playButtons = document.querySelectorAll('.play-button');
-    // play  words audio
-    playButtons.forEach(function(button) {
-        button.addEventListener('click', function() {
-            var audio = button.parentElement.querySelector('.audio-player');
-            if (audio) {
-                audio.play();
-            }
+        prebtn.on('click', function() {
+            Cprebtn.click();
         });
-    });
-    var volumeRanges = document.querySelectorAll('.audio-volume-range');
 
-    var audioElements = document.querySelectorAll('.audio-player');
-
-    function updateAllRanges(value) {
-        volumeRanges.forEach(function(range) {
-            range.value = value;
-        });
-    }
-    volumeRanges.forEach(function(range) {
-        range.addEventListener('input', function() {
-            var volumeValue = range.value;
-            audioElements.forEach(function(audio) {
-                if (audio) {
-                    audio.volume = volumeValue;
-                }
-            });
-            updateAllRanges(volumeValue);
+        nbtn.on('click', function() {
+            Cnextbtn.click();
         });
     });
 </script>
