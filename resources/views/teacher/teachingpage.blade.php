@@ -7,7 +7,7 @@
         <h1 class=" font-semibold   text-2xl ">@lang('lang.Teaching_Page')</h1>
     </div>
     {{-- <form action="../filterwords" method="POST"> --}}
-        <form action="../addteaching" method="POST">
+    <form action="../addteaching" method="POST">
         @csrf
         <input type="hidden" id="studentId" name="studentid">
         <div class="grid grid-cols-3 mt-8  gap-5">
@@ -255,7 +255,6 @@
                 type: "GET",
                 url: url,
                 success: function(response) {
-                    console.log(response);
                     $('#wordsContainer').css('display', 'block');
 
                     var wordsInputs = `<input type="hidden" name="course_id[]" value="${response.words.course_id}">
@@ -268,34 +267,50 @@
                             <td class="px-6 py-5" >
                                 ${response.words.course_id}</td>
                             <td>${response.words.word}</td>
-                            <td>
+                            <td>s
                                 <div class="flex justify-center">
-                                    <img height="40px" width="40px" src="{{ asset('images/icons/audio-1.svg') }}" alt="audio">
-                                </div>
+        <div>
+            ${response.words.audio_1 ? `
+            <audio class="audio-player" src="../${response.words.audio_1}"></audio>
+            <button class="play-button">
+                <img height="40px" width="40px" src="{{ asset('images/icons/audio-1.svg') }}" alt="audio-1">
+            </button>` : ''}
+        </div>
+    </div>
                             </td>
 
                             <td>
-                                <div class="flex justify-center">
-                                    <img height="40px" width="40px" src="{{ asset('images/icons/audio-1.svg') }}" alt="audio">
-                                </div>
+    <div class="flex justify-center">
+        <div>
+            ${response.words.audio_2 ? `
+            <audio class="audio-player" src="../${response.words.audio_2}"></audio>
+            <button class="play-button">
+                <img height="40px" width="40px" src="{{ asset('images/icons/audio-1.svg') }}" alt="audio-1">
+            </button>` : ''}
+        </div>
+    </div>
+</td>
+<td>
+    <div class="flex justify-center">
+        <div>
+            ${response.words.audio_3 ? `
+            <audio class="audio-player" src="../${response.words.audio_3}"></audio>
+            <button class="play-button">
+                <img height="40px" width="40px" src="{{ asset('images/icons/audio-1.svg') }}" alt="audio-1">
+            </button>` : ''}
+        </div>
+    </div>
+</td>
+            <td class="">
+                  <div class="flex gap-5 justify-center">
+                              <a class="cursor-pointer" href="#"><img width="38px" src="{{ asset('images/icons/delete.svg') }}" alt="delete"></a>
+                     </div>
                             </td>
+                </tr>`
+                    $('#worksContainer').append(wordsInputs);
+                    $('#wordsbody').append(wordsOutput);
 
-                            <td>
-                                <div class="flex justify-center">
-                                    <img height="40px" width="40px" src="{{ asset('images/icons/audio-1.svg') }}" alt="audio">
-                                </div>
-                            </td>
-
-                            <td class="">
-                                <div class="flex gap-5 justify-center">
-                                    <a class="cursor-pointer" href="#"><img width="38px"
-                                            src="{{ asset('images/icons/delete.svg') }}" alt="delete"></a>
-
-                                </div>
-                            </td>
-                        </tr>`
-                    $('#worksContainer').append(wordsInputs)
-                    $('#wordsbody').append(wordsOutput)
+                    audioPlayer();
                 },
                 error: function(jqXHR) {
                     let response = JSON.parse(jqXHR.responseText);
@@ -312,6 +327,22 @@
         });
 
     })
+
+    function audioPlayer() {
+        var playButtons = document.querySelectorAll('.play-button');
+        console.log("run  audio  fnction");
+        playButtons.forEach(function(button) {
+            button.addEventListener('click', function() {
+
+                console.log("run  audio  fnction");
+                var audio = button.parentElement.querySelector('.audio-player');
+                if (audio) {
+                    audio.play();
+                }
+            });
+        });
+    }
+    audioPlayer();
 </script>
 
 
