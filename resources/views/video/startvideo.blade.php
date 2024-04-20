@@ -2,6 +2,14 @@
 
     $teachingData = session('teachingData');
 @endphp
+@php
+    try {
+        $count = count($teachingData);
+    } catch (Throwable $e) {
+        $count = 0; // Set count to 0 if an error occurs
+    }
+@endphp
+
 @include('layouts.header')
 @include('video.includes.nav')
 <section class="mx-16 mt-10 ">
@@ -41,11 +49,15 @@
         <div class=" w-full h-full z-20">
 
 
-            <div id="controls-carousel" class="relative w-full h-full  " data-carousel="static">
+            <div id="controls-carousel" class="relative w-full h-full controls-carousel " data-carousel="static">
                 <!-- Carousel wrapper -->
                 <div class="relative h-full overflow-hidden rounded-lg ">
                     <!-- word 1 -->
                     @foreach ($teachingData as $teachingData)
+                        @if ($count == 1)
+                            <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
+                            </div>
+                        @endif
                         <div class="hidden duration-700 ease-in-out " data-carousel-item="active">
                             <div>
                                 <h2
@@ -55,11 +67,13 @@
                             {{-- audio controlls --}}
                             <div class="">
                                 <div class="ml-6 pr-12 absolute top-[85%] w-full">
-                                    <div class="mt-4 flex   justify-between">
-                                        <div class="flex items-center  gap-5">
-                                            <button id="preBtn"
-                                                class="w-32 bg-secondary rounded-md h-12 text-white font-semibold text-xl">@lang('lang.Previous')</button>
-                                        </div>
+                                    <div class="mt-4 flex  {{ $count !== 1 ? 'justify-between' : 'justify-center' }}  ">
+                                        @if ($count !== 1)
+                                            <div class="flex items-center  gap-5">
+                                                <button id="preBtn"
+                                                    class="w-32 bg-secondary rounded-md h-12 text-white font-semibold text-xl">@lang('lang.Previous')</button>
+                                            </div>
+                                        @endif
                                         <div class="flex gap-4">
 
                                             <div>
@@ -94,10 +108,12 @@
                                                     value="1">
                                             </button>
                                         </div>
-                                        <div>
-                                            <button id="nBtn"
-                                                class="w-32 bg-secondary rounded-md h-12 text-white font-semibold text-lg">@lang('lang.Next')</button>
-                                        </div>
+                                        @if ($count !== 1)
+                                            <div>
+                                                <button id="nBtn"
+                                                    class="w-32 bg-secondary rounded-md h-12 text-white font-semibold text-lg">@lang('lang.Next')</button>
+                                            </div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -108,30 +124,32 @@
 
                 </div>
                 <!-- Slider controls -->
-                <button type="button" id="CPrebtn"
-                    class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer "
-                    data-carousel-prev>
-                    <span class="inline-flex items-center justify-center w-10 h-10 rounded-full ">
-                        <svg class="w-8 h-8 text-primary " aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                            fill="none" viewBox="0 0 6 10">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M5 1 1 5l4 4" />
-                        </svg>
-                        <span class="sr-only">Previous</span>
-                    </span>
-                </button>
-                <button type="button" id="CNexbtn"
-                    class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer "
-                    data-carousel-next>
-                    <span class="inline-flex items-center justify-center w-10 h-10 rounded-full">
-                        <svg class="w-8 h-8 text-primary " aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                            fill="none" viewBox="0 0 6 10">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="m1 9 4-4-4-4" />
-                        </svg>
-                        <span class="sr-only">Next</span>
-                    </span>
-                </button>
+                @if ($count !== 1)
+                    <button type="button" id="CPrebtn"
+                        class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer "
+                        data-carousel-prev>
+                        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full ">
+                            <svg class="w-8 h-8 text-primary " aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                fill="none" viewBox="0 0 6 10">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="M5 1 1 5l4 4" />
+                            </svg>
+                            <span class="sr-only">Previous</span>
+                        </span>
+                    </button>
+                    <button type="button" id="CNexbtn"
+                        class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer "
+                        data-carousel-next>
+                        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full">
+                            <svg class="w-8 h-8 text-primary " aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                fill="none" viewBox="0 0 6 10">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="m1 9 4-4-4-4" />
+                            </svg>
+                            <span class="sr-only">Next</span>
+                        </span>
+                    </button>
+                @endif
             </div>
 
         </div>
