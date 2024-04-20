@@ -111,12 +111,33 @@ class teachingController extends Controller
             // Get levels  adn lesson based on the selected course
             $courseId = $request->input('course_id');
             $levels = words::where('course_id', $courseId)->get();
-            return response()->json(['levels' => $levels, 'lessons' => $levels ,  'words' => $levels]);
+            return response()->json(['levels' => $levels, 'lessons' => $levels,  'words' => $levels]);
         } elseif ($request->has('level_id')) {
             // Get lessons based on the selected level
             $levelId = $request->input('level_id');
             $lessons = words::where('level', $levelId)->get();
-            return response()->json(['lessons' => $lessons , 'words' => $lessons]);
+            return response()->json(['lessons' => $lessons, 'words' => $lessons]);
+        }
+    }
+    //  teaching page filters
+
+    function filtersCourse(Request $request)
+    {
+        try {
+
+            if ($request->has('course')) {
+                $courseId = $request->input('course');
+                $courses = courses::all();
+                $words = words::where('course_id', $courseId)->get();
+                return response()->json(['success' =>  true, 'message' => 'Data get  Successfully',  'words' => $words], 200);
+            } else {
+
+                $courses = courses::all();
+                $words = words::all();
+                return response()->json(['success' =>  true, 'message' => 'Data get  Successfully', 'courses' => $courses, 'words' => $words], 200);
+            }
+        } catch (\Exception $e) {
+            return response()->json(['success' =>  false, 'message' => $e->getMessage()], 200);
         }
     }
 }

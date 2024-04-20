@@ -5,6 +5,7 @@ use App\Http\Controllers\coursesController;
 use App\Http\Controllers\parentController;
 use App\Http\Controllers\studentController;
 use App\Http\Controllers\teacherController;
+use App\Http\Controllers\teachingController;
 use App\Http\Controllers\trainingController;
 use App\Http\Controllers\userController;
 use Illuminate\Http\Request;
@@ -65,3 +66,7 @@ Route::post('addCourse', [coursesController::class, 'addcourse']);
 Route::get('courseData', [coursesController::class, 'coursedata']);
 Route::match(['get', 'post'], 'delCourse/{course_id}', [coursesController::class, 'delcourse']);
 Route::post('updateCourse/{course_id}', [coursesController::class, 'updatecourse']);
+
+
+// teaching page filters
+Route::get('filtersCourse', [teachingController::class, 'filtersCourse']);
