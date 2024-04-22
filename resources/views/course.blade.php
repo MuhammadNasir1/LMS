@@ -202,7 +202,9 @@
                                     <div class="w-full  border-2  border-gray">
 
                                     </div>
-                                    <button type="button" class="recordButton">
+                                    <button type="button" class="recordButton relative h-8 w-8">
+                                        <span
+                                            class="animate-ping recordButtonAnimation hidden  absolute right-[1px]  h-full w-full rounded-full bg-primary opacity-75"></span>
                                         <svg width="32" height="32" viewBox="0 0 29 29" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -238,7 +240,9 @@
                                     <div class="w-full  border-2  border-gray">
 
                                     </div>
-                                    <button type="button" class="recordButton">
+                                    <button type="button" class="recordButton relative h-8 w-8">
+                                        <span
+                                            class="animate-ping recordButtonAnimation hidden  absolute right-[1px]  h-full w-full rounded-full bg-primary opacity-75"></span>
                                         <svg width="32" height="32" viewBox="0 0 29 29" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -275,7 +279,9 @@
                                         <div class="w-full  border-2  border-gray">
 
                                         </div>
-                                        <button type="button" class="recordButton">
+                                        <button type="button" class="recordButton relative h-8 w-8">
+                                            <span
+                                                class="animate-ping recordButtonAnimation hidden  absolute right-[1px]  h-full w-full rounded-full bg-primary opacity-75"></span>
                                             <svg width="32" height="32" viewBox="0 0 29 29" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
                                                 <path fill-rule="evenodd" clip-rule="evenodd"
@@ -602,6 +608,7 @@
         const fileoutput = document.querySelector("#wordInput");
         recordingSets.forEach((set, index) => {
             const recordButton = set.querySelector(".recordButton");
+            const recordButtonAn = set.querySelector(".recordButtonAnimation");
             const audioElement = set.querySelector(".audioElement");
             const audioFileInput = set.querySelector(".audioFileInput");
             let mediaRecorder;
@@ -647,7 +654,10 @@
                         };
 
                         mediaRecorder.start();
-                        recordButton.textContent = "Stop Recording";
+                        // recordButton.textContent = "Stop Recording";
+                        recordButtonAn.classList.remove('hidden')
+
+
                     })
                     .catch(function(err) {
                         console.error("Error accessing microphone", err);
@@ -656,8 +666,8 @@
 
             function stopRecording() {
                 mediaRecorder.stop();
-                recordButton.textContent = "Start Recording";
-
+                // recordButton.textContent = "Start Recording";
+                recordButtonAn.classList.add('hidden')
                 // Stop the microphone stream
                 const tracks = mediaRecorder.stream.getTracks();
                 tracks.forEach((track) => track.stop());
