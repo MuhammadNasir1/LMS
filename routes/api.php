@@ -70,3 +70,5 @@ Route::post('updateCourse/{course_id}', [coursesController::class, 'updatecourse
 
 // teaching page filters
 Route::get('filtersCourse', [teachingController::class, 'filtersCourse']);
+Route::post('addTeachingData', [teachingController::class, 'addteachingata']);
+Route::post('addTeachingData', [teachingController::class, 'teacherRecdata']);
