@@ -46,9 +46,7 @@ Route::middleware('custom')->group(function () {
     Route::post('addtraining', [trainingController::class, 'addtraining']);
     //  admnim pages
     Route::middleware('adminAuth')->group(function () {
-        Route::get('/admin', function () {
-            return view('admin.dashboard');
-        });
+        Route::get('/admin', [userController::class, 'adminDashboard']);
 
         Route::get('/admin/teacher', [teacherController::class, 'getsteacherdata']);
         Route::get('/admin/student', [studentController::class, 'getstudentdata']);
@@ -106,9 +104,11 @@ Route::middleware('custom')->group(function () {
 
     // teachers pages
     Route::middleware('teacherAuth')->group(function () {
-        Route::get('/teacher', function () {
-            return view("teacher.dashboard");
-        });
+        // Route::get('/teacher', function () {
+        //     return view("teacher.dashboard");
+        // });
+        Route::get('/teacher', [userController::class, 'teacherDashboard']);
+
         Route::get('/teacher/courses', function () {
             return view("teacher.courses");
         });

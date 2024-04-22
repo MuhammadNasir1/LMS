@@ -22,5 +22,5 @@ class parents extends Model
         'child_ren',
     ];
 
-    public $timestamps = true;
+    public $timestamps = 'create_time';
 }

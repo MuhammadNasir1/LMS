@@ -9,6 +9,10 @@ use Illuminate\Validation\ValidationException;
 use  Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\OtpMail;
+use App\Models\students;
+use App\Models\teacher;
+use App\Models\teacher_rec;
+use App\Models\training;
 use Illuminate\Support\Facades\Auth;
 
 class userController extends Controller
@@ -21,44 +25,24 @@ class userController extends Controller
         session()->put('locale', $request->lang);
         return redirect()->back();
     }
-
-
-
-
-
-    // public function changepasword(Request $request)
-    // {
-
-    //     try {
-    //         $request->validate([
-    //             'password' => "required|confirmed",
-    //         ]);
-    //         $loginuser = auth()->user();
-    //         $loginuser->password = Hash::make($request->password);
-    //         $loginuser->save();
-    //         return response()->json([
-    //             "message" => "password change successfull",
-    //             'success' => true,
-    //         ], 200);
-    //     } catch (\Exception $e) {
-    //         return response()->json([
-    //             "message" => "password not change ",
-    //             'success' => false,
-    //             'eror' => $e->getMessage(),
-    //         ], 500);
-    //     }
-    // }
-
-
-
-    // send opt in parent email
-    public function sendWelcomeEmail()
+    // dashboard  Users Couny
+    public function adminDashboard()
     {
-        $title = 'LMS';
-        $body = 'Thank you for participating!';
+        $parentsCount = parents::count();
+        $studentsCount = students::count();
+        $teachersCount = teacher::count();
 
-        Mail::to('nmian7080@gmail.com')->send(new OtpMail($title, $body));
+        return view('admin.dashboard', compact('parentsCount', 'studentsCount', 'teachersCount'));
+    }
 
-        return "Email sent successfully!";
+    public function parentDashboard()
+    {
+        return view('parent.dashboard');
+    }
+    public function teacherDashboard()
+    {
+        $trainingCount = training::count();
+        $videoCount = teacher_rec::count();
+        return view('teacher.dashboard', compact('trainingCount', 'videoCount'));
     }
 }

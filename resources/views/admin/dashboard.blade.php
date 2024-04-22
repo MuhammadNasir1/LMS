@@ -11,7 +11,7 @@
                 <div class="flex gap-1 justify-between items-center">
                     <div>
                         <p class="text-sm text-[#808191]">@lang('lang.Total_Students')</p>
-                        <h2 class="text-2xl font-semibold mt-1">5,732</h2>
+                        <h2 class="text-2xl font-semibold mt-1">{{ $studentsCount }}</h2>
                     </div>
                     <div>
                         <img width="90px" height="90px" src="{{ asset('images/totall_student.svg') }}" alt="students">
@@ -25,7 +25,7 @@
                 <div class="flex gap-1 justify-between items-center">
                     <div>
                         <p class="text-sm text-[#808191]">@lang('lang.Total_Parents')</p>
-                        <h2 class="text-2xl font-semibold mt-1">8,754</h2>
+                        <h2 class="text-2xl font-semibold mt-1">{{ $parentsCount }}</h2>
                     </div>
                     <div>
                         <img width="90px" height="90px" src="{{ asset('images/total_prent.svg') }}" alt="students">
@@ -39,7 +39,7 @@
                 <div class="flex gap-1 justify-between items-center">
                     <div>
                         <p class="text-sm text-[#808191]">@lang('lang.Total_Teachers')</p>
-                        <h2 class="text-2xl font-semibold mt-1">5,732</h2>
+                        <h2 class="text-2xl font-semibold mt-1">{{ $teachersCount }}</h2>
                     </div>
                     <div>
                         <img width="90px" height="90px" src="{{ asset('images/total_teacher.svg') }}" alt="teacher">
@@ -53,7 +53,7 @@
                 <div class="flex gap-1 justify-between items-center">
                     <div>
                         <p class="text-sm text-[#808191]">@lang('lang.Total_Revenue')</p>
-                        <h2 class="text-2xl font-semibold mt-1">5,732</h2>
+                        <h2 class="text-2xl font-semibold mt-1">$0.00</h2>
                     </div>
                     <div>
                         <img width="90px" height="90px" src="{{ asset('images/total_rev.svg') }}" alt="Revenue">
@@ -211,7 +211,7 @@
                     </button>
                 </div>
                 <div id="attendanceChart" class="mt-4" style="height: 270px; width: 100%;"></div>
-                <div  class="mt-8 mx-10">
+                <div class="mt-8 mx-10">
                     <div class="flex justify-around">
                         <div class="flex flex-col items-center">
                             <p class="text-[#CECECE] text-lg font-semibold">@lang('lang.Students')</p>
@@ -396,10 +396,8 @@
     }
 </script>
 
-    <script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js"
-    integrity = "sha512-L0Shl7nXXzIlBSUUPpxrokqq4ojqgZFQczTYlGjzONGTDAcLremjwaWv5A+EDLnxhQzY5xUZPWLOLqYRkY0Cbw=="
-    crossorigin = "anonymous"
-    referrerpolicy = "no-referrer" >
-</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js"
+    integrity="sha512-L0Shl7nXXzIlBSUUPpxrokqq4ojqgZFQczTYlGjzONGTDAcLremjwaWv5A+EDLnxhQzY5xUZPWLOLqYRkY0Cbw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 @include('layouts.footer')

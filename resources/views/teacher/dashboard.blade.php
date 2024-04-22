@@ -40,7 +40,7 @@
                 <div class="flex gap-1 justify-between items-center">
                     <div>
                         <p class="text-sm text-[#808191]">@lang('lang.Training_Videos')</p>
-                        <h2 class="text-2xl font-semibold mt-1">03</h2>
+                        <h2 class="text-2xl font-semibold mt-1">{{ $trainingCount }}</h2>
                     </div>
                     <div>
                         <img width="80px" height="80px" src="{{ asset('images/tainingicon.svg') }}"
@@ -55,7 +55,7 @@
                 <div class="flex gap-1 justify-between items-center">
                     <div>
                         <p class="text-sm text-[#808191]">@lang('lang.Recorded_Videos')</p>
-                        <h2 class="text-2xl font-semibold mt-1">05</h2>
+                        <h2 class="text-2xl font-semibold mt-1">{{ $videoCount }}</h2>
                     </div>
                     <div>
                         <img width="80px" height="80px" src="{{ asset('images/recorded.svg') }}"
@@ -76,13 +76,13 @@
         <h2 class="text-xl text-[#808191] font-semibold ml-6">@lang('lang.Students')</h2>
         <div id="studentChart" class="mt-3" style="height: 370px; width: 100%;"></div>
     </div>
-    </div>
+</div>
 </div>
 
 <script>
     window.onload = function() {
         CanvasJS.addColorSet("colors",
-                [
+            [
 
                 "#EDBD58",
                 "#339B96",
@@ -90,7 +90,7 @@
                 "#3E3CB3",
                 "#0A5214",
                 "#c3ddfd"
-                ]);
+            ]);
         var chart = new CanvasJS.Chart("lessonChart", {
             colorSet: "colors",
             animationEnabled: true,
