@@ -54,8 +54,6 @@ Route::middleware('custom')->group(function () {
         Route::get('/admin/student', [studentController::class, 'getstudentdata']);
         Route::get('/admin/parents', [parentController::class, 'getparentdata']);
 
-        Route::get('/admin/course', [coursesController::class, 'getcoursedata']);
-
         Route::get('/admin/help', function () {
             return view('admin.help');
         });
@@ -154,6 +152,8 @@ Route::middleware('custom')->group(function () {
     // teaching  page
     Route::get('filter-options', [teachingController::class, 'filterOptions']);
 });
+Route::get('/course', [coursesController::class, 'getcoursedata']);
+
 Route::post('/addteaching', [teachingController::class, 'addteachingdata']);
 Route::post('/teacherRec', [teachingController::class, 'teacherRecdata']);
 

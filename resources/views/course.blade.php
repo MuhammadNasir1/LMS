@@ -1,6 +1,11 @@
 @include('layouts.header')
-@include('admin.includes.nav')
-
+@if (session('user_det')['role'] == 'parent')
+    @include('parent.includes.nav')
+@elseif (session('user_det')['role'] == 'teacher')
+    @include('teacher.includes.nav')
+@else
+    @include('admin.includes.nav')
+@endif
 <div class="mx-4 mt-12">
     <div>
         <h1 class=" font-semibold   text-2xl ">@lang('lang.All_Courses')</h1>
@@ -56,7 +61,7 @@
                             <td>{{ $course->lesson }}</td>
                             <td>{{ $course->word }}</td>
                             <td>
-                                @if ($course->audio_1 !== 'null')
+                                @if (($course->audio_1 !== 'null') & !empty($course->audio_1))
                                     <div class="flex justify-center">
                                         <div>
                                             <audio class="audio-player" src="../{{ $course->audio_1 }}"></audio>
@@ -313,95 +318,6 @@
                         </button>
                     </div>
                 </div>
-                <div>
-                    <table class="overflow-scroll w-full text-center">
-                        <thead class="py-6 bg-primary text-white">
-                            <tr>
-                                <th scope="col" class="px-6 py-3">
-                                    @lang('lang.Course_ID')
-                                </th>
-
-                                <th>@lang('lang.Course')</th>
-                                <th>@lang('lang.Level')</th>
-                                <th>@lang('lang.Lesson')</th>
-                                <th>@lang('lang.Word')</th>
-                                <th>@lang('lang.Audio_1')</th>
-                                <th>@lang('lang.Audio_2')</th>
-                                <th>@lang('lang.Audio_3')</th>
-
-                                <th>@lang('lang.Action')</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="">
-                                <td class="px-6 py-5">001</td>
-                                <td>jon</td>
-                                <td>1</td>
-                                <td>1</td>
-
-                                <td>English</td>
-                                <td>
-                                    <div class="flex justify-center">
-                                        <svg width="40" height="41" viewBox="0 0 50 51" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <rect y="0.478516" width="50" height="50" rx="25"
-                                                fill="#339B96" />
-                                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                                d="M23.9517 13.6636C24.8353 14.1084 24.9942 15.0742 24.9942 15.6633V36.2947C24.9942 36.8851 24.8339 37.8487 23.9516 38.2931C23.015 38.765 22.1422 38.234 21.6984 37.8354L14.9356 31.7573H12.499C11.1189 31.7573 10 30.6384 10 29.2583L10 22.7763C10 21.3961 11.1189 20.2772 12.499 20.2772H14.9314L21.6984 14.1226C22.1407 13.7252 23.0138 13.1914 23.9517 13.6636ZM22.4952 16.776L16.2553 22.4511C16.0253 22.6603 15.7255 22.7763 15.4146 22.7763H12.499L12.499 29.2583H15.4146C15.723 29.2583 16.0205 29.3723 16.2498 29.5784L22.4952 35.1914V16.776Z"
-                                                fill="white" />
-                                            <path
-                                                d="M29.1 21.0332C28.4388 20.8355 27.7425 21.2112 27.5449 21.8724C27.3472 22.5336 27.7229 23.2298 28.3842 23.4275C29.2046 23.6727 29.9916 24.6305 29.9916 25.9788C29.9916 27.3272 29.2046 28.285 28.3842 28.5302C27.7229 28.7279 27.3472 29.4241 27.5449 30.0854C27.7425 30.7465 28.4388 31.1222 29.1 30.9246C31.1537 30.3105 32.4906 28.2375 32.4906 25.9788C32.4906 23.7202 31.1537 21.6472 29.1 21.0332Z"
-                                                fill="white" />
-                                        </svg>
-                                    </div>
-                                </td>
-
-                                <td>
-                                    <div class="flex justify-center">
-                                        <svg width="40" height="41" viewBox="0 0 50 51" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <rect y="0.478516" width="50" height="50" rx="25"
-                                                fill="#339B96" />
-                                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                                d="M23.9517 13.6636C24.8353 14.1084 24.9942 15.0742 24.9942 15.6633V36.2947C24.9942 36.8851 24.8339 37.8487 23.9516 38.2931C23.015 38.765 22.1422 38.234 21.6984 37.8354L14.9356 31.7573H12.499C11.1189 31.7573 10 30.6384 10 29.2583L10 22.7763C10 21.3961 11.1189 20.2772 12.499 20.2772H14.9314L21.6984 14.1226C22.1407 13.7252 23.0138 13.1914 23.9517 13.6636ZM22.4952 16.776L16.2553 22.4511C16.0253 22.6603 15.7255 22.7763 15.4146 22.7763H12.499L12.499 29.2583H15.4146C15.723 29.2583 16.0205 29.3723 16.2498 29.5784L22.4952 35.1914V16.776Z"
-                                                fill="white" />
-                                            <path
-                                                d="M29.1 21.0332C28.4388 20.8355 27.7425 21.2112 27.5449 21.8724C27.3472 22.5336 27.7229 23.2298 28.3842 23.4275C29.2046 23.6727 29.9916 24.6305 29.9916 25.9788C29.9916 27.3272 29.2046 28.285 28.3842 28.5302C27.7229 28.7279 27.3472 29.4241 27.5449 30.0854C27.7425 30.7465 28.4388 31.1222 29.1 30.9246C31.1537 30.3105 32.4906 28.2375 32.4906 25.9788C32.4906 23.7202 31.1537 21.6472 29.1 21.0332Z"
-                                                fill="white" />
-                                        </svg>
-                                    </div>
-                                </td>
-
-                                <td>
-                                    <div class="flex justify-center">
-                                        <svg width="40" height="41" viewBox="0 0 50 51" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <rect y="0.478516" width="50" height="50" rx="25"
-                                                fill="#339B96" />
-                                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                                d="M23.9517 13.6636C24.8353 14.1084 24.9942 15.0742 24.9942 15.6633V36.2947C24.9942 36.8851 24.8339 37.8487 23.9516 38.2931C23.015 38.765 22.1422 38.234 21.6984 37.8354L14.9356 31.7573H12.499C11.1189 31.7573 10 30.6384 10 29.2583L10 22.7763C10 21.3961 11.1189 20.2772 12.499 20.2772H14.9314L21.6984 14.1226C22.1407 13.7252 23.0138 13.1914 23.9517 13.6636ZM22.4952 16.776L16.2553 22.4511C16.0253 22.6603 15.7255 22.7763 15.4146 22.7763H12.499L12.499 29.2583H15.4146C15.723 29.2583 16.0205 29.3723 16.2498 29.5784L22.4952 35.1914V16.776Z"
-                                                fill="white" />
-                                            <path
-                                                d="M29.1 21.0332C28.4388 20.8355 27.7425 21.2112 27.5449 21.8724C27.3472 22.5336 27.7229 23.2298 28.3842 23.4275C29.2046 23.6727 29.9916 24.6305 29.9916 25.9788C29.9916 27.3272 29.2046 28.285 28.3842 28.5302C27.7229 28.7279 27.3472 29.4241 27.5449 30.0854C27.7425 30.7465 28.4388 31.1222 29.1 30.9246C31.1537 30.3105 32.4906 28.2375 32.4906 25.9788C32.4906 23.7202 31.1537 21.6472 29.1 21.0332Z"
-                                                fill="white" />
-                                        </svg>
-                                    </div>
-                                </td>
-
-                                <td class="">
-                                    <div class="flex gap-5 justify-center">
-                                        <a class="cursor-pointer" href="#"><img width="38px"
-                                                src="{{ asset('images/icons/delete.svg') }}" alt="delete"></a>
-                                        {{-- <a class="cursor-pointer" href="#"><img width="38px"
-                                                src="{{ asset('images/icons/update.svg') }}" alt="update"></a> --}}
-
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
                 <div class=" pt-4">
                     <hr class="border-[#DEE2E6] ">
                 </div>
@@ -661,7 +577,7 @@
                 },
                 success: function(response) {
                     if (response.success == true) {
-                        window.location.href = '../admin/course';
+                        window.location.href = '../course';
                     }
                 },
                 error: function(jqXHR) {

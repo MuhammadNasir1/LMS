@@ -85,7 +85,7 @@ class coursesController extends Controller
         $courses =  words::all();
 
 
-        return view('admin.course', ['courses' => $courses]);
+        return view('course', ['courses' => $courses]);
     }
 
     public function getteachingWords($id){
