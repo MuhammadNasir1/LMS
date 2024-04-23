@@ -38,11 +38,12 @@
                             <td>{{ $training->date }}</td>
                             <td class="flex gap-5">
                                 @if (session('user_det')['role'] == 'admin')
-                                <a class="cursor-pointer" href="#"><img width="38px"
-                                        src="{{ asset('images/icons/delete.svg') }}" alt="delete"></a>
-                                <a class="cursor-pointer" href="#"><img width="38px"
-                                        src="{{ asset('images/icons/update.svg') }}" alt="update"></a>
-                                        @endif
+                                    <button class="cursor-pointer delbtn" delId="{{ $training->id }}"><img
+                                            width="38px" src="{{ asset('images/icons/delete.svg') }}"
+                                            alt="delete"></button>
+                                    <a class="cursor-pointer" href="#"><img width="38px"
+                                            src="{{ asset('images/icons/update.svg') }}" alt="update"></a>
+                                @endif
                                 <a class="cursor-pointer" data-modal-target="videodetails{{ $i }}"
                                     data-modal-toggle="videodetails{{ $i }}"><img width="38px"
                                         src="{{ asset('images/icons/view.svg') }}" alt="View"></a>
@@ -269,5 +270,37 @@
                 }
             });
         });
+        // delete training video
+        $('.delbtn').click(function() {
+            var delId = $(this).attr('delId');
+            var url = "../delTraining/" + delId;
+            $.ajax({
+                type: "GET",
+                url: url,
+                dataType: "json",
+                success: function(response) {
+                    if (response.success == true) {
+                        window.location.href = '../training';
+                    } else if (response.success == false) {
+                        Swal.fire(
+                            'Warning!',
+                            response.message,
+                            'warning'
+                        );
+                    }
+                },
+                error: function(jqXHR) {
+                    let response = JSON.parse(jqXHR.responseText);
+                    console.log("error");
+                    Swal.fire(
+                        'Warning!',
+                        'Training Not Found',
+                        'warning'
+                    );
+                }
+
+            });
+        });
+
     });
 </script>
