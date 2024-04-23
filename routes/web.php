@@ -21,7 +21,7 @@ Route::get('/lang', [userController::class, 'language_change']);
 Route::post('registerdata', [authController::class, 'register']);
 Route::post('login', [authController::class, 'login']);
 Route::match(['get',  'post'], 'weblogout', [authController::class, 'weblogout']);
-
+Route::post('addCourse', [coursesController::class, 'addcourse']);
 Route::get('/loginrole', function () {
     return view('loginrole');
 });
@@ -73,7 +73,7 @@ Route::middleware('custom')->group(function () {
 
 
         // add  course
-        Route::post('addCourse', [coursesController::class, 'addcourse']);
+
         Route::post('updateCourse/{id}', [coursesController::class, 'updatecourse']);
 
         Route::get('studentUpdataData/{id}', [studentController::class, 'studentUpdataData']);

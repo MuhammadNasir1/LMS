@@ -161,109 +161,33 @@
                     </div>
                     {{-- ====== word inputs ===  --}}
                     <div id="wordContainer">
-                        <div class="px-10 grid grid-cols-3 gap-10">
-                            <div class="my-4">
-                                <label class="text-[14px] font-semibold mb-1  block"
-                                    for="Level">@lang('lang.Level')</label>
-                                <input type="text"
-                                    class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                    name="level[]" id="Levelinput" placeholder="@lang('lang.Enter_Level_No')">
-                            </div>
-                            <div class="my-4">
-                                <label class="text-[14px] font-semibold mb-1 ml-1 block"
-                                    for="Lesson">@lang('lang.Lesson')</label>
-                                <input type="text"
-                                    class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                    name="lesson[]" id="Lessoninput" placeholder="@lang('lang.Enter_Lesson_No')">
-                            </div>
-                            <div class="my-4">
-                                <label class="text-[14px] font-semibold mb-1 ml-1 block"
-                                    for="Word">@lang('lang.Word')</label>
-                                <input type="text"
-                                    class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                    name="word[]" id="Wordinput" placeholder="@lang('lang.Enter_Word')">
-                            </div>
-                        </div>
-                        <div class="px-10 my-5 mt-3 grid grid-cols-3 gap-10">
-                            <div class="recording-set">
-                                <label class="text-[14px] font-semibold mb-1 ml-1 block">@lang('lang.Audio_1')</label>
-                                <div
-                                    class="h-10 w-full border border-[#DEE2E6] rounded-[4px]  gap-2 flex justify-between px-2 items-center">
-                                    <button type="button"
-                                        class="h-8 w-full max-h-8 max-w-8 bg-[#339b965b] rounded-full flex justify-center items-center ">
-                                        <svg width="14" height="16" viewBox="0 0 9 11" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M8.26713 6.82375L2.36687 10.3073C1.41714 10.868 0.25 10.1381 0.25 8.9835V2.01645C0.25 0.861837 1.41714 0.132013 2.36687 0.692738L8.26713 4.17625C9.24425 4.75325 9.24425 6.24675 8.26713 6.82375Z"
-                                                fill="#339B96" />
-                                        </svg>
-
-                                    </button>
-                                    <div class="w-full  border-2  border-gray">
-
-                                    </div>
-                                    <button type="button" class="recordButton relative h-8 w-8">
-                                        <span
-                                            class="animate-ping recordButtonAnimation hidden  absolute right-[1px]  h-full w-full rounded-full bg-primary opacity-75"></span>
-                                        <svg width="32" height="32" viewBox="0 0 29 29" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                                d="M28.667 14.167C28.667 21.8989 22.3989 28.167 14.667 28.167C6.935 28.167 0.666992 21.8989 0.666992 14.167C0.666992 6.435 6.935 0.166992 14.667 0.166992C22.3989 0.166992 28.667 6.435 28.667 14.167ZM16.4353 13.7985C16.4353 15.0217 15.4479 16.0091 14.2249 16.0091C13.0017 16.0091 12.0143 15.0217 12.0143 13.7985V9.37752C12.0143 8.15436 13.0017 7.16699 14.2249 7.16699C15.4479 7.16699 16.4353 8.15436 16.4353 9.37752V13.7985ZM14.2249 8.6407C13.8196 8.6407 13.4881 8.97228 13.4881 9.37755V13.7987C13.4881 14.2038 13.8196 14.5355 14.2249 14.5355C14.6375 14.5355 14.9617 14.2112 14.9617 13.7987V9.37755C14.9617 8.97228 14.63 8.6407 14.2249 8.6407ZM19.3828 13.7985H18.1302C18.1302 16.0091 16.2585 17.5564 14.2249 17.5564C12.1912 17.5564 10.3196 16.0091 10.3196 13.7985H9.06699C9.06699 16.3112 11.0712 18.3891 13.4881 18.7502V21.167H14.9617V18.7502C17.3785 18.3891 19.3828 16.3112 19.3828 13.7985Z"
-                                                fill="#EDBD58" />
-                                        </svg>
-                                    </button>
-
+                        <div class="wordsInputs">
+                            <div class="px-10 grid grid-cols-3 gap-10">
+                                <div class="my-4">
+                                    <label class="text-[14px] font-semibold mb-1  block"
+                                        for="Level">@lang('lang.Level')</label>
+                                    <input type="text"
+                                        class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
+                                        name="level[]" id="Levelinput" placeholder="@lang('lang.Enter_Level_No')">
                                 </div>
-                                {{-- ==== hidden audio and file ====== --}}
-                                <div class="invisible absolute">
-                                    <input type="file" name="audio_1[]" class="audioFileInput"
-                                        accept="audio/*" />
-                                    <div>
-                                        <audio class="audioElement" controls></audio>
-                                    </div>
+                                <div class="my-4">
+                                    <label class="text-[14px] font-semibold mb-1 ml-1 block"
+                                        for="Lesson">@lang('lang.Lesson')</label>
+                                    <input type="text"
+                                        class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
+                                        name="lesson[]" id="Lessoninput" placeholder="@lang('lang.Enter_Lesson_No')">
+                                </div>
+                                <div class="my-4">
+                                    <label class="text-[14px] font-semibold mb-1 ml-1 block"
+                                        for="Word">@lang('lang.Word')</label>
+                                    <input type="text"
+                                        class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
+                                        name="word[]" id="Wordinput" placeholder="@lang('lang.Enter_Word')">
                                 </div>
                             </div>
-                            <div class="recording-set">
-                                <label class="text-[14px] font-semibold mb-1 ml-1 block">@lang('lang.Audio_2')</label>
-                                <div
-                                    class="h-10 w-full border border-[#DEE2E6] rounded-[4px]  gap-2 flex justify-between px-2 items-center">
-                                    <button type="button"
-                                        class="h-8 w-full max-h-8 max-w-8 bg-[#339b965b] rounded-full flex justify-center items-center ">
-                                        <svg width="14" height="16" viewBox="0 0 9 11" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M8.26713 6.82375L2.36687 10.3073C1.41714 10.868 0.25 10.1381 0.25 8.9835V2.01645C0.25 0.861837 1.41714 0.132013 2.36687 0.692738L8.26713 4.17625C9.24425 4.75325 9.24425 6.24675 8.26713 6.82375Z"
-                                                fill="#339B96" />
-                                        </svg>
-
-                                    </button>
-                                    <div class="w-full  border-2  border-gray">
-
-                                    </div>
-                                    <button type="button" class="recordButton relative h-8 w-8">
-                                        <span
-                                            class="animate-ping recordButtonAnimation hidden  absolute right-[1px]  h-full w-full rounded-full bg-primary opacity-75"></span>
-                                        <svg width="32" height="32" viewBox="0 0 29 29" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                                d="M28.667 14.167C28.667 21.8989 22.3989 28.167 14.667 28.167C6.935 28.167 0.666992 21.8989 0.666992 14.167C0.666992 6.435 6.935 0.166992 14.667 0.166992C22.3989 0.166992 28.667 6.435 28.667 14.167ZM16.4353 13.7985C16.4353 15.0217 15.4479 16.0091 14.2249 16.0091C13.0017 16.0091 12.0143 15.0217 12.0143 13.7985V9.37752C12.0143 8.15436 13.0017 7.16699 14.2249 7.16699C15.4479 7.16699 16.4353 8.15436 16.4353 9.37752V13.7985ZM14.2249 8.6407C13.8196 8.6407 13.4881 8.97228 13.4881 9.37755V13.7987C13.4881 14.2038 13.8196 14.5355 14.2249 14.5355C14.6375 14.5355 14.9617 14.2112 14.9617 13.7987V9.37755C14.9617 8.97228 14.63 8.6407 14.2249 8.6407ZM19.3828 13.7985H18.1302C18.1302 16.0091 16.2585 17.5564 14.2249 17.5564C12.1912 17.5564 10.3196 16.0091 10.3196 13.7985H9.06699C9.06699 16.3112 11.0712 18.3891 13.4881 18.7502V21.167H14.9617V18.7502C17.3785 18.3891 19.3828 16.3112 19.3828 13.7985Z"
-                                                fill="#EDBD58" />
-                                        </svg>
-                                    </button>
-
-                                </div>
-                                {{-- ==== hidden audio and file ====== --}}
-                                <div class="invisible absolute">
-                                    <input name="audio_2[]" type="file" class="audioFileInput"
-                                        accept="audio/*" />
-                                    <div>
-                                        <audio class="audioElement" controls></audio>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="recording-set">
-                                <label class="text-[14px] font-semibold mb-1 ml-1 block">@lang('lang.Audio_3')</label>
-                                <div class="flex gap-2 items-center">
+                            <div class="px-10 my-5 mt-3 grid grid-cols-3 gap-10">
+                                <div class="recording-set">
+                                    <label class="text-[14px] font-semibold mb-1 ml-1 block">@lang('lang.Audio_1')</label>
                                     <div
                                         class="h-10 w-full border border-[#DEE2E6] rounded-[4px]  gap-2 flex justify-between px-2 items-center">
                                         <button type="button"
@@ -293,23 +217,92 @@
                                     </div>
                                     {{-- ==== hidden audio and file ====== --}}
                                     <div class="invisible absolute">
-                                        <input name="audio_3[]" type="file" class="audioFileInput"
+                                        <input type="file" name="audio_1[]" class="audioFileInput"
                                             accept="audio/*" />
                                         <div>
                                             <audio class="audioElement" controls></audio>
                                         </div>
                                     </div>
-                                    <div>
+                                </div>
+                                <div class="recording-set">
+                                    <label class="text-[14px] font-semibold mb-1 ml-1 block">@lang('lang.Audio_2')</label>
+                                    <div
+                                        class="h-10 w-full border border-[#DEE2E6] rounded-[4px]  gap-2 flex justify-between px-2 items-center">
                                         <button type="button"
-                                            class="bg-[#EDBD58] flex justify-center items-center toggle-button h-[40px] rounded-[4px] w-[40px] font-bold text-white text-2xl"
-                                            style="width: 42px">
-                                            <svg width="22" height="26" viewBox="0 0 12 14" fill="none"
+                                            class="h-8 w-full max-h-8 max-w-8 bg-[#339b965b] rounded-full flex justify-center items-center ">
+                                            <svg width="14" height="16" viewBox="0 0 9 11" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M8.26713 6.82375L2.36687 10.3073C1.41714 10.868 0.25 10.1381 0.25 8.9835V2.01645C0.25 0.861837 1.41714 0.132013 2.36687 0.692738L8.26713 4.17625C9.24425 4.75325 9.24425 6.24675 8.26713 6.82375Z"
+                                                    fill="#339B96" />
+                                            </svg>
+
+                                        </button>
+                                        <div class="w-full  border-2  border-gray">
+
+                                        </div>
+                                        <button type="button" class="recordButton relative h-8 w-8">
+                                            <span
+                                                class="animate-ping recordButtonAnimation hidden  absolute right-[1px]  h-full w-full rounded-full bg-primary opacity-75"></span>
+                                            <svg width="32" height="32" viewBox="0 0 29 29" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
                                                 <path fill-rule="evenodd" clip-rule="evenodd"
-                                                    d="M11.4905 2.74327C11.7356 2.74327 11.9396 2.94675 11.9396 3.20568V3.44508C11.9396 3.69771 11.7356 3.90749 11.4905 3.90749H1.04934C0.803641 3.90749 0.599609 3.69771 0.599609 3.44508V3.20568C0.599609 2.94675 0.803641 2.74327 1.04934 2.74327H2.88624C3.25937 2.74327 3.58411 2.47804 3.66805 2.10382L3.76425 1.67417C3.91375 1.0889 4.40575 0.700195 4.96883 0.700195H7.57039C8.12734 0.700195 8.62486 1.0889 8.76885 1.6433L8.87178 2.10319C8.95511 2.47804 9.27984 2.74327 9.65359 2.74327H11.4905ZM10.5573 11.4946C10.7491 9.70727 11.0849 5.46111 11.0849 5.41827C11.0971 5.2885 11.0548 5.16565 10.9709 5.06674C10.8808 4.97413 10.7669 4.91932 10.6412 4.91932H1.90281C1.77659 4.91932 1.6565 4.97413 1.57317 5.06674C1.48862 5.16565 1.44695 5.2885 1.45308 5.41827C1.45421 5.42615 1.46625 5.57571 1.4864 5.82576C1.57588 6.9366 1.8251 10.0305 1.98614 11.4946C2.1001 12.5731 2.80778 13.251 3.83284 13.2756C4.62384 13.2938 5.43875 13.3001 6.27203 13.3001C7.05691 13.3001 7.85404 13.2938 8.66956 13.2756C9.73015 13.2573 10.4372 12.5914 10.5573 11.4946Z"
-                                                    fill="#D11A2A" />
+                                                    d="M28.667 14.167C28.667 21.8989 22.3989 28.167 14.667 28.167C6.935 28.167 0.666992 21.8989 0.666992 14.167C0.666992 6.435 6.935 0.166992 14.667 0.166992C22.3989 0.166992 28.667 6.435 28.667 14.167ZM16.4353 13.7985C16.4353 15.0217 15.4479 16.0091 14.2249 16.0091C13.0017 16.0091 12.0143 15.0217 12.0143 13.7985V9.37752C12.0143 8.15436 13.0017 7.16699 14.2249 7.16699C15.4479 7.16699 16.4353 8.15436 16.4353 9.37752V13.7985ZM14.2249 8.6407C13.8196 8.6407 13.4881 8.97228 13.4881 9.37755V13.7987C13.4881 14.2038 13.8196 14.5355 14.2249 14.5355C14.6375 14.5355 14.9617 14.2112 14.9617 13.7987V9.37755C14.9617 8.97228 14.63 8.6407 14.2249 8.6407ZM19.3828 13.7985H18.1302C18.1302 16.0091 16.2585 17.5564 14.2249 17.5564C12.1912 17.5564 10.3196 16.0091 10.3196 13.7985H9.06699C9.06699 16.3112 11.0712 18.3891 13.4881 18.7502V21.167H14.9617V18.7502C17.3785 18.3891 19.3828 16.3112 19.3828 13.7985Z"
+                                                    fill="#EDBD58" />
                                             </svg>
                                         </button>
+
+                                    </div>
+                                    {{-- ==== hidden audio and file ====== --}}
+                                    <div class="invisible absolute">
+                                        <input name="audio_2[]" type="file" class="audioFileInput"
+                                            accept="audio/*" />
+                                        <div>
+                                            <audio class="audioElement" controls></audio>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="recording-set">
+                                    <label class="text-[14px] font-semibold mb-1 ml-1 block">@lang('lang.Audio_3')</label>
+                                    <div class="flex gap-2 items-center">
+                                        <div
+                                            class="h-10 w-full border border-[#DEE2E6] rounded-[4px]  gap-2 flex justify-between px-2 items-center">
+                                            <button type="button"
+                                                class="h-8 w-full max-h-8 max-w-8 bg-[#339b965b] rounded-full flex justify-center items-center ">
+                                                <svg width="14" height="16" viewBox="0 0 9 11" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M8.26713 6.82375L2.36687 10.3073C1.41714 10.868 0.25 10.1381 0.25 8.9835V2.01645C0.25 0.861837 1.41714 0.132013 2.36687 0.692738L8.26713 4.17625C9.24425 4.75325 9.24425 6.24675 8.26713 6.82375Z"
+                                                        fill="#339B96" />
+                                                </svg>
+
+                                            </button>
+                                            <div class="w-full  border-2  border-gray">
+
+                                            </div>
+                                            <button type="button" class="recordButton relative h-8 w-8">
+                                                <span
+                                                    class="animate-ping recordButtonAnimation hidden  absolute right-[1px]  h-full w-full rounded-full bg-primary opacity-75"></span>
+                                                <svg width="32" height="32" viewBox="0 0 29 29"
+                                                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                                        d="M28.667 14.167C28.667 21.8989 22.3989 28.167 14.667 28.167C6.935 28.167 0.666992 21.8989 0.666992 14.167C0.666992 6.435 6.935 0.166992 14.667 0.166992C22.3989 0.166992 28.667 6.435 28.667 14.167ZM16.4353 13.7985C16.4353 15.0217 15.4479 16.0091 14.2249 16.0091C13.0017 16.0091 12.0143 15.0217 12.0143 13.7985V9.37752C12.0143 8.15436 13.0017 7.16699 14.2249 7.16699C15.4479 7.16699 16.4353 8.15436 16.4353 9.37752V13.7985ZM14.2249 8.6407C13.8196 8.6407 13.4881 8.97228 13.4881 9.37755V13.7987C13.4881 14.2038 13.8196 14.5355 14.2249 14.5355C14.6375 14.5355 14.9617 14.2112 14.9617 13.7987V9.37755C14.9617 8.97228 14.63 8.6407 14.2249 8.6407ZM19.3828 13.7985H18.1302C18.1302 16.0091 16.2585 17.5564 14.2249 17.5564C12.1912 17.5564 10.3196 16.0091 10.3196 13.7985H9.06699C9.06699 16.3112 11.0712 18.3891 13.4881 18.7502V21.167H14.9617V18.7502C17.3785 18.3891 19.3828 16.3112 19.3828 13.7985Z"
+                                                        fill="#EDBD58" />
+                                                </svg>
+                                            </button>
+
+                                        </div>
+                                        {{-- ==== hidden audio and file ====== --}}
+                                        <div class="invisible absolute">
+                                            <input name="audio_3[]" type="file" class="audioFileInput"
+                                                accept="audio/*" />
+                                            <div>
+                                                <audio class="audioElement" controls></audio>
+                                            </div>
+                                        </div>
+                                        <div class="appendedElement">
+
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -676,30 +669,54 @@
 
     }
     audiorec()
+    // $('#addwordContainer').click(function() {
+    //     var inputsCon = $('#wordContainer').html();
+    //     $('#wordInput').append(inputsCon);
+    //     audiorec()
+    // });
     $('#addwordContainer').click(function() {
         var inputsCon = $('#wordContainer').html();
+        // Appending the HTML content
         $('#wordInput').append(inputsCon);
-        audiorec()
+
+        // Adding a remove button to the latest appended element
+        $('#wordInput .appendedElement').last().append(`<button type="button"
+                                        class="bg-[#FBF0F1] flex justify-center items-center toggle-button h-[40px] rounded-[4px] w-[40px] font-bold text-white text-2xl removeButton"
+                                        style="width: 42px">
+                                        <svg width="20" height="24" viewBox="0 0 12 14" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M11.4905 2.74327C11.7356 2.74327 11.9396 2.94675 11.9396 3.20568V3.44508C11.9396 3.69771 11.7356 3.90749 11.4905 3.90749H1.04934C0.803641 3.90749 0.599609 3.69771 0.599609 3.44508V3.20568C0.599609 2.94675 0.803641 2.74327 1.04934 2.74327H2.88624C3.25937 2.74327 3.58411 2.47804 3.66805 2.10382L3.76425 1.67417C3.91375 1.0889 4.40575 0.700195 4.96883 0.700195H7.57039C8.12734 0.700195 8.62486 1.0889 8.76885 1.6433L8.87178 2.10319C8.95511 2.47804 9.27984 2.74327 9.65359 2.74327H11.4905ZM10.5573 11.4946C10.7491 9.70727 11.0849 5.46111 11.0849 5.41827C11.0971 5.2885 11.0548 5.16565 10.9709 5.06674C10.8808 4.97413 10.7669 4.91932 10.6412 4.91932H1.90281C1.77659 4.91932 1.6565 4.97413 1.57317 5.06674C1.48862 5.16565 1.44695 5.2885 1.45308 5.41827C1.45421 5.42615 1.46625 5.57571 1.4864 5.82576C1.57588 6.9366 1.8251 10.0305 1.98614 11.4946C2.1001 12.5731 2.80778 13.251 3.83284 13.2756C4.62384 13.2938 5.43875 13.3001 6.27203 13.3001C7.05691 13.3001 7.85404 13.2938 8.66956 13.2756C9.73015 13.2573 10.4372 12.5914 10.5573 11.4946Z"
+                                                fill="#B72834" />
+                                        </svg>
+                                    </button>`);
+
+        // Binding click event to the newly added remove button
+        $('.removeButton').off('click').on('click', function() {
+            $(this).closest('.wordsInputs').remove();
+        });
+
+        audiorec();
     });
 </script>
 <script>
-    $('#addwordbtn').click(function() {
-        var level = $('#Levelinput').val();
-        var lesson = $('#Lessoninput').val();
-        var word = $('#Wordinput').val();
-        var audio_1 = $('#audio_1').val();
-        var audio_2 = $('#audio_2').val();
-        var audio_3 = $('#audio_3').val();
+    //     $('#addwordbtn').click(function() {
+    //         var level = $('#Levelinput').val();
+    //         var lesson = $('#Lessoninput').val();
+    //         var word = $('#Wordinput').val();
+    //         var audio_1 = $('#audio_1').val();
+    //         var audio_2 = $('#audio_2').val();
+    //         var audio_3 = $('#audio_3').val();
 
-        var inputsCon = `<div>
-    <input type="text" name="level[]" value="${level}">
-    <input type="text" name="lesson[]" value="${lesson}">
-    <input type="text" name="word[]" value="${word}">
-    {{-- <input type="file" name="audio_1[]" value="${audio_1}">
-<input type="file" name="audio_2[]" value="${audio_2}">
-<input type="file" name="audio_3[]" value="${audio_3}"> --}}
-</div>`
-        $('#wordInput').append(inputsCon);
+    //         var inputsCon = `<div>
+    //     <input type="text" name="level[]" value="${level}">
+    //     <input type="text" name="lesson[]" value="${lesson}">
+    //     <input type="text" name="word[]" value="${word}">
+    //     {{-- <input type="file" name="audio_1[]" value="${audio_1}">
+// <input type="file" name="audio_2[]" value="${audio_2}">
+// <input type="file" name="audio_3[]" value="${audio_3}"> --}}
+    // </div>`
+    //         $('#wordInput').append(inputsCon);
 
-    })
+    //     })
 </script>
