@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Forgot - LMS</title>
-    <link rel="shortcut icon" href="{{ asset('images/icon.png') }}" type="image/x-icon">
+    <title>Forgot - Enlighteningedu</title>
+    <link rel="shortcut icon" href="{{ asset('images/favicon(32X32).png') }}" type="image/x-icon">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     @vite(['resources/css/app.css'])
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -16,8 +16,6 @@
 <body class="bg-white">
 
     <div class="flex px-10  justify-center">
-        <!-- form -->
-
         <div class="md:w-1/2 px-8  sm:px-16  ">
             <div>
                 <img class="mt-5 w-[180px]" src="{{ asset('images/logo.svg') }}" alt="logo">
