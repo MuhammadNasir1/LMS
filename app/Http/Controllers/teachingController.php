@@ -137,7 +137,7 @@ class teachingController extends Controller
                 return response()->json(['success' =>  true, 'message' => 'Data get  Successfully', 'courses' => $courses, 'words' => $words], 200);
             }
         } catch (\Exception $e) {
-            return response()->json(['success' =>  false, 'message' => $e->getMessage()], 200);
+            return response()->json(['success' =>  false, 'message' => $e->getMessage()], 500);
         }
     }
 }
