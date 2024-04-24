@@ -16,6 +16,7 @@ class teachingController extends Controller
     {
         try {
             $userId   = session("user_det")['user_id'];
+            $name   = session("user_det")['name'];
             $validatedData  = $request->validate([
                 "word_id" => "required",
                 "student_name" => "required",
@@ -31,6 +32,7 @@ class teachingController extends Controller
                     "teacher_id" => $userId,
                     "student_id" => $request['studentid'],
                     "student_name" => $validatedData['student_name'],
+                    "teacher_name" => $name,
                     "lesson_date" => $validatedData['lesson_date'],
                     "course" => $validatedData['course'],
                     "course_id" => $request['course_id'][$i],

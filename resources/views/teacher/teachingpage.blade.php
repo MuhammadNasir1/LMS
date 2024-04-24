@@ -82,30 +82,29 @@
             <button class="bg-secondary cursor-pointer text-white h-12 px-5 rounded-[6px]  shadow-sm font-semibold ">
                 @lang('lang.Start_Teaching')</button>
         </div>
-    </form>
-    <div class="shadow-dark mt-3  rounded-xl mb-6   bg-white hidden" id="wordsContainer">
-        <div>
+        <div class="shadow-dark mt-3  rounded-xl mb-6   bg-white hidden" id="wordsContainer">
             <div>
-                <table class="overflow-scroll w-full text-center">
-                    <thead class="py-6 bg-primary text-white">
-                        <tr>
-                            <th scope="col" class="px-6 py-3">@lang('lang.Course_ID')</th>
-                            <th>@lang('lang.Word')</th>
-                            <th>@lang('lang.Audio_1')</th>
-                            <th>@lang('lang.Audio_2')</th>
-                            <th>@lang('lang.Audio_3')</th>
+                <div>
+                    <table class="overflow-scroll w-full text-center">
+                        <thead class="py-6 bg-primary text-white">
+                            <tr>
+                                <th scope="col" class="px-6 py-3">@lang('lang.Course_ID')</th>
+                                <th>@lang('lang.Word')</th>
+                                <th>@lang('lang.Audio_1')</th>
+                                <th>@lang('lang.Audio_2')</th>
+                                <th>@lang('lang.Audio_3')</th>
 
-                            <th>@lang('lang.Action')</th>
-                        </tr>
-                    </thead>
-                    <tbody id="wordsbody">
+                                <th>@lang('lang.Action')</th>
+                            </tr>
+                        </thead>
+                        <tbody id="wordsbody">
 
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-    </div>
-
+    </form>
     <div class="shadow-dark mt-3  rounded-xl pt-8  bg-white">
         <div>
             <div class="flex justify-between px-[20px] mb-3">
@@ -239,14 +238,6 @@
             $('#student').val(student_name)
             $('#studentId').val(student_id)
         })
-
-        // $('#course').change(function() {
-        //     var selectedOption = $(this).find(':selected');
-        //     var courseId = selectedOption.attr('course_id');
-
-        //     console.log(courseId);
-        // });
-
         $('#word').change(function() {
             var selectedOption = $(this).find(':selected');
             var wordId = selectedOption.attr('word_id');
@@ -256,16 +247,14 @@
                 url: url,
                 success: function(response) {
                     $('#wordsContainer').css('display', 'block');
-
-                    var wordsInputs = `<input type="hidden" name="course_id[]" value="${response.words.course_id}">
+                    var wordsOutput = `<tr >
+                            <td class="px-6 py-5" >
+                        <input type="hidden" name="course_id[]" value="${response.words.course_id}">
                         <input type="hidden" name="word_id[]" value="${response.words.id}">
                         <input type="hidden" name="word[]" value="${response.words.word}">
                         <input type="hidden" name="audio1[]" value="${response.words.audio_1}">
                         <input type="hidden" name="audio2[]" value="${response.words.audio_2}">
-                        <input type="hidden" name="audio3[]" value="${response.words.audio_3}">`;
-                    var wordsOutput = `<tr >
-                            <td class="px-6 py-5" >
-                                ${response.words.course_id}</td>
+                        <input type="hidden" name="audio3[]" value="${response.words.audio_3}">                                ${response.words.course_id}</td>
                             <td>${response.words.word}</td>
                             <td>
                                 <div class="flex justify-center">
@@ -303,14 +292,14 @@
 </td>
             <td class="">
                   <div class="flex gap-5 justify-center">
-                              <a class="cursor-pointer" href="#"><img width="38px" src="{{ asset('images/icons/delete.svg') }}" alt="delete"></a>
+                              <button class="cursor-pointer delete-row" type="button"><img width="38px" src="{{ asset('images/icons/delete.svg') }}" alt="delete"></button>
                      </div>
                             </td>
                 </tr>`
-                    $('#worksContainer').append(wordsInputs);
                     $('#wordsbody').append(wordsOutput);
 
                     audioPlayer();
+                    deleteRow();
                 },
                 error: function(jqXHR) {
                     let response = JSON.parse(jqXHR.responseText);
@@ -327,6 +316,14 @@
         });
 
     })
+
+    function deleteRow() {
+        $('.delete-row').click(function() {
+            $(this).closest('tr').remove();
+        });
+
+    }
+    deleteRow()
 
     function audioPlayer() {
         var playButtons = document.querySelectorAll('.play-button');
