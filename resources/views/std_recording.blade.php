@@ -40,13 +40,13 @@
                             </td>
                             <td>{{ $data->student_name }}</td>
                             <td>{{ $data->teacher_name }}</td>
-                            <td>{{ $data->teacher_comment }}</td>
+                            <td>{{ $adata->teacher_comment }}</td>
                             <td>{{ $data->lesson_date }}</td>
                             <td>
                                 <div class="flex gap-5 items-center justify-center">
                                     @if (session('user_det')['role'] == 'admin')
-                                        <a href="#"><img width="38px"
-                                                src="{{ asset('images/icons/delete.svg') }}" alt="delete"></a>
+                                        <button class="delbtn" delId="{{ $data->id }}"><img width="38px"
+                                                src="{{ asset('images/icons/delete.svg') }}" alt="delete"></button>
                                     @endif
                                     <a class="cursor-pointer" data-modal-target="videodetails{{ $x }}"
                                         data-modal-toggle="videodetails{{ $x }}"><img width="38px"
@@ -248,4 +248,41 @@
     </div>
 </div>
 
+
+<script>
+    $(document).ready(function() {
+        // delete training video
+        $('.delbtn').click(function() {
+            var delId = $(this).attr('delId');
+            console.log(delId);
+            var url = "../delTraining/" + delId;
+            $.ajax({
+                type: "GET",
+                url: url,
+                dataType: "json",
+                success: function(response) {
+                    if (response.success == true) {
+                        window.location.href = '../training';
+                    } else if (response.success == false) {
+                        Swal.fire(
+                            'Warning!',
+                            response.message,
+                            'warning'
+                        );
+                    }
+                },
+                error: function(jqXHR) {
+                    let response = JSON.parse(jqXHR.responseText);
+                    console.log("error");
+                    Swal.fire(
+                        'Warning!',
+                        'Training Not Found',
+                        'warning'
+                    );
+                }
+
+            });
+        });
+    });
+</script>
 @include('layouts.footer')

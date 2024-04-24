@@ -314,17 +314,20 @@
             </li>
 
             <li class="absolute bottom-5">
-                <form action="../weblogout" method="post"
-                    class=" cursor-pointer" id="logoutform">
+                <form action="../weblogout" method="post" class=" cursor-pointer" id="logoutform">
                     @csrf
-                    <div onclick="logoutform.submit()" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                        <svg width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M4.54545 8.18182H11.8182V10H4.54545V12.7273L0 9.09091L4.54545 5.45455V8.18182ZM3.63636 14.5455H6.09818C7.1479 15.4712 8.44244 16.0744 9.82648 16.2827C11.2105 16.4909 12.6252 16.2954 13.9009 15.7195C15.1766 15.1437 16.259 14.212 17.0182 13.0362C17.7775 11.8604 18.1814 10.4905 18.1814 9.09091C18.1814 7.69129 17.7775 6.3214 17.0182 5.14563C16.259 3.96985 15.1766 3.03813 13.9009 2.46227C12.6252 1.88642 11.2105 1.69089 9.82648 1.89915C8.44244 2.10741 7.1479 2.71061 6.09818 3.63637H3.63636C4.48242 2.50653 5.5803 1.58956 6.84279 0.958313C8.10528 0.327069 9.49759 -0.00105786 10.9091 2.56208e-06C15.93 2.56208e-06 20 4.07 20 9.09091C20 14.1118 15.93 18.1818 10.9091 18.1818C9.49759 18.1829 8.10528 17.8548 6.84279 17.2235C5.5803 16.5923 4.48242 15.6753 3.63636 14.5455Z" fill="white"/>
-                            </svg>
+                    <div onclick="logoutform.submit()"
+                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        <svg width="20" height="19" viewBox="0 0 20 19" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M4.54545 8.18182H11.8182V10H4.54545V12.7273L0 9.09091L4.54545 5.45455V8.18182ZM3.63636 14.5455H6.09818C7.1479 15.4712 8.44244 16.0744 9.82648 16.2827C11.2105 16.4909 12.6252 16.2954 13.9009 15.7195C15.1766 15.1437 16.259 14.212 17.0182 13.0362C17.7775 11.8604 18.1814 10.4905 18.1814 9.09091C18.1814 7.69129 17.7775 6.3214 17.0182 5.14563C16.259 3.96985 15.1766 3.03813 13.9009 2.46227C12.6252 1.88642 11.2105 1.69089 9.82648 1.89915C8.44244 2.10741 7.1479 2.71061 6.09818 3.63637H3.63636C4.48242 2.50653 5.5803 1.58956 6.84279 0.958313C8.10528 0.327069 9.49759 -0.00105786 10.9091 2.56208e-06C15.93 2.56208e-06 20 4.07 20 9.09091C20 14.1118 15.93 18.1818 10.9091 18.1818C9.49759 18.1829 8.10528 17.8548 6.84279 17.2235C5.5803 16.5923 4.48242 15.6753 3.63636 14.5455Z"
+                                fill="white" />
+                        </svg>
 
 
 
-                    <span class="flex-1 ms-3 whitespace-nowrap">@lang('lang.logout')</span>
+                        <span class="flex-1 ms-3 whitespace-nowrap">@lang('lang.logout')</span>
                     </div>
                 </form>
             </li>
@@ -473,12 +476,13 @@
                 </button>
                 <div class="flex items-center gap-2">
                     <div class="leading-tight  text-end">
-                        <h2 class="text-md">{{session('user_det')['name'];}}</h2>
-                        <p class="text-xs  text-gray">{{session('user_det')['role'];}}</p>
+                        <h2 class="text-md">{{ session('user_det')['name'] }}</h2>
+                        <p class="text-xs  text-gray">{{ session('user_det')['role'] }}</p>
                     </div>
                     <div>
-                        <img height="42px" width="42px" class="rounded-[5px]"
-                            src="{{ asset('images/user.png') }}" alt="user">
+                        <img height="42px" width="42px" class="rounded-[5px] h-[42px] object-fill"
+                            src="{{ session()->has('user_image') ? asset(session('user_image.user_image')) : asset('images/user.png') }}"
+                            alt="user">
                     </div>
                 </div>
             </div>

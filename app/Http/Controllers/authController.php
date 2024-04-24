@@ -48,9 +48,11 @@ class authController extends Controller
                 $imageName = time() . '.' . $image->getClientOriginalExtension();
                 $image->storeAs('public/user_images', $imageName); // Adjust storage path as needed
                 $user->user_image = 'storage/user_images/' . $imageName;
+                session(['user_image' => 'storage/user_images/' . $imageName]);
             }
 
             $user->save();
+
 
             return response()->json(['success' => true, 'message' => 'Profile Updated!', 'updated_data' => $user], 200);
         } catch (\Exception $e) {
@@ -155,6 +157,10 @@ class authController extends Controller
                     'name' => $name,
                     'email' => $validatedData['email'],
                     'role' =>  $role,
+                ]]);
+                session(['user_image' => [
+                    'user_image' => $user['user_image'],
+
                 ]]);
                 return  response()->json([
                     'token' => $token,
