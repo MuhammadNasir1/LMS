@@ -60,19 +60,27 @@ class teachingController extends Controller
     //  add  teacher recording
     public function teacherRecdata(Request $request)
     {
-        $userId   = session("user_det")['user_id'];
+        // $userId   = session("user_det")['user_id'];
         try {
             $validatedData  = $request->validate([
                 'teacher_comment' => 'required',
                 'video' => 'nullable',
 
             ]);
+            // $teacherRec = teacher_rec::create([
+            //     'student_id' => session("wordDet")['student_id'],
+            //     'student_name' => session("wordDet")['student_name'],
+            //     'teacher_id' => $userId,
+            //     'lesson_date' => session("wordDet")['lesson_date'],
+            //     'teacher_name' => session("user_det")['name'],
+            //     'teacher_comment' => $validatedData['teacher_comment'],
+            // ]);
             $teacherRec = teacher_rec::create([
-                'student_id' => session("wordDet")['student_id'],
-                'student_name' => session("wordDet")['student_name'],
-                'teacher_id' => $userId,
-                'lesson_date' => session("wordDet")['lesson_date'],
-                'teacher_name' => session("user_det")['name'],
+                'student_id' => $request['student_id'],
+                'teacher_id' => $request['teacher_id'],
+                'student_name' => $request['student_name'],
+                'teacher_name' => $request['teacher_name'],
+                'lesson_date' => $request['lesson_date'],
                 'teacher_comment' => $validatedData['teacher_comment'],
             ]);
             if ($request->hasFile('video')) {
