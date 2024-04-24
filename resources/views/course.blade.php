@@ -104,15 +104,103 @@
                             </td>
 
                             <td class="flex gap-5">
-                                <a class="cursor-pointer" href="#"><img width="38px"
-                                        src="{{ asset('images/icons/delete.svg') }}" alt="delete"></a>
-                                <a class="cursor-pointer" href="#"><img width="38px"
-                                        src="{{ asset('images/icons/update.svg') }}" alt="update"></a>
-                                <a class="cursor-pointer" data-modal-target="coursedetails"
-                                    data-modal-toggle="coursedetails"><img width="38px"
-                                        src="{{ asset('images/icons/view.svg') }}" alt="View"></a>
+                                <button class="cursor-pointer"><img width="38px"
+                                        src="{{ asset('images/icons/delete.svg') }}" alt="delete"></button>
+                                <button dataId="{{ $course->id }}" data-modal-target="updateCourse"
+                                    data-modal-toggle="updateCourse" class="cursor-pointer"><img width="38px"
+                                        src="{{ asset('images/icons/update.svg') }}" alt="update"></button>
+                                <button dataId="{{ $course->id }}" class="cursor-pointer"
+                                    data-modal-target="coursedetails{{ $i }}"
+                                    data-modal-toggle="coursedetails{{ $i }}"><img width="38px"
+                                        src="{{ asset('images/icons/view.svg') }}" alt="View"></button>
                             </td>
                         </tr>
+
+
+                        <!--  course  Details  modal -->
+                        <div id="coursedetails{{ $i }}" data-modal-backdrop="static"
+                            class="hidden overflow-y-auto overflow-x-hidden fixed  left-0 z-50 justify-center  w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                            <div class="relative p-4 w-full max-w-3xl max-h-full ">
+                                <form action="#" method="post">
+                                    @csrf
+                                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700  ">
+                                        <div
+                                            class="flex items-center   justify-endjustify-start  p-5  rounded-t dark:border-gray-600 bg-primary">
+                                            <h3 class="text-xl font-semibold text-white text-center">
+                                                @lang('lang.About_Parent')
+                                            </h3>
+                                            <button type="button"
+                                                class=" absolute right-2 text-white bg-transparent rounded-lg text-sm w-8 h-8 ms-auto "
+                                                data-modal-hide="coursedetails{{ $i }}">
+                                                <svg class="w-4 h-4 text-white" aria-hidden="true"
+                                                    xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                    viewBox="0 0 14 14">
+                                                    <path stroke="currentColor" stroke-linecap="round"
+                                                        stroke-linejoin="round" stroke-width="2"
+                                                        d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                        <div class="flex flex-col gap-5  items-center mt-4  pb-4">
+                                            <h2 class="text-pink text-[32px] font-semibold pr-16"><span
+                                                    class="border-b-4 border-pink py-1">@lang('lang.About')
+                                                </span>@lang('lang.Course')
+                                            </h2>
+                                            <div class="flex items-center justify-end  mt-5">
+                                                <div class="w-[200px]">
+                                                    <h3 class="text-[18px] font-normal">@lang('lang.Course_Name'):</h3>
+                                                </div>
+                                                <div class="w-[150px]  ">
+                                                    <p class="text-[14px] text-[#323C47]">{{ $course->course_name }}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-center justify-end ">
+                                                <div class="w-[200px]">
+                                                    <h3 class="text-[18px] font-normal">@lang('lang.course_id'):</h3>
+                                                </div>
+                                                <div class="w-[150px]  ">
+                                                    <p class="text-[14px] text-[#323C47]">{{ $course->course_id }}</p>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-center justify-end ">
+                                                <div class="w-[200px]">
+                                                    <h3 class="text-[18px] font-normal">@lang('lang.no_of_levels'):</h3>
+                                                </div>
+                                                <div class="w-[150px]  ">
+                                                    <p class="text-[14px] text-[#323C47]">{{ $course->level }}</p>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-center justify-end ">
+                                                <div class="w-[200px]">
+                                                    <h3 class="text-[18px] font-normal">@lang('lang.Lesson'):</h3>
+                                                </div>
+                                                <div class="w-[150px]  ">
+                                                    <p class="text-[14px] text-[#323C47]">{{ $course->lesson }}</p>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-center justify-end ">
+                                                <div class="w-[200px]">
+                                                    <h3 class="text-[18px] font-normal">@lang('lang.Word'):</h3>
+                                                </div>
+                                                <div class="w-[150px]  ">
+                                                    <p class="text-[14px] text-[#323C47]">{{ $course->word }}</p>
+                                                </div>
+                                            </div>
+
+
+
+
+
+                                        </div>
+                                    </div>
+                                </form>
+                                <div>
+
+                                </div>
+
+                            </div>
+                        </div>
                     @endforeach
                 </tbody>
             </table>
@@ -138,8 +226,8 @@
                         data-modal-hide="addcoursemodal">
                         <svg class="w-4 h-4 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                             fill="none" viewBox="0 0 14 14">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                         </svg>
                     </button>
                 </div>
@@ -439,99 +527,6 @@
                     class="bg-secondary text-white py-2 px-6 my-4 rounded-[4px]  mx-6  font-semibold">@lang('lang.Update')</button>
             </div>
         </div>
-        <div>
-
-        </div>
-
-    </div>
-</div>
-<!--  course  Details  modal -->
-<div id="coursedetails" data-modal-backdrop="static"
-    class="hidden overflow-y-auto overflow-x-hidden fixed  left-0 z-50 justify-center  w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-    <div class="relative p-4 w-full max-w-3xl max-h-full ">
-        <form action="#" method="post">
-            @csrf
-            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700  ">
-                <div
-                    class="flex items-center   justify-endjustify-start  p-5  rounded-t dark:border-gray-600 bg-primary">
-                    <h3 class="text-xl font-semibold text-white text-center">
-                        @lang('lang.About_Parent')
-                    </h3>
-                    <button type="button"
-                        class=" absolute right-2 text-white bg-transparent rounded-lg text-sm w-8 h-8 ms-auto "
-                        data-modal-hide="coursedetails">
-                        <svg class="w-4 h-4 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                            fill="none" viewBox="0 0 14 14">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                        </svg>
-                    </button>
-                </div>
-                <div class="flex flex-col gap-5  items-center mt-4  pb-4">
-                    <h2 class="text-pink text-[32px] font-semibold pr-16"><span
-                            class="border-b-4 border-pink py-1">@lang('lang.About') </span>@lang('lang.Course')
-                    </h2>
-                    <div class="flex items-center justify-end  mt-5">
-                        <div class="w-[200px]">
-                            <h3 class="text-[18px] font-normal">@lang('lang.Course_Name'):</h3>
-                        </div>
-                        <div class="w-[150px]  ">
-                            <p class="text-[14px] text-[#323C47]">Emily Davis</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-end ">
-                        <div class="w-[200px]">
-                            <h3 class="text-[18px] font-normal">@lang('lang.course_id'):</h3>
-                        </div>
-                        <div class="w-[150px]  ">
-                            <p class="text-[14px] text-[#323C47]">21</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-end ">
-                        <div class="w-[200px]">
-                            <h3 class="text-[18px] font-normal">@lang('lang.no_of_levels'):</h3>
-                        </div>
-                        <div class="w-[150px]  ">
-                            <p class="text-[14px] text-[#323C47]">4</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-end ">
-                        <div class="w-[200px]">
-                            <h3 class="text-[18px] font-normal">@lang('lang.no_of_pages'):</h3>
-                        </div>
-                        <div class="w-[150px]  ">
-                            <p class="text-[14px] text-[#323C47]">107</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-end ">
-                        <div class="w-[200px]">
-                            <h3 class="text-[18px] font-normal">@lang('lang.enter_no_of_words'):</h3>
-                        </div>
-                        <div class="w-[150px]  ">
-                            <p class="text-[14px] text-[#323C47]">120</p>
-                        </div>
-                    </div>
-
-
-                    <div class="flex items-center justify-end ">
-                        <div class="w-[200px]">
-                            <h3 class="text-[18px] font-normal">@lang('lang.Version'):</h3>
-                        </div>
-                        <div class="w-[150px]  ">
-                            <p class="text-[14px] text-[#323C47]">0.15</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-end ">
-                        <div class="w-[200px]">
-                            <h3 class="text-[18px] font-normal">@lang('lang.Language'):</h3>
-                        </div>
-                        <div class="w-[150px]  ">
-                            <p class="text-[14px] text-[#323C47]">English</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
         <div>
 
         </div>
