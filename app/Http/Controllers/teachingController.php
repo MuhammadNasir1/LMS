@@ -183,10 +183,10 @@ class teachingController extends Controller
             $count = count($request['course_id']);
             for ($i = 0; $i < $count; $i++) {
                 $teachingData = teaching::create([
-                    "teacher_id" => $request['user_id'],
+                    "teacher_id" => $request['teacher_id'],
                     "student_id" => $request['studentid'],
                     "student_name" => $validatedData['student_name'],
-                    "teacher_name" => $request['name'],
+                    "teacher_name" => $request['teacher_name'],
                     "lesson_date" => $validatedData['lesson_date'],
                     "course" => $validatedData['course'],
                     "course_id" => $request['course_id'][$i],
