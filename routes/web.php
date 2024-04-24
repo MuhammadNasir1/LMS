@@ -155,6 +155,7 @@ Route::middleware('custom')->group(function () {
     Route::get('filter-options', [teachingController::class, 'filterOptions']);
 });
 Route::get('/course', [coursesController::class, 'getcoursedata']);
+Route::get('/deleteCourseData/{id}', [coursesController::class, 'deleteCourse']);
 
 Route::post('/addteaching', [teachingController::class, 'addteachingdata']);
 Route::post('/teacherRec', [teachingController::class, 'teacherRecdata']);

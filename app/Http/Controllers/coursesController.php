@@ -80,6 +80,21 @@ class coursesController extends Controller
         }
     }
 
+    // delete course
+    function  deleteCourse($id)
+    {
+        try {
+            $course = words::where('id', $id)->first();
+            if (!$course) {
+                return response()->json(['success' => false, 'message' =>  "course not found"], 200);
+            }
+
+            $course->delete();
+            return response()->json(['success' => true, 'message' =>  "course delete successfull"], 200);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
+        }
+    }
     public function getcoursedata()
     {
         $courses =  words::all();
@@ -88,9 +103,9 @@ class coursesController extends Controller
         return view('course', ['courses' => $courses]);
     }
 
-    public function getteachingWords($id){
-        $words = words::where('id' , $id)->first();
-        return response()->json(['success'=> true,'words'=> $words]);
-
+    public function getteachingWords($id)
+    {
+        $words = words::where('id', $id)->first();
+        return response()->json(['success' => true, 'words' => $words]);
     }
 }

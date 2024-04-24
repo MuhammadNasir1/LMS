@@ -104,13 +104,11 @@
                             </td>
 
                             <td class="flex gap-5">
-                                <button class="cursor-pointer"><img width="38px"
+                                <button delId="{{ $course->id }}" class="cursor-pointer delbtn"><img width="38px"
                                         src="{{ asset('images/icons/delete.svg') }}" alt="delete"></button>
-                                <button dataId="{{ $course->id }}" data-modal-target="updateCourse"
-                                    data-modal-toggle="updateCourse" class="cursor-pointer"><img width="38px"
+                                <button dataId="{{ $course->id }}"><img width="38px"
                                         src="{{ asset('images/icons/update.svg') }}" alt="update"></button>
-                                <button dataId="{{ $course->id }}" class="cursor-pointer"
-                                    data-modal-target="coursedetails{{ $i }}"
+                                <button class="cursor-pointer" data-modal-target="coursedetails{{ $i }}"
                                     data-modal-toggle="coursedetails{{ $i }}"><img width="38px"
                                         src="{{ asset('images/icons/view.svg') }}" alt="View"></button>
                             </td>
@@ -240,12 +238,6 @@
                                 class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
                                 name="course_name" id="courseName" placeholder=" @lang('lang.Enter_Course_Name')">
                         </div>
-                        {{-- <div>
-                            <button data-modal-target="addwordmodal" data-modal-toggle="addwordmodal" type="button"
-                                class="bg-secondary text-white h-12 px-5 rounded-[6px]  shadow-sm font-semibold ">
-                                @lang('lang.Add_words')
-                            </button>
-                        </div> --}}
                     </div>
                     {{-- ====== word inputs ===  --}}
                     <div id="wordContainer">
@@ -440,100 +432,6 @@
 
 
 
-{{-- add word modal  --}}
-<div id="addwordmodal" data-modal-backdrop="static"
-    class="hidden overflow-y-auto overflow-x-hidden fixed  left-0 z-50 justify-center  w-full md:inset-0 h-[calc(100%-1rem)] max-h-full shadow-2xl">
-    <div class="relative p-4 w-full max-w-2xl max-h-full ">
-        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700  ">
-            <div class="flex items-center   p-5  rounded-t dark:border-gray-600 bg-primary">
-                <h3 class="text-xl font-semibold text-white text-center">
-                    @lang('lang.Word')
-                </h3>
-                <button type="button"
-                    class="cursor-pointer absolute right-2 text-white bg-transparent rounded-lg text-sm w-8 h-8 ms-auto "
-                    data-modal-hide="addwordmodal">
-                    <svg class="w-4 h-4 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                        fill="none" viewBox="0 0 14 14">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                    </svg>
-                </button>
-            </div>
-
-            <div class="mx-5">
-                <div class="mt-5">
-                    <label class="text-[14px] font-semibold mb-1  block" for="Level">@lang('lang.Level')</label>
-                    <input type="text"
-                        class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                        name="Level" id="Levelinput" placeholder="@lang('lang.Enter_Level_No')">
-                </div>
-                <div class="mt-5">
-                    <label class="text-[14px] font-semibold mb-1 ml-1 block" for="Lesson">@lang('lang.Lesson')</label>
-                    <input type="text"
-                        class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                        name="Lesson" id="Lessoninput" placeholder="@lang('lang.Enter_Lesson_No')">
-                </div>
-                <div class="mt-5">
-                    <label class="text-[14px] font-semibold mb-1 ml-1 block" for="Word">@lang('lang.Word')</label>
-                    <input type="text"
-                        class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                        name="Word" id="Wordinput" placeholder="@lang('lang.Enter_Word')">
-                </div>
-                <div class="recording-set">
-                    <button class="recordButton">Start Recording</button>
-                    <div>
-                        <audio class="audioElement" controls></audio>
-                    </div>
-                    <input type="file" class="audioFileInput" accept="audio/*" />
-                </div>
-                <div class="recording-set">
-                    <button class="recordButton">Start Recording</button>
-                    <div>
-                        <audio class="audioElement" controls></audio>
-                    </div>
-                    <input type="file" class="audioFileInput" accept="audio/*" />
-                </div>
-                <div class="recording-set">
-                    <button class="recordButton">Start Recording</button>
-                    <div>
-                        <audio class="audioElement" controls></audio>
-                    </div>
-                    {{-- <input type="file" class="audioFileInput" accept="audio/*" /> --}}
-                </div>
-                {{-- <div class="mt-8">
-                    <input type="file"
-                        class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                        name="aud-1" id="audio_1">
-                </div>
-                <div class="mt-8">
-                    <input type="file"
-                        class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                        name="aud-2" id="audio_2">
-                </div>
-                <div class="mt-8">
-                    <input type="file"
-                        class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                        name="aud-3" id="audio_3">
-                </div> --}}
-
-            </div>
-
-
-            <div class=" pt-4">
-                <hr class="border-[#DEE2E6] ">
-            </div>
-            <div class="flex justify-end ">
-                <button id="addwordbtn" type="button"
-                    class="bg-secondary text-white py-2 px-6 my-4 rounded-[4px]  mx-6  font-semibold">@lang('lang.Update')</button>
-            </div>
-        </div>
-        <div>
-
-        </div>
-
-    </div>
-</div>
-
 
 
 @include('layouts.footer')
@@ -587,6 +485,39 @@
                     $('#spinner').addClass('hidden');
                     $('#addBtn').attr('disabled', false);
                 }
+            });
+        });
+
+        // delete training video
+        $('.delbtn').click(function() {
+            var delId = $(this).attr('delId');
+            var url = "../deleteCourseData/" + delId;
+            console.log(url);
+            $.ajax({
+                type: "GET",
+                url: url,
+                dataType: "json",
+                success: function(response) {
+                    if (response.success == true) {
+                        window.location.href = '../course';
+                    } else if (response.success == false) {
+                        Swal.fire(
+                            'Warning!',
+                            response.message,
+                            'warning'
+                        );
+                    }
+                },
+                error: function(jqXHR) {
+                    let response = JSON.parse(jqXHR.responseText);
+                    console.log("error");
+                    Swal.fire(
+                        'Warning!',
+                        'Course Not Found',
+                        'warning'
+                    );
+                }
+
             });
         });
     });
