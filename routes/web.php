@@ -162,6 +162,8 @@ Route::get('/sendemail', [userController::class, 'sendWelcomeEmail']);
 
 // get training  data for update
 Route::get('/trainingUpdataData/{id}', [trainingController::class, 'trainingUpdataData']);
+Route::post('updatetraining/{training_id}', [trainingController::class, 'updatetraining']);
+
 
 Route::get('email', function () {
     return view("emails.parent");

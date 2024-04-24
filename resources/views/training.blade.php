@@ -138,7 +138,7 @@
 <div id="updatetrainingmodal" data-modal-backdrop="static"
     class="hidden overflow-y-auto overflow-x-hidden fixed  left-0 z-50 justify-center  w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
     <div class="relative p-4 w-full max-w-7xl max-h-full ">
-        <form id="updatetraining_data" method="post">
+        <form id="updatetraining" method="post">
             @csrf
             <input type="hidden" id="update_id" name="update_id">
             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700  ">
@@ -195,7 +195,7 @@
                     <hr class="border-[#DEE2E6] ">
                 </div>
                 <div class="flex justify-end ">
-                    <button class="bg-secondary text-white py-2 px-6 my-4 rounded-[4px]  mx-6  font-semibold">
+                    <button class="bg-secondary text-white py-2 px-6 my-4 rounded-[4px]  mx-6  font-semibold" id="uaddBtn">
                         <div class=" text-center hidden" id="uspinner">
                             <svg aria-hidden="true"
                                 class="w-5 h-5 mx-auto text-center text-gray-200 animate-spin fill-primary"
@@ -389,6 +389,52 @@
                 }
             });
         });
+
+
+        $("#updatetraining").submit(function(event) {
+            var updateId = $('#update_id').val();
+            var url = "../updatetraining/" + updateId;
+            event.preventDefault();
+            var formData = new FormData(this);
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: formData,
+                dataType: "json",
+                contentType: false,
+                processData: false,
+                beforeSend: function() {
+                    $('#uspinner').removeClass('hidden');
+                    $('#utext').addClass('hidden');
+                    $('#uaddBtn').attr('disabled', true);
+                },
+                success: function(response) {
+                    if (response.success == true) {
+                        window.location.href = '../training';
+                    } else if (response.success == false) {
+                        Swal.fire(
+                            'Warning!',
+                            response.message,
+                            'warning'
+                        );
+                    }
+                },
+                error: function(jqXHR) {
+                    let response = JSON.parse(jqXHR.responseText);
+                    console.log("error");
+                    Swal.fire(
+                        'Warning!',
+                        response.message,
+                        'warning'
+                    );
+
+                    $('#utext').removeClass('hidden');
+                    $('#uspinner').addClass('hidden');
+                    $('#uaddBtn').attr('disabled', false);
+                }
+            });
+        });
+
         // delete training video
         $('.delbtn').click(function() {
             var delId = $(this).attr('delId');
