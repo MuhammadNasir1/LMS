@@ -17,11 +17,12 @@ use Illuminate\Testing\ParallelConsoleOutput;
 // language route
 Route::get('/lang', [userController::class, 'language_change']);
 
+Route::post('addCourse', [coursesController::class, 'addcourse']);
+Route::get('delRecording/{id}', [teachingController::class, 'delRecording']);
 // Authentication
 Route::post('registerdata', [authController::class, 'register']);
 Route::post('login', [authController::class, 'login']);
 Route::match(['get',  'post'], 'weblogout', [authController::class, 'weblogout']);
-Route::post('addCourse', [coursesController::class, 'addcourse']);
 Route::get('/loginrole', function () {
     return view('loginrole');
 });

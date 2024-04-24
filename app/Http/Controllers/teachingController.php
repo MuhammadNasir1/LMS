@@ -140,4 +140,27 @@ class teachingController extends Controller
             return response()->json(['success' =>  false, 'message' => $e->getMessage()], 500);
         }
     }
+
+
+    // delete teacher screen recording
+    public function  delRecording($id)
+    {
+        try {
+            $recording = teacher_rec::find($id);
+            if (!$recording) {
+                return response()->json(['success' => false, 'message' => 'Recording not found'], 500);
+            }
+            // Delete  file from storage if it exists
+            if (!empty($recording->video)) {
+                $file_path = public_path($recording->video);
+                if (file_exists($file_path)) {
+                    unlink($file_path);
+                }
+            }
+            $recording->delete();
+            return response()->json(['success' => true, 'message' => 'Recording successfully delete'], 200);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
+        }
+    }
 }
