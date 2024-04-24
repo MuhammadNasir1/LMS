@@ -72,3 +72,9 @@ Route::post('updateCourse/{course_id}', [coursesController::class, 'updatecourse
 Route::get('filtersCourse', [teachingController::class, 'filtersCourse']);
 Route::post('addTeachingData', [teachingController::class, 'addteachingata']);
 Route::post('addTeachingData', [teachingController::class, 'teacherRecdata']);
+
+
+// teaching data
+Route::post('addTeaching', [teachingController::class, 'addteaching']);
+// Route::post('addTeaching', [teachingController::class, 'addteachingdata']);
+

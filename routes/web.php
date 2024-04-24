@@ -158,8 +158,10 @@ Route::get('/course', [coursesController::class, 'getcoursedata']);
 
 Route::post('/addteaching', [teachingController::class, 'addteachingdata']);
 Route::post('/teacherRec', [teachingController::class, 'teacherRecdata']);
-
 Route::get('/sendemail', [userController::class, 'sendWelcomeEmail']);
+
+// get training  data for update
+Route::get('/trainingUpdataData/{id}', [trainingController::class, 'trainingUpdataData']);
 
 Route::get('email', function () {
     return view("emails.parent");

@@ -217,6 +217,7 @@ return [
     "Update_parents" => "Update parents",
     "add_more_word" => "Add More Word",
     "save" => "save",
+    "update_video" => "Update Video",
     "read_only" => "Read only",
     "Teacher_comment" => "Teacher's comment",
     "Enter_Comment" => "Enter Comment",

@@ -15,6 +15,7 @@ class teaching extends Model
         'course_id',
         'word_id',
         'student_name',
+        'teacher_name',
         'lesson_date',
         'course',
         'word',

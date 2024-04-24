@@ -103,4 +103,19 @@ class trainingController extends Controller
         $trainings = training::all();
         return view('training', ['trainings' => $trainings]);
     }
+
+    public function trainingUpdataData($id)
+    {
+
+        try {
+
+            $training = training::where('id',  $id)->first();
+            if (!$training) {
+                return response()->json(['success' => false, 'message' => 'Training  not found'], 500);
+            }
+            return response()->json(['success' => false, 'message' => 'Data get successfull', ['training' => $training]], 200);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
+        }
+    }
 }

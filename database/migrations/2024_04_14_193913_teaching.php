@@ -16,8 +16,9 @@ return new class extends Migration
             $table->integer('teacher_id');
             $table->integer('student_id');
             $table->integer('course_id');
-            $table->integer('word_id');
             $table->string('student_name');
+            $table->string('teacher_name');
+            $table->integer('word_id');
             $table->date('lesson_date');
             $table->string('course');
             $table->string('word');
