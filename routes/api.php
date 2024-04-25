@@ -75,7 +75,7 @@ Route::post('addTeachingData', [teachingController::class, 'teacherRecdata']);
 
 
 // teaching data
-Route::post('addTeaching', [teachingController::class, 'addteaching']);
+Route::post('addTeaching', [teachingController::class, 'addteachingrecdata']);
 // Route::post('addTeaching', [teachingController::class, 'addteachingdata']);
 // add teacher  recording data
 Route::post('addTeacherRecording', [teachingController::class, 'teacherRecdata']);

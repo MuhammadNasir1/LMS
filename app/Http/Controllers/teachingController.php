@@ -236,4 +236,43 @@ class teachingController extends Controller
             return response()->json(['success' => false, 'message'  => $e->getMessage()], 500);
         }
     }
+
+    public function addteachingrecdata(Request  $request)
+    {
+        try {
+            $validatedData = $request->validate([
+                "word_id" => "required|array",
+                "student_id" => "required",
+                "teacher_id" => "required",
+                "student_name" => "required",
+                "teacher_name" => "required",
+                "lesson_date" => "required",
+                "course" => "required",
+            ]);
+
+            $count = count($request['word_id']);
+            for ($i = 0; $i < $count; $i++) {
+                $wordData = Words::find($validatedData['word_id'][$i]); // Assuming the model is called Words
+                $teachingData = Teaching::create([
+                    "teacher_id" => $validatedData['teacher_id'],
+                    "student_id" => $validatedData['student_id'],
+                    "student_name" => $validatedData['student_name'],
+                    "teacher_name" => $validatedData['teacher_name'],
+                    "lesson_date" => $validatedData['lesson_date'],
+                    "course" => $validatedData['course'],
+                    "course_id" => $wordData['course_id'], // Assuming course_id is not an array
+                    "word_id" => $validatedData['word_id'][$i],
+                    "word" => $wordData['word'],
+                    "audio_1" => $wordData['audio_1'],
+                    "audio_2" => $wordData['audio_2'],
+                    "audio_3" => $wordData['audio_3'],
+                ]);
+                $teachingData->save();
+            }
+
+            return response()->json(['success' => true, 'message'  => "data add successfully", 'teachingData'  =>   $teachingData], 200);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message'  => $e->getMessage()], 500);
+        }
+    }
 }

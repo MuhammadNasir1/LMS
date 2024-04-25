@@ -22,9 +22,9 @@ return new class extends Migration
             $table->date('lesson_date');
             $table->string('course');
             $table->string('word');
-            $table->string('audio_1');
-            $table->string('audio_2');
-            $table->string('audio_3');
+            $table->string('audio_1')->nullable();
+            $table->string('audio_2')->nullable();
+            $table->string('audio_3')->nullable();
             $table->timestamps();
         });
     }
