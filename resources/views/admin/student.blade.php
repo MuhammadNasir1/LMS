@@ -36,7 +36,7 @@
                             <td>{{ $i + 1 }}</td>
                             <td>{{ $student->full_name }}</td>
                             <td>{{ $student->chinese_name }}</td>
-                            <td>{{ $student->chinese_name }}</td>
+                            <td>{{ $student->em_person }}</td>
                             <td>{{ $student->gender }}</td>
                             <td>{{ $student->dob }}</td>
                             <td>{{ $student->grade }}</td>
@@ -304,7 +304,7 @@
                         {{-- Student Details --}}
                         <div class="grid grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
                             <label class="text-[14px] font-normal" for="chName">@lang('lang.Chinese_Name')</label>
-                            <input type="email"
+                            <input type="text"
                                 class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
                                 name="chinese_name" id="chName" placeholder="@lang('lang.Enter_Chinese_Name')">
                         </div>
