@@ -58,23 +58,47 @@ class teachingController extends Controller
         }
     }
     //  add  teacher recording
-    public function teacherRecdata(Request $request)
+    public function teacherRecordingData(Request $request)
     {
-        // $userId   = session("user_det")['user_id'];
+        $userId   = session("user_det")['user_id'];
         try {
             $validatedData  = $request->validate([
                 'teacher_comment' => 'required',
                 'video' => 'nullable',
 
             ]);
-            // $teacherRec = teacher_rec::create([
-            //     'student_id' => session("wordDet")['student_id'],
-            //     'student_name' => session("wordDet")['student_name'],
-            //     'teacher_id' => $userId,
-            //     'lesson_date' => session("wordDet")['lesson_date'],
-            //     'teacher_name' => session("user_det")['name'],
-            //     'teacher_comment' => $validatedData['teacher_comment'],
-            // ]);
+            $teacherRec = teacher_rec::create([
+                'student_id' => session("wordDet")['student_id'],
+                'student_name' => session("wordDet")['student_name'],
+                'teacher_id' => $userId,
+                'lesson_date' => session("wordDet")['lesson_date'],
+                'teacher_name' => session("user_det")['name'],
+                'teacher_comment' => $validatedData['teacher_comment'],
+            ]);
+            if ($request->hasFile('video')) {
+                $teaching_video = $request->file('video');
+                $videoName = time() . '.' . $teaching_video->getClientOriginalExtension();
+                $teaching_video->storeAs('public/teacherVideo', $videoName); // Adjust storage path as needed
+                $teacherRec->video = 'storage/teacherVideo/' . $videoName;
+            }
+
+            $teacherRec->save();
+            return response()->json(['success' => true, 'message' => 'Recording add successfully'], 200);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
+        }
+    }
+
+    // teacher  recodrding data
+    public function teacherRecdata(Request $request)
+    {
+        try {
+            $validatedData  = $request->validate([
+                'teacher_comment' => 'required',
+                'video' => 'nullable',
+
+            ]);
+
             $teacherRec = teacher_rec::create([
                 'student_id' => $request['student_id'],
                 'teacher_id' => $request['teacher_id'],

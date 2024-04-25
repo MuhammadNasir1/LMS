@@ -158,7 +158,7 @@ Route::get('/course', [coursesController::class, 'getcoursedata']);
 Route::get('/deleteCourseData/{id}', [coursesController::class, 'deleteCourse']);
 
 Route::post('/addteaching', [teachingController::class, 'addteachingdata']);
-Route::post('/teacherRec', [teachingController::class, 'teacherRecdata']);
+Route::post('/teacherRec', [teachingController::class, 'teacherRecordingData']);
 Route::get('/sendemail', [userController::class, 'sendWelcomeEmail']);
 
 // get training  data for update
