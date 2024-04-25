@@ -130,17 +130,17 @@ class teacherController extends Controller
 
 
             // Generate a password
-            $password = \Illuminate\Support\Str::random(8);
+            if ($teacher->email !== $request->email) {
+                $password = \Illuminate\Support\Str::random(8);
 
-            $user = User::where('email', $teacher->email);
-            $user->update(['email' => $request->email, 'password' => hash::make($password)]);
+                $user = User::where('email', $teacher->email);
+                $user->update(['email' => $request->email, 'password' => hash::make($password)]);
+
+                $email = $request['email'];
+                $Mpassword = $password;
+                Mail::to($request['email'])->send(new TeacherMail($email, $Mpassword));
+            }
             $teacher->update($request->all());
-
-            $email = $request['email'];
-            $Mpassword = $password;
-            Mail::to($request['email'])->send(new TeacherMail($email, $Mpassword));
-
-
             return response()->json(['success' => true, 'message' => 'Teacher updated successfully'], 200);
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
@@ -154,7 +154,7 @@ class teacherController extends Controller
     }
 
     public function teacherUpdataData(Request $request, $id)
-{
+    {
         try {
             $teacher = Teacher::find($id);
             return response()->json(['success' => true,  'message' => 'Data get successfull', 'teacher' => $teacher], 200);

@@ -96,15 +96,17 @@ class parentController extends Controller
                 return response()->json(['success' => false, 'message' => 'Parent not found'], 500);
             }
             // Generate a password
-            $password = \Illuminate\Support\Str::random(8);
+            if ($parent->email !== $request->email) {
+                $password = \Illuminate\Support\Str::random(8);
 
-            $user = User::where('email', $parent->email);
-            $user->update(['email' => $request->email, 'password' => hash::make($password)]);
+                $user = User::where('email', $parent->email);
+                $user->update(['email' => $request->email, 'password' => hash::make($password)]);
+
+                $email = $request['email'];
+                $Mpassword = $password;
+                Mail::to($request['email'])->send(new parentMail($email, $Mpassword));
+            }
             $parent->update($request->all());
-
-            $email = $request['email'];
-            $Mpassword = $password;
-            Mail::to($request['email'])->send(new parentMail($email, $Mpassword));
             return response()->json(['success' => true, 'message' => 'Parent successfully updated and new mail send'], 200);
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
