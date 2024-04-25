@@ -230,11 +230,7 @@ class authController extends Controller
             $user->country = $validatedData['country'];
             $user->language = $validatedData['language'];
 
-            if (isset($validatedData['old_password'])) {
-                if (Hash::check($validatedData['old_password'], $user->password)) {
-                    $user->password = Hash::make($validatedData['confirm_password']);
-                }
-            }
+
 
             if ($request->hasFile('upload_image')) {
                 $image = $request->file('upload_image');
