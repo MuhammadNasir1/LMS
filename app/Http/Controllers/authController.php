@@ -48,7 +48,6 @@ class authController extends Controller
                 $imageName = time() . '.' . $image->getClientOriginalExtension();
                 $image->storeAs('public/user_images', $imageName); // Adjust storage path as needed
                 $user->user_image = 'storage/user_images/' . $imageName;
-                session(['user_image' => 'storage/user_images/' . $imageName]);
             }
 
             $user->save();
@@ -87,7 +86,6 @@ class authController extends Controller
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => $e->getMessage()], 400);
         }
-
     }
 
     public function register(Request $request)
@@ -245,6 +243,10 @@ class authController extends Controller
                 $user->user_image = 'storage/user_images/' . $imageName;
             }
 
+            session(['user_image' => [
+                'user_image' => $user['user_image'],
+
+            ]]);
             $user->save();
             // return redirect('../setting');
             return response()->json(['success' => true, 'message' => 'Profile Updated!', 'updated_data' => $user], 200);

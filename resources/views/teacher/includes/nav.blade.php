@@ -345,8 +345,8 @@
                     </div>
                     <div>
                         <img height="42px" width="42px" class="rounded-[5px] h-[42px] object-fill"
-                        src="{{ session()->has('user_image') ? asset(session('user_image.user_image')) : asset('images/user.png') }}"
-                        alt="user">
+                            src="{{ session()->has('user_image') && session('user_image.user_image') !== null ? asset(session('user_image.user_image')) : asset('images/user.png') }}"
+                            alt="user">
 
                     </div>
                 </div>
