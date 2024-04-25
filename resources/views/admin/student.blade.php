@@ -721,6 +721,7 @@
             success: function(response) {
                 console.log(response);
                 var student = response.student;
+                $('#gender').val(student.gender);
                 $('#update_id').val(student.id);
                 $('#fullName').val(student.full_name);
                 $('#phoneNo').val(student.phone_no);
