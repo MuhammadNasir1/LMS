@@ -268,9 +268,10 @@ class teachingController extends Controller
                     "audio_3" => $wordData['audio_3'],
                 ]);
                 $teachingData->save();
+                $teachingDataArray[] = $teachingData;
             }
 
-            return response()->json(['success' => true, 'message'  => "data add successfully", 'teachingData'  =>   $teachingData], 200);
+            return response()->json(['success' => true, 'message'  => "data add successfully", 'teachingData'  =>   $teachingDataArray], 200);
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message'  => $e->getMessage()], 500);
         }
