@@ -113,7 +113,7 @@ class trainingController extends Controller
             if (!$training) {
                 return response()->json(['success' => false, 'message' => 'Training  not found'], 500);
             }
-            return response()->json(['success' => false, 'message' => 'Data get successfull', 'training' => $training], 200);
+            return response()->json(['success' => true, 'message' => 'Data get successfull', 'training' => $training], 200);
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
         }

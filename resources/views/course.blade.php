@@ -106,7 +106,8 @@
                             <td class="flex gap-5">
                                 <button delId="{{ $course->id }}" class="cursor-pointer delbtn"><img width="38px"
                                         src="{{ asset('images/icons/delete.svg') }}" alt="delete"></button>
-                                <button dataId="{{ $course->id }}"><img width="38px"
+                                <button updateId="{{ $course->id }}" data-modal-target="updatecoursemodal"
+                                    data-modal-toggle="updatecoursemodal" class="updateBtn"><img width="38px"
                                         src="{{ asset('images/icons/update.svg') }}" alt="update"></button>
                                 <button class="cursor-pointer" data-modal-target="coursedetails{{ $i }}"
                                     data-modal-toggle="coursedetails{{ $i }}"><img width="38px"
@@ -206,6 +207,226 @@
         </div>
     </div>
 </div>
+
+
+
+<!-- Update course  modal -->
+<div id="updatecoursemodal" data-modal-backdrop="static"
+    class="hidden overflow-y-auto overflow-x-hidden fixed  left-0 z-50 justify-center  w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div class="relative p-4 w-full max-w-7xl max-h-full ">
+        <form id="courseData" method="post" enctype="multipart/form-data">
+            @csrf
+            <input type="text" id="update_id">
+            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700  ">
+                <div class="flex items-center justify-center  p-5  rounded-t dark:border-gray-600 bg-primary">
+                    <h3 class="text-xl font-semibold text-white text-center">
+                        @lang('lang.Update_Course')
+                    </h3>
+                    <button type="button"
+                        class="cursor-pointer absolute right-2 text-white bg-transparent rounded-lg text-sm w-8 h-8 ms-auto "
+                        data-modal-hide="updatecoursemodal">
+                        <svg class="w-4 h-4 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                            fill="none" viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                        </svg>
+                    </button>
+                </div>
+
+                <div>
+                    <div class=" my-6  flex justify-between mx-10">
+                        <div class="grid grid-cols-[100px_minmax(100px,_1fr)] items-center">
+                            <label class="text-[14px] font-normal" for="courseName">@lang('lang.Course_Name')</label>
+                            <input type="text"
+                                class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
+                                name="course_name" id="courseName" placeholder=" @lang('lang.Enter_Course_Name')">
+                        </div>
+                    </div>
+                    {{-- ====== word inputs ===  --}}
+                    <div>
+                        <div class="wordsInputs">
+                            <div class="px-10 grid grid-cols-3 gap-10">
+                                <div class="my-4">
+                                    <label class="text-[14px] font-semibold mb-1  block"
+                                        for="Level">@lang('lang.Level')</label>
+                                    <input type="text"
+                                        class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
+                                        name="level[]" id="Levelinput" placeholder="@lang('lang.Enter_Level_No')">
+                                </div>
+                                <div class="my-4">
+                                    <label class="text-[14px] font-semibold mb-1 ml-1 block"
+                                        for="Lesson">@lang('lang.Lesson')</label>
+                                    <input type="text"
+                                        class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
+                                        name="lesson[]" id="Lessoninput" placeholder="@lang('lang.Enter_Lesson_No')">
+                                </div>
+                                <div class="my-4">
+                                    <label class="text-[14px] font-semibold mb-1 ml-1 block"
+                                        for="Word">@lang('lang.Word')</label>
+                                    <input type="text"
+                                        class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
+                                        name="word[]" id="Wordinput" placeholder="@lang('lang.Enter_Word')">
+                                </div>
+                            </div>
+                            <div class="px-10 my-5 mt-3 grid grid-cols-3 gap-10">
+                                <div class="recording-set">
+                                    <label class="text-[14px] font-semibold mb-1 ml-1 block">@lang('lang.Audio_1')</label>
+                                    <div
+                                        class="h-10 w-full border border-[#DEE2E6] rounded-[4px]  gap-2 flex justify-between px-2 items-center">
+                                        <button type="button"
+                                            class="h-8 w-full max-h-8 max-w-8 bg-[#339b965b] rounded-full flex justify-center items-center ">
+                                            <svg width="14" height="16" viewBox="0 0 9 11" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M8.26713 6.82375L2.36687 10.3073C1.41714 10.868 0.25 10.1381 0.25 8.9835V2.01645C0.25 0.861837 1.41714 0.132013 2.36687 0.692738L8.26713 4.17625C9.24425 4.75325 9.24425 6.24675 8.26713 6.82375Z"
+                                                    fill="#339B96" />
+                                            </svg>
+
+                                        </button>
+                                        <div class="w-full  border-2  border-gray">
+
+                                        </div>
+                                        <button type="button" class="recordButton relative h-8 w-8">
+                                            <span
+                                                class="animate-ping recordButtonAnimation hidden  absolute right-[1px]  h-full w-full rounded-full bg-primary opacity-75"></span>
+                                            <svg width="32" height="32" viewBox="0 0 29 29" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                    d="M28.667 14.167C28.667 21.8989 22.3989 28.167 14.667 28.167C6.935 28.167 0.666992 21.8989 0.666992 14.167C0.666992 6.435 6.935 0.166992 14.667 0.166992C22.3989 0.166992 28.667 6.435 28.667 14.167ZM16.4353 13.7985C16.4353 15.0217 15.4479 16.0091 14.2249 16.0091C13.0017 16.0091 12.0143 15.0217 12.0143 13.7985V9.37752C12.0143 8.15436 13.0017 7.16699 14.2249 7.16699C15.4479 7.16699 16.4353 8.15436 16.4353 9.37752V13.7985ZM14.2249 8.6407C13.8196 8.6407 13.4881 8.97228 13.4881 9.37755V13.7987C13.4881 14.2038 13.8196 14.5355 14.2249 14.5355C14.6375 14.5355 14.9617 14.2112 14.9617 13.7987V9.37755C14.9617 8.97228 14.63 8.6407 14.2249 8.6407ZM19.3828 13.7985H18.1302C18.1302 16.0091 16.2585 17.5564 14.2249 17.5564C12.1912 17.5564 10.3196 16.0091 10.3196 13.7985H9.06699C9.06699 16.3112 11.0712 18.3891 13.4881 18.7502V21.167H14.9617V18.7502C17.3785 18.3891 19.3828 16.3112 19.3828 13.7985Z"
+                                                    fill="#EDBD58" />
+                                            </svg>
+                                        </button>
+
+                                    </div>
+                                    {{-- ==== hidden audio and file ====== --}}
+                                    <div class="invisible absolute">
+                                        <input type="file" name="audio_1[]" class="audioFileInput"
+                                            accept="audio/*" />
+                                        <div>
+                                            <audio class="audioElement" controls></audio>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="recording-set">
+                                    <label class="text-[14px] font-semibold mb-1 ml-1 block">@lang('lang.Audio_2')</label>
+                                    <div
+                                        class="h-10 w-full border border-[#DEE2E6] rounded-[4px]  gap-2 flex justify-between px-2 items-center">
+                                        <button type="button"
+                                            class="h-8 w-full max-h-8 max-w-8 bg-[#339b965b] rounded-full flex justify-center items-center ">
+                                            <svg width="14" height="16" viewBox="0 0 9 11" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M8.26713 6.82375L2.36687 10.3073C1.41714 10.868 0.25 10.1381 0.25 8.9835V2.01645C0.25 0.861837 1.41714 0.132013 2.36687 0.692738L8.26713 4.17625C9.24425 4.75325 9.24425 6.24675 8.26713 6.82375Z"
+                                                    fill="#339B96" />
+                                            </svg>
+
+                                        </button>
+                                        <div class="w-full  border-2  border-gray">
+
+                                        </div>
+                                        <button type="button" class="recordButton relative h-8 w-8">
+                                            <span
+                                                class="animate-ping recordButtonAnimation hidden  absolute right-[1px]  h-full w-full rounded-full bg-primary opacity-75"></span>
+                                            <svg width="32" height="32" viewBox="0 0 29 29" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                    d="M28.667 14.167C28.667 21.8989 22.3989 28.167 14.667 28.167C6.935 28.167 0.666992 21.8989 0.666992 14.167C0.666992 6.435 6.935 0.166992 14.667 0.166992C22.3989 0.166992 28.667 6.435 28.667 14.167ZM16.4353 13.7985C16.4353 15.0217 15.4479 16.0091 14.2249 16.0091C13.0017 16.0091 12.0143 15.0217 12.0143 13.7985V9.37752C12.0143 8.15436 13.0017 7.16699 14.2249 7.16699C15.4479 7.16699 16.4353 8.15436 16.4353 9.37752V13.7985ZM14.2249 8.6407C13.8196 8.6407 13.4881 8.97228 13.4881 9.37755V13.7987C13.4881 14.2038 13.8196 14.5355 14.2249 14.5355C14.6375 14.5355 14.9617 14.2112 14.9617 13.7987V9.37755C14.9617 8.97228 14.63 8.6407 14.2249 8.6407ZM19.3828 13.7985H18.1302C18.1302 16.0091 16.2585 17.5564 14.2249 17.5564C12.1912 17.5564 10.3196 16.0091 10.3196 13.7985H9.06699C9.06699 16.3112 11.0712 18.3891 13.4881 18.7502V21.167H14.9617V18.7502C17.3785 18.3891 19.3828 16.3112 19.3828 13.7985Z"
+                                                    fill="#EDBD58" />
+                                            </svg>
+                                        </button>
+
+                                    </div>
+                                    {{-- ==== hidden audio and file ====== --}}
+                                    <div class="invisible absolute">
+                                        <input name="audio_2[]" type="file" class="audioFileInput"
+                                            accept="audio/*" />
+                                        <div>
+                                            <audio class="audioElement" controls></audio>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="recording-set">
+                                    <label class="text-[14px] font-semibold mb-1 ml-1 block">@lang('lang.Audio_3')</label>
+                                    <div class="flex gap-2 items-center">
+                                        <div
+                                            class="h-10 w-full border border-[#DEE2E6] rounded-[4px]  gap-2 flex justify-between px-2 items-center">
+                                            <button type="button"
+                                                class="h-8 w-full max-h-8 max-w-8 bg-[#339b965b] rounded-full flex justify-center items-center ">
+                                                <svg width="14" height="16" viewBox="0 0 9 11" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M8.26713 6.82375L2.36687 10.3073C1.41714 10.868 0.25 10.1381 0.25 8.9835V2.01645C0.25 0.861837 1.41714 0.132013 2.36687 0.692738L8.26713 4.17625C9.24425 4.75325 9.24425 6.24675 8.26713 6.82375Z"
+                                                        fill="#339B96" />
+                                                </svg>
+
+                                            </button>
+                                            <div class="w-full  border-2  border-gray">
+
+                                            </div>
+                                            <button type="button" class="recordButton relative h-8 w-8">
+                                                <span
+                                                    class="animate-ping recordButtonAnimation hidden  absolute right-[1px]  h-full w-full rounded-full bg-primary opacity-75"></span>
+                                                <svg width="32" height="32" viewBox="0 0 29 29"
+                                                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                                        d="M28.667 14.167C28.667 21.8989 22.3989 28.167 14.667 28.167C6.935 28.167 0.666992 21.8989 0.666992 14.167C0.666992 6.435 6.935 0.166992 14.667 0.166992C22.3989 0.166992 28.667 6.435 28.667 14.167ZM16.4353 13.7985C16.4353 15.0217 15.4479 16.0091 14.2249 16.0091C13.0017 16.0091 12.0143 15.0217 12.0143 13.7985V9.37752C12.0143 8.15436 13.0017 7.16699 14.2249 7.16699C15.4479 7.16699 16.4353 8.15436 16.4353 9.37752V13.7985ZM14.2249 8.6407C13.8196 8.6407 13.4881 8.97228 13.4881 9.37755V13.7987C13.4881 14.2038 13.8196 14.5355 14.2249 14.5355C14.6375 14.5355 14.9617 14.2112 14.9617 13.7987V9.37755C14.9617 8.97228 14.63 8.6407 14.2249 8.6407ZM19.3828 13.7985H18.1302C18.1302 16.0091 16.2585 17.5564 14.2249 17.5564C12.1912 17.5564 10.3196 16.0091 10.3196 13.7985H9.06699C9.06699 16.3112 11.0712 18.3891 13.4881 18.7502V21.167H14.9617V18.7502C17.3785 18.3891 19.3828 16.3112 19.3828 13.7985Z"
+                                                        fill="#EDBD58" />
+                                                </svg>
+                                            </button>
+
+                                        </div>
+                                        {{-- ==== hidden audio and file ====== --}}
+                                        <div class="invisible absolute">
+                                            <input name="audio_3[]" type="file" class="audioFileInput"
+                                                accept="audio/*" />
+                                            <div>
+                                                <audio class="audioElement" controls></audio>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class=" pt-4">
+                    <hr class="border-[#DEE2E6] ">
+                </div>
+                <div class="flex justify-end ">
+                    <button id="uaddBtn"
+                        class="bg-secondary text-white py-2 px-6 my-4 rounded-[4px]  mx-6  font-semibold">
+                        <div class=" text-center hidden" id="uspinner">
+                            <svg aria-hidden="true"
+                                class="w-5 h-5 mx-auto text-center text-gray-200 animate-spin fill-primary"
+                                viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                                    fill="currentColor" />
+                                <path
+                                    d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                                    fill="currentFill" />
+                            </svg>
+                        </div>
+                        <div id="utext">
+                            @lang('lang.Update')
+                        </div>
+
+                    </button>
+                </div>
+            </div>
+        </form>
+        <div>
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
 
 
 <!-- Add  course  modal -->
@@ -452,6 +673,39 @@
     audioPlayer();
 
     $(document).ready(function() {
+        //  get   course  data
+        $('.updateBtn').click(function() {
+            var updateId = $(this).attr('updateId');
+            var url = "../getCourseData/" + updateId;
+            console.log(url);
+            $.ajax({
+                type: "GET",
+                url: url,
+                dataType: "json",
+                success: function(response) {
+                    var course = response.course;
+                    console.log(course);
+                    $('#update_id').val(course.id);
+                    $('#courseName').val(course.course_name);
+                    $('#Levelinput').val(course.level);
+                    $('#Lessoninput').val(course.lesson);
+                    $('#Wordinput').val(course.word);
+
+                },
+                error: function(jqXHR) {
+                    let response = JSON.parse(jqXHR.responseText);
+                    console.log("error");
+                    Swal.fire(
+                        'Warning!',
+                        'Training  Not Found',
+                        'warning'
+                    );
+                }
+            });
+        })
+
+
+        //  add course  data
         $("#courseData").submit(function(event) {
             event.preventDefault();
             var formData = new FormData(this);

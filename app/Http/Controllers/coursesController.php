@@ -108,4 +108,21 @@ class coursesController extends Controller
         $words = words::where('id', $id)->first();
         return response()->json(['success' => true, 'words' => $words]);
     }
+
+
+    public function getcourseUpdataData($id)
+    {
+
+        try {
+
+            $course = words::where('id',  $id)->first();
+            if (!$course) {
+                return response()->json(['success' => false, 'message' => 'Course  not found'], 500);
+            }
+            return response()->json(['success' => false, 'message' => 'Data get successfull', 'course' => $course], 200);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
+        }
+    }
+
 }

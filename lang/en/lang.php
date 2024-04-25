@@ -225,6 +225,7 @@ return [
     "select_word" => "Select Word",
     "level_select" => "Select Level",
     "Select_lesson" => "Select Lesson",
+    "Update_Course" => "Update Course",
     "select_student_from_table" => "Select student from table",
 
 ];
