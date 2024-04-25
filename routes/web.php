@@ -47,13 +47,16 @@ Route::middleware('custom')->group(function () {
     Route::post('addtraining', [trainingController::class, 'addtraining']);
     Route::get('delTraining/{training_id}', [trainingController::class, 'deltraining']);
     //  admnim pages
+    Route::get('/student', [studentController::class, 'getstudentdata']);
+    Route::post('addStudent', [studentController::class, 'addstudent']);
+    Route::get('studentUpdataData/{id}', [studentController::class, 'studentUpdataData']);
+    Route::post('studentUpdata/{id}', [studentController::class, 'updatestudent']);
+
     Route::middleware('adminAuth')->group(function () {
         Route::get('/admin', [userController::class, 'adminDashboard']);
 
         Route::get('/admin/teacher', [teacherController::class, 'getsteacherdata']);
-        Route::get('/admin/student', [studentController::class, 'getstudentdata']);
         Route::get('/admin/parents', [parentController::class, 'getparentdata']);
-
         Route::get('/admin/help', function () {
             return view('admin.help');
         });
@@ -63,7 +66,6 @@ Route::middleware('custom')->group(function () {
         Route::get('/admin/audio', function () {
             return view('admin.audio');
         });
-        Route::post('addStudent', [studentController::class, 'addstudent']);
         Route::post('addParent', [parentController::class, 'addparent']);
         Route::post('addteacher', [teacherController::class, 'addteacher']);
 
@@ -77,8 +79,6 @@ Route::middleware('custom')->group(function () {
 
         Route::post('updateCourse/{id}', [coursesController::class, 'updatecourse']);
 
-        Route::get('studentUpdataData/{id}', [studentController::class, 'studentUpdataData']);
-        Route::post('studentUpdata/{id}', [studentController::class, 'updatestudent']);
 
         // paraent
         Route::match(['get', 'post'], 'delParent/{parent_id}', [parentController::class, 'delparent']);
@@ -92,9 +92,6 @@ Route::middleware('custom')->group(function () {
     Route::middleware('parentAuth')->group(function () {
         Route::get('/', function () {
             return view('parent.dashboard');
-        });
-        Route::get('/student', function () {
-            return view('parent.student');
         });
         Route::get('/games', function () {
             return view('parent.games');

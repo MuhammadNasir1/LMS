@@ -1,5 +1,12 @@
 @include('layouts.header')
-@include('admin.includes.nav')
+@if (session('user_det')['role'] == 'parent')
+    @include('parent.includes.nav')
+@elseif (session('user_det')['role'] == 'teacher')
+    @include('teacher.includes.nav')
+@else
+    @include('admin.includes.nav')
+@endif
+
 
 <div class="mx-4 mt-12">
     <div>
@@ -769,7 +776,7 @@
                 },
                 success: function(response) {
                     if (response.success == true) {
-                        window.location.href = '../admin/student';
+                        window.location.href = '../student';
                     } else if (response.success == false) {
                         Swal.fire(
                             'Warning!',
@@ -805,7 +812,7 @@
             dataType: "json",
             success: function(response) {
                 if (response.success == true) {
-                    window.location.href = '../admin/student';
+                    window.location.href = '../student';
                 } else if (response.success == false) {
                     Swal.fire(
                         'Warning!',
@@ -846,7 +853,7 @@
                 },
                 success: function(response) {
                     if (response.success == true) {
-                        window.location.href = '../admin/student';
+                        window.location.href = '../student';
                     } else if (response.success == false) {
                         Swal.fire(
                             'Warning!',

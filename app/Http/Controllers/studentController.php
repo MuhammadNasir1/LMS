@@ -101,7 +101,7 @@ class studentController extends Controller
     public  function getstudentdata()
     {
         $students = students::all();
-        return view('admin.student', ['students' => $students]);
+        return view('student', ['students' => $students]);
     }
 
     public function studentUpdataData(Request $request, $id)
