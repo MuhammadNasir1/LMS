@@ -35,7 +35,7 @@
                             <td>{{ $teacher->phone_no }}</td>
                             <td>{{ $teacher->email }}</td>
                             <td>{{ $teacher->address }}</td>
-                            <td>{{ $teacher->address }}</td>
+                            <td>{{ $teacher->gender }}</td>
                             <td>{{ $teacher->subject }}</td>
                             <td>{{ $teacher->join_date }}</td>
 
@@ -603,7 +603,7 @@
                 $('#uemail').val(teacher.email);
                 $('#usubject').val(teacher.subject);
                 $('#uaddress').val(teacher.address);
-                $('#uskill').val(teacher.address);
+                $('#uskill').val(teacher.skill);
                 $('#ujoindate').val(teacher.join_date);
             },
             error: function(jqXHR) {
