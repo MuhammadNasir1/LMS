@@ -74,6 +74,21 @@ class coursesController extends Controller
     public function updatecourse(Request $request, $id)
     {
         try {
+            $course = words::find($id);
+            if (!$course) {
+                return response()->json(['success' => false, 'message' => 'course not found'], 500);
+            }
+
+            for ($i = 1; $i <= 3; $i++) {
+                $audioFieldName = "audio_$i";
+                if ($request->hasFile("$audioFieldName")) {
+                    $audioFile = $request->file("$audioFieldName");
+                    $audioName = time() . '_' . $audioFile->getClientOriginalName(); // Use original name instead of extension
+                    $audioFile->storeAs('public/audio', $audioName);
+                    $course->$audioFieldName = 'storage/audio/' . $audioName; // Assign the file path to the dynamic field name
+                }
+            }
+            $course->update($request->except('audio_1', 'audio_2', 'audio_3'));
             return response()->json(['success' => true, 'message' =>  "course add successfull"], 200);
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
@@ -124,5 +139,4 @@ class coursesController extends Controller
             return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
         }
     }
-
 }

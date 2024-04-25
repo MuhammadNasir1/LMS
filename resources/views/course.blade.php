@@ -214,9 +214,9 @@
 <div id="updatecoursemodal" data-modal-backdrop="static"
     class="hidden overflow-y-auto overflow-x-hidden fixed  left-0 z-50 justify-center  w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
     <div class="relative p-4 w-full max-w-7xl max-h-full ">
-        <form id="courseData" method="post" enctype="multipart/form-data">
+        <form id="Updatecourse" method="post" enctype="multipart/form-data">
             @csrf
-            <input type="text" id="update_id">
+            <input type="hidden" id="update_id">
             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700  ">
                 <div class="flex items-center justify-center  p-5  rounded-t dark:border-gray-600 bg-primary">
                     <h3 class="text-xl font-semibold text-white text-center">
@@ -251,21 +251,21 @@
                                         for="Level">@lang('lang.Level')</label>
                                     <input type="text"
                                         class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                        name="level[]" id="Levelinput" placeholder="@lang('lang.Enter_Level_No')">
+                                        name="level" id="Levelinput" placeholder="@lang('lang.Enter_Level_No')">
                                 </div>
                                 <div class="my-4">
                                     <label class="text-[14px] font-semibold mb-1 ml-1 block"
                                         for="Lesson">@lang('lang.Lesson')</label>
                                     <input type="text"
                                         class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                        name="lesson[]" id="Lessoninput" placeholder="@lang('lang.Enter_Lesson_No')">
+                                        name="lesson" id="Lessoninput" placeholder="@lang('lang.Enter_Lesson_No')">
                                 </div>
                                 <div class="my-4">
                                     <label class="text-[14px] font-semibold mb-1 ml-1 block"
                                         for="Word">@lang('lang.Word')</label>
                                     <input type="text"
                                         class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                        name="word[]" id="Wordinput" placeholder="@lang('lang.Enter_Word')">
+                                        name="word" id="Wordinput" placeholder="@lang('lang.Enter_Word')">
                                 </div>
                             </div>
                             <div class="px-10 my-5 mt-3 grid grid-cols-3 gap-10">
@@ -300,7 +300,7 @@
                                     </div>
                                     {{-- ==== hidden audio and file ====== --}}
                                     <div class="invisible absolute">
-                                        <input type="file" name="audio_1[]" class="audioFileInput"
+                                        <input type="file" name="audio_1" class="audioFileInput"
                                             accept="audio/*" />
                                         <div>
                                             <audio class="audioElement" controls></audio>
@@ -338,7 +338,7 @@
                                     </div>
                                     {{-- ==== hidden audio and file ====== --}}
                                     <div class="invisible absolute">
-                                        <input name="audio_2[]" type="file" class="audioFileInput"
+                                        <input name="audio_2" type="file" class="audioFileInput"
                                             accept="audio/*" />
                                         <div>
                                             <audio class="audioElement" controls></audio>
@@ -377,7 +377,7 @@
                                         </div>
                                         {{-- ==== hidden audio and file ====== --}}
                                         <div class="invisible absolute">
-                                            <input name="audio_3[]" type="file" class="audioFileInput"
+                                            <input name="audio_3" type="file" class="audioFileInput"
                                                 accept="audio/*" />
                                             <div>
                                                 <audio class="audioElement" controls></audio>
@@ -684,7 +684,6 @@
                 dataType: "json",
                 success: function(response) {
                     var course = response.course;
-                    console.log(course);
                     $('#update_id').val(course.id);
                     $('#courseName').val(course.course_name);
                     $('#Levelinput').val(course.level);
@@ -704,6 +703,51 @@
             });
         })
 
+
+        $("#Updatecourse").submit(function(event) {
+            var updateId = $('#update_id').val();
+            var url = "../updateCoursedata/" + updateId;
+            console.log(url);
+            event.preventDefault();
+            var formData = new FormData(this);
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: formData,
+                dataType: "json",
+                contentType: false,
+                processData: false,
+                beforeSend: function() {
+                    $('#uspinner').removeClass('hidden');
+                    $('#utext').addClass('hidden');
+                    $('#uaddBtn').attr('disabled', true);
+                },
+                success: function(response) {
+                    if (response.success == true) {
+                        window.location.href = '../course';
+                    } else if (response.success == false) {
+                        Swal.fire(
+                            'Warning!',
+                            response.message,
+                            'warning'
+                        );
+                    }
+                },
+                error: function(jqXHR) {
+                    let response = JSON.parse(jqXHR.responseText);
+                    console.log("error");
+                    Swal.fire(
+                        'Warning!',
+                        response.message,
+                        'warning'
+                    );
+
+                    $('#utext').removeClass('hidden');
+                    $('#uspinner').addClass('hidden');
+                    $('#uaddBtn').attr('disabled', false);
+                }
+            });
+        });
 
         //  add course  data
         $("#courseData").submit(function(event) {
