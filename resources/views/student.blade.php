@@ -38,7 +38,7 @@
                 </thead>
                 <tbody>
 
-                    @foreach ($students as $i => $student)
+                    @foreach (session('user_det')['role'] == 'parent' ? $ParentStudents : $students as $i => $student)
                         <tr class="pt-4">
                             <td>{{ $i + 1 }}</td>
                             <td>{{ $student->full_name }}</td>
@@ -51,9 +51,8 @@
                             <td>{{ $student->adress }}</td>
 
                             <td class="flex gap-5">
-                                <button  class="cursor-pointer delbtn" delId="{{ $student->id }}"><img
-                                        width="38px" src="{{ asset('images/icons/delete.svg') }}"
-                                        alt="delete"></button>
+                                <button class="cursor-pointer delbtn" delId="{{ $student->id }}"><img width="38px"
+                                        src="{{ asset('images/icons/delete.svg') }}" alt="delete"></button>
                                 <button updateId="{{ $student->id }}" data-modal-target="updatestudentmodal"
                                     data-modal-toggle="updatestudentmodal" class="cursor-pointer updateBtn"
                                     href="#"><img width="38px" src="{{ asset('images/icons/update.svg') }}"
@@ -467,6 +466,9 @@
     <div class="relative p-4 w-full max-w-7xl max-h-full ">
         <form id="student_data" method="post">
             @csrf
+            @if (session('user_det')['role'] == 'parent')
+                <input type="text" name="parent_id" value="{{ session('user_det')['user_id'] }}" readonly>
+            @endif
             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700  ">
                 <div class="flex items-center  justify-center  p-5  rounded-t dark:border-gray-600 bg-primary">
                     <h3 class="text-xl font-semibold text-white text-center">

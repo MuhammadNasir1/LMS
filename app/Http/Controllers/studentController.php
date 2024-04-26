@@ -101,7 +101,9 @@ class studentController extends Controller
     public  function getstudentdata()
     {
         $students = students::all();
-        return view('student', ['students' => $students]);
+        $userId  =  session('user_det')['user_id'];
+        $ParentStudents = students::where('parent_id', $userId);
+        return view('student', ['students' => $students , 'ParentStudents' => $ParentStudents]);
     }
 
     public function studentUpdataData(Request $request, $id)
