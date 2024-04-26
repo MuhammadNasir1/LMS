@@ -126,7 +126,6 @@ class teacherController extends Controller
                 $teacher->teacher_cv = 'storage/teacherCv/' . $cvName;
             }
 
-            $teacher->update($request->except('teacher_cv')); // Exclude teacher_cv from updating
 
 
             // Generate a password
@@ -140,7 +139,8 @@ class teacherController extends Controller
                 $Mpassword = $password;
                 Mail::to($request['email'])->send(new TeacherMail($email, $Mpassword));
             }
-            $teacher->update($request->all());
+            $teacher->update($request->except('teacher_cv')); // Exclude teacher_cv from updating
+            // $teacher->update($request->all());
             return response()->json(['success' => true, 'message' => 'Teacher updated successfully'], 200);
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
