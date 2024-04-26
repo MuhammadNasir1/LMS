@@ -25,7 +25,7 @@ class teacherController extends Controller
                 'skill' => 'required',
                 'join_date' => 'required|date',
                 'address' => 'required',
-                'teacher_cv' => 'nullable|image|mimes:jpeg,png,jpg,JPG,pdf',
+                'teacher_cv' => 'nullable|mimes:jpeg,png,jpg,JPG,pdf',
             ]);
 
             $teacher = teacher::create([

@@ -159,7 +159,10 @@
                                                 <h3 class="text-[18px] font-normal">@lang('lang.Teacher_CV'):</h3>
                                             </div>
                                             <div class="w-[150px]  ">
-                                                <p class="text-[14px] text-[#323C47]">CV File here can open</p>
+                                                @if ($teacher->teacher_cv)
+
+                                                <a  href="../{{$teacher->teacher_cv}}"  target="_blank" class="text-[14px] text-[#323C47]">CV File here can open</a>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
