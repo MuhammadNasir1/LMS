@@ -28,7 +28,7 @@ class authController extends Controller
                 'language' => 'nullable',
                 'old_password' => 'nullable',
                 'confirm_password' => 'nullable',
-                'upload_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:1024',
+                'upload_image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
             ]);
 
             $user->name = $validatedData['name'];
