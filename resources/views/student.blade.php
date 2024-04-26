@@ -189,7 +189,7 @@
                                                 </div>
                                                 <div class="w-[150px]  ">
                                                     <p class="text-[14px] text-[#323C47]">
-                                                        {{ $student->schooll_attending }}</p>
+                                                        {{ $student->School_attending }}</p>
                                                 </div>
                                             </div>
 
@@ -623,13 +623,13 @@
                                 <div class="select-feild w-full">
                                     <select
                                         class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                        name="School_attending" id="sAttending">
+                                        name="sch_attending" id="sAttending">
                                         <option value="">@lang('lang.Select')</option>
                                     </select>
                                 </div>
                                 <input type="text"
                                     class="w-full hidden border-[#DEE2E6] rounded-[4px] focus:border-primary input-field   h-[40px] text-[14px]"
-                                    name="School_attending" id="School_attending">
+                                    name="sch_attending" id="School_attending">
                                 <div>
                                     <button type="button"
                                         class="bg-secondary toggle-button h-[40px] rounded-[4px] w-[40px] font-bold text-white text-2xl"
