@@ -24,6 +24,7 @@ class studentController extends Controller
                 "grade" => "required",
             ]);
             $student = Students::create([
+                'parent_id' => $request['parent_id'],
                 'full_name' => $validatedData['full_name'],
                 'chinese_name' => $request['chinese_name'],
                 'gender' => $validatedData['gender'],
@@ -100,10 +101,10 @@ class studentController extends Controller
 
     public  function getstudentdata()
     {
+        $userId = session('user_det')['user_id'];
         $students = students::all();
-        $userId  =  session('user_det')['user_id'];
-        $ParentStudents = students::where('parent_id', $userId);
-        return view('student', ['students' => $students , 'ParentStudents' => $ParentStudents]);
+        $ParentStudents = students::where('parent_id', $userId)->get(); // Add get() to execute the query
+        return view('student', ['students' => $students, 'ParentStudents' => $ParentStudents]);
     }
 
     public function studentUpdataData(Request $request, $id)
@@ -123,6 +124,4 @@ class studentController extends Controller
         $words = words::all();
         return view('teacher.teachingpage', ['students' => $students, 'words' =>  $words]);
     }
-
-
 }

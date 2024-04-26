@@ -234,6 +234,7 @@
     <div class="relative p-4 w-full max-w-7xl max-h-full ">
         <form id="studentupdatedata" method="post">
             @csrf
+            <input type="hidden" name="parent_id" id="parent_id" readonly>
             <input type="hidden" id="update_id">
             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700  ">
                 <div class="flex items-center  justify-center  p-5  rounded-t dark:border-gray-600 bg-primary">
@@ -730,9 +731,10 @@
             success: function(response) {
                 console.log(response);
                 var student = response.student;
-                $('#gender').val(student.gender);
+                $('#parent_id').val(student.parent_id);
                 $('#update_id').val(student.id);
                 $('#fullName').val(student.full_name);
+                $('#gender').val(student.gender);
                 $('#phoneNo').val(student.phone_no);
                 $('#personName').val(student.phone_no);
                 $('#emPhone').val(student.em_phone);
