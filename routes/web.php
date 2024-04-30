@@ -16,9 +16,6 @@ use Illuminate\Testing\ParallelConsoleOutput;
 
 // language route
 Route::get('/lang', [userController::class, 'language_change']);
-
-Route::post('addCourse', [coursesController::class, 'addcourse']);
-Route::get('delRecording/{id}', [teachingController::class, 'delRecording']);
 // Authentication
 Route::post('registerdata', [authController::class, 'register']);
 Route::post('login', [authController::class, 'login']);
@@ -44,6 +41,8 @@ Route::get('register/{role}', function () {
 
 
 Route::middleware('custom')->group(function () {
+    Route::post('addCourse', [coursesController::class, 'addcourse']);
+Route::get('delRecording/{id}', [teachingController::class, 'delRecording']);
     Route::post('addtraining', [trainingController::class, 'addtraining']);
     Route::get('delTraining/{training_id}', [trainingController::class, 'deltraining']);
     //  admnim pages
@@ -150,19 +149,19 @@ Route::middleware('custom')->group(function () {
 
     // teaching  page
     Route::get('filter-options', [teachingController::class, 'filterOptions']);
+    Route::get('/course', [coursesController::class, 'getcoursedata']);
+    Route::get('/getCourseData/{id}', [coursesController::class, 'getcourseUpdataData']);
+    Route::get('/deleteCourseData/{id}', [coursesController::class, 'deleteCourse']);
+    Route::post('/updateCoursedata/{id}', [coursesController::class, 'updateCourse']);
+
+    Route::post('/addteaching', [teachingController::class, 'addteachingdata']);
+    Route::post('/teacherRec', [teachingController::class, 'teacherRecordingData']);
+    Route::get('/sendemail', [userController::class, 'sendWelcomeEmail']);
+
+    // get training  data for update
+    Route::get('/trainingUpdataData/{id}', [trainingController::class, 'trainingUpdataData']);
+    Route::post('updatetraining/{training_id}', [trainingController::class, 'updatetraining']);
 });
-Route::get('/course', [coursesController::class, 'getcoursedata']);
-Route::get('/getCourseData/{id}', [coursesController::class, 'getcourseUpdataData']);
-Route::get('/deleteCourseData/{id}', [coursesController::class, 'deleteCourse']);
-Route::post('/updateCoursedata/{id}', [coursesController::class, 'updateCourse']);
-
-Route::post('/addteaching', [teachingController::class, 'addteachingdata']);
-Route::post('/teacherRec', [teachingController::class, 'teacherRecordingData']);
-Route::get('/sendemail', [userController::class, 'sendWelcomeEmail']);
-
-// get training  data for update
-Route::get('/trainingUpdataData/{id}', [trainingController::class, 'trainingUpdataData']);
-Route::post('updatetraining/{training_id}', [trainingController::class, 'updatetraining']);
 
 
 Route::get('email', function () {

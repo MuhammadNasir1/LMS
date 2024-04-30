@@ -468,7 +468,7 @@
         <form id="student_data" method="post">
             @csrf
             @if (session('user_det')['role'] == 'parent')
-                <input type="text" name="parent_id" value="{{ session('user_det')['user_id'] }}" readonly>
+                <input type="hidden" name="parent_id" value="{{ session('user_det')['user_id'] }}" readonly>
             @endif
             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700  ">
                 <div class="flex items-center  justify-center  p-5  rounded-t dark:border-gray-600 bg-primary">
