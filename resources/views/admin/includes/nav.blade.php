@@ -260,7 +260,7 @@
                             fill="#339B96" />
                     </svg>
 
-                    <span class="flex-1 ms-3 whitespace-nowrap">@lang('lang.Taining_Videos')</span>
+                    <span class="flex-1 ms-3 whitespace-nowrap">@lang('lang.Training_Videos')</span>
                 </a>
             </li>
             {{-- <li>

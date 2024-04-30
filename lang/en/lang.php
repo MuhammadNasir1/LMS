@@ -6,7 +6,7 @@ return [
     'Setting' => 'Setting',
     'Dashboard' => 'Dashboard',
     'Permission_Page' => 'Permission Page',
-    'Taining_Videos' => 'Taining Videos',
+    'Training_Videos' => 'Taining Videos',
     'Reports' => 'Reports',
     'LMS_Reports' => 'LMS Reports',
     'Teachers_Reports' => 'Teachers Reports ',
