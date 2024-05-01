@@ -41,6 +41,8 @@ Route::post('addStudent', [studentController::class, 'addstudent']);
 Route::match(['get', 'post'], 'delStudent/{std_id}', [studentController::class, 'delstudent']);
 ROute::post('updateStudent/{std_id}', [studentController::class, 'updatestudent']);
 Route::get('studentData', [studentController::class, 'getStdData']);
+// parent student data
+Route::get('parentStudentData/{parent_id}', [studentController::class,  'parentStudentData']);
 
 // parent CRUD
 Route::post('addParent', [parentController::class, 'addparent']);

@@ -124,4 +124,21 @@ class studentController extends Controller
         $words = words::all();
         return view('teacher.teachingpage', ['students' => $students, 'words' =>  $words]);
     }
+
+
+    // get student  for parents role
+
+    public  function  parentStudentData($parent_id)
+    {
+        try {
+            $students   = students::where('parent_id', $parent_id)->get();
+            if (!$students) {
+                return response()->json(['success' =>  false, 'message' => "parent not found"]);
+            }
+
+            return response()->json(['success' =>  true, 'message' => "Data get successfully" , 'students' => $students] , 200);
+        } catch (\Exception $e) {
+            return response()->json(['success'  => false, 'message' => $e->getMessage()], 500);
+        }
+    }
 }
