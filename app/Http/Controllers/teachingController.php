@@ -332,4 +332,51 @@ class teachingController extends Controller
     //         return response()->json(['success' => false, 'message'  => $e->getMessage()], 500);
     //     }
     // }
+
+    public function getParentWords($parent_id)
+    {
+        try {
+            $students = students::where('parent_id', $parent_id)->get();
+            $recent_teaching = []; // Initialize the variable outside of the loop
+            // foreach ($students as $student) {
+            //     $recent_teaching = array_merge($recent_teaching, recent_teaching::where('student_id', $student->id)->get()->toArray());
+            // }
+            foreach ($students as $student) {
+                $teachings = recent_teaching::where('student_id', $student->id)->get()->toArray();
+                foreach ($teachings as &$teaching) {
+                    $teaching['word'] = json_decode($teaching['word'], true);
+                }
+                $recent_teaching = array_merge($recent_teaching, $teachings);
+            }
+            return response()->json(['success' => true, 'message' => "Words Get Successfully", 'recentWords' =>  $recent_teaching], 200);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' =>  $e->getMessage()], 500);
+        }
+    }
+
+    public function getTeacherWords($teacher_id){
+
+        try {
+            $recentWords = recent_teaching::where('teacher_id', $teacher_id)->get()->toArray();
+            foreach ($recentWords as &$word) {
+                $word['word'] = json_decode($word['word'], true);
+            }
+            return response()->json(['success' => true, 'message' => "Words Get Successfully", 'recentWords' =>  $recentWords], 200);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' =>  $e->getMessage()], 500);
+        }
+    }
+
+    public function getAllWords(){
+        try {
+            $recentWords = recent_teaching::all()->toArray();
+            foreach ($recentWords as &$word) {
+                $word['word'] = json_decode($word['word'], true);
+            }
+            return response()->json(['success' => true, 'message' => "Words Get Successfully", 'recentWords' =>  $recentWords], 200);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' =>  $e->getMessage()], 500);
+        }
+
+    }
 }

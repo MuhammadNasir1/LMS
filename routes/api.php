@@ -81,3 +81,7 @@ Route::post('addTeaching', [teachingController::class, 'addteachingrecdata']);
 // Route::post('addTeaching', [teachingController::class, 'addteachingdata']);
 // add teacher  recording data
 Route::post('addTeacherRecording', [teachingController::class, 'teacherRecdata']);
+// get words from gaming
+Route::get('getParentWords/{parent_id}', [teachingController::class, 'getParentWords']);
+Route::get('getTeacherWords/{teacher_id}', [teachingController::class, 'getTeacherWords']);
+Route::get('getAllWords', [teachingController::class, 'getAllWords']);
