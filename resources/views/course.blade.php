@@ -273,8 +273,16 @@
                                     <label class="text-[14px] font-semibold mb-1 ml-1 block">@lang('lang.Audio_1')</label>
                                     <div
                                         class="h-10 w-full border border-[#DEE2E6] rounded-[4px]  gap-2 flex justify-between px-2 items-center">
+                                        {{-- ==== hidden audio and file ====== --}}
+                                        <div class="invisible absolute">
+                                            <input type="file" name="audio_1" class="audioFileInput"
+                                                accept="audio/*" />
+                                            <div>
+                                                <audio class="audioElement audio-player" controls></audio>
+                                            </div>
+                                        </div>
                                         <button type="button"
-                                            class="h-8 w-full max-h-8 max-w-8 bg-[#339b965b] rounded-full flex justify-center items-center ">
+                                            class="h-8 play-button w-full max-h-8 max-w-8 bg-[#339b965b] rounded-full flex justify-center items-center ">
                                             <svg width="14" height="16" viewBox="0 0 9 11" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
                                                 <path
@@ -297,22 +305,22 @@
                                             </svg>
                                         </button>
 
-                                    </div>
-                                    {{-- ==== hidden audio and file ====== --}}
-                                    <div class="invisible absolute">
-                                        <input type="file" name="audio_1" class="audioFileInput"
-                                            accept="audio/*" />
-                                        <div>
-                                            <audio class="audioElement" controls></audio>
-                                        </div>
                                     </div>
                                 </div>
                                 <div class="recording-set">
                                     <label class="text-[14px] font-semibold mb-1 ml-1 block">@lang('lang.Audio_2')</label>
                                     <div
                                         class="h-10 w-full border border-[#DEE2E6] rounded-[4px]  gap-2 flex justify-between px-2 items-center">
+                                        {{-- ==== hidden audio and file ====== --}}
+                                        <div class="invisible absolute">
+                                            <input name="audio_2" type="file" class="audioFileInput"
+                                                accept="audio/*" />
+                                            <div>
+                                                <audio class="audioElement audio-player" controls></audio>
+                                            </div>
+                                        </div>
                                         <button type="button"
-                                            class="h-8 w-full max-h-8 max-w-8 bg-[#339b965b] rounded-full flex justify-center items-center ">
+                                            class="h-8 play-button w-full max-h-8 max-w-8 bg-[#339b965b] rounded-full flex justify-center items-center ">
                                             <svg width="14" height="16" viewBox="0 0 9 11" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
                                                 <path
@@ -335,14 +343,6 @@
                                             </svg>
                                         </button>
 
-                                    </div>
-                                    {{-- ==== hidden audio and file ====== --}}
-                                    <div class="invisible absolute">
-                                        <input name="audio_2" type="file" class="audioFileInput"
-                                            accept="audio/*" />
-                                        <div>
-                                            <audio class="audioElement" controls></audio>
-                                        </div>
                                     </div>
                                 </div>
                                 <div class="recording-set">
@@ -350,8 +350,16 @@
                                     <div class="flex gap-2 items-center">
                                         <div
                                             class="h-10 w-full border border-[#DEE2E6] rounded-[4px]  gap-2 flex justify-between px-2 items-center">
+                                            {{-- ==== hidden audio and file ====== --}}
+                                            <div class="invisible absolute">
+                                                <input name="audio_3" type="file" class="audioFileInput"
+                                                    accept="audio/*" />
+                                                <div>
+                                                    <audio class="audioElement audio-player" controls></audio>
+                                                </div>
+                                            </div>
                                             <button type="button"
-                                                class="h-8 w-full max-h-8 max-w-8 bg-[#339b965b] rounded-full flex justify-center items-center ">
+                                                class="h-8 w-full play-button max-h-8 max-w-8 bg-[#339b965b] rounded-full flex justify-center items-center ">
                                                 <svg width="14" height="16" viewBox="0 0 9 11" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
@@ -375,15 +383,6 @@
                                             </button>
 
                                         </div>
-                                        {{-- ==== hidden audio and file ====== --}}
-                                        <div class="invisible absolute">
-                                            <input name="audio_3" type="file" class="audioFileInput"
-                                                accept="audio/*" />
-                                            <div>
-                                                <audio class="audioElement" controls></audio>
-                                            </div>
-                                        </div>
-
                                     </div>
                                 </div>
                             </div>
@@ -491,8 +490,16 @@
                                     <label class="text-[14px] font-semibold mb-1 ml-1 block">@lang('lang.Audio_1')</label>
                                     <div
                                         class="h-10 w-full border border-[#DEE2E6] rounded-[4px]  gap-2 flex justify-between px-2 items-center">
+                                        {{-- ==== hidden audio and file ====== --}}
+                                        <div class="invisible absolute ">
+                                            <input type="file" name="audio_1[]" class="audioFileInput"
+                                                accept="audio/*" />
+                                            <div>
+                                                <audio class="audioElement audio-player" controls></audio>
+                                            </div>
+                                        </div>
                                         <button type="button"
-                                            class="h-8 w-full max-h-8 max-w-8 bg-[#339b965b] rounded-full flex justify-center items-center ">
+                                            class="h-8 play-button w-full max-h-8 max-w-8 bg-[#339b965b] rounded-full flex justify-center items-center ">
                                             <svg width="14" height="16" viewBox="0 0 9 11" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
                                                 <path
@@ -515,22 +522,22 @@
                                             </svg>
                                         </button>
 
-                                    </div>
-                                    {{-- ==== hidden audio and file ====== --}}
-                                    <div class="invisible absolute">
-                                        <input type="file" name="audio_1[]" class="audioFileInput"
-                                            accept="audio/*" />
-                                        <div>
-                                            <audio class="audioElement" controls></audio>
-                                        </div>
                                     </div>
                                 </div>
                                 <div class="recording-set">
                                     <label class="text-[14px] font-semibold mb-1 ml-1 block">@lang('lang.Audio_2')</label>
                                     <div
                                         class="h-10 w-full border border-[#DEE2E6] rounded-[4px]  gap-2 flex justify-between px-2 items-center">
+                                        {{-- ==== hidden audio and file ====== --}}
+                                        <div class="invisible absolute">
+                                            <input name="audio_2[]" type="file" class="audioFileInput"
+                                                accept="audio/*" />
+                                            <div>
+                                                <audio class="audioElement audio-player" controls></audio>
+                                            </div>
+                                        </div>
                                         <button type="button"
-                                            class="h-8 w-full max-h-8 max-w-8 bg-[#339b965b] rounded-full flex justify-center items-center ">
+                                            class="h-8 play-button w-full max-h-8 max-w-8 bg-[#339b965b] rounded-full flex justify-center items-center ">
                                             <svg width="14" height="16" viewBox="0 0 9 11" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
                                                 <path
@@ -553,14 +560,6 @@
                                             </svg>
                                         </button>
 
-                                    </div>
-                                    {{-- ==== hidden audio and file ====== --}}
-                                    <div class="invisible absolute">
-                                        <input name="audio_2[]" type="file" class="audioFileInput"
-                                            accept="audio/*" />
-                                        <div>
-                                            <audio class="audioElement" controls></audio>
-                                        </div>
                                     </div>
                                 </div>
                                 <div class="recording-set">
@@ -568,8 +567,16 @@
                                     <div class="flex gap-2 items-center">
                                         <div
                                             class="h-10 w-full border border-[#DEE2E6] rounded-[4px]  gap-2 flex justify-between px-2 items-center">
+                                            {{-- ==== hidden audio and file ====== --}}
+                                            <div class="invisible absolute">
+                                                <input name="audio_3[]" type="file" class="audioFileInput"
+                                                    accept="audio/*" />
+                                                <div>
+                                                    <audio class="audioElement audio-player" controls></audio>
+                                                </div>
+                                            </div>
                                             <button type="button"
-                                                class="h-8 w-full max-h-8 max-w-8 bg-[#339b965b] rounded-full flex justify-center items-center ">
+                                                class="h-8 play-button w-full max-h-8 max-w-8 bg-[#339b965b] rounded-full flex justify-center items-center ">
                                                 <svg width="14" height="16" viewBox="0 0 9 11" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
@@ -592,14 +599,6 @@
                                                 </svg>
                                             </button>
 
-                                        </div>
-                                        {{-- ==== hidden audio and file ====== --}}
-                                        <div class="invisible absolute">
-                                            <input name="audio_3[]" type="file" class="audioFileInput"
-                                                accept="audio/*" />
-                                            <div>
-                                                <audio class="audioElement" controls></audio>
-                                            </div>
                                         </div>
                                         <div class="appendedElement">
 
@@ -921,6 +920,7 @@
         });
 
         audiorec();
+        audioPlayer()
     });
 </script>
 <script>
