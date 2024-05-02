@@ -1,10 +1,7 @@
 @php
-
-    $teachingData = session('teachingData');
-@endphp
-@php
+// dd(session('teachingData'));
     try {
-        $count = count($teachingData);
+        $count = count(session('teachingData'));
     } catch (Throwable $e) {
         $count = 0; // Set count to 0 if an error occurs
     }
@@ -53,7 +50,7 @@
                 <!-- Carousel wrapper -->
                 <div class="relative h-full overflow-hidden rounded-lg ">
                     <!-- word 1 -->
-                    @foreach ($teachingData as $teachingData)
+                    @foreach (session('teachingData') as $teachingData)
                         @if ($count == 1)
                             <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
                             </div>
@@ -62,7 +59,7 @@
                             <div>
                                 <h2
                                     class="absolute  top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[200px] text-[#EC1C24] font-bold font-mono">
-                                    {{ $teachingData->word }}</h2>
+                                    {{ $teachingData['word'] }}</h2>
                             </div>
                             {{-- audio controlls --}}
                             <div class="">
@@ -75,30 +72,30 @@
                                             </div>
                                         @endif
                                         <div class="flex gap-4">
-                                            @if ($teachingData->audio_1 !== 'null')
+                                            @if ($teachingData['audio_1'] !== 'null')
                                                 <div>
                                                     <audio class="audio-player"
-                                                        src="../{{ $teachingData->audio_1 }}"></audio>
+                                                        src="../{{ $teachingData['audio_1'] }}"></audio>
                                                     <button class="play-button">
                                                         <img src="{{ asset('images/icons/audio-1.svg') }}"
                                                             alt="audio-1">
                                                     </button>
                                                 </div>
                                             @endif
-                                            @if ($teachingData->audio_2 !== 'null')
+                                            @if ($teachingData['audio_2'] !== 'null')
                                                 <div>
                                                     <audio class="audio-player"
-                                                        src="../{{ $teachingData->audio_2 }}"></audio>
+                                                        src="../{{ $teachingData['audio_2'] }}"></audio>
                                                     <button class="play-button">
                                                         <img src="{{ asset('images/icons/audio-2.svg') }}"
                                                             alt="audio-2">
                                                     </button>
                                                 </div>
                                             @endif
-                                            @if ($teachingData->audio_3 !== 'null')
+                                            @if ($teachingData['audio_3'] !== 'null')
                                                 <div>
                                                     <audio class="audio-player"
-                                                        src="../{{ $teachingData->audio_3 }}"></audio>
+                                                        src="../{{ $teachingData['audio_3'] }}"></audio>
                                                     <button class="play-button">
                                                         <img src="{{ asset('images/icons/audio-3.svg') }}"
                                                             alt="audio-3">

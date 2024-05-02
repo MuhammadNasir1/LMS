@@ -42,7 +42,7 @@ Route::get('register/{role}', function () {
 
 Route::middleware('custom')->group(function () {
     Route::post('addCourse', [coursesController::class, 'addcourse']);
-Route::get('delRecording/{id}', [teachingController::class, 'delRecording']);
+    Route::get('delRecording/{id}', [teachingController::class, 'delRecording']);
     Route::post('addtraining', [trainingController::class, 'addtraining']);
     Route::get('delTraining/{training_id}', [trainingController::class, 'deltraining']);
     //  admnim pages

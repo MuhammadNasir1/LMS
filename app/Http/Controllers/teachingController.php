@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\courses;
+use App\Models\recent_teaching;
 use App\Models\students;
 use App\Models\teacher;
 use App\Models\teacher_rec;
@@ -28,7 +29,7 @@ class teachingController extends Controller
             $count = count($request['course_id']);
             $teachingDataArray = [];
             for ($i = 0; $i < $count; $i++) {
-                $teachingData = teaching::create([
+                $teachingData =  [
                     "teacher_id" => $userId,
                     "student_id" => $request['studentid'],
                     "student_name" => $validatedData['student_name'],
@@ -41,23 +42,31 @@ class teachingController extends Controller
                     "audio_1" => $request['audio1'][$i],
                     "audio_2" => $request['audio2'][$i],
                     "audio_3" => $request['audio3'][$i],
-                ]);
+                ];
                 $teachingDataArray[] = $teachingData;
-                $teachingData->save();
+                $wordsArray[] = $validatedData['word'][$i];
             }
-            session(['teachingData' => $teachingDataArray]);
-            session(['wordDet' => [
+            $recentTeaching = recent_teaching::create([
+                "teacher_id" => $userId,
                 "student_id" => $request['studentid'],
                 "student_name" => $validatedData['student_name'],
-                "lesson_date" => $validatedData['lesson_date'],
-            ]]);
+                "teacher_name" => $name,
+                "word" => json_encode($wordsArray),
+            ]);
+            session([
+                'teachingData' => $teachingDataArray,
+                'wordDet' => [
+                    "student_id" => $request['studentid'],
+                    "student_name" => $validatedData['student_name'],
+                    "lesson_date" => $validatedData['lesson_date'],
+                ],
+            ]);
             // return response()->json(['success' => true, 'message'  => "data add successfully", 'teachingData'  =>   $teachingData], 200);
             return redirect('../video');
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message'  => $e->getMessage()], 500);
         }
     }
-    //  add  teacher recording
     public function teacherRecordingData(Request $request)
     {
         $userId   = session("user_det")['user_id'];
@@ -251,29 +260,76 @@ class teachingController extends Controller
             ]);
 
             $count = count($request['word_id']);
+            $wordsArray = [];
             for ($i = 0; $i < $count; $i++) {
-                $wordData = Words::find($validatedData['word_id'][$i]); // Assuming the model is called Words
-                $teachingData = Teaching::create([
+                $wordData = Words::find($validatedData['word_id'][$i]);
+                $teachingData = [
                     "teacher_id" => $validatedData['teacher_id'],
                     "student_id" => $validatedData['student_id'],
                     "student_name" => $validatedData['student_name'],
                     "teacher_name" => $validatedData['teacher_name'],
                     "lesson_date" => $validatedData['lesson_date'],
                     "course" => $validatedData['course'],
-                    "course_id" => $wordData['course_id'], // Assuming course_id is not an array
+                    "course_id" => $wordData['course_id'],
                     "word_id" => $validatedData['word_id'][$i],
                     "word" => $wordData['word'],
                     "audio_1" => $wordData['audio_1'],
                     "audio_2" => $wordData['audio_2'],
                     "audio_3" => $wordData['audio_3'],
-                ]);
-                $teachingData->save();
+                ];
                 $teachingDataArray[] = $teachingData;
+                $wordsArray[] = $wordData['word'];
             }
+            $recentTeaching = recent_teaching::create([
+                "teacher_id" => $validatedData['teacher_id'],
+                "student_id" => $validatedData['student_id'],
+                "student_name" => $validatedData['student_name'],
+                "teacher_name" => $validatedData['teacher_name'],
+                "word" => json_encode($wordsArray),
+            ]);
 
             return response()->json(['success' => true, 'message'  => "data add successfully", 'teachingData'  =>   $teachingDataArray], 200);
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message'  => $e->getMessage()], 500);
         }
     }
+    // public function addteachingrecdata(Request  $request)
+    // {
+    //     try {
+    //         $validatedData = $request->validate([
+    //             "word_id" => "required|array",
+    //             "student_id" => "required",
+    //             "teacher_id" => "required",
+    //             "student_name" => "required",
+    //             "teacher_name" => "required",
+    //             "lesson_date" => "required",
+    //             "course" => "required",
+    //         ]);
+
+    //         $count = count($request['word_id']);
+    //         for ($i = 0; $i < $count; $i++) {
+    //             $wordData = Words::find($validatedData['word_id'][$i]);
+    //             $teachingData = Teaching::create([
+    //                 "teacher_id" => $validatedData['teacher_id'],
+    //                 "student_id" => $validatedData['student_id'],
+    //                 "student_name" => $validatedData['student_name'],
+    //                 "teacher_name" => $validatedData['teacher_name'],
+    //                 "lesson_date" => $validatedData['lesson_date'],
+    //                 "course" => $validatedData['course'],
+    //                 "course_id" => $wordData['course_id'],
+    //                 "word_id" => $validatedData['word_id'][$i],
+    //                 "word" => $wordData['word'],
+    //                 "audio_1" => $wordData['audio_1'],
+    //                 "audio_2" => $wordData['audio_2'],
+    //                 "audio_3" => $wordData['audio_3'],
+    //             ]);
+    //             $teachingData->save();
+    //             $teachingDataArray[] = $teachingData;
+    //         }
+
+    //         return response()->json(['success' => true, 'message'  => "data add successfully", 'teachingData'  =>   $teachingDataArray], 200);
+    //     } catch (\Exception $e) {
+    //         return response()->json(['success' => false, 'message'  => $e->getMessage()], 500);
+    //     }
+    // }
 }
