@@ -301,18 +301,20 @@
                                             <input type="file" name="audio_1" class="audioFileInput"
                                                 accept="audio/*" />
                                             <div>
-                                                <audio class="audioElement audio-player" controls></audio>
+                                                <audio class="audioElement audio-player" id="audio1" controls></audio>
                                             </div>
                                         </div>
-                                        <button type="button"
-                                            class="h-8 play-button w-full max-h-8 max-w-8 bg-[#339b965b] rounded-full flex justify-center items-center ">
-                                            <svg width="14" height="16" viewBox="0 0 9 11" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M8.26713 6.82375L2.36687 10.3073C1.41714 10.868 0.25 10.1381 0.25 8.9835V2.01645C0.25 0.861837 1.41714 0.132013 2.36687 0.692738L8.26713 4.17625C9.24425 4.75325 9.24425 6.24675 8.26713 6.82375Z"
-                                                    fill="#339B96" />
-                                            </svg>
-
+                                        <button   type="button"
+                                            class="h-8 play-button w-full max-h-8 max-w-8  rounded-full flex justify-center items-center ">
+                                            <svg width="46" height="46" viewBox="0 0 29 29" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M15 28C21.9035 28 27.5 22.4035 27.5 15.5C27.5 8.59644 21.9035 3 15 3C8.09644 3 2.5 8.59644 2.5 15.5C2.5 22.4035 8.09644 28 15 28Z"
+                                                fill="#339B96" />
+                                            <path
+                                                d="M19.2671 16.8238L13.3669 20.3073C12.4171 20.868 11.25 20.1381 11.25 18.9835V12.0164C11.25 10.8618 12.4171 10.132 13.3669 10.6927L19.2671 14.1763C20.2443 14.7533 20.2443 16.2467 19.2671 16.8238Z"
+                                                fill="#339B96" />
+                                        </svg>
                                         </button>
                                         <div class="w-full  border-2  border-gray">
 
@@ -339,19 +341,21 @@
                                             <input name="audio_2" type="file" class="audioFileInput"
                                                 accept="audio/*" />
                                             <div>
-                                                <audio class="audioElement audio-player" controls></audio>
+                                                <audio class="audioElement audio-player" id="audio2" controls></audio>
                                             </div>
                                         </div>
-                                        <button type="button"
-                                            class="h-8 play-button w-full max-h-8 max-w-8 bg-[#339b965b] rounded-full flex justify-center items-center ">
-                                            <svg width="14" height="16" viewBox="0 0 9 11" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M8.26713 6.82375L2.36687 10.3073C1.41714 10.868 0.25 10.1381 0.25 8.9835V2.01645C0.25 0.861837 1.41714 0.132013 2.36687 0.692738L8.26713 4.17625C9.24425 4.75325 9.24425 6.24675 8.26713 6.82375Z"
-                                                    fill="#339B96" />
-                                            </svg>
-
-                                        </button>
+                                        <button   type="button"
+                                        class="h-8 play-button w-full max-h-8 max-w-8  rounded-full flex justify-center items-center ">
+                                        <svg width="46" height="46" viewBox="0 0 29 29" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M15 28C21.9035 28 27.5 22.4035 27.5 15.5C27.5 8.59644 21.9035 3 15 3C8.09644 3 2.5 8.59644 2.5 15.5C2.5 22.4035 8.09644 28 15 28Z"
+                                            fill="#339B96" />
+                                        <path
+                                            d="M19.2671 16.8238L13.3669 20.3073C12.4171 20.868 11.25 20.1381 11.25 18.9835V12.0164C11.25 10.8618 12.4171 10.132 13.3669 10.6927L19.2671 14.1763C20.2443 14.7533 20.2443 16.2467 19.2671 16.8238Z"
+                                            fill="#339B96" />
+                                    </svg>
+                                    </button>
                                         <div class="w-full  border-2  border-gray">
 
                                         </div>
@@ -378,19 +382,21 @@
                                                 <input name="audio_3" type="file" class="audioFileInput"
                                                     accept="audio/*" />
                                                 <div>
-                                                    <audio class="audioElement audio-player" controls></audio>
+                                                    <audio class="audioElement audio-player" id="audio3" controls></audio>
                                                 </div>
                                             </div>
-                                            <button type="button"
-                                                class="h-8 w-full play-button max-h-8 max-w-8 bg-[#339b965b] rounded-full flex justify-center items-center ">
-                                                <svg width="14" height="16" viewBox="0 0 9 11" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                        d="M8.26713 6.82375L2.36687 10.3073C1.41714 10.868 0.25 10.1381 0.25 8.9835V2.01645C0.25 0.861837 1.41714 0.132013 2.36687 0.692738L8.26713 4.17625C9.24425 4.75325 9.24425 6.24675 8.26713 6.82375Z"
-                                                        fill="#339B96" />
-                                                </svg>
-
-                                            </button>
+                                            <button   type="button"
+                                            class="h-8 play-button w-full max-h-8 max-w-8  rounded-full flex justify-center items-center ">
+                                            <svg width="46" height="46" viewBox="0 0 29 29" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M15 28C21.9035 28 27.5 22.4035 27.5 15.5C27.5 8.59644 21.9035 3 15 3C8.09644 3 2.5 8.59644 2.5 15.5C2.5 22.4035 8.09644 28 15 28Z"
+                                                fill="#339B96" />
+                                            <path
+                                                d="M19.2671 16.8238L13.3669 20.3073C12.4171 20.868 11.25 20.1381 11.25 18.9835V12.0164C11.25 10.8618 12.4171 10.132 13.3669 10.6927L19.2671 14.1763C20.2443 14.7533 20.2443 16.2467 19.2671 16.8238Z"
+                                                fill="#339B96" />
+                                        </svg>
+                                        </button>
                                             <div class="w-full  border-2  border-gray">
 
                                             </div>
@@ -748,6 +754,9 @@
                     $('#Levelinput').val(course.level);
                     $('#Lessoninput').val(course.lesson);
                     $('#Wordinput').val(course.word);
+                    $('#audio1').attr('src', course.audio_1);
+                    $('#audio2').attr('src', course.audio_2);
+                    $('#audio3').attr('src', course.audio_3);
 
                 },
                 error: function(jqXHR) {
