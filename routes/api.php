@@ -85,3 +85,7 @@ Route::post('addTeacherRecording', [teachingController::class, 'teacherRecdata']
 Route::get('getParentWords/{parent_id}', [teachingController::class, 'getParentWords']);
 Route::get('getTeacherWords/{teacher_id}', [teachingController::class, 'getTeacherWords']);
 Route::get('getAllWords', [teachingController::class, 'getAllWords']);
+
+
+// get Teacher Recording
+Route::get('getAllRecording', [teachingController::class, 'getAllRecording']);

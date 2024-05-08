@@ -354,7 +354,8 @@ class teachingController extends Controller
         }
     }
 
-    public function getTeacherWords($teacher_id){
+    public function getTeacherWords($teacher_id)
+    {
 
         try {
             $recentWords = recent_teaching::where('teacher_id', $teacher_id)->get()->toArray();
@@ -367,7 +368,8 @@ class teachingController extends Controller
         }
     }
 
-    public function getAllWords(){
+    public function getAllWords()
+    {
         try {
             $recentWords = recent_teaching::all()->toArray();
             foreach ($recentWords as &$word) {
@@ -377,6 +379,17 @@ class teachingController extends Controller
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' =>  $e->getMessage()], 500);
         }
+    }
 
+    public function getAllRecording()
+    {
+
+        try {
+            $recordings = teacher_rec::all();
+
+            return response()->json(['success' => true, 'message' => "Recording Get Successfully", 'recordings' =>  $recordings], 200);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' =>  $e->getMessage()], 500);
+        }
     }
 }

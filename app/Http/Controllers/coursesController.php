@@ -66,6 +66,12 @@ class coursesController extends Controller
     {
         try {
             $courses = words::all();
+
+            // Format the created_at attribute for each course
+            foreach ($courses as $course) {
+                $course->created_at_formatted = $course->created_at->format('Y-m-d H:i:s');
+            }
+
             return response()->json(['success' => true, 'message' => "Course get successful", 'courses' => $courses], 200);
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
