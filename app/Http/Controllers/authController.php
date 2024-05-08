@@ -28,7 +28,7 @@ class authController extends Controller
                 'language' => 'nullable',
                 'old_password' => 'nullable',
                 'confirm_password' => 'nullable',
-                'upload_image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
+                'user_image' => 'required|image|mimes:jpeg,png,jpg,gif',
             ]);
 
             $user->name = $validatedData['name'];
@@ -43,14 +43,13 @@ class authController extends Controller
                 }
             }
 
-            if ($request->hasFile('upload_image')) {
-                $image = $request->file('upload_image');
+            if ($request->hasFile('user_image')) {
+                $image = $request->file('user_image');
                 $imageName = time() . '.' . $image->getClientOriginalExtension();
                 $image->storeAs('public/user_images', $imageName); // Adjust storage path as needed
                 $user->user_image = 'storage/user_images/' . $imageName;
             }
-
-            $user->save();
+            // $user->save();
 
 
             return response()->json(['success' => true, 'message' => 'Profile Updated!', 'updated_data' => $user], 200);
