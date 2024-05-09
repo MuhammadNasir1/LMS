@@ -69,9 +69,8 @@ class coursesController extends Controller
 
             // Format the created_at attribute for each course
             foreach ($courses as $course) {
-                $course->created_at_formatted = $course->created_at->format('Y-m-d H:i:s');
+                $course->created_at_formatted = date('Y-m-d', strtotime($course->created_at)); // Format created_at to date only
             }
-
             return response()->json(['success' => true, 'message' => "Course get successful", 'courses' => $courses], 200);
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
