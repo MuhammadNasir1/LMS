@@ -87,5 +87,8 @@ Route::get('getTeacherWords/{teacher_id}', [teachingController::class, 'getTeach
 Route::get('getAllWords', [teachingController::class, 'getAllWords']);
 
 
-// get Teacher Recording
+// get Recording Data
 Route::get('getAllRecording', [teachingController::class, 'getAllRecording']);
+Route::get('getTeacherRecording/{teacher_id}', [teachingController::class, 'getTeacherRec']);
+Route::get('getParentRecording/{parent_id}', [teachingController::class, 'getParentRecording']);
+

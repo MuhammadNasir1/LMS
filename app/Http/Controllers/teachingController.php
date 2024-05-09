@@ -392,4 +392,30 @@ class teachingController extends Controller
             return response()->json(['success' => false, 'message' =>  $e->getMessage()], 500);
         }
     }
+
+    public  function getTeacherRec($teacher_id)
+    {
+        try {
+            $recordings = teacher_rec::where('teacher_id', $teacher_id)->get();
+            return response()->json(['success' => true, 'message' => "Recording Get Successfully", 'recordings' =>  $recordings], 200);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' =>  $e->getMessage()], 500);
+        }
+    }
+
+    public  function getParentRecording($parent_id)
+    {
+        try {
+            $students = students::where('parent_id', $parent_id)->get();
+            $recordings = [];
+
+            foreach ($students as $student){
+                $recording = teacher_rec::where('student_id', $student->id)->get();
+                $recordings[] = $recording;
+            }
+            return response()->json(['success' => true, 'message' => "Recording Get Successfully", 'recordings' =>  $recordings], 200);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' =>  $e->getMessage()], 500);
+        }
+    }
 }
