@@ -53,7 +53,7 @@ return [
     "Teachers_List" => "老師清單",
     "Add_Teacher" => "加入老師",
     "Contact" => "聯絡",
-    "Action" => "Action",
+    "Action" => "修改",
     "Add_parents" => "加入家長",
     "Child" => "子女",
     "Enter_Emergency_Phone" => "輸入緊急聯絡電話號碼",
