@@ -411,7 +411,7 @@ class teachingController extends Controller
 
             foreach ($students as $student){
                 $recording = teacher_rec::where('student_id', $student->id)->get();
-                $recordings[] = $recording;
+                $recordings = $recording;
             }
             return response()->json(['success' => true, 'message' => "Recording Get Successfully", 'recordings' =>  $recordings], 200);
         } catch (\Exception $e) {
