@@ -286,15 +286,47 @@
 
             <div class="flex justify-end gap-6">
                 <button>
-                    <svg width="19" height="21" viewBox="0 0 19 21" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M9.13043 0.130859C4.80824 0.130859 1.30439 3.63472 1.30439 7.95694V12.6341L0.38207 13.5564C0.00902661 13.9294 -0.10256 14.4904 0.0993266 14.9779C0.301214 15.4653 0.776831 15.783 1.30439 15.783H16.9565C17.4841 15.783 17.9597 15.4653 18.1616 14.9779C18.3635 14.4904 18.2519 13.9294 17.8788 13.5564L16.9565 12.6341V7.95694C16.9565 3.63472 13.4527 0.130859 9.13043 0.130859Z"
-                            fill="#67748E" />
-                        <path
-                            d="M9.13082 21C6.96971 21 5.21777 19.2481 5.21777 17.0869H13.0439C13.0439 19.2481 11.292 21 9.13082 21Z"
-                            fill="#67748E" />
-                    </svg>
+                    <button id="dropdownNotificationButton" data-dropdown-toggle="dropdownNotification"
+                        class="relative inline-flex items-center text-sm font-medium text-center text-gray-500 hover:text-gray-900 focus:outline-none dark:hover:text-white dark:text-gray-400"
+                        type="button">
+                        <svg width="19" height="21" viewBox="0 0 19 21" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M9.13043 0.130859C4.80824 0.130859 1.30439 3.63472 1.30439 7.95694V12.6341L0.38207 13.5564C0.00902661 13.9294 -0.10256 14.4904 0.0993266 14.9779C0.301214 15.4653 0.776831 15.783 1.30439 15.783H16.9565C17.4841 15.783 17.9597 15.4653 18.1616 14.9779C18.3635 14.4904 18.2519 13.9294 17.8788 13.5564L16.9565 12.6341V7.95694C16.9565 3.63472 13.4527 0.130859 9.13043 0.130859Z"
+                                fill="#67748E" />
+                            <path
+                                d="M9.13082 21C6.96971 21 5.21777 19.2481 5.21777 17.0869H13.0439C13.0439 19.2481 11.292 21 9.13082 21Z"
+                                fill="#67748E" />
+                        </svg>
+
+                        <div
+                            class="absolute block w-3 h-3 bg-red-500 border-2 border-white rounded-full -top-0.5 start-2.5 dark:border-gray-900">
+                        </div>
+                    </button>
+
+                    <!-- Dropdown menu -->
+                    <div id="dropdownNotification"
+                        class="z-20 hidden w-full max-w-sm bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-800 dark:divide-gray-700"
+                        aria-labelledby="dropdownNotificationButton">
+                        <div class="block px-4 py-2 font-medium text-center text-white rounded-t-lg bg-primary mr-5">
+                            @lang('lang.Notifications')
+                        </div>
+                        <div class="divide-y divide-white mr-5">
+                            <h2 class="py-3 text-center">@lang('lang.No_Recent_Notifications')</h2>
+
+                        </div>
+                        <a href="#"
+                            class="block py-2 text-sm font-medium text-center text-white rounded-b-lg bg-primary mr-5">
+                            <div class="inline-flex items-center ">
+                                <svg class="w-4 h-4 me-2 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 14">
+                                    <path
+                                        d="M10 0C4.612 0 0 5.336 0 7c0 1.742 3.546 7 10 7 6.454 0 10-5.258 10-7 0-1.664-4.612-7-10-7Zm0 10a3 3 0 1 1 0-6 3 3 0 0 1 0 6Z" />
+                                </svg>
+                                @lang('lang.View_all')
+                            </div>
+                        </a>
+                    </div>
                 </button>
                 <div class="flex items-center gap-2">
                     <div class="leading-tight  text-end">
@@ -302,9 +334,42 @@
                         <p class="text-xs  text-gray">{{ session('user_det')['role'] }}</p>
                     </div>
                     <div>
-                        <img height="42px" width="42px" class="rounded-[5px] h-[42px] object-fill"
-                            src="{{ session()->has('user_image') && session('user_image.user_image') !== null ? asset(session('user_image.user_image')) : asset('images/user.png') }}"
-                            alt="user">
+                        <button id="dropdownDividerButton" data-dropdown-toggle="dropdownDivider" class=""
+                            type="button"> <img height="42px" width="42px"
+                                class="rounded-[5px] h-[42px] object-fill"
+                                src="{{ session()->has('user_image') && session('user_image.user_image') !== null ? asset(session('user_image.user_image')) : asset('images/user.png') }}"
+                                alt="user">
+                            </svg>
+                        </button>
+
+                        <!-- Dropdown menu -->
+                        <div id="dropdownDivider"
+                            class="z-10 hidden  divide-y divide-gray-100 rounded-lg shadow w-44  bg-primary text-white">
+                            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
+                                aria-labelledby="dropdownDividerButton">
+                                <li>
+                                    <a href="/"
+                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">@lang('lang.Dashboard')</a>
+                                </li>
+                                <li>
+                                    <a href="./setting"
+                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">@lang('lang.Settings')</a>
+                                </li>
+                            </ul>
+                            <div class="py-2">
+
+                                <form action="../weblogout" method="post" class=" cursor-pointer" id="logoutform">
+                                    @csrf
+                                    <div onclick="logoutform.submit()"
+                                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+
+                                        <a href="../weblogout"
+                                            class="block px-2.5  text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">@lang('lang.logout')</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
