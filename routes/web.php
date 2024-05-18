@@ -161,6 +161,9 @@ Route::middleware('custom')->group(function () {
     // get training  data for update
     Route::get('/trainingUpdataData/{id}', [trainingController::class, 'trainingUpdataData']);
     Route::post('updatetraining/{training_id}', [trainingController::class, 'updatetraining']);
+
+
+    Route::post('course/import', [coursesController::class, 'Courseimport']);
 });
 
 

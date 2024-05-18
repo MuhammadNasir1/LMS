@@ -6,6 +6,7 @@ use App\Models\courses;
 use App\Models\words;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
+use Maatwebsite\Excel\Facades\Excel;
 
 class coursesController extends Controller
 {
@@ -75,7 +76,6 @@ class coursesController extends Controller
             }
 
             return response()->json(['success' => true, 'message' => "Course get successful", 'courses' => $formattedCourses], 200);
-
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
         }
@@ -147,5 +147,40 @@ class coursesController extends Controller
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
         }
+    }
+
+    public function Courseimport(Request $request)
+    {
+
+        $validateData = $request->validate([
+            'excel_file' => 'required|mimes:xlsx,xls',
+        ]);
+
+        $file = $request->file('excel_file');
+        $data = Excel::toArray([], $file);
+
+        // Assuming the first row contains course data
+        $courseData = $data[0][0];
+
+        // Insert course
+        $course = courses::create([
+            'course_name' => $courseData[0], // Assuming course name is in the first column
+        ]);
+
+        // Iterate over rows starting from the second row (since the first row contains course data)
+        for ($i = 1; $i < count($data[0]); $i++) {
+            $row = $data[0][$i];
+            words::create([
+                'course_id' => $course->id,
+                'course_name' => $course->course_name,
+                'level' => $row[1], // Assuming level is in the second column
+                'lesson' => $row[2], // Assuming lesson is in the third column
+                'word' => $row[3], // Assuming word is in the fourth column
+                // Add more columns as needed
+            ]);
+        }
+
+
+        return redirect()->back();
     }
 }

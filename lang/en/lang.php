@@ -241,5 +241,6 @@ return [
     "Lesson" => "Lesson",
     "Word" => "Word",
     "Play" => "Play",
+    "Excel_File" => "Excel File",
 
 ];
