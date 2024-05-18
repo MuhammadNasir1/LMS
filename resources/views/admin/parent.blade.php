@@ -104,7 +104,7 @@
                                         </div>
                                         <div class="flex items-center justify-end ">
                                             <div class="w-[200px]">
-                                                <h3 class="text-[18px] font-normal">@lang('lang.Emergency')  : <br>
+                                                <h3 class="text-[18px] font-normal">@lang('lang.Emergency') : <br>
                                                     @lang('lang.Contact_No') :</h3>
                                             </div>
                                             <div class="w-[150px]  ">
@@ -180,10 +180,19 @@
                 <div class="grid grid-cols-2 mt-4 gap-10 px-10">
                     <div>
                         <div class="grid grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
-                            <label class="text-[14px] font-normal" for="firstName">@lang('lang.First_Name')</label>
-                            <input type="text"
-                                class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                name="first_name" id="firstName" placeholder=" @lang('lang.Enter_First_Name')">
+                            <label class="text-[14px] font-normal" for="firstName">@lang('lang.full_name')</label>
+                            <div class="flex gap-4 w-[100%]">
+                                <div class="w-[50%]">
+                                    <input type="text"
+                                        class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
+                                        name="first_name" id="firstName" placeholder=" @lang('lang.Enter_First_Name')">
+                                </div>
+                                <div class="w-[50%]">
+                                    <input type="text"
+                                        class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
+                                        name="last_name" id="lastName" placeholder="@lang('lang.Enter_Last_Name')">
+                                </div>
+                            </div>
                         </div>
                         <div class="grid grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
                             <label class="text-[14px] font-normal" for="gender">@lang('lang.gender')</label>
@@ -211,10 +220,10 @@
                     </div>
                     <div>
                         <div class="grid grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
-                            <label class="text-[14px] font-normal" for="lastName">@lang('lang.Last_Name')</label>
+                            <label class="text-[14px] font-normal" for="chinese_name">@lang('lang.Chinese_Name')</label>
                             <input type="text"
                                 class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                name="last_name" id="lastName" placeholder="@lang('lang.Enter_First_Name')">
+                                name="chinese_name" id="chinese_name" placeholder="@lang('lang.Chinese_Name')">
                         </div>
 
                         <div class="grid grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
@@ -317,10 +326,19 @@
                 <div class="grid grid-cols-2 mt-4 gap-10 px-10">
                     <div>
                         <div class="grid grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
-                            <label class="text-[14px] font-normal" for="firstName">@lang('lang.First_Name')</label>
-                            <input type="text"
-                                class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                name="first_name" id="firstName" placeholder=" @lang('lang.Enter_First_Name')">
+                            <label class="text-[14px] font-normal" for="firstName">@lang('lang.full_name')</label>
+                            <div class="flex gap-4">
+                                <div class="w-[50%]">
+                                    <input type="text"
+                                        class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
+                                        name="first_name" id="firstName" placeholder=" @lang('lang.Enter_First_Name')">
+                                </div>
+                                <div class="w-[50%]">
+                                    <input type="text"
+                                        class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
+                                        name="last_name" id="lastName" placeholder="@lang('lang.Enter_First_Name')">
+                                </div>
+                            </div>
                         </div>
                         <div class="grid grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
                             <label class="text-[14px] font-normal" for="gender">@lang('lang.gender')</label>
@@ -354,10 +372,10 @@
 
                     <div>
                         <div class="grid grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
-                            <label class="text-[14px] font-normal" for="lastName">@lang('lang.Last_Name')</label>
+                            <label class="text-[14px] font-normal" for="chinese_name">@lang('lang.Chinese_Name')</label>
                             <input type="text"
                                 class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                name="last_name" id="lastName" placeholder="@lang('lang.Enter_First_Name')">
+                                name="chinese_name" id="chinese_name" placeholder="@lang('lang.Chinese_Name')">
                         </div>
 
                         <div class="grid grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
