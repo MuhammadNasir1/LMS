@@ -83,7 +83,7 @@
                                         </h2>
                                         <div class="flex items-center justify-end  mt-5">
                                             <div class="w-[200px]">
-                                                <h3 class="text-[18px] font-normal">@lang('lang.Name'):</h3>
+                                                <h3 class="text-[18px] font-normal">@lang('lang.Name') :</h3>
                                             </div>
                                             <div class="w-[150px]  ">
                                                 <p class="text-[14px] text-[#323C47]">{{ $teacher->first_name }}
@@ -92,7 +92,7 @@
                                         </div>
                                         <div class="flex items-center justify-end ">
                                             <div class="w-[200px]">
-                                                <h3 class="text-[18px] font-normal">@lang('lang.gender'):</h3>
+                                                <h3 class="text-[18px] font-normal">@lang('lang.gender') :</h3>
                                             </div>
                                             <div class="w-[150px]  ">
                                                 <p class="text-[14px] text-[#323C47]"> {{ $teacher->gender }} </p>
@@ -100,7 +100,7 @@
                                         </div>
                                         <div class="flex items-center justify-end ">
                                             <div class="w-[200px]">
-                                                <h3 class="text-[18px] font-normal">@lang('lang.Date_of_Birth'):</h3>
+                                                <h3 class="text-[18px] font-normal">@lang('lang.Date_of_Birth') :</h3>
                                             </div>
                                             <div class="w-[150px]  ">
                                                 <p class="text-[14px] text-[#323C47]">{{ $teacher->dob }} </p>
@@ -108,7 +108,7 @@
                                         </div>
                                         <div class="flex items-center justify-end ">
                                             <div class="w-[200px]">
-                                                <h3 class="text-[18px] font-normal">@lang('lang.Phone_no'):</h3>
+                                                <h3 class="text-[18px] font-normal">@lang('lang.Phone_no') :</h3>
                                             </div>
                                             <div class="w-[150px]  ">
                                                 <p class="text-[14px] text-[#323C47]">{{ $teacher->phone_no }} </p>
@@ -116,7 +116,7 @@
                                         </div>
                                         <div class="flex items-center justify-end ">
                                             <div class="w-[200px]">
-                                                <h3 class="text-[18px] font-normal">@lang('lang.E-mail'):</h3>
+                                                <h3 class="text-[18px] font-normal">@lang('lang.E-mail') :</h3>
                                             </div>
                                             <div class="w-[150px]  ">
                                                 <p class="text-[14px] text-[#323C47]">{{ $teacher->email }} </p>
@@ -124,7 +124,7 @@
                                         </div>
                                         <div class="flex items-center justify-end ">
                                             <div class="w-[200px]">
-                                                <h3 class="text-[18px] font-normal">@lang('lang.subject'):</h3>
+                                                <h3 class="text-[18px] font-normal">@lang('lang.subject') :</h3>
                                             </div>
                                             <div class="w-[150px]  ">
                                                 <p class="text-[14px] text-[#323C47]">{{ $teacher->subject }} </p>
@@ -132,7 +132,7 @@
                                         </div>
                                         <div class="flex items-center justify-end ">
                                             <div class="w-[200px]">
-                                                <h3 class="text-[18px] font-normal">@lang('lang.Skills'):</h3>
+                                                <h3 class="text-[18px] font-normal">@lang('lang.Skills') :</h3>
                                             </div>
                                             <div class="w-[150px]  ">
                                                 <p class="text-[14px] text-[#323C47]">{{ $teacher->skill }} </p>
@@ -140,7 +140,7 @@
                                         </div>
                                         <div class="flex items-center justify-end ">
                                             <div class="w-[200px]">
-                                                <h3 class="text-[18px] font-normal">@lang('lang.Join_Date'):</h3>
+                                                <h3 class="text-[18px] font-normal">@lang('lang.Join_Date') :</h3>
                                             </div>
                                             <div class="w-[150px]  ">
                                                 <p class="text-[14px] text-[#323C47]">{{ $teacher->join_date }} </p>
@@ -148,7 +148,7 @@
                                         </div>
                                         <div class="flex items-center justify-end ">
                                             <div class="w-[200px]">
-                                                <h3 class="text-[18px] font-normal">@lang('lang.Address'):</h3>
+                                                <h3 class="text-[18px] font-normal">@lang('lang.Address') :</h3>
                                             </div>
                                             <div class="w-[150px]  ">
                                                 <p class="text-[14px] text-[#323C47]">{{ $teacher->address }} </p>
@@ -156,7 +156,7 @@
                                         </div>
                                         <div class="flex items-center justify-end ">
                                             <div class="w-[200px]">
-                                                <h3 class="text-[18px] font-normal">@lang('lang.Teacher_CV'):</h3>
+                                                <h3 class="text-[18px] font-normal">@lang('lang.Teacher_CV') :</h3>
                                             </div>
                                             <div class="w-[150px]  ">
                                                 @if ($teacher->teacher_cv)

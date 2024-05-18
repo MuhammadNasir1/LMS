@@ -116,7 +116,7 @@ return [
     "Enter_Description" => "Enter Description",
     "Video_Details" => "Video Details",
     "All_Recordings" => "All Recordings",
-    "Student_Recordings_List" => "Student's Recordings List",
+    "Student_Recordings_List" => "Student's Recording List",
     "All_Courses" => "All Courses",
     "Course_List" => "Course List",
     "Version" => "Version",
@@ -131,7 +131,7 @@ return [
     "Enter_Version" => "Enter  Version",
     "Select_Language" => "Select Language",
     "enter_no_of_words" => "Enter No. of Words",
-    "course_id" => "Course ID",
+    "course_id" => "Course id",
     "Enter_level" => "Enter level",
     "Course" => "Course",
     "Language" => "Language",
@@ -203,7 +203,7 @@ return [
     "Next" => "Next",
     "Update_Teacher" => "Update Teacher",
     "Level" => "Level",
-    "Course_ID" => "Course Id",
+    "Course_ID" => "Course id",
     "Lesson" => "Lesson",
     "Enter_Word" => "Enter Word",
     "Language" => "Language",
@@ -240,5 +240,6 @@ return [
     "Level" => "Level",
     "Lesson" => "Lesson",
     "Word" => "Word",
+    "Play" => "Play",
 
 ];

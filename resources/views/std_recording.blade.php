@@ -89,7 +89,7 @@
 
                                                 <div class="flex items-center justify-end  mt-2">
                                                     <div class="w-[200px]">
-                                                        <h3 class="text-[18px] font-normal">@lang('lang.Student_No'):</h3>
+                                                        <h3 class="text-[18px] font-normal">@lang('lang.Student_No') :</h3>
                                                     </div>
                                                     <div class="w-[200px]  ">
                                                         <p class="text-[14px] text-[#323C47]">{{ $data->student_id }}
@@ -98,7 +98,7 @@
                                                 </div>
                                                 <div class="flex items-center justify-end  mt-2">
                                                     <div class="w-[200px]">
-                                                        <h3 class="text-[18px] font-normal">@lang('lang.Duration'):</h3>
+                                                        <h3 class="text-[18px] font-normal">@lang('lang.Duration') :</h3>
                                                     </div>
                                                     <div class="w-[200px]  ">
                                                         <p class="text-[14px] text-[#323C47]">00:00</p>
@@ -106,7 +106,7 @@
                                                 </div>
                                                 <div class="flex items-center justify-end  mt-2">
                                                     <div class="w-[200px]">
-                                                        <h3 class="text-[18px] font-normal">@lang('lang.Lesson_Date'):</h3>
+                                                        <h3 class="text-[18px] font-normal">@lang('lang.Lesson_Date') :</h3>
                                                     </div>
                                                     <div class="w-[200px]  ">
                                                         <p class="text-[14px] text-[#323C47]">{{ $data->lesson_date }}
@@ -115,7 +115,7 @@
                                                 </div>
                                                 <div class="flex items-center justify-end  mt-2">
                                                     <div class="w-[200px]">
-                                                        <h3 class="text-[18px] font-normal">@lang('lang.Teacher'):</h3>
+                                                        <h3 class="text-[18px] font-normal">@lang('lang.Teacher') :</h3>
                                                     </div>
                                                     <div class="w-[200px]  ">
                                                         <p class="text-[14px] text-[#323C47]">{{ $data->teacher_name }}
@@ -124,7 +124,7 @@
                                                 </div>
                                                 <div class="flex items-center justify-end  mt-2">
                                                     <div class="w-[200px]">
-                                                        <h3 class="text-[18px] font-normal">@lang('lang.Teachers')
+                                                        <h3 class="text-[18px] font-normal">@lang('lang.Teachers') :
                                                             @lang('lang.Comment')</h3>
                                                     </div>
                                                     <div class="w-[200px]  ">

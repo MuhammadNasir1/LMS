@@ -26,7 +26,7 @@
                         </div>
                         <div>
                             <button
-                                class="w-[132px] h-10 text-white text-lg bg-secondary rounded  font-semibold">Play</button>
+                                class="w-[132px] h-10 text-white text-lg bg-secondary rounded  font-semibold">@lang('lang.Play')</button>
                         </div>
                     </div>
                 </a>
@@ -48,7 +48,7 @@
                         </div>
                         <div>
                             <button
-                                class="w-[132px] h-10 text-white text-lg bg-secondary rounded font-semibold">Play</button>
+                                class="w-[132px] h-10 text-white text-lg bg-secondary rounded font-semibold">@lang('lang.Play')</button>
                         </div>
                     </div>
                 </a>
@@ -70,7 +70,7 @@
                         </div>
                         <div>
                             <button
-                                class="w-[132px] h-10 text-white text-lg bg-secondary rounded font-semibold">Play</button>
+                                class="w-[132px] h-10 text-white text-lg bg-secondary rounded font-semibold">@lang('lang.Play')</button>
                         </div>
                     </div>
                 </a>
@@ -92,7 +92,7 @@
                         </div>
                         <div>
                             <button
-                                class="w-[132px] h-10 text-white text-lg bg-secondary rounded font-semibold">Play</button>
+                                class="w-[132px] h-10 text-white text-lg bg-secondary rounded font-semibold">@lang('lang.Play')</button>
                         </div>
                     </div>
                 </a>

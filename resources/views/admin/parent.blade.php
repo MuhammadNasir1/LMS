@@ -79,7 +79,7 @@
                                         </h2>
                                         <div class="flex items-center justify-end  mt-5">
                                             <div class="w-[200px]">
-                                                <h3 class="text-[18px] font-normal">@lang('lang.Name'):</h3>
+                                                <h3 class="text-[18px] font-normal">@lang('lang.Name') :</h3>
                                             </div>
                                             <div class="w-[150px]  ">
                                                 <p class="text-[14px] text-[#323C47]">{{ $parent->first_name }}
@@ -88,7 +88,7 @@
                                         </div>
                                         <div class="flex items-center justify-end ">
                                             <div class="w-[200px]">
-                                                <h3 class="text-[18px] font-normal">@lang('lang.gender'):</h3>
+                                                <h3 class="text-[18px] font-normal">@lang('lang.gender') :</h3>
                                             </div>
                                             <div class="w-[150px]  ">
                                                 <p class="text-[14px] text-[#323C47]">{{ $parent->gender }} </p>
@@ -96,7 +96,7 @@
                                         </div>
                                         <div class="flex items-center justify-end ">
                                             <div class="w-[200px]">
-                                                <h3 class="text-[18px] font-normal">@lang('lang.Phone_no'):</h3>
+                                                <h3 class="text-[18px] font-normal">@lang('lang.Phone_no') :</h3>
                                             </div>
                                             <div class="w-[150px]  ">
                                                 <p class="text-[14px] text-[#323C47]">{{ $parent->phone_no }}</p>
@@ -104,7 +104,7 @@
                                         </div>
                                         <div class="flex items-center justify-end ">
                                             <div class="w-[200px]">
-                                                <h3 class="text-[18px] font-normal">@lang('lang.Emergency'): <br>
+                                                <h3 class="text-[18px] font-normal">@lang('lang.Emergency')  : <br>
                                                     @lang('lang.Contact_No') :</h3>
                                             </div>
                                             <div class="w-[150px]  ">
@@ -113,7 +113,7 @@
                                         </div>
                                         <div class="flex items-center justify-end ">
                                             <div class="w-[200px]">
-                                                <h3 class="text-[18px] font-normal">@lang('lang.E-mail'):</h3>
+                                                <h3 class="text-[18px] font-normal">@lang('lang.E-mail') :</h3>
                                             </div>
                                             <div class="w-[150px]  ">
                                                 <p class="text-[14px] text-[#323C47]">{{ $parent->email }}</p>
@@ -123,7 +123,7 @@
 
                                         <div class="flex items-center justify-end ">
                                             <div class="w-[200px]">
-                                                <h3 class="text-[18px] font-normal">@lang('lang.Address'):</h3>
+                                                <h3 class="text-[18px] font-normal">@lang('lang.Address') :</h3>
                                             </div>
                                             <div class="w-[150px]  ">
                                                 <p class="text-[14px] text-[#323C47]">{{ $parent->address }}</p>
@@ -131,7 +131,7 @@
                                         </div>
                                         <div class="flex items-center justify-end ">
                                             <div class="w-[200px]">
-                                                <h3 class="text-[18px] font-normal">@lang('lang.Child'):</h3>
+                                                <h3 class="text-[18px] font-normal">@lang('lang.Child') :</h3>
                                             </div>
                                             <div class="w-[150px]  ">
                                                 <p class="text-[14px] text-[#323C47]">{{ $parent->child_ren }}</p>

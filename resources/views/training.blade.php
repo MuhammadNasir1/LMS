@@ -78,12 +78,12 @@
                                         </div>
                                         <div class="flex flex-col gap-5  items-center mt-4  pb-4">
                                             <h2 class="text-pink text-[32px] font-semibold "><span
-                                                    class="border-b-4 border-pink py-1 pr-4">@lang('lang.Training')
+                                                    class=" py-1 pr-4">@lang('lang.Training')
                                                 </span>@lang('lang.Video')
                                             </h2>
                                             <div class="flex items-center justify-end  mt-5">
                                                 <div class="w-[200px]">
-                                                    <h3 class="text-[18px] font-normal">@lang('lang.Title'):</h3>
+                                                    <h3 class="text-[18px] font-normal">@lang('lang.Title') :</h3>
                                                 </div>
                                                 <div class="w-[200px]  ">
                                                     <p class="text-[14px] text-[#323C47]">{{ $training->title }}</p>
@@ -91,15 +91,7 @@
                                             </div>
                                             <div class="flex items-center justify-end  mt-5">
                                                 <div class="w-[200px]">
-                                                    <h3 class="text-[18px] font-normal">@lang('lang.Duration'):</h3>
-                                                </div>
-                                                <div class="w-[200px]  ">
-                                                    <p class="text-[14px] text-[#323C47]">{{ $training->duration }}</p>
-                                                </div>
-                                            </div>
-                                            <div class="flex items-center justify-end  mt-5">
-                                                <div class="w-[200px]">
-                                                    <h3 class="text-[18px] font-normal">@lang('lang.Date'):</h3>
+                                                    <h3 class="text-[18px] font-normal">@lang('lang.Date') :</h3>
                                                 </div>
                                                 <div class="w-[200px]  ">
                                                     <p class="text-[14px] text-[#323C47]">{{ $training->date }}</p>
@@ -107,7 +99,7 @@
                                             </div>
                                             <div class="flex items-center justify-end  mt-5">
                                                 <div class="w-[200px]">
-                                                    <h3 class="text-[18px] font-normal">@lang('lang.Description')</h3>
+                                                    <h3 class="text-[18px] font-normal">@lang('lang.Description') :</h3>
                                                 </div>
                                                 <div class="w-[200px]  ">
                                                     <p class="text-[14px] text-[#323C47]">{{ $training->description }}

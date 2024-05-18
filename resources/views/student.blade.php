@@ -95,7 +95,7 @@
                                             </h2>
                                             <div class="flex items-center justify-end  mt-5">
                                                 <div class="w-[200px]">
-                                                    <h3 class="text-[18px] font-normal">@lang('lang.Name'):</h3>
+                                                    <h3 class="text-[18px] font-normal">@lang('lang.Name') :</h3>
                                                 </div>
                                                 <div class="w-[150px]  ">
                                                     <p class="text-[14px] text-[#323C47]">{{ $student->full_name }}</p>
@@ -103,7 +103,7 @@
                                             </div>
                                             <div class="flex items-center justify-end  mt-5">
                                                 <div class="w-[200px]">
-                                                    <h3 class="text-[18px] font-normal">@lang('lang.Chinese_Name'):</h3>
+                                                    <h3 class="text-[18px] font-normal">@lang('lang.Chinese_Name' ):</h3>
                                                 </div>
                                                 <div class="w-[150px]  ">
                                                     <p class="text-[14px] text-[#323C47]">{{ $student->chinese_name }}
@@ -112,7 +112,7 @@
                                             </div>
                                             <div class="flex items-center justify-end ">
                                                 <div class="w-[200px]">
-                                                    <h3 class="text-[18px] font-normal">@lang('lang.gender'):</h3>
+                                                    <h3 class="text-[18px] font-normal">@lang('lang.gender') :</h3>
                                                 </div>
                                                 <div class="w-[150px]  ">
                                                     <p class="text-[14px] text-[#323C47]">{{ $student->gender }}</p>
@@ -120,7 +120,7 @@
                                             </div>
                                             <div class="flex items-center justify-end ">
                                                 <div class="w-[200px]">
-                                                    <h3 class="text-[18px] font-normal">@lang('lang.Date_of_Birth'):</h3>
+                                                    <h3 class="text-[18px] font-normal">@lang('lang.Date_of_Birth') :</h3>
                                                 </div>
                                                 <div class="w-[150px]  ">
                                                     <p class="text-[14px] text-[#323C47]">{{ $student->dob }}</p>
@@ -128,7 +128,7 @@
                                             </div>
                                             <div class="flex items-center justify-end ">
                                                 <div class="w-[200px]">
-                                                    <h3 class="text-[18px] font-normal">@lang('lang.Phone_no'):</h3>
+                                                    <h3 class="text-[18px] font-normal">@lang('lang.Phone_no') :</h3>
                                                 </div>
                                                 <div class="w-[150px]  ">
                                                     <p class="text-[14px] text-[#323C47]">{{ $student->phone_no }}</p>
@@ -137,7 +137,7 @@
 
                                             <div class="flex items-center justify-end ">
                                                 <div class="w-[200px]">
-                                                    <h3 class="text-[18px] font-normal">@lang('lang.Address'):</h3>
+                                                    <h3 class="text-[18px] font-normal">@lang('lang.Address') :</h3>
                                                 </div>
                                                 <div class="w-[150px]  ">
                                                     <p class="text-[14px] text-[#323C47]">{{ $student->adress }}</p>
@@ -146,8 +146,8 @@
 
                                             <div class="flex items-center justify-end ">
                                                 <div class="w-[200px]">
-                                                    <h3 class="text-[18px] font-normal">@lang('lang.Emergency'): <br>
-                                                        @lang('lang.Contact_Person')</h3>
+                                                    <h3 class="text-[18px] font-normal">@lang('lang.Emergency') <br>
+                                                        @lang('lang.Contact_Person') :</h3>
                                                 </div>
                                                 <div class="w-[150px]  ">
                                                     <p class="text-[14px] text-[#323C47]">{{ $student->em_person }}</p>
@@ -157,7 +157,7 @@
                                             <div class="flex items-center justify-end ">
                                                 <div class="w-[200px]">
                                                     <h3 class="text-[18px] font-normal">@lang('lang.Emergency') <br>
-                                                        @lang('lang.Person_Relation'):</h3>
+                                                        @lang('lang.Person_Relation') :</h3>
                                                 </div>
                                                 <div class="w-[150px]  ">
                                                     <p class="text-[14px] text-[#323C47]">{{ $student->em_relation }}
@@ -167,7 +167,7 @@
 
                                             <div class="flex items-center justify-end ">
                                                 <div class="w-[200px]">
-                                                    <h3 class="text-[18px] font-normal">@lang('lang.Emergency_No'):</h3>
+                                                    <h3 class="text-[18px] font-normal">@lang('lang.Emergency_No') :</h3>
                                                 </div>
                                                 <div class="w-[150px]  ">
                                                     <p class="text-[14px] text-[#323C47]">{{ $student->em_phone }}</p>
@@ -176,7 +176,7 @@
 
                                             <div class="flex items-center justify-end ">
                                                 <div class="w-[200px]">
-                                                    <h3 class="text-[18px] font-normal">@lang('lang.Campus'):</h3>
+                                                    <h3 class="text-[18px] font-normal">@lang('lang.Campus') :</h3>
                                                 </div>
                                                 <div class="w-[150px]  ">
                                                     <p class="text-[14px] text-[#323C47]">{{ $student->campus }}</p>
@@ -185,7 +185,7 @@
 
                                             <div class="flex items-center justify-end ">
                                                 <div class="w-[200px]">
-                                                    <h3 class="text-[18px] font-normal">@lang('lang.School_Attending'):</h3>
+                                                    <h3 class="text-[18px] font-normal">@lang('lang.School_Attending') :</h3>
                                                 </div>
                                                 <div class="w-[150px]  ">
                                                     <p class="text-[14px] text-[#323C47]">
@@ -195,7 +195,7 @@
 
                                             <div class="flex items-center justify-end ">
                                                 <div class="w-[200px]">
-                                                    <h3 class="text-[18px] font-normal">@lang('lang.Student_No'):</h3>
+                                                    <h3 class="text-[18px] font-normal">@lang('lang.Student_No') :</h3>
                                                 </div>
                                                 <div class="w-[150px]  ">
                                                     <p class="text-[14px] text-[#323C47]">{{ $student->student_no }}
@@ -205,7 +205,7 @@
 
                                             <div class="flex items-center justify-end ">
                                                 <div class="w-[200px]">
-                                                    <h3 class="text-[18px] font-normal">@lang('lang.Grade'):</h3>
+                                                    <h3 class="text-[18px] font-normal">@lang('lang.Grade') :</h3>
                                                 </div>
                                                 <div class="w-[150px]  ">
                                                     <p class="text-[14px] text-[#323C47]">{{ $student->grade }}</p>
@@ -259,7 +259,7 @@
                 <div class="grid grid-cols-2 mt-1 gap-10 px-10">
                     <div>
                         <div class="grid grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
-                            <label class="text-[14px] font-normal" for="firstName">@lang('lang.First_Name')</label>
+                            <label class="text-[14px] font-normal" for="firstName">@lang('lang.full_name')</label>
                             <input type="text"
                                 class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
                                 name="full_name" id="fullName" placeholder=" @lang('lang.Enter_Student_Name')">
@@ -492,7 +492,7 @@
                 <div class="grid grid-cols-2 mt-1 gap-10 px-10">
                     <div>
                         <div class="grid grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
-                            <label class="text-[14px] font-normal" for="firstName">@lang('lang.First_Name')</label>
+                            <label class="text-[14px] font-normal" for="firstName">@lang('lang.full_name')</label>
                             <input type="text"
                                 class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
                                 name="full_name" id="fullName" placeholder=" @lang('lang.Enter_Student_Name')">
