@@ -296,7 +296,6 @@
                                 <option value="">@lang('lang.Select_Gender')</option>
                                 <option value="male">@lang('lang.male')</option>
                                 <option value="female">@lang('lang.female')</option>
-                                <option value="other">@lang('lang.other')</option>
                             </select>
                         </div>
 
@@ -471,7 +470,6 @@
                                 <option value="">@lang('lang.Select_Gender')</option>
                                 <option value="male">@lang('lang.male')</option>
                                 <option value="female">@lang('lang.female')</option>
-                                <option value="other">@lang('lang.other')</option>
                             </select>
                         </div>
 
