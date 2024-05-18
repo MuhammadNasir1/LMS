@@ -234,5 +234,11 @@ return [
     "Dashboard" => "Dashboard",
     "Settings" => "Settings",
     "logout" => "logout",
+    "Sample_Excel_Sheet" => "Sample Excel Sheet",
+    "Download_Example" => "Download Example",
+    "Course_Name" => "Course Name",
+    "Level" => "Level",
+    "Lesson" => "Lesson",
+    "Word" => "Word",
 
 ];

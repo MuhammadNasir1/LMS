@@ -23,7 +23,7 @@
                     <button class="bg-secondary  text-white h-12 px-5 rounded-[6px]  shadow-sm font-semibold ">+
                         @lang('lang.Import_Excel')
                     </button>
-                    <button>
+                    <button data-modal-target="excelDemo" data-modal-toggle="excelDemo">
                         <svg width="27" height="27" viewBox="0 0 22 22" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path opacity="0.5"
@@ -301,20 +301,21 @@
                                             <input type="file" name="audio_1" class="audioFileInput"
                                                 accept="audio/*" />
                                             <div>
-                                                <audio class="audioElement audio-player" id="audio1" controls></audio>
+                                                <audio class="audioElement audio-player" id="audio1"
+                                                    controls></audio>
                                             </div>
                                         </div>
-                                        <button   type="button"
+                                        <button type="button"
                                             class="h-8 play-button w-full max-h-8 max-w-8  rounded-full flex justify-center items-center ">
                                             <svg width="46" height="46" viewBox="0 0 29 29" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd"
-                                                d="M15 28C21.9035 28 27.5 22.4035 27.5 15.5C27.5 8.59644 21.9035 3 15 3C8.09644 3 2.5 8.59644 2.5 15.5C2.5 22.4035 8.09644 28 15 28Z"
-                                                fill="#339B96" />
-                                            <path
-                                                d="M19.2671 16.8238L13.3669 20.3073C12.4171 20.868 11.25 20.1381 11.25 18.9835V12.0164C11.25 10.8618 12.4171 10.132 13.3669 10.6927L19.2671 14.1763C20.2443 14.7533 20.2443 16.2467 19.2671 16.8238Z"
-                                                fill="#339B96" />
-                                        </svg>
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd"
+                                                    d="M15 28C21.9035 28 27.5 22.4035 27.5 15.5C27.5 8.59644 21.9035 3 15 3C8.09644 3 2.5 8.59644 2.5 15.5C2.5 22.4035 8.09644 28 15 28Z"
+                                                    fill="#339B96" />
+                                                <path
+                                                    d="M19.2671 16.8238L13.3669 20.3073C12.4171 20.868 11.25 20.1381 11.25 18.9835V12.0164C11.25 10.8618 12.4171 10.132 13.3669 10.6927L19.2671 14.1763C20.2443 14.7533 20.2443 16.2467 19.2671 16.8238Z"
+                                                    fill="#339B96" />
+                                            </svg>
                                         </button>
                                         <div class="w-full  border-2  border-gray">
 
@@ -341,21 +342,22 @@
                                             <input name="audio_2" type="file" class="audioFileInput"
                                                 accept="audio/*" />
                                             <div>
-                                                <audio class="audioElement audio-player" id="audio2" controls></audio>
+                                                <audio class="audioElement audio-player" id="audio2"
+                                                    controls></audio>
                                             </div>
                                         </div>
-                                        <button   type="button"
-                                        class="h-8 play-button w-full max-h-8 max-w-8  rounded-full flex justify-center items-center ">
-                                        <svg width="46" height="46" viewBox="0 0 29 29" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd"
-                                            d="M15 28C21.9035 28 27.5 22.4035 27.5 15.5C27.5 8.59644 21.9035 3 15 3C8.09644 3 2.5 8.59644 2.5 15.5C2.5 22.4035 8.09644 28 15 28Z"
-                                            fill="#339B96" />
-                                        <path
-                                            d="M19.2671 16.8238L13.3669 20.3073C12.4171 20.868 11.25 20.1381 11.25 18.9835V12.0164C11.25 10.8618 12.4171 10.132 13.3669 10.6927L19.2671 14.1763C20.2443 14.7533 20.2443 16.2467 19.2671 16.8238Z"
-                                            fill="#339B96" />
-                                    </svg>
-                                    </button>
+                                        <button type="button"
+                                            class="h-8 play-button w-full max-h-8 max-w-8  rounded-full flex justify-center items-center ">
+                                            <svg width="46" height="46" viewBox="0 0 29 29" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd"
+                                                    d="M15 28C21.9035 28 27.5 22.4035 27.5 15.5C27.5 8.59644 21.9035 3 15 3C8.09644 3 2.5 8.59644 2.5 15.5C2.5 22.4035 8.09644 28 15 28Z"
+                                                    fill="#339B96" />
+                                                <path
+                                                    d="M19.2671 16.8238L13.3669 20.3073C12.4171 20.868 11.25 20.1381 11.25 18.9835V12.0164C11.25 10.8618 12.4171 10.132 13.3669 10.6927L19.2671 14.1763C20.2443 14.7533 20.2443 16.2467 19.2671 16.8238Z"
+                                                    fill="#339B96" />
+                                            </svg>
+                                        </button>
                                         <div class="w-full  border-2  border-gray">
 
                                         </div>
@@ -382,21 +384,22 @@
                                                 <input name="audio_3" type="file" class="audioFileInput"
                                                     accept="audio/*" />
                                                 <div>
-                                                    <audio class="audioElement audio-player" id="audio3" controls></audio>
+                                                    <audio class="audioElement audio-player" id="audio3"
+                                                        controls></audio>
                                                 </div>
                                             </div>
-                                            <button   type="button"
-                                            class="h-8 play-button w-full max-h-8 max-w-8  rounded-full flex justify-center items-center ">
-                                            <svg width="46" height="46" viewBox="0 0 29 29" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd"
-                                                d="M15 28C21.9035 28 27.5 22.4035 27.5 15.5C27.5 8.59644 21.9035 3 15 3C8.09644 3 2.5 8.59644 2.5 15.5C2.5 22.4035 8.09644 28 15 28Z"
-                                                fill="#339B96" />
-                                            <path
-                                                d="M19.2671 16.8238L13.3669 20.3073C12.4171 20.868 11.25 20.1381 11.25 18.9835V12.0164C11.25 10.8618 12.4171 10.132 13.3669 10.6927L19.2671 14.1763C20.2443 14.7533 20.2443 16.2467 19.2671 16.8238Z"
-                                                fill="#339B96" />
-                                        </svg>
-                                        </button>
+                                            <button type="button"
+                                                class="h-8 play-button w-full max-h-8 max-w-8  rounded-full flex justify-center items-center ">
+                                                <svg width="46" height="46" viewBox="0 0 29 29"
+                                                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd"
+                                                        d="M15 28C21.9035 28 27.5 22.4035 27.5 15.5C27.5 8.59644 21.9035 3 15 3C8.09644 3 2.5 8.59644 2.5 15.5C2.5 22.4035 8.09644 28 15 28Z"
+                                                        fill="#339B96" />
+                                                    <path
+                                                        d="M19.2671 16.8238L13.3669 20.3073C12.4171 20.868 11.25 20.1381 11.25 18.9835V12.0164C11.25 10.8618 12.4171 10.132 13.3669 10.6927L19.2671 14.1763C20.2443 14.7533 20.2443 16.2467 19.2671 16.8238Z"
+                                                        fill="#339B96" />
+                                                </svg>
+                                            </button>
                                             <div class="w-full  border-2  border-gray">
 
                                             </div>
@@ -568,17 +571,17 @@
                                                 <audio class="audioElement audio-player" controls></audio>
                                             </div>
                                         </div>
-                                        <button disabled  type="button"
+                                        <button disabled type="button"
                                             class="h-8 play-button w-full max-h-8 max-w-8  rounded-full flex justify-center items-center ">
                                             <svg width="46" height="46" viewBox="0 0 29 29" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd"
-                                                d="M15 28C21.9035 28 27.5 22.4035 27.5 15.5C27.5 8.59644 21.9035 3 15 3C8.09644 3 2.5 8.59644 2.5 15.5C2.5 22.4035 8.09644 28 15 28Z"
-                                                fill="#339B96" />
-                                            <path
-                                                d="M19.2671 16.8238L13.3669 20.3073C12.4171 20.868 11.25 20.1381 11.25 18.9835V12.0164C11.25 10.8618 12.4171 10.132 13.3669 10.6927L19.2671 14.1763C20.2443 14.7533 20.2443 16.2467 19.2671 16.8238Z"
-                                                fill="#339B96" />
-                                        </svg>
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd"
+                                                    d="M15 28C21.9035 28 27.5 22.4035 27.5 15.5C27.5 8.59644 21.9035 3 15 3C8.09644 3 2.5 8.59644 2.5 15.5C2.5 22.4035 8.09644 28 15 28Z"
+                                                    fill="#339B96" />
+                                                <path
+                                                    d="M19.2671 16.8238L13.3669 20.3073C12.4171 20.868 11.25 20.1381 11.25 18.9835V12.0164C11.25 10.8618 12.4171 10.132 13.3669 10.6927L19.2671 14.1763C20.2443 14.7533 20.2443 16.2467 19.2671 16.8238Z"
+                                                    fill="#339B96" />
+                                            </svg>
                                         </button>
                                         <div class="w-full  border-2  border-gray">
 
@@ -611,15 +614,15 @@
                                             </div>
                                             <button disabled type="button"
                                                 class="h-8 play-button w-full max-h-8 max-w-8  rounded-full flex justify-center items-center ">
-                                                <svg width="46" height="46" viewBox="0 0 29 29" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd"
-                                                    d="M15 28C21.9035 28 27.5 22.4035 27.5 15.5C27.5 8.59644 21.9035 3 15 3C8.09644 3 2.5 8.59644 2.5 15.5C2.5 22.4035 8.09644 28 15 28Z"
-                                                    fill="#339B96" />
-                                                <path
-                                                    d="M19.2671 16.8238L13.3669 20.3073C12.4171 20.868 11.25 20.1381 11.25 18.9835V12.0164C11.25 10.8618 12.4171 10.132 13.3669 10.6927L19.2671 14.1763C20.2443 14.7533 20.2443 16.2467 19.2671 16.8238Z"
-                                                    fill="#339B96" />
-                                            </svg>
+                                                <svg width="46" height="46" viewBox="0 0 29 29"
+                                                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd"
+                                                        d="M15 28C21.9035 28 27.5 22.4035 27.5 15.5C27.5 8.59644 21.9035 3 15 3C8.09644 3 2.5 8.59644 2.5 15.5C2.5 22.4035 8.09644 28 15 28Z"
+                                                        fill="#339B96" />
+                                                    <path
+                                                        d="M19.2671 16.8238L13.3669 20.3073C12.4171 20.868 11.25 20.1381 11.25 18.9835V12.0164C11.25 10.8618 12.4171 10.132 13.3669 10.6927L19.2671 14.1763C20.2443 14.7533 20.2443 16.2467 19.2671 16.8238Z"
+                                                        fill="#339B96" />
+                                                </svg>
 
                                             </button>
                                             <div class="w-full  border-2  border-gray">
@@ -688,7 +691,80 @@
 </div>
 
 
+{{--  --}}
 
+<div id="excelDemo" data-modal-backdrop="static"
+    class="hidden overflow-y-auto overflow-x-hidden fixed  left-0 z-50 justify-center  w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div class="relative p-4 w-full max-w-6xl max-h-full ">
+
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700  ">
+            <div class="flex items-center   justify-endjustify-start  p-5  rounded-t dark:border-gray-600 bg-primary">
+                <h3 class="text-xl font-semibold text-white text-center">
+                    @lang('lang.Sample_Excel_Sheet')
+                </h3>
+                <button type="button"
+                    class=" absolute right-2 text-white bg-transparent rounded-lg text-sm w-8 h-8 ms-auto "
+                    data-modal-hide="excelDemo">
+                    <svg class="w-4 h-4 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                        fill="none" viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                    </svg>
+                </button>
+            </div>
+
+            <div class="p-5">
+                <table class="w-full text-left">
+                    <thead>
+                        <tr class="">
+                            <th class="bg-primary text-white border border-slate-300  py-3 pl-2">@lang('lang.Course_Name')
+                            </th>
+                            <th class="bg-primary text-white border border-slate-300  py-3 pl-2">@lang('lang.Level')
+                            </th>
+                            <th class="bg-primary text-white border border-slate-300  py-3 pl-2">@lang('lang.Lesson')
+                            </th>
+                            <th class="bg-primary text-white border border-slate-300  py-3 pl-2">@lang('lang.Word')
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border border-slate-300 py-3 pl-2">GEN AI</td>
+                            <td class="border border-slate-300 py-3 pl-2">01</td>
+                            <td class="border border-slate-300 py-3 pl-2">02</td>
+                            <td class="border border-slate-300 py-3 pl-2">B</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class=" pt-4">
+                <hr class="border-[#DEE2E6] ">
+            </div>
+            <div class="flex justify-end ">
+                <button id="addBtn"
+                    class="bg-secondary text-white py-2 px-6 my-4 rounded-[4px]  mx-6  font-semibold">
+                    <div class=" text-center hidden" id="spinner">
+                        <svg aria-hidden="true"
+                            class="w-5 h-5 mx-auto text-center text-gray-200 animate-spin fill-primary"
+                            viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                                fill="currentColor" />
+                            <path
+                                d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                                fill="currentFill" />
+                        </svg>
+                    </div>
+                    <div id="text">
+                        @lang('lang.Download_Example')
+                    </div>
+
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>
 
 
 @include('layouts.footer')
