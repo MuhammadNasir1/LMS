@@ -74,7 +74,7 @@
                                     </div>
                                     <div class="flex flex-col gap-5  items-center mt-4  pb-4">
                                         <h2 class="text-pink text-[32px] font-semibold "><span
-                                                class="border-b-4 border-pink py-1">@lang('lang.About')
+                                                class=" py-1">@lang('lang.About')
                                             </span>@lang('lang.Parent')
                                         </h2>
                                         <div class="flex items-center justify-end  mt-5">
@@ -104,7 +104,7 @@
                                         </div>
                                         <div class="flex items-center justify-end ">
                                             <div class="w-[200px]">
-                                                <h3 class="text-[18px] font-normal">@lang('lang.Emergency') <br>
+                                                <h3 class="text-[18px] font-normal">@lang('lang.Emergency'): <br>
                                                     @lang('lang.Contact_No') :</h3>
                                             </div>
                                             <div class="w-[150px]  ">
@@ -116,7 +116,7 @@
                                                 <h3 class="text-[18px] font-normal">@lang('lang.E-mail'):</h3>
                                             </div>
                                             <div class="w-[150px]  ">
-                                                <p class="text-[14px] text-[#323C47]">{{ $parent->email }}/p>
+                                                <p class="text-[14px] text-[#323C47]">{{ $parent->email }}</p>
                                             </div>
                                         </div>
 

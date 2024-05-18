@@ -78,7 +78,7 @@
                                     </div>
                                     <div class="flex flex-col gap-5  items-center mt-4  pb-4">
                                         <h2 class="text-pink text-[32px] font-semibold "><span
-                                                class="border-b-4 border-pink py-1">@lang('lang.About') </span>
+                                                class=" py-1">@lang('lang.About') </span>
                                             @lang('lang.Teacher')
                                         </h2>
                                         <div class="flex items-center justify-end  mt-5">

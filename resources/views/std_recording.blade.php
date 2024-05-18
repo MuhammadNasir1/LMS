@@ -21,7 +21,6 @@
             <table id="datatable" class="overflow-scroll">
                 <thead class="py-6 bg-primary text-white">
                     <tr>
-                        <th>@lang('lang.STN')</th>
                         <th>@lang('lang.Videos')</th>
                         <th>@lang('lang.Student')</th>
                         <th>@lang('lang.Teacher')</th>
@@ -33,7 +32,6 @@
                 <tbody>
                     @foreach ($recordingData as $x => $data)
                         <tr class="pt-4">
-                            <td>{{ $x + 1 }}</td>
                             <td class="w-[220px]">
                                 <video class=" rounded-[4px] w-full" controls width="200px"
                                     src="../{{ $data->video }}"></video>
