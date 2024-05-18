@@ -241,5 +241,6 @@ return [
     "Lesson" => "Lesson",
     "Word" => "Word",
     "Play" => "Play",
+    "Contact_us" => "Contact us",
 
 ];

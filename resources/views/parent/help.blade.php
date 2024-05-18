@@ -1,4 +1,4 @@
-@include('layouts.header')
+{{-- @include('layouts.header')
 @include('parent.includes.nav')
 <div class="mx-4 mt-12">
     <div>
@@ -137,4 +137,4 @@
     </div>
 </div>
 
-@include('layouts.footer')
+@include('layouts.footer') --}}

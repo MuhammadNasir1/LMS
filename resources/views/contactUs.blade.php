@@ -1,10 +1,10 @@
-{{-- @include('layouts.header')
+@include('layouts.header')
 @include('teacher.includes.nav')
 
 
 <div class="mx-4 mt-12">
     <div>
-        <h1 class=" font-semibold   text-2xl ">@lang('lang.Help')</h1>
+        <h1 class=" font-semibold   text-2xl ">@lang('lang.Contact_us')</h1>
     </div>
 
     <div class="shadow-dark mt-3  rounded-xl py-8 px-6  bg-white ">
@@ -139,4 +139,3 @@
     </div>
 </div>
 @include('layouts.footer')
- --}}
