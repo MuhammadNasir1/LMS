@@ -159,7 +159,7 @@ Route::middleware('custom')->group(function () {
     Route::get('/sendemail', [userController::class, 'sendWelcomeEmail']);
 
     // get training  data for update
-    Route::get('/trainingUpdataData/{id}', [trainingCsontroller::class, 'trainingUpdataData']);
+    Route::get('/trainingUpdataData/{id}', [trainingController::class, 'trainingUpdataData']);
     Route::post('updatetraining/{training_id}', [trainingController::class, 'updatetraining']);
     Route::get('/contact-us', function () {
         return view('contactUs');
