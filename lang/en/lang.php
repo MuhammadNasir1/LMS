@@ -241,6 +241,10 @@ return [
     "Lesson" => "Lesson",
     "Word" => "Word",
     "Play" => "Play",
+<<<<<<< HEAD
     "Contact_us" => "Contact us",
+=======
+    "Excel_File" => "Excel File",
+>>>>>>> bf71331692f94fcc83111b523cc99022f44465b1
 
 ];

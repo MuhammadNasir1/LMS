@@ -556,9 +556,9 @@
                                 </li>
                             </ul>
                             <div class="py-2">
-                                <form action="../weblogout" method="post" class=" cursor-pointer" id="logoutform">
+                                <form action="../weblogout" method="post" class=" cursor-pointer" id="logout">
                                     @csrf
-                                    <div onclick="logoutform.submit()"
+                                    <div onclick="logout.submit()"
                                         class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
 
                                         <a href="../weblogout"
