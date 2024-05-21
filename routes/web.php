@@ -33,6 +33,7 @@ Route::get('/forgot', function () {
     return view('forgotpass');
 });
 
+
 Route::get('register/{role}', function () {
     return view('register');
 });
@@ -161,9 +162,15 @@ Route::middleware('custom')->group(function () {
     // get training  data for update
     Route::get('/trainingUpdataData/{id}', [trainingController::class, 'trainingUpdataData']);
     Route::post('updatetraining/{training_id}', [trainingController::class, 'updatetraining']);
+<<<<<<< HEAD
+    Route::get('/contact-us', function () {
+        return view('contactUs');
+    });
+=======
 
 
     Route::post('course/import', [coursesController::class, 'Courseimport']);
+>>>>>>> bf71331692f94fcc83111b523cc99022f44465b1
 });
 
 
