@@ -228,6 +228,7 @@ return [
     "Update_Course" => "Update Course",
     "select_student_from_table" => "Select student from table",
     //
+
     "No_Recent_Notifications" => "No Recent Notifications",
     "Notifications" => "Notifications",
     "View_all" => "View All",
