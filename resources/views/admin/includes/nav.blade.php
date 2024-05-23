@@ -19,7 +19,7 @@
             <li>
                 <a href="../admin"
                     class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                    <svg class="w-[20px] h-[20px]" width="16" height="15" viewBox="0 0 16 15" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M0.5 7.33333C0.5 7.88562 0.947715 8.33333 1.5 8.33333H6.16667C6.71895 8.33333 7.16667 7.88562 7.16667 7.33333V1C7.16667 0.447715 6.71895 0 6.16667 0H1.5C0.947714 0 0.5 0.447715 0.5 1V7.33333ZM0.5 14C0.5 14.5523 0.947715 15 1.5 15H6.16667C6.71895 15 7.16667 14.5523 7.16667 14V11C7.16667 10.4477 6.71895 10 6.16667 10H1.5C0.947714 10 0.5 10.4477 0.5 11V14ZM8.83333 14C8.83333 14.5523 9.28105 15 9.83333 15H14.5C15.0523 15 15.5 14.5523 15.5 14V7.66667C15.5 7.11438 15.0523 6.66667 14.5 6.66667H9.83333C9.28105 6.66667 8.83333 7.11438 8.83333 7.66667V14ZM9.83333 0C9.28105 0 8.83333 0.447715 8.83333 1V4C8.83333 4.55228 9.28105 5 9.83333 5H14.5C15.0523 5 15.5 4.55228 15.5 4V1C15.5 0.447715 15.0523 0 14.5 0H9.83333Z"
@@ -63,7 +63,7 @@
             <li>
                 <a href="../admin/teacher"
                     class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <svg width="20" height="22" viewBox="0 0 20 22" fill="none"
+                    <svg class="w-[20px] h-[20px]" width="20" height="22" viewBox="0 0 20 22" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M15.6017 3.53927C16.5574 3.53927 17.3322 2.76446 17.3322 1.8087C17.3322 0.852928 16.5574 0.078125 15.6017 0.078125C14.6459 0.078125 13.8711 0.852928 13.8711 1.8087C13.8711 2.76446 14.6459 3.53927 15.6017 3.53927Z"
@@ -97,7 +97,7 @@
             <li>
                 <a href="../student"
                     class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <svg width="24" height="18" viewBox="0 0 20 14" fill="none"
+                    <svg class="w-[20px] h-[20px]" width="24" height="18" viewBox="0 0 20 14" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M10.0002 7.98469C11.491 7.98469 12.6995 6.77614 12.6995 5.28531C12.6995 3.79449 11.491 2.58594 10.0002 2.58594C8.50933 2.58594 7.30078 3.79449 7.30078 5.28531C7.30078 6.77614 8.50933 7.98469 10.0002 7.98469Z"
@@ -126,7 +126,7 @@
             <li>
                 <a href="../admin/parents"
                     class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <svg width="20" height="18" viewBox="0 0 20 18" fill="none"
+                    <svg class="w-[20px] h-[20px]" width="20" height="18" viewBox="0 0 20 18" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M9.99933 11.6393C11.1521 11.6393 12.0866 10.7048 12.0866 9.55207C12.0866 8.39932 11.1521 7.46484 9.99933 7.46484C8.84659 7.46484 7.91211 8.39932 7.91211 9.55207C7.91211 10.7048 8.84659 11.6393 9.99933 11.6393Z"
@@ -154,7 +154,7 @@
             <li>
                 <a href="../course"
                     class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
+                    <svg class="w-[20px] h-[20px]"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
                         <path
                             d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z" />
@@ -166,7 +166,7 @@
             <li>
                 <a href="../studentRec"
                     class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <svg width="20" height="13" viewBox="0 0 20 13" fill="none"
+                    <svg class="w-[20px] h-[20px]" width="20" height="13" viewBox="0 0 20 13" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M1.25001 0.105469C0.5575 0.105469 0 0.662969 0 1.35547V11.3555C0 12.048 0.5575 12.6055 1.25001 12.6055H13.75C14.4425 12.6055 15 12.048 15 11.3555V8.85547L20 11.3555V1.35547L15 3.85547V1.35547C15 0.662971 14.4425 0.105471 13.75 0.105471L1.25001 0.105469Z"
@@ -184,7 +184,7 @@
             <li>
                 <a href="../admin/games"
                     class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <svg width="20" height="13" viewBox="0 0 20 13" fill="none"
+                    <svg class="w-[20px] h-[20px]" width="20" height="13" viewBox="0 0 20 13" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M17.2498 0H2.75023C1.23414 0 0.0003125 1.23383 0 2.75043V9.30328C0.0003125 10.8195 1.23414 12.0533 2.75023 12.0537H17.2498C18.7659 12.0533 19.9996 10.8195 20 9.30328V2.75043C19.9996 1.23383 18.7659 0 17.2498 0ZM17.2498 11.0446H2.75023C2.28547 11.0446 1.84789 10.8635 1.51852 10.535C1.18984 10.2054 1.00871 9.76824 1.00836 9.30328V2.75043C1.00871 2.28582 1.18984 1.84824 1.51836 1.51871C1.84789 1.18984 2.28547 1.00871 2.75023 1.00871H17.2498C17.7145 1.00871 18.1521 1.18984 18.4815 1.51832C18.8102 1.8482 18.9913 2.28578 18.9916 2.75039V9.30324C18.9913 9.7682 18.8102 10.2054 18.4816 10.5346C18.1521 10.8635 17.7145 11.0446 17.2498 11.0446Z"
@@ -242,7 +242,7 @@
             <li>
                 <a href="../training"
                     class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <svg width="21" height="21" viewBox="0 0 21 21" fill="none"
+                    <svg class="w-[20px] h-[20px]" width="21" height="21" viewBox="0 0 21 21" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <rect x="1" y="0.105469" width="20" height="14" rx="1" fill="white" />
                         <path d="M18.3616 10.5508H15.1348V11.7503H18.3616V10.5508Z" fill="#339B96" />
@@ -294,7 +294,7 @@
             <li>
                 <a href="../contact-us"
                     class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <svg width="20" height="21" viewBox="0 0 20 21" fill="none"
+                    <svg class="w-[20px] h-[20px]" width="20" height="21" viewBox="0 0 20 21" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M20 10.2207C20 15.7435 15.5228 20.2207 10 20.2207C4.47715 20.2207 0 15.7435 0 10.2207C0 4.69786 4.47715 0.220703 10 0.220703C15.5228 0.220703 20 4.69786 20 10.2207ZM1.82439 10.2207C1.82439 14.736 5.48474 18.3963 10 18.3963C14.5153 18.3963 18.1756 14.736 18.1756 10.2207C18.1756 5.70544 14.5153 2.04509 10 2.04509C5.48474 2.04509 1.82439 5.70544 1.82439 10.2207Z"
