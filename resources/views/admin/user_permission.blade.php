@@ -24,18 +24,18 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($users as $user)
+                    @foreach ($users as $i => $user)
                         <tr>
-                            <th>1</th>
-                            <td>Peter</td>
-                            <td>peter@email.com</td>
-                            <td>12357678</td>
+                            <th>{{ $i + 1 }}</th>
+                            <td>{{ $user['name'] }}</td>
+                            <td>{{ $user['email'] }}</td>
+                            <td>{{ $user['phone'] }}</td>
                             <td>{{ $user['role'] }}</td>
                             <td>Create / Update / Delete</td>
                             <td>
-                                <button d="addmodal" data-modal-target="addteachermodal"
+                                <button id="addmodal" data-modal-target="addteachermodal" userId="{{ $user['id'] }}"
                                     data-modal-toggle="addteachermodal"
-                                    class="bg-secondary py-2 px-4  font-bold text-white rounded-md ">Change
+                                    class="bg-secondary py-2 px-4  font-bold text-white rounded-md GetPermissionBtn ">Change
                                     Permission</button>
                             </td>
                         </tr>
@@ -94,7 +94,9 @@
                         </div>
 
                     </button>
-
+                    <form action="post" method="post">
+                        <input name="updateId" type="hidden" id="user_id">
+                    </form>
                 </div>
             </div>
         </form>
@@ -111,87 +113,40 @@
 
 <script>
     // get selected update  data
-    $('.updateBtn').click(function() {
-        var updateId = $(this).attr('updateId');
-        var url = "../teacherUpdataData/" + updateId;
+    $('.GetPermissionBtn').click(function() {
+        var userId = $(this).attr('userId');
+        $('#user_id').val(userId)
+        // $.ajax({
+        //     type: "GET",
+        //     url: url,
+        //     dataType: "json",
+        //     success: function(response) {
+        //         var teacher = response.teacher;
+        //         $('#update_id').val(teacher.id);
+        //         $('#englishName').val(teacher.first_name);
+        //         $('#chineseName').val(teacher.last_name);
+        //         $('#udob').val(teacher.dob);
+        //         $('#ugender').val(teacher.gender);
+        //         $('#uphoneNo').val(teacher.phone_no);
+        //         $('#uemail').val(teacher.email);
+        //         $('#usubject').val(teacher.subject);
+        //         $('#uaddress').val(teacher.address);
+        //         $('#uskill').val(teacher.skill);
+        //         $('#ujoindate').val(teacher.join_date);
+        //     },
+        //     error: function(jqXHR) {
+        //         let response = JSON.parse(jqXHR.responseText);
+        //         console.log("error");
+        //         Swal.fire(
+        //             'Warning!',
+        //             'Teacher Not Found',
+        //             'warning'
+        //         );
+        //     }
 
-        $.ajax({
-            type: "GET",
-            url: url,
-            dataType: "json",
-            success: function(response) {
-                var teacher = response.teacher;
-                $('#update_id').val(teacher.id);
-                $('#englishName').val(teacher.first_name);
-                $('#chineseName').val(teacher.last_name);
-                $('#udob').val(teacher.dob);
-                $('#ugender').val(teacher.gender);
-                $('#uphoneNo').val(teacher.phone_no);
-                $('#uemail').val(teacher.email);
-                $('#usubject').val(teacher.subject);
-                $('#uaddress').val(teacher.address);
-                $('#uskill').val(teacher.skill);
-                $('#ujoindate').val(teacher.join_date);
-            },
-            error: function(jqXHR) {
-                let response = JSON.parse(jqXHR.responseText);
-                console.log("error");
-                Swal.fire(
-                    'Warning!',
-                    'Teacher Not Found',
-                    'warning'
-                );
-            }
-
-        });
+        // });
 
     })
-    // update teacher data
-    $(document).ready(function() {
-        $("#teacherupdatedata").submit(function(event) {
-            var updateId = $('#update_id').val();
-            var url = "../teacherUpdataData/" + updateId;
-            event.preventDefault();
-            var formData = new FormData(this);
-            $.ajax({
-                type: "POST",
-                url: url,
-                data: formData,
-                dataType: "json",
-                contentType: false,
-                processData: false,
-                beforeSend: function() {
-                    $('#uspinner').removeClass('hidden');
-                    $('#utext').addClass('hidden');
-                    $('#uaddBtn').attr('disabled', true);
-                },
-                success: function(response) {
-                    if (response.success == true) {
-                        window.location.href = '../admin/teacher';
-                    } else if (response.success == false) {
-                        Swal.fire(
-                            'Warning!',
-                            response.message,
-                            'warning'
-                        );
-                    }
-                },
-                error: function(jqXHR) {
-                    let response = JSON.parse(jqXHR.responseText);
-                    console.log("error");
-                    Swal.fire(
-                        'Warning!',
-                        response.message,
-                        'warning'
-                    );
-
-                    $('#utext').removeClass('hidden');
-                    $('#uspinner').addClass('hidden');
-                    $('#uaddBtn').attr('disabled', false);
-                }
-            });
-        });
-    });
     // insert  teacher data
     $(document).ready(function() {
         $("#teacher_data").submit(function(event) {
