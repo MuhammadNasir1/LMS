@@ -249,6 +249,7 @@ return [
     "English_Name" => "English Name",
     "Enter_Title" => "Enter Title",
     "Select_Video" => "Select Video",
+    "About_Course" => "About Course",
 
 
 

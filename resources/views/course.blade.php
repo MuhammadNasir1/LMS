@@ -150,7 +150,7 @@
                                         <div
                                             class="flex items-center   justify-endjustify-start  p-5  rounded-t dark:border-gray-600 bg-primary">
                                             <h3 class="text-xl font-semibold text-white text-center">
-                                                @lang('lang.About_Parent')
+                                                @lang('lang.About_Course')
                                             </h3>
                                             <button type="button"
                                                 class=" absolute right-2 text-white bg-transparent rounded-lg text-sm w-8 h-8 ms-auto "
@@ -164,54 +164,61 @@
                                                 </svg>
                                             </button>
                                         </div>
-                                        <div class="flex flex-col gap-5  items-center mt-4  pb-4">
-                                            <h2 class="text-pink text-[32px] font-semibold pr-16"><span
-                                                    class=" py-1">@lang('lang.About')
-                                                </span>@lang('lang.Course')
-                                            </h2>
-                                            <div class="flex items-center justify-end  mt-5">
-                                                <div class="w-[200px]">
-                                                    <h3 class="text-[18px] font-normal">@lang('lang.Course_Name') :</h3>
+                                        <div class="flex flex-col gap-5 items-center  mt-4  pb-4">
+                                            <div class="flex flex-col gap-5">
+                                                <div>
+                                                    <h2 class="text-pink text-[32px] font-semibold "><span
+                                                            class=" ">@lang('lang.About_Course')
+                                                        </span>
+                                                    </h2>
                                                 </div>
-                                                <div class="w-[150px]  ">
-                                                    <p class="text-[14px] text-[#323C47]">{{ $course->course_name }}
-                                                    </p>
+                                                <div class="flex items-center justify-end  mt-2">
+                                                    <div class="w-[200px]">
+                                                        <h3 class="text-[18px] font-normal">@lang('lang.Course_Name') :</h3>
+                                                    </div>
+                                                    <div class="w-[150px]  ">
+                                                        <p class="text-[14px] text-[#323C47]">
+                                                            {{ $course->course_name }}
+                                                        </p>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="flex items-center justify-end ">
-                                                <div class="w-[200px]">
-                                                    <h3 class="text-[18px] font-normal">@lang('lang.course_id') :</h3>
+                                                <div class="flex items-center justify-end ">
+                                                    <div class="w-[200px]">
+                                                        <h3 class="text-[18px] font-normal">@lang('lang.course_id') :</h3>
+                                                    </div>
+                                                    <div class="w-[150px]  ">
+                                                        <p class="text-[14px] text-[#323C47]">{{ $course->course_id }}
+                                                        </p>
+                                                    </div>
                                                 </div>
-                                                <div class="w-[150px]  ">
-                                                    <p class="text-[14px] text-[#323C47]">{{ $course->course_id }}</p>
+                                                <div class="flex items-center justify-end ">
+                                                    <div class="w-[200px]">
+                                                        <h3 class="text-[18px] font-normal">@lang('lang.no_of_levels') :</h3>
+                                                    </div>
+                                                    <div class="w-[150px]  ">
+                                                        <p class="text-[14px] text-[#323C47]">{{ $course->level }}</p>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="flex items-center justify-end ">
-                                                <div class="w-[200px]">
-                                                    <h3 class="text-[18px] font-normal">@lang('lang.no_of_levels') :</h3>
+                                                <div class="flex items-center justify-end ">
+                                                    <div class="w-[200px]">
+                                                        <h3 class="text-[18px] font-normal">@lang('lang.Lesson') :</h3>
+                                                    </div>
+                                                    <div class="w-[150px]  ">
+                                                        <p class="text-[14px] text-[#323C47]">{{ $course->lesson }}
+                                                        </p>
+                                                    </div>
                                                 </div>
-                                                <div class="w-[150px]  ">
-                                                    <p class="text-[14px] text-[#323C47]">{{ $course->level }}</p>
+                                                <div class="flex items-center justify-end ">
+                                                    <div class="w-[200px]">
+                                                        <h3 class="text-[18px] font-normal">@lang('lang.Word') :</h3>
+                                                    </div>
+                                                    <div class="w-[150px]  ">
+                                                        <p class="text-[14px] text-[#323C47]">{{ $course->word }}</p>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="flex items-center justify-end ">
-                                                <div class="w-[200px]">
-                                                    <h3 class="text-[18px] font-normal">@lang('lang.Lesson') :</h3>
-                                                </div>
-                                                <div class="w-[150px]  ">
-                                                    <p class="text-[14px] text-[#323C47]">{{ $course->lesson }}</p>
-                                                </div>
-                                            </div>
-                                            <div class="flex items-center justify-end ">
-                                                <div class="w-[200px]">
-                                                    <h3 class="text-[18px] font-normal">@lang('lang.Word') :</h3>
-                                                </div>
-                                                <div class="w-[150px]  ">
-                                                    <p class="text-[14px] text-[#323C47]">{{ $course->word }}</p>
-                                                </div>
-                                            </div>
 
 
+                                            </div>
 
 
 
