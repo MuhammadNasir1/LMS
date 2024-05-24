@@ -131,7 +131,7 @@ return [
     "Enter_Version" => "Enter  Version",
     "Select_Language" => "Select Language",
     "enter_no_of_words" => "Enter No. of Words",
-    "course_id" => "Course id",
+    "course_id" => "Course Id",
     "Enter_level" => "Enter level",
     "Course" => "Course",
     "Language" => "Language",
@@ -203,7 +203,7 @@ return [
     "Next" => "Next",
     "Update_Teacher" => "Update Teacher",
     "Level" => "Level",
-    "Course_ID" => "Course id",
+    "Course_ID" => "Course Id",
     "Lesson" => "Lesson",
     "Enter_Word" => "Enter Word",
     "Language" => "Language",
@@ -234,7 +234,6 @@ return [
     "View_all" => "View All",
     "Dashboard" => "Dashboard",
     "Settings" => "Settings",
-    "logout" => "logout",
     "Sample_Excel_Sheet" => "Sample Excel Sheet",
     "Download_Example" => "Download Example",
     "Course_Name" => "Course Name",
@@ -250,6 +249,8 @@ return [
     "Enter_Title" => "Enter Title",
     "Select_Video" => "Select Video",
     "About_Course" => "About Course",
+    "Enter_English_Name" => "Enter English Name",
+    "About_Teacher" => "About Teacher",
 
 
 

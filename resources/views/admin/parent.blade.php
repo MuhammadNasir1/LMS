@@ -30,7 +30,7 @@
 
                     @foreach ($parents as $x => $parent)
                         <tr class="pt-4">
-                            <td>{{ $parent->first_name }} {{ $parent->last_name }}</td>
+                            <td>{{ $parent->first_name }}</td>
                             <td>{{ $parent->email }}</td>
                             <td>{{ $parent->phone_no }}</td>
                             <td>{{ $parent->address }}</td>
@@ -73,68 +73,77 @@
                                         </button>
                                     </div>
                                     <div class="flex flex-col gap-5  items-center mt-4  pb-4">
-                                        <h2 class="text-pink text-[32px] font-semibold "><span
-                                                class=" py-1">@lang('lang.About')
-                                            </span>@lang('lang.Parent')
-                                        </h2>
-                                        <div class="flex items-center justify-end  mt-5">
-                                            <div class="w-[200px]">
-                                                <h3 class="text-[18px] font-normal">@lang('lang.Name') :</h3>
+                                        <div class="flex flex-col gap-5">
+                                            <h2 class="text-pink text-[32px] font-semibold "><span
+                                                    class=" py-1">@lang('lang.About')
+                                                </span>@lang('lang.Parent')
+                                            </h2>
+                                            <div class="flex items-center justify-end  mt-2">
+                                                <div class="w-[200px]">
+                                                    <h3 class="text-[18px] font-normal">@lang('lang.English_Name') :</h3>
+                                                </div>
+                                                <div class="w-[150px]  ">
+                                                    <p class="text-[14px] text-[#323C47]">{{ $parent->first_name }}</p>
+                                                </div>
                                             </div>
-                                            <div class="w-[150px]  ">
-                                                <p class="text-[14px] text-[#323C47]">{{ $parent->first_name }}
-                                                    {{ $parent->last_name }}</p>
+                                            <div class="flex items-center justify-end  mt-2">
+                                                <div class="w-[200px]">
+                                                    <h3 class="text-[18px] font-normal">@lang('lang.Chinese_Name') :</h3>
+                                                </div>
+                                                <div class="w-[150px]  ">
+                                                    <p class="text-[14px] text-[#323C47]">{{ $parent->last_name }}</p>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="flex items-center justify-end ">
-                                            <div class="w-[200px]">
-                                                <h3 class="text-[18px] font-normal">@lang('lang.gender') :</h3>
+                                            <div class="flex items-center justify-end ">
+                                                <div class="w-[200px]">
+                                                    <h3 class="text-[18px] font-normal">@lang('lang.gender') :</h3>
+                                                </div>
+                                                <div class="w-[150px]  ">
+                                                    <p class="text-[14px] text-[#323C47]">{{ $parent->gender }} </p>
+                                                </div>
                                             </div>
-                                            <div class="w-[150px]  ">
-                                                <p class="text-[14px] text-[#323C47]">{{ $parent->gender }} </p>
+                                            <div class="flex items-center justify-end ">
+                                                <div class="w-[200px]">
+                                                    <h3 class="text-[18px] font-normal">@lang('lang.Phone_no') :</h3>
+                                                </div>
+                                                <div class="w-[150px]  ">
+                                                    <p class="text-[14px] text-[#323C47]">{{ $parent->phone_no }}</p>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="flex items-center justify-end ">
-                                            <div class="w-[200px]">
-                                                <h3 class="text-[18px] font-normal">@lang('lang.Phone_no') :</h3>
+                                            <div class="flex items-center justify-end ">
+                                                <div class="w-[200px]">
+                                                    <h3 class="text-[18px] font-normal">@lang('lang.Emergency') <br>
+                                                        @lang('lang.Contact_No') :</h3>
+                                                </div>
+                                                <div class="w-[150px]  ">
+                                                    <p class="text-[14px] text-[#323C47]">{{ $parent->contact }}</p>
+                                                </div>
                                             </div>
-                                            <div class="w-[150px]  ">
-                                                <p class="text-[14px] text-[#323C47]">{{ $parent->phone_no }}</p>
+                                            <div class="flex items-center justify-end ">
+                                                <div class="w-[200px]">
+                                                    <h3 class="text-[18px] font-normal">@lang('lang.E-mail') :</h3>
+                                                </div>
+                                                <div class="w-[150px]  ">
+                                                    <p class="text-[14px] text-[#323C47]">{{ $parent->email }}</p>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="flex items-center justify-end ">
-                                            <div class="w-[200px]">
-                                                <h3 class="text-[18px] font-normal">@lang('lang.Emergency') : <br>
-                                                    @lang('lang.Contact_No') :</h3>
-                                            </div>
-                                            <div class="w-[150px]  ">
-                                                <p class="text-[14px] text-[#323C47]">{{ $parent->contact }}</p>
-                                            </div>
-                                        </div>
-                                        <div class="flex items-center justify-end ">
-                                            <div class="w-[200px]">
-                                                <h3 class="text-[18px] font-normal">@lang('lang.E-mail') :</h3>
-                                            </div>
-                                            <div class="w-[150px]  ">
-                                                <p class="text-[14px] text-[#323C47]">{{ $parent->email }}</p>
-                                            </div>
-                                        </div>
 
 
-                                        <div class="flex items-center justify-end ">
-                                            <div class="w-[200px]">
-                                                <h3 class="text-[18px] font-normal">@lang('lang.Address') :</h3>
+                                            <div class="flex items-center justify-end ">
+                                                <div class="w-[200px]">
+                                                    <h3 class="text-[18px] font-normal">@lang('lang.Address') :</h3>
+                                                </div>
+                                                <div class="w-[150px]  ">
+                                                    <p class="text-[14px] text-[#323C47]">{{ $parent->address }}</p>
+                                                </div>
                                             </div>
-                                            <div class="w-[150px]  ">
-                                                <p class="text-[14px] text-[#323C47]">{{ $parent->address }}</p>
-                                            </div>
-                                        </div>
-                                        <div class="flex items-center justify-end ">
-                                            <div class="w-[200px]">
-                                                <h3 class="text-[18px] font-normal">@lang('lang.Child') :</h3>
-                                            </div>
-                                            <div class="w-[150px]  ">
-                                                <p class="text-[14px] text-[#323C47]">{{ $parent->child_ren }}</p>
+                                            <div class="flex items-center justify-end ">
+                                                <div class="w-[200px]">
+                                                    <h3 class="text-[18px] font-normal">@lang('lang.Child') :</h3>
+                                                </div>
+                                                <div class="w-[150px]  ">
+                                                    <p class="text-[14px] text-[#323C47]">{{ $parent->child_ren }}</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -180,17 +189,12 @@
                 <div class="grid grid-cols-2 mt-4 gap-10 px-10">
                     <div>
                         <div class="grid grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
-                            <label class="text-[14px] font-normal" for="firstName">@lang('lang.full_name')</label>
+                            <label class="text-[14px] font-normal" for="firstName">@lang('lang.English_Name')</label>
                             <div class="flex gap-4 w-[100%]">
-                                <div class="w-[50%]">
+                                <div class="w-full">
                                     <input type="text"
                                         class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                        name="first_name" id="firstName" placeholder=" @lang('lang.Enter_First_Name')">
-                                </div>
-                                <div class="w-[50%]">
-                                    <input type="text"
-                                        class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                        name="last_name" id="lastName" placeholder="@lang('lang.Enter_Last_Name')">
+                                        name="first_name" id="firstName" placeholder=" @lang('lang.Enter_English_Name')">
                                 </div>
                             </div>
                         </div>
@@ -199,7 +203,7 @@
                             <select
                                 class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
                                 name="gender" id="gender">
-                                <option value="">@lang('lang.Select_Gender')</option>
+                                <option value="" disabled>@lang('lang.Select_Gender')</option>
                                 <option value="male">@lang('lang.male')</option>
                                 <option value="female">@lang('lang.female')</option>
                             </select>
@@ -223,7 +227,8 @@
                             <label class="text-[14px] font-normal" for="chinese_name">@lang('lang.Chinese_Name')</label>
                             <input type="text"
                                 class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                name="chinese_name" id="chinese_name" placeholder="@lang('lang.Chinese_Name')">
+                                name="last_name" id="chinese_name" placeholder="@lang('lang.Chinese_Name')">
+
                         </div>
 
                         <div class="grid grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
@@ -328,15 +333,10 @@
                         <div class="grid grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
                             <label class="text-[14px] font-normal" for="firstName">@lang('lang.full_name')</label>
                             <div class="flex gap-4">
-                                <div class="w-[50%]">
+                                <div class="w-full">
                                     <input type="text"
                                         class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
                                         name="first_name" id="firstName" placeholder=" @lang('lang.Enter_First_Name')">
-                                </div>
-                                <div class="w-[50%]">
-                                    <input type="text"
-                                        class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                        name="last_name" id="lastName" placeholder="@lang('lang.Enter_First_Name')">
                                 </div>
                             </div>
                         </div>
@@ -345,7 +345,7 @@
                             <select
                                 class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
                                 name="gender" id="gender">
-                                <option value="">@lang('lang.Select_Gender')</option>
+                                <option value="" selected disabled>@lang('lang.Select_Gender')</option>
                                 <option value="male">@lang('lang.male')</option>
                                 <option value="female">@lang('lang.female')</option>
                             </select>
@@ -375,7 +375,7 @@
                             <label class="text-[14px] font-normal" for="chinese_name">@lang('lang.Chinese_Name')</label>
                             <input type="text"
                                 class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                name="chinese_name" id="chinese_name" placeholder="@lang('lang.Chinese_Name')">
+                                name="last_name" id="chinese_name" placeholder="@lang('lang.Chinese_Name')">
                         </div>
 
                         <div class="grid grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
@@ -489,6 +489,7 @@
                 var parent = response.parent;
                 $('#update_id').val(parent.id);
                 $('#firstName').val(parent.first_name);
+                $('#chinese_name').val(parent.last_name);
                 $('#gender').val(parent.gender);
                 $('#phoneNo').val(parent.phone_no);
                 $('#address').val(parent.address);

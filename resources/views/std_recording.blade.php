@@ -84,56 +84,68 @@
                                                     src="../{{ $data->video }}"></video>
                                             </div>
                                             <div class="flex flex-col gap-5  mt-4  pb-4">
-                                                <h2 class="text-pink text-[32px] font-semibold text-left "><span
-                                                        class="border-b-4 border-pink py-1 pr-4">@lang('lang.Class')
-                                                    </span>@lang('lang.Video')
-                                                </h2>
 
-                                                <div class="flex items-center justify-end  mt-2">
-                                                    <div class="w-[200px]">
-                                                        <h3 class="text-[18px] font-normal">@lang('lang.Student_No') :</h3>
+                                                <div class="flex flex-col gap-5">
+                                                    <div>
+                                                        <h2 class="text-pink text-[32px] font-semibold text-left "><span
+                                                                class=" py-1 pr-4">@lang('lang.Class') @lang('lang.Video')
+                                                            </span>
+                                                        </h2>
                                                     </div>
-                                                    <div class="w-[200px]  ">
-                                                        <p class="text-[14px] text-[#323C47]">{{ $data->student_id }}
-                                                        </p>
+                                                    <div class="flex items-center justify-end  mt-2">
+                                                        <div class="w-[200px]">
+                                                            <h3 class="text-[18px] font-normal">@lang('lang.Student_No') :
+                                                            </h3>
+                                                        </div>
+                                                        <div class="w-[200px]  ">
+                                                            <p class="text-[14px] text-[#323C47]">
+                                                                {{ $data->student_id }}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex items-center justify-end  mt-2">
+                                                        <div class="w-[200px]">
+                                                            <h3 class="text-[18px] font-normal">@lang('lang.Duration') :
+                                                            </h3>
+                                                        </div>
+                                                        <div class="w-[200px]  ">
+                                                            <p class="text-[14px] text-[#323C47]">00:00</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex items-center justify-end  mt-2">
+                                                        <div class="w-[200px]">
+                                                            <h3 class="text-[18px] font-normal">@lang('lang.Lesson_Date') :
+                                                            </h3>
+                                                        </div>
+                                                        <div class="w-[200px]  ">
+                                                            <p class="text-[14px] text-[#323C47]">
+                                                                {{ $data->lesson_date }}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex items-center justify-end  mt-2">
+                                                        <div class="w-[200px]">
+                                                            <h3 class="text-[18px] font-normal">@lang('lang.Teacher') :
+                                                            </h3>
+                                                        </div>
+                                                        <div class="w-[200px]  ">
+                                                            <p class="text-[14px] text-[#323C47]">
+                                                                {{ $data->teacher_name }}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex items-center justify-end  mt-2">
+                                                        <div class="w-[200px]">
+                                                            <h3 class="text-[18px] font-normal">@lang('lang.Teachers')
+                                                                @lang('lang.Comment'):</h3>
+                                                        </div>
+                                                        <div class="w-[200px]  ">
+                                                            <p class="text-[14px] text-[#323C47]">
+                                                                {{ $data->teacher_comment }} </p>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="flex items-center justify-end  mt-2">
-                                                    <div class="w-[200px]">
-                                                        <h3 class="text-[18px] font-normal">@lang('lang.Duration') :</h3>
-                                                    </div>
-                                                    <div class="w-[200px]  ">
-                                                        <p class="text-[14px] text-[#323C47]">00:00</p>
-                                                    </div>
-                                                </div>
-                                                <div class="flex items-center justify-end  mt-2">
-                                                    <div class="w-[200px]">
-                                                        <h3 class="text-[18px] font-normal">@lang('lang.Lesson_Date') :</h3>
-                                                    </div>
-                                                    <div class="w-[200px]  ">
-                                                        <p class="text-[14px] text-[#323C47]">{{ $data->lesson_date }}
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                <div class="flex items-center justify-end  mt-2">
-                                                    <div class="w-[200px]">
-                                                        <h3 class="text-[18px] font-normal">@lang('lang.Teacher') :</h3>
-                                                    </div>
-                                                    <div class="w-[200px]  ">
-                                                        <p class="text-[14px] text-[#323C47]">{{ $data->teacher_name }}
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                <div class="flex items-center justify-end  mt-2">
-                                                    <div class="w-[200px]">
-                                                        <h3 class="text-[18px] font-normal">@lang('lang.Teachers') :
-                                                            @lang('lang.Comment')</h3>
-                                                    </div>
-                                                    <div class="w-[200px]  ">
-                                                        <p class="text-[14px] text-[#323C47]">
-                                                            {{ $data->teacher_comment }} </p>
-                                                    </div>
-                                                </div>
+
 
                                             </div>
                                         </div>
