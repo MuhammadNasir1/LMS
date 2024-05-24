@@ -13,6 +13,7 @@ use App\Models\students;
 use App\Models\teacher;
 use App\Models\teacher_rec;
 use App\Models\training;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class userController extends Controller
@@ -47,11 +48,13 @@ class userController extends Controller
         return view('teacher.dashboard', compact('trainingCount', 'videoCount'));
     }
 
-     // permission
+    // permission
 
 
-     public function permissionView()
-     {
-         return view('admin.user_permission');
-     }
+    public function permissionView()
+    {
+
+        $users = User::where('role', '<>', 'superAdmin')->get();
+        return view('admin.user_permission', ['users' => $users]);
+    }
 }

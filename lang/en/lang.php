@@ -255,6 +255,7 @@ return [
     "Users_List" => "Users List",
     "Role" => "Role",
     "Permission" => "Permission",
+    "Change_Permission" => "Change Permission",
 
 
 

@@ -104,6 +104,10 @@
                             if (response.user.role == "parent") {
 
                                 window.location.href = '/';
+                            } else if (response.user.role == "superAdmin") {
+
+                                window.location.href = '../admin';
+
                             } else {
 
                                 window.location.href = response.user.role;

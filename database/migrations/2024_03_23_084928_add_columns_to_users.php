@@ -17,6 +17,7 @@ return new class extends Migration
             $table->text('country')->nullable();
             $table->text('language')->nullable();
             $table->text('user_image')->nullable();
+            $table->string('permission')->nullable();
         });
     }
 

@@ -51,10 +51,14 @@ Route::middleware('custom')->group(function () {
     Route::get('studentUpdataData/{id}', [studentController::class, 'studentUpdataData']);
     Route::post('studentUpdata/{id}', [studentController::class, 'updatestudent']);
 
+
+    Route::middleware('superAdminAuth')->group(function () {
+        // Route::get('/admin/permission', [userController::class, 'permissionView']);
+    });
     Route::middleware('adminAuth')->group(function () {
         Route::get('/admin', [userController::class, 'adminDashboard']);
-
         Route::get('/admin/permission', [userController::class, 'permissionView']);
+
         Route::get('/admin/teacher', [teacherController::class, 'getsteacherdata']);
         Route::get('/admin/parents', [parentController::class, 'getparentdata']);
         Route::get('/admin/help', function () {

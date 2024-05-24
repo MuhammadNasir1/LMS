@@ -10,13 +10,11 @@
         <div>
             <div class="flex justify-between px-[20px] mb-3">
                 <h3 class="text-[20px] text-black">@lang('lang.Users_List')</h3>
-                {{-- <button id="addmodal" data-modal-target="addteachermodal" data-modal-toggle="addteachermodal"
-                    class="bg-secondary text-white h-12 px-5 rounded-[6px]  shadow-sm font-semibold ">+
-                    @lang('lang.Add_Teacher')</button> --}}
             </div>
             <table id="datatable" class="overflow-scroll">
                 <thead class="py-6 bg-primary text-white">
                     <tr>
+                        <th>#</th>
                         <th>@lang('lang.Name')</th>
                         <th>@lang('lang.email')</th>
                         <th>@lang('lang.Phone_no')</th>
@@ -26,9 +24,24 @@
                     </tr>
                 </thead>
                 <tbody>
-
-
+                    @foreach ($users as $user)
+                        <tr>
+                            <th>1</th>
+                            <td>Peter</td>
+                            <td>peter@email.com</td>
+                            <td>12357678</td>
+                            <td>{{ $user['role'] }}</td>
+                            <td>Create / Update / Delete</td>
+                            <td>
+                                <button d="addmodal" data-modal-target="addteachermodal"
+                                    data-modal-toggle="addteachermodal"
+                                    class="bg-secondary py-2 px-4  font-bold text-white rounded-md ">Change
+                                    Permission</button>
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
+
             </table>
 
         </div>
@@ -39,13 +52,13 @@
 <!-- Add  Teacher  modal -->
 <div id="addteachermodal" data-modal-backdrop="static"
     class="hidden overflow-y-auto overflow-x-hidden fixed  left-0 z-50 justify-center  w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-    <div class="relative p-4 w-full max-w-7xl max-h-full ">
+    <div class="relative p-4 w-full max-w-2xl max-h-full ">
         <form id="teacher_data" enctype="multipart/form-data" method="post">
             @csrf
             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700  ">
                 <div class="flex items-center  justify-center  p-5  rounded-t dark:border-gray-600 bg-primary">
                     <h3 class="text-xl font-semibold text-white text-center">
-                        @lang('lang.Add_Teacher')
+                        @lang('lang.Change_Permission')
                     </h3>
                     <button type="button"
                         class="cursor-pointer absolute right-2 text-white bg-transparent rounded-lg text-sm w-8 h-8 ms-auto "
@@ -58,122 +71,7 @@
                     </button>
                 </div>
 
-                <div class="grid grid-cols-2 mt-4 gap-10 px-10">
-                    <div>
-                        <div class="grid grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
-                            <label class="text-[14px] font-normal" for="english_Name">@lang('lang.English_Name')</label>
-                            <input type="text"
-                                class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                name="first_name" id="english_Name" placeholder=" @lang('lang.Enter_English_Name')">
-                        </div>
-                        <div class="grid grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
-                            <label class="text-[14px] font-normal" for="dob">@lang('lang.Date_of_Birth')</label>
-                            <input type="date"
-                                class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                name="dob" id="dob">
-                        </div>
 
-                        <div class="grid grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
-                            <label class="text-[14px] font-normal" for="phoneNo">@lang('lang.Phone_no')</label>
-                            <input type="number"
-                                class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                name="phone_no" id="phoneNo" placeholder="@lang('lang.Enter_Phone')">
-                        </div>
-
-                        <div class="grid select-container grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
-                            <label class="text-[14px] font-normal" for="subject">@lang('lang.subject')</label>
-                            <div class="flex gap-4">
-                                <div class="select-feild w-full">
-                                    <select
-                                        class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                        name="subject" id="subject">
-                                        <option value="">@lang('lang.subject')</option>
-                                    </select>
-                                </div>
-                                <input type="text"
-                                    class="w-full hidden border-[#DEE2E6] rounded-[4px] focus:border-primary input-field   h-[40px] text-[14px]"
-                                    name="subject" id="subject">
-                                <div>
-                                    <button type="button"
-                                        class="bg-secondary toggle-button h-[40px] rounded-[4px] w-[40px] font-bold text-white text-2xl"
-                                        style="width: 42px">+</button>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="grid select-container grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
-                            <label class="text-[14px] font-normal" for="skill">@lang('lang.Skills')</label>
-                            <div class="flex gap-4">
-                                <div class="select-feild w-full">
-                                    <select
-                                        class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                        name="skill" id="skill">
-                                        <option value="">@lang('lang.add_Skills')</option>
-                                    </select>
-                                </div>
-                                <input type="text"
-                                    class="w-full hidden border-[#DEE2E6] rounded-[4px] focus:border-primary input-field   h-[40px] text-[14px]"
-                                    name="skill" id="skill">
-                                <div>
-                                    <button type="button"
-                                        class="bg-secondary toggle-button h-[40px] rounded-[4px] w-[40px] font-bold text-white text-2xl"
-                                        style="width: 42px">+</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="grid grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
-                            <label class="text-[14px] font-normal" for="teacherCv">@lang('lang.Teacher_CV')</label>
-                            <input type="file"
-                                class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                name="teacher_cv" id="teacherCv" placeholder="@lang('lang.Enter_Phone')">
-                        </div>
-
-
-                    </div>
-
-
-                    <div>
-                        <div class="grid grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
-                            <label class="text-[14px] font-normal" for="chinese_Name">@lang('lang.Chinese_Name')</label>
-                            <input type="text"
-                                class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                name="last_name" id="chinese_Name" placeholder="@lang('lang.Enter_Chinese_Name')">
-                        </div>
-                        <div class="grid grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
-                            <label class="text-[14px] font-normal" for="gender">@lang('lang.gender')</label>
-                            <select
-                                class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                name="gender" id="gender">
-                                <option value="" selected disabled>@lang('lang.Select_Gender')</option>
-                                <option value="male">@lang('lang.male')</option>
-                                <option value="female">@lang('lang.female')</option>
-                            </select>
-                        </div>
-
-                        <div class="grid grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
-                            <label class="text-[14px] font-normal" for="email">@lang('lang.email')</label>
-                            <input type="email"
-                                class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                name="email" id="email" placeholder="@lang('lang.Enter_Email')">
-                        </div>
-
-                        <div class="grid grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
-                            <label class="text-[14px] font-normal" for="joindate">@lang('lang.Join_Date')</label>
-                            <input type="date"
-                                class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                name="join_date" id="joindate">
-                        </div>
-
-                        <div class="grid grid-cols-[100px_minmax(100px,_1fr)]  my-6  ">
-                            <label class="text-[14px] font-normal" for="address">@lang('lang.Address')</label>
-                            <textarea type="date" class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[85px] text-[14px]"
-                                name="address" id="address" placeholder="@lang('lang.Enter_Address')"></textarea>
-                        </div>
-
-                    </div>
-                </div>
                 <div class=" pt-4">
                     <hr class="border-[#DEE2E6] ">
                 </div>
@@ -192,7 +90,7 @@
                             </svg>
                         </div>
                         <div id="text">
-                            @lang('lang.Add')
+                            @lang('lang.Change_Permission')
                         </div>
 
                     </button>
