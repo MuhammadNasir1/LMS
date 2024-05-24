@@ -71,9 +71,9 @@
                                             </svg>
                                         </button>
                                     </div>
-                                    <div class="flex justify-around gap-10">
+                                    <div class="flex justify-around gap-10 video-container">
                                         <div class="my-4 pl-6">
-                                            <video class=" rounded-[4px] w-full" controls width="320px"
+                                            <video class=" rounded-[4px] w-full videoduration" controls width="320px"
                                                 src="{{ isset($training->video) ? asset($training->video) : '' }}"></video>
                                         </div>
                                         <div class="flex flex-col gap-5  items-center mt-4  pb-4">
@@ -87,6 +87,14 @@
                                                 </div>
                                                 <div class="w-[200px]  ">
                                                     <p class="text-[14px] text-[#323C47]">{{ $training->title }}</p>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-center justify-end  mt-5">
+                                                <div class="w-[200px]">
+                                                    <h3 class="text-[18px] font-normal">@lang('lang.Duration') :</h3>
+                                                </div>
+                                                <div class="w-[200px]  ">
+                                                    <p class="text-[14px] text-[#323C47] durationOutput">2Min</p>
                                                 </div>
                                             </div>
                                             <div class="flex items-center justify-end  mt-5">
@@ -155,7 +163,7 @@
                             <label class="text-[14px] font-normal" for="title">@lang('lang.Title')</label>
                             <input type="text"
                                 class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                name="title" id="title" placeholder=" @lang('lang.Enter_First_Name')">
+                                name="title" id="title" placeholder=" @lang('lang.Enter_Title')">
                         </div>
 
                         <div class="grid grid-cols-[100px_minmax(100px,_1fr)]  my-6  ">
@@ -173,10 +181,10 @@
                     <div>
 
                         <div class="grid grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
-                            <label class="text-[14px] font-normal" for="video">@lang('lang.Contact')</label>
+                            <label class="text-[14px] font-normal" for="video">@lang('lang.Select_Video')</label>
                             <input type="file"
                                 class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                name="video" id="video" placeholder="@lang('lang.Enter_Emergency_Phone')">
+                                name="video" id="video">
                         </div>
 
 
@@ -187,7 +195,8 @@
                     <hr class="border-[#DEE2E6] ">
                 </div>
                 <div class="flex justify-end ">
-                    <button class="bg-secondary text-white py-2 px-6 my-4 rounded-[4px]  mx-6  font-semibold" id="uaddBtn">
+                    <button class="bg-secondary text-white py-2 px-6 my-4 rounded-[4px]  mx-6  font-semibold"
+                        id="uaddBtn">
                         <div class=" text-center hidden" id="uspinner">
                             <svg aria-hidden="true"
                                 class="w-5 h-5 mx-auto text-center text-gray-200 animate-spin fill-primary"
@@ -243,7 +252,7 @@
                             <label class="text-[14px] font-normal" for="title">@lang('lang.Title')</label>
                             <input type="text"
                                 class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                name="title" id="title" placeholder=" @lang('lang.Enter_First_Name')">
+                                name="title" id="title" placeholder=" @lang('lang.Enter_Title')">
                         </div>
 
                         <div class="grid grid-cols-[100px_minmax(100px,_1fr)]  my-6  ">
@@ -261,10 +270,10 @@
                     <div>
 
                         <div class="grid grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
-                            <label class="text-[14px] font-normal" for="video">@lang('lang.Contact')</label>
+                            <label class="text-[14px] font-normal" for="video">@lang('lang.Select_Video')</label>
                             <input type="file"
                                 class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                name="video" id="video" placeholder="@lang('lang.Enter_Emergency_Phone')">
+                                name="video" id="video">
                         </div>
 
 
@@ -309,6 +318,27 @@
 
 @include('layouts.footer')
 <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const videoContainers = document.querySelectorAll('.video-container');
+
+        videoContainers.forEach(container => {
+            const video = container.querySelector('.videoduration');
+            const durationOutput = container.querySelector('.durationOutput');
+
+            video.addEventListener('loadedmetadata', function() {
+                const duration = video.duration;
+                const minutes = Math.floor(duration / 60);
+                const seconds = Math.floor(duration % 60);
+                const formattedDuration = `${minutes}Min ${seconds}Sec`;
+
+                if (durationOutput) {
+                    durationOutput.textContent = formattedDuration;
+                }
+            });
+
+            video.load();
+        });
+    });
     $(document).ready(function() {
 
         $('.updateBtn').click(function() {

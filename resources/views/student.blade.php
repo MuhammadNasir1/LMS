@@ -40,7 +40,7 @@
 
                     @foreach (session('user_det')['role'] == 'parent' ? $ParentStudents : $students as $i => $student)
                         <tr class="pt-4">
-                            <td>{{ $i + 1 }}</td>
+                            <td>{{ $student->id }}</td>
                             <td>{{ $student->full_name }}</td>
                             <td>{{ $student->chinese_name }}</td>
                             <td>{{ $student->em_person }}</td>
@@ -95,7 +95,7 @@
                                             </h2>
                                             <div class="flex items-center justify-end  mt-5">
                                                 <div class="w-[200px]">
-                                                    <h3 class="text-[18px] font-normal">@lang('lang.Name') :</h3>
+                                                    <h3 class="text-[18px] font-normal">@lang('lang.English_Name') :</h3>
                                                 </div>
                                                 <div class="w-[150px]  ">
                                                     <p class="text-[14px] text-[#323C47]">{{ $student->full_name }}</p>
@@ -259,7 +259,7 @@
                 <div class="grid grid-cols-2 mt-1 gap-10 px-10">
                     <div>
                         <div class="grid grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
-                            <label class="text-[14px] font-normal" for="firstName">@lang('lang.full_name')</label>
+                            <label class="text-[14px] font-normal" for="firstName">@lang('lang.English_Name')</label>
                             <input type="text"
                                 class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
                                 name="full_name" id="fullName" placeholder=" @lang('lang.Enter_Student_Name')">
@@ -270,7 +270,7 @@
                             <select
                                 class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
                                 name="gender" id="gender">
-                                <option value="">@lang('lang.Select_Gender')</option>
+                                <option value="" disabled>@lang('lang.Select_Gender')</option>
                                 <option value="male">@lang('lang.male')</option>
                                 <option value="female">@lang('lang.female')</option>
                             </select>
@@ -290,7 +290,7 @@
                         </div>
 
                         <div class="grid grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
-                            <label class="text-[14px] font-normal" for="personName">@lang('lang.person')</label>
+                            <label class="text-[14px] font-normal" for="personName">@lang('lang.Name')</label>
                             <input type="text"
                                 class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
                                 name="em_person" id="personName" placeholder=" @lang('lang.Enter_Person_Name')">
@@ -492,18 +492,18 @@
                 <div class="grid grid-cols-2 mt-1 gap-10 px-10">
                     <div>
                         <div class="grid grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
-                            <label class="text-[14px] font-normal" for="firstName">@lang('lang.full_name')</label>
+                            <label class="text-[14px] font-normal" for="firstName">@lang('lang.English_Name')</label>
                             <input type="text"
                                 class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
                                 name="full_name" id="fullName" placeholder=" @lang('lang.Enter_Student_Name')">
                         </div>
 
                         <div class="grid grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
-                            <label class="text-[14px] font-normal" for="gender">@lang('lang.gender')</label>
+                            <label class="text-[14px] font-normal" for="Gender">@lang('lang.gender')</label>
                             <select
                                 class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                name="gender" id="gender">
-                                <option value="">@lang('lang.Select_Gender')</option>
+                                name="gender" id="Gender">
+                                <option value="" selected disabled>@lang('lang.Select_Gender')</option>
                                 <option value="male">@lang('lang.male')</option>
                                 <option value="female">@lang('lang.female')</option>
                             </select>
@@ -523,7 +523,7 @@
                         </div>
 
                         <div class="grid grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
-                            <label class="text-[14px] font-normal" for="personName">@lang('lang.person')</label>
+                            <label class="text-[14px] font-normal" for="personName">@lang('lang.Name')</label>
                             <input type="text"
                                 class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
                                 name="em_person" id="personName" placeholder=" @lang('lang.Enter_Person_Name')">

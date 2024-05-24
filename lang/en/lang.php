@@ -245,4 +245,11 @@ return [
     "Contact_us" => "Contact us",
     "Excel_File" => "Excel File",
 
+
+    "English_Name" => "English Name",
+    "Enter_Title" => "Enter Title",
+    "Select_Video" => "Select Video",
+
+
+
 ];

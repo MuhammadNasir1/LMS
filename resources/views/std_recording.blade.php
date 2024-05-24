@@ -21,6 +21,7 @@
             <table id="datatable" class="overflow-scroll">
                 <thead class="py-6 bg-primary text-white">
                     <tr>
+                        <th>@lang('lang.STN')</th>
                         <th>@lang('lang.Videos')</th>
                         <th>@lang('lang.Student')</th>
                         <th>@lang('lang.Teacher')</th>
@@ -36,6 +37,7 @@
                                 <video class=" rounded-[4px] w-full" controls width="200px"
                                     src="../{{ $data->video }}"></video>
                             </td>
+                            <td>{{ $data->student_id }}</td>
                             <td>{{ $data->student_name }}</td>
                             <td>{{ $data->teacher_name }}</td>
                             <td>{{ $data->teacher_comment }}</td>
