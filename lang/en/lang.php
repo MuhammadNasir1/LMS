@@ -251,6 +251,10 @@ return [
     "About_Course" => "About Course",
     "Enter_English_Name" => "Enter English Name",
     "About_Teacher" => "About Teacher",
+    "All_Users" => "All Users",
+    "Users_List" => "Users List",
+    "Role" => "Role",
+    "Permission" => "Permission",
 
 
 

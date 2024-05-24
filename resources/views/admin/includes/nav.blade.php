@@ -28,38 +28,6 @@
                     <span class="ms-3">@lang('lang.Dashboard')</span>
                 </a>
             </li>
-            {{-- <li>
-            <button type="button"
-                class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
-                <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
-                    aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                    viewBox="0 0 18 21">
-                    <path
-                        d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z" />
-                </svg>
-                <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">@lang('lang.Courses')</span>
-                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                    viewBox="0 0 10 6">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="m1 1 4 4 4-4" />
-                </svg>
-            </button>
-            <ul id="dropdown-example" class="hidden py-2 space-y-2 bg-white rounded-lg text-slate-500">
-                <li>
-                    <a href="#"
-                        class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">@lang('lang.level')</a>
-                </li>
-                <li>
-                    <a href="#"
-                        class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">@lang('lang.Page')</a>
-                </li>
-                <li>
-                    <a href="#"
-                        class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">@lang('lang.Word')</a>
-                </li>
-            </ul>
-        </li> --}}
             <li>
                 <a href="../admin/teacher"
                     class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
@@ -154,8 +122,8 @@
             <li>
                 <a href="../course"
                     class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <svg class="w-[20px] h-[20px]"
-                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
+                    <svg class="w-[20px] h-[20px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                        fill="currentColor" viewBox="0 0 18 21">
                         <path
                             d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z" />
                     </svg>
@@ -201,44 +169,6 @@
                     <span class="flex-1 ms-3 whitespace-nowrap">@lang('lang.Games')</span>
                 </a>
             </li>
-            {{-- <li>
-                <button type="button"
-                    class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                    aria-controls="dropdown-example1" data-collapse-toggle="dropdown-example1">
-                    <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
-                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                        viewBox="0 0 18 21">
-                        <path
-                            d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z" />
-                    </svg>
-                    <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap"> @lang('lang.Reports')</span>
-                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 10 6">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="m1 1 4 4 4-4" />
-                    </svg>
-                </button>
-                <ul id="dropdown-example1" class="hidden py-2 space-y-2 bg-white text-slate-500 rounded-lg ">
-                    <li>
-                        <a href="#"
-                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
-                            @lang('lang.LMS_Reports')</a>
-                    </li>
-
-                    <li>
-                        <a href="#"
-                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
-                            @lang('lang.Teachers_Reports')</a>
-                    </li>
-
-                    <li>
-                        <a href="#"
-                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
-                            @lang('lang.Students_Reports')</a>
-                    </li>
-
-                </ul>
-            </li> --}}
             <li>
                 <a href="../training"
                     class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
@@ -263,10 +193,10 @@
                     <span class="flex-1 ms-3 whitespace-nowrap">@lang('lang.Training_Videos')</span>
                 </a>
             </li>
-            {{-- <li>
-                <a href="../admin/audio"
+            <li>
+                <a href="../admin/permission"
                     class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                    <svg class="w-[20px] h-[20px]" width="20" height="20" viewBox="0 0 20 20" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M19.7913 2.466C19.6582 2.36129 19.4865 2.32357 19.3232 2.36129L17.0697 2.90254V1.81465C17.0697 0.98238 16.5392 0.463459 15.6846 0.463459C14.1525 0.463459 10.9374 2.32819 9.97498 3.0904C9.04415 2.32126 5.95835 0.316406 4.37002 0.316406C3.46999 0.316406 2.93105 0.876902 2.93105 1.81465V2.94411C2.40674 2.86327 1.33195 2.61921 0.679062 2.45984C0.515071 2.41903 0.341841 2.45676 0.208646 2.56147C0.078531 2.66464 0 2.82401 0 2.99339V17.2845C0 17.4423 0.0692921 17.5932 0.187089 17.6995C0.307195 17.8026 0.468106 17.8496 0.623628 17.8265C0.673673 17.8203 5.55722 16.7225 7.96628 18.0013C8.0579 18.049 8.20341 18.1683 8.34584 18.2815C8.7539 18.6118 9.31285 19.0638 9.9973 19.0668C9.99961 19.0668 10.0027 19.0668 10.0042 19.0668C10.6887 19.0668 11.2684 18.5933 11.6919 18.2469C11.8374 18.1268 11.9914 18.002 12.0838 17.9528C14.4874 16.6801 19.3209 17.8188 19.3702 17.8273C19.528 17.8504 19.6882 17.805 19.8083 17.7002C19.9299 17.5971 20 17.4446 20 17.2853V2.89484C20.0008 2.727 19.923 2.5684 19.7913 2.466ZM4.02664 1.81465C4.02664 1.4297 4.13289 1.41353 4.36925 1.41353C5.63036 1.41353 8.40975 3.15584 9.21045 3.75945L9.98806 4.31995L10.7418 3.8888C11.5718 3.31983 14.4189 1.56135 15.6846 1.56135C15.9726 1.56135 15.9726 1.61987 15.9726 1.81465V12.7428C14.3704 12.7728 11.5733 13.1978 10.7503 13.6567C9.92724 14.114 10.0058 14.1663 10.0058 14.1663C10.0058 14.1663 9.9488 14.0947 9.21122 13.639C8.35816 13.0615 5.6142 12.7728 4.02741 12.7428L4.02664 1.81465ZM18.9029 15.5068C17.5871 14.9293 13.7591 14.5236 11.5718 15.6823C11.3824 15.7832 11.1953 15.9348 10.9982 16.0957C10.6864 16.3514 10.2976 16.6686 10.005 16.6686C9.70474 16.667 9.33441 16.3691 9.03568 16.1281C8.84628 15.9749 8.66689 15.8286 8.48135 15.7316C6.29018 14.569 2.55457 15.1449 1.09789 15.6515V3.68631C1.6838 3.82104 2.48989 3.99812 2.93105 4.05356V13.8361H3.55776C5.01828 13.8361 7.73299 13.9846 9.48608 14.9925L9.65238 15.0879V15.496L10.0042 15.2889L10.3076 15.4636V15.1126L10.4793 15.0125C12.23 13.9877 14.9663 13.8361 16.4422 13.8361H17.0697V4.03123L18.9029 3.59084V15.5068Z"
@@ -275,13 +205,14 @@
                             fill="white" />
                     </svg>
 
-                    <span class="flex-1 ms-3 whitespace-nowrap"> @lang('lang.Audio')</span>
+
+                    <span class="flex-1 ms-3 whitespace-nowrap">@lang('lang.Permission_Page')</span>
                 </a>
-            </li> --}}
+            </li>
             <li>
                 <a href="../setting"
                     class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <svg width="20" height="22" viewBox="0 0 20 22" fill="none"
+                    <svg class="w-[20px] h-[20px]" width="20" height="22" viewBox="0 0 20 22" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M10.0038 7.78846C9.2982 7.78846 8.6374 8.06222 8.13708 8.56254C7.63912 9.06286 7.363 9.72366 7.363 10.4293C7.363 11.1349 7.63912 11.7957 8.13708 12.2961C8.6374 12.794 9.2982 13.0701 10.0038 13.0701C10.7095 13.0701 11.3703 12.794 11.8706 12.2961C12.3686 11.7957 12.6447 11.1349 12.6447 10.4293C12.6447 9.72366 12.3686 9.06286 11.8706 8.56254C11.6262 8.31629 11.3354 8.12105 11.0149 7.98816C10.6944 7.85528 10.3508 7.78739 10.0038 7.78846ZM19.7341 13.3463L18.1907 12.027C18.2638 11.5786 18.3016 11.1208 18.3016 10.6653C18.3016 10.2098 18.2638 9.74962 18.1907 9.30358L19.7341 7.98434C19.8507 7.88452 19.9342 7.75158 19.9734 7.60319C20.0126 7.4548 20.0057 7.29799 19.9536 7.15362L19.9324 7.09226C19.5076 5.90444 18.8711 4.80342 18.0538 3.84253L18.0113 3.79297C17.9121 3.67627 17.7798 3.59239 17.6319 3.55236C17.4841 3.51234 17.3275 3.51806 17.183 3.56877L15.2666 4.25081C14.5586 3.67025 13.7704 3.21241 12.9161 2.89381L12.5456 0.89017C12.5176 0.739229 12.4444 0.600367 12.3356 0.492032C12.2269 0.383697 12.0877 0.311017 11.9367 0.283649L11.873 0.271849C10.6458 0.0500087 9.35248 0.0500087 8.12528 0.271849L8.06156 0.283649C7.91051 0.311017 7.77136 0.383697 7.66261 0.492032C7.55385 0.600367 7.48063 0.739229 7.45268 0.89017L7.0798 2.90325C6.23357 3.22439 5.44525 3.68112 4.74575 4.25553L2.81527 3.56877C2.67076 3.51766 2.51411 3.51173 2.36615 3.55178C2.21819 3.59183 2.08592 3.67595 1.98691 3.79297L1.94443 3.84253C1.12856 4.80445 0.492255 5.90519 0.0658702 7.09226L0.0446302 7.15362C-0.0615699 7.44862 0.0257502 7.77902 0.26411 7.98434L1.82643 9.31774C1.75327 9.76142 1.71787 10.2145 1.71787 10.6629C1.71787 11.1161 1.75327 11.5692 1.82643 12.0081L0.26883 13.3415C0.152236 13.4414 0.0687882 13.5743 0.0295827 13.7227C-0.00962273 13.8711 -0.00272807 14.0279 0.0493501 14.1723L0.0705902 14.2336C0.497751 15.4207 1.12787 16.5181 1.94915 17.4833L1.99163 17.5329C2.09088 17.6496 2.22316 17.7335 2.37103 17.7735C2.5189 17.8135 2.67543 17.8078 2.81999 17.7571L4.75047 17.0703C5.45375 17.6485 6.23728 18.1064 7.08452 18.4226L7.4574 20.4357C7.48535 20.5866 7.55857 20.7255 7.66733 20.8338C7.77608 20.9422 7.91523 21.0149 8.06628 21.0422L8.13 21.054C9.36927 21.2771 10.6384 21.2771 11.8777 21.054L11.9414 21.0422C12.0924 21.0149 12.2316 20.9422 12.3404 20.8338C12.4491 20.7255 12.5223 20.5866 12.5503 20.4357L12.9208 18.4321C13.7751 18.1111 14.5634 17.6556 15.2714 17.0751L17.1877 17.7571C17.3322 17.8082 17.4888 17.8141 17.6368 17.7741C17.7848 17.7341 17.917 17.6499 18.016 17.5329L18.0585 17.4833C18.8798 16.5134 19.5099 15.4207 19.9371 14.2336L19.9583 14.1723C20.0598 13.8796 19.9725 13.5516 19.7341 13.3463ZM10.0038 14.5782C7.71228 14.5782 5.85496 12.7209 5.85496 10.4293C5.85496 8.13774 7.71228 6.28042 10.0038 6.28042C12.2954 6.28042 14.1527 8.13774 14.1527 10.4293C14.1527 12.7209 12.2954 14.5782 10.0038 14.5782Z"

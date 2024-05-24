@@ -39,10 +39,19 @@ class userController extends Controller
     {
         return view('parent.dashboard');
     }
+
     public function teacherDashboard()
     {
         $trainingCount = training::count();
         $videoCount = teacher_rec::count();
         return view('teacher.dashboard', compact('trainingCount', 'videoCount'));
     }
+
+     // permission
+
+
+     public function permissionView()
+     {
+         return view('admin.user_permission');
+     }
 }

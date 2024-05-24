@@ -54,6 +54,7 @@ Route::middleware('custom')->group(function () {
     Route::middleware('adminAuth')->group(function () {
         Route::get('/admin', [userController::class, 'adminDashboard']);
 
+        Route::get('/admin/permission', [userController::class, 'permissionView']);
         Route::get('/admin/teacher', [teacherController::class, 'getsteacherdata']);
         Route::get('/admin/parents', [parentController::class, 'getparentdata']);
         Route::get('/admin/help', function () {
