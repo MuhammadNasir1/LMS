@@ -53,7 +53,7 @@
 <div id="addteachermodal" data-modal-backdrop="static"
     class="hidden overflow-y-auto overflow-x-hidden fixed  left-0 z-50 justify-center  w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
     <div class="relative p-4 w-full max-w-2xl max-h-full ">
-        <form id="teacher_data" enctype="multipart/form-data" method="post">
+        <form id="permissionForm" action="" method="post">
             @csrf
             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700  ">
                 <div class="flex items-center  justify-center  p-5  rounded-t dark:border-gray-600 bg-primary">
@@ -70,7 +70,26 @@
                         </svg>
                     </button>
                 </div>
-
+                <input name="updateId" type="hidden" id="user_id">
+                <div class="flex  justify-center gap-5 my-8">
+                    <div class="flex items-center me-4">
+                        <input checked id="add" type="checkbox"
+                            class="w-6 h-6 text-green-600 bg-gray-100 border-gray-300 rounded  " name="insert">
+                        <label for="add" class="ms-2 text-sm font-medium text-gray-900 ">Insert/Add</label>
+                    </div>
+                    <div class="flex items-center me-4">
+                        <input type="checkbox" name="update" id="Update"
+                            class="w-6 h-6 text-green-600 bg-gray-100 border-gray-300 rounded  ">
+                        <label for="Update" class="ms-2 text-sm font-medium text-gray-900 "
+                            value="u">Edit/Update</label>
+                    </div>
+                    <div class="flex items-center me-4">
+                        <input type="checkbox" name="delete" id="Delete"
+                            class="w-6 h-6 text-green-600 bg-gray-100 border-gray-300 rounded  ">
+                        <label for="Delete" class="ms-2 text-sm font-medium text-gray-900 "
+                            value="d">Delete/Remove</label>
+                    </div>
+                </div>
 
                 <div class=" pt-4">
                     <hr class="border-[#DEE2E6] ">
@@ -94,16 +113,9 @@
                         </div>
 
                     </button>
-                    <form action="post" method="post">
-                        <input name="updateId" type="hidden" id="user_id">
-                    </form>
                 </div>
             </div>
         </form>
-        <div>
-
-        </div>
-
     </div>
 </div>
 
@@ -112,83 +124,13 @@
 @include('layouts.footer')
 
 <script>
-    // get selected update  data
-    $('.GetPermissionBtn').click(function() {
-        var userId = $(this).attr('userId');
-        $('#user_id').val(userId)
-        // $.ajax({
-        //     type: "GET",
-        //     url: url,
-        //     dataType: "json",
-        //     success: function(response) {
-        //         var teacher = response.teacher;
-        //         $('#update_id').val(teacher.id);
-        //         $('#englishName').val(teacher.first_name);
-        //         $('#chineseName').val(teacher.last_name);
-        //         $('#udob').val(teacher.dob);
-        //         $('#ugender').val(teacher.gender);
-        //         $('#uphoneNo').val(teacher.phone_no);
-        //         $('#uemail').val(teacher.email);
-        //         $('#usubject').val(teacher.subject);
-        //         $('#uaddress').val(teacher.address);
-        //         $('#uskill').val(teacher.skill);
-        //         $('#ujoindate').val(teacher.join_date);
-        //     },
-        //     error: function(jqXHR) {
-        //         let response = JSON.parse(jqXHR.responseText);
-        //         console.log("error");
-        //         Swal.fire(
-        //             'Warning!',
-        //             'Teacher Not Found',
-        //             'warning'
-        //         );
-        //     }
-
-        // });
-
-    })
-    // insert  teacher data
     $(document).ready(function() {
-        $("#teacher_data").submit(function(event) {
-            event.preventDefault();
-            var formData = new FormData(this);
-            $.ajax({
-                type: "POST",
-                url: "../addteacher",
-                data: formData,
-                dataType: "json",
-                contentType: false,
-                processData: false,
-                beforeSend: function() {
-                    $('#spinner').removeClass('hidden');
-                    $('#text').addClass('hidden');
-                    $('#addBtn').attr('disabled', true);
-                },
-                success: function(response) {
-                    if (response.success == true) {
-                        window.location.href = '../admin/teacher';
-                    } else if (response.success == false) {
-                        Swal.fire(
-                            'Warning!',
-                            response.message,
-                            'warning'
-                        );
-                    }
-                },
-                error: function(jqXHR) {
-                    let response = JSON.parse(jqXHR.responseText);
-                    console.log("error");
-                    Swal.fire(
-                        'Warning!',
-                        response.message,
-                        'warning'
-                    );
-
-                    $('#text').removeClass('hidden');
-                    $('#spinner').addClass('hidden');
-                    $('#addBtn').attr('disabled', false);
-                }
-            });
+        // get selected update  data
+        $('.GetPermissionBtn').click(function() {
+            var userId = $(this).attr('userId');
+            $('#user_id').val(userId);
+            $('#permissionForm').attr('action', "../changePermission/" + userId);
         });
+
     });
 </script>

@@ -57,4 +57,28 @@ class userController extends Controller
         $users = User::where('role', '<>', 'superAdmin')->get();
         return view('admin.user_permission', ['users' => $users]);
     }
+
+    public  function changePermission(Request $request, $user_id)
+    {
+        try {
+
+            $validatedData = $request->validate([
+                'insert' => 'nullable',
+                'delete' => 'nullable',
+                'update' => 'nullable',
+            ]);
+            $user =  User::find($user_id);
+
+            $permissions = [
+                'insert' => isset($validatedData['insert']) ? true : false,
+                'delete' => isset($validatedData['delete']) ? true : false,
+                'update' => isset($validatedData['update']) ? true : false,
+            ];
+            $user->permission = json_encode($permissions);
+            $user->save();
+            return redirect('../admin/permission');
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => $e->getMessage()], 400);
+        }
+    }
 }

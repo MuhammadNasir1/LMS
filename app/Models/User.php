@@ -27,6 +27,7 @@ class User extends Authenticatable
         'country',
         'language',
         'user_image',
+        'permission',
     ];
 
     /**
