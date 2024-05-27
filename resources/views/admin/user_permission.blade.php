@@ -31,7 +31,14 @@
                             <td>{{ $user['email'] }}</td>
                             <td>{{ $user['phone'] }}</td>
                             <td>{{ $user['role'] }}</td>
-                            <td>Create / Update / Delete</td>
+                            {{-- <td>Create / Update / Delete</td> --}}
+                            <td>
+                                <ul>
+                                    <li>Insert: {{ $permissions[$user->permission]['insert'] ? 'Yes' : 'No' }}</li>
+                                    <li>Delete: {{ $permissions[$user->permission]['delete'] ? 'Yes' : 'No' }}</li>
+                                    <li>Update: {{ $permissions[$user->permission]['update'] ? 'Yes' : 'No' }}</li>
+                                </ul>
+                            </td>
                             <td>
                                 <button id="addmodal" data-modal-target="addteachermodal" userId="{{ $user['id'] }}"
                                     data-modal-toggle="addteachermodal"
@@ -73,7 +80,7 @@
                 <input name="updateId" type="hidden" id="user_id">
                 <div class="flex  justify-center gap-5 my-8">
                     <div class="flex items-center me-4">
-                        <input checked id="add" type="checkbox"
+                        <input id="add" type="checkbox"
                             class="w-6 h-6 text-green-600 bg-gray-100 border-gray-300 rounded  " name="insert">
                         <label for="add" class="ms-2 text-sm font-medium text-gray-900 ">Insert/Add</label>
                     </div>

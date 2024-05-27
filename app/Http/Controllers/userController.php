@@ -55,7 +55,11 @@ class userController extends Controller
     {
 
         $users = User::where('role', '<>', 'superAdmin')->get();
-        return view('admin.user_permission', ['users' => $users]);
+        $permissions = [];
+        foreach ($users as $user) {
+            $permissions[$user->permission] = json_decode($user->permission, true);
+        }
+        return view('admin.user_permission', ['users' => $users, 'permissions' => $permissions]);
     }
 
     public  function changePermission(Request $request, $user_id)
