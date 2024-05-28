@@ -13,7 +13,7 @@
         <div class="grid grid-cols-3 mt-8  gap-5">
             <div class="relative">
                 <label for="Student" class="text-[#808191] text-md ml-1 font-semibold ">@lang('lang.Student') <span
-                        class="text-sm text-primary">(@lang('lang.read_only'))</span> </label>
+                        class="text-sm text-primary"></span> </label>
 
                 <input type="text"
                     class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
@@ -30,7 +30,7 @@
                 <select
                     class="w-full border-3  font-bold mt-2 rounded-[10px] focus:border-primary   h-[40px] text-[14px]"
                     name="course" id="course">
-                    <option value="" selected>@lang('lang.Select_course')</option>
+                    <option value="" selected disabled>@lang('lang.Select_course')</option>
                     @foreach ($courses as $i => $course)
                         <option value="{{ $course->course_name }}" course_id="{{ $course->id }}">
                             {{ $course->course_name }}
@@ -43,7 +43,7 @@
                 <select
                     class="w-full border-3  font-bold mt-2 rounded-[10px] focus:border-primary   h-[40px] text-[14px]"
                     name="level" id="level">
-                    <option value="" selected>@lang('lang.level_select')</option>
+                    <option value="" selected disabled>@lang('lang.level_select')</option>
                     @foreach ($words as $level)
                         <option value="{{ $level->level }}" level_id="{{ $level->id }}">
                             {{ $level->level }}
@@ -56,7 +56,7 @@
                 <select
                     class="w-full border-3  font-bold mt-2 rounded-[10px] focus:border-primary   h-[40px] text-[14px]"
                     name="lesson" id="lesson">
-                    <option value="" selected>@lang('lang.Select_lesson')</option>
+                    <option value="" disabled selected>@lang('lang.Select_lesson')</option>
                     @foreach ($words as $lesson)
                         <option value="{{ $lesson->lesson }}" word_id="{{ $lesson->id }}">
                             {{ $lesson->lesson }}
@@ -79,12 +79,13 @@
                 <label for="customDropdown"
                     class="text-[#808191] text-md ml-1 font-semibold ">@lang('lang.select_word')</label>
                 <div id="customDropdown"
-                    class="w-full border-3 font-bold mt-2 rounded-[10px] h-[40px] text-[14px] custom-dropdown mt-0">
-                    <button type="button" class="dropdown-btn">Select Words</button>
+                    class="w-full border-3 font-bold rounded-[10px] h-[40px] text-[14px] custom-dropdown mt-0">
+                    <button type="button" class="dropdown-btn">@lang('lang.select_word')</button>
                     <div class="dropdown-content">
                         @foreach ($words as $word)
                             <label>
-                                <input type="checkbox" value="{{ $word->word }}" word_id="{{ $word->id }}">
+                                <input type="checkbox" value="{{ $word->word }}" word_id="{{ $word->id }}"
+                                    class="w-4 h-4 text-primary bg-gray-100 border-gray-300 rounded ">
                                 {{ $word->word }}
                             </label>
                         @endforeach
