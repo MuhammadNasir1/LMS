@@ -1,5 +1,8 @@
 @include('layouts.header')
 @include('admin.includes.nav')
+@php
+    $permissions = session('permissions');
+@endphp
 
 <div class="mx-4 mt-12">
     <div>
@@ -10,9 +13,13 @@
         <div>
             <div class="flex justify-between px-[20px] mb-3">
                 <h3 class="text-[20px] text-black">@lang('lang.Parents_List')</h3>
-                <button data-modal-target="addparentmodal" data-modal-toggle="addparentmodal"
-                    class="bg-secondary text-white h-12 px-5 rounded-[6px]  shadow-sm font-semibold ">+ @lang('lang.Add_parents')
-                </button>
+                @if ($permissions['insert'])
+                    <button data-modal-target="addparentmodal" data-modal-toggle="addparentmodal"
+                        class="bg-secondary text-white h-12 px-5 rounded-[6px]  shadow-sm font-semibold ">+
+                        @lang('lang.Add_parents')
+                    </button>
+                @endif
+
             </div>
             <table id="datatable" class="overflow-scroll">
                 <thead class="py-6 bg-primary text-white">
@@ -38,12 +45,17 @@
                             <td>{{ $parent->child_ren }}</td>
 
                             <td class="flex gap-5">
-                                <button class="cursor-pointer delbtn" delId="{{ $parent->id }}"><img width="38px"
-                                        src="{{ asset('images/icons/delete.svg') }}" alt="delete"></button>
-                                <button updateId="{{ $parent->id }}" type="button"
-                                    data-modal-target="updateparentmodal" data-modal-toggle="updateparentmodal"
-                                    class="cursor-pointer updateBtn"><img width="38px"
-                                        src="{{ asset('images/icons/update.svg') }}" alt="update"></button>
+                                @if ($permissions['delete'])
+                                    <button class="cursor-pointer delbtn" delId="{{ $parent->id }}"><img
+                                            width="38px" src="{{ asset('images/icons/delete.svg') }}"
+                                            alt="delete"></button>
+                                @endif
+                                @if ($permissions['update'])
+                                    <button updateId="{{ $parent->id }}" type="button"
+                                        data-modal-target="updateparentmodal" data-modal-toggle="updateparentmodal"
+                                        class="cursor-pointer updateBtn"><img width="38px"
+                                            src="{{ asset('images/icons/update.svg') }}" alt="update"></button>
+                                @endif
                                 <a class="cursor-pointer" data-modal-target="parentdetails{{ $x }}"
                                     data-modal-toggle="parentdetails{{ $x }}"><img width="38px"
                                         src="{{ asset('images/icons/view.svg') }}" alt="View"></a>

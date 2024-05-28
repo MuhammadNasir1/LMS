@@ -6,6 +6,9 @@
 @else
     @include('admin.includes.nav')
 @endif
+@php
+    $permissions = session('permissions');
+@endphp
 <div class="mx-4 mt-12">
     <div>
         <h1 class=" font-semibold   text-2xl ">@lang('lang.All_Trainings')</h1>
@@ -36,13 +39,18 @@
                             <td>{{ $training->date }}</td>
                             <td class="flex gap-5">
                                 @if (session('user_det')['role'] == 'admin')
-                                    <button class="cursor-pointer delbtn" delId="{{ $training->id }}"><img
-                                            width="38px" src="{{ asset('images/icons/delete.svg') }}"
-                                            alt="delete"></button>
-                                    <button updateId="{{ $training->id }}" type="button"
-                                        data-modal-target="updatetrainingmodal" data-modal-toggle="updatetrainingmodal"
-                                        class="cursor-pointer updateBtn"><img width="38px"
-                                            src="{{ asset('images/icons/update.svg') }}" alt="update"></button>
+                                    @if ($permissions['delete'])
+                                        <button class="cursor-pointer delbtn" delId="{{ $training->id }}"><img
+                                                width="38px" src="{{ asset('images/icons/delete.svg') }}"
+                                                alt="delete"></button>
+                                    @endif
+                                    @if ($permissions['update'])
+                                        <button updateId="{{ $training->id }}" type="button"
+                                            data-modal-target="updatetrainingmodal"
+                                            data-modal-toggle="updatetrainingmodal"
+                                            class="cursor-pointer updateBtn"><img width="38px"
+                                                src="{{ asset('images/icons/update.svg') }}" alt="update"></button>
+                                    @endif
                                 @endif
                                 <a class="cursor-pointer" data-modal-target="videodetails{{ $i }}"
                                     data-modal-toggle="videodetails{{ $i }}"><img width="38px"

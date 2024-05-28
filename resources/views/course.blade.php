@@ -6,6 +6,10 @@
 @else
     @include('admin.includes.nav')
 @endif
+@php
+    $permissions = session('permissions');
+@endphp
+
 <div class="mx-4 mt-12">
     <div>
         <h1 class=" font-semibold   text-2xl ">@lang('lang.All_Courses')</h1>
@@ -15,29 +19,31 @@
         <div>
             <div class="flex justify-between px-[20px] mb-3">
                 <h3 class="text-[20px] text-black">@lang('lang.Course_List')</h3>
-                <div class="flex items-center gap-4">
-                    <button data-modal-target="addcoursemodal" data-modal-toggle="addcoursemodal"
-                        class="bg-secondary text-white h-12 px-5 rounded-[6px]  shadow-sm font-semibold ">+
-                        @lang('lang.Add_Course')
-                    </button>
-                    <button class="bg-secondary  text-white h-12 px-5 rounded-[6px]  shadow-sm font-semibold "
-                        data-modal-target="addExcelSheetmodal" data-modal-toggle="addExcelSheetmodal">+
-                        @lang('lang.Import_Excel')
-                    </button>
-                    <button data-modal-target="excelDemo" data-modal-toggle="excelDemo">
-                        <svg width="27" height="27" viewBox="0 0 22 22" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path opacity="0.5"
-                                d="M11 21C16.5228 21 21 16.5228 21 11C21 5.47715 16.5228 1 11 1C5.47715 1 1 5.47715 1 11C1 16.5228 5.47715 21 11 21Z"
-                                stroke="#EDBD58" stroke-width="2" />
-                            <path d="M11 16V10" stroke="#EDBD58" stroke-width="2" stroke-linecap="round" />
-                            <path
-                                d="M11 6C11.5523 6 12 6.44772 12 7C12 7.55228 11.5523 8 11 8C10.4477 8 10 7.55228 10 7C10 6.44772 10.4477 6 11 6Z"
-                                fill="#EDBD58" />
-                        </svg>
+                @if ($permissions['insert'])
+                    <div class="flex items-center gap-4">
+                        <button data-modal-target="addcoursemodal" data-modal-toggle="addcoursemodal"
+                            class="bg-secondary text-white h-12 px-5 rounded-[6px]  shadow-sm font-semibold ">+
+                            @lang('lang.Add_Course')
+                        </button>
+                        <button class="bg-secondary  text-white h-12 px-5 rounded-[6px]  shadow-sm font-semibold "
+                            data-modal-target="addExcelSheetmodal" data-modal-toggle="addExcelSheetmodal">+
+                            @lang('lang.Import_Excel')
+                        </button>
+                        <button data-modal-target="excelDemo" data-modal-toggle="excelDemo">
+                            <svg width="27" height="27" viewBox="0 0 22 22" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path opacity="0.5"
+                                    d="M11 21C16.5228 21 21 16.5228 21 11C21 5.47715 16.5228 1 11 1C5.47715 1 1 5.47715 1 11C1 16.5228 5.47715 21 11 21Z"
+                                    stroke="#EDBD58" stroke-width="2" />
+                                <path d="M11 16V10" stroke="#EDBD58" stroke-width="2" stroke-linecap="round" />
+                                <path
+                                    d="M11 6C11.5523 6 12 6.44772 12 7C12 7.55228 11.5523 8 11 8C10.4477 8 10 7.55228 10 7C10 6.44772 10.4477 6 11 6Z"
+                                    fill="#EDBD58" />
+                            </svg>
 
-                    </button>
-                </div>
+                        </button>
+                    </div>
+                @endif
             </div>
             <table id="datatable" class="overflow-scroll">
                 <thead class="py-6 bg-primary text-white">
@@ -128,11 +134,16 @@
                             </td>
 
                             <td class="flex gap-5">
-                                <button delId="{{ $course->id }}" class="cursor-pointer delbtn"><img width="38px"
-                                        src="{{ asset('images/icons/delete.svg') }}" alt="delete"></button>
-                                <button updateId="{{ $course->id }}" data-modal-target="updatecoursemodal"
-                                    data-modal-toggle="updatecoursemodal" class="updateBtn"><img width="38px"
-                                        src="{{ asset('images/icons/update.svg') }}" alt="update"></button>
+                                @if ($permissions['delete'])
+                                    <button delId="{{ $course->id }}" class="cursor-pointer delbtn"><img
+                                            width="38px" src="{{ asset('images/icons/delete.svg') }}"
+                                            alt="delete"></button>
+                                @endif
+                                @if ($permissions['update'])
+                                    <button updateId="{{ $course->id }}" data-modal-target="updatecoursemodal"
+                                        data-modal-toggle="updatecoursemodal" class="updateBtn"><img width="38px"
+                                            src="{{ asset('images/icons/update.svg') }}" alt="update"></button>
+                                @endif
                                 <button class="cursor-pointer" data-modal-target="coursedetails{{ $i }}"
                                     data-modal-toggle="coursedetails{{ $i }}"><img width="38px"
                                         src="{{ asset('images/icons/view.svg') }}" alt="View"></button>

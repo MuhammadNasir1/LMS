@@ -1,6 +1,8 @@
 @include('layouts.header')
 @include('admin.includes.nav')
-
+@php
+    // dd(session('permissions'));
+@endphp
 <div class="mx-4 mt-12">
     <div>
         <h1 class=" font-semibold   text-2xl ">@lang('lang.All_Users')</h1>

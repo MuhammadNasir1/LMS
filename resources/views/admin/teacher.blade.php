@@ -1,5 +1,8 @@
 @include('layouts.header')
 @include('admin.includes.nav')
+@php
+    $permissions = session('permissions');
+@endphp
 
 <div class="mx-4 mt-12">
     <div>
@@ -10,9 +13,11 @@
         <div>
             <div class="flex justify-between px-[20px] mb-3">
                 <h3 class="text-[20px] text-black">@lang('lang.Teachers_List')</h3>
-                <button id="addmodal" data-modal-target="addteachermodal" data-modal-toggle="addteachermodal"
-                    class="bg-secondary text-white h-12 px-5 rounded-[6px]  shadow-sm font-semibold ">+
-                    @lang('lang.Add_Teacher')</button>
+                @if ($permissions['insert'])
+                    <button id="addmodal" data-modal-target="addteachermodal" data-modal-toggle="addteachermodal"
+                        class="bg-secondary text-white h-12 px-5 rounded-[6px]  shadow-sm font-semibold ">+
+                        @lang('lang.Add_Teacher')</button>
+                @endif
             </div>
             <table id="datatable" class="overflow-scroll">
                 <thead class="py-6 bg-primary text-white">
@@ -40,12 +45,17 @@
                             <td>{{ $teacher->join_date }}</td>
 
                             <td class="flex gap-5">
-                                <button delId="{{ $teacher->id }}" class="cursor-pointer delbtn"><img width="38px"
-                                        src="{{ asset('images/icons/delete.svg') }}" alt="delete"></button>
-                                <button updateId="{{ $teacher->id }}" class="cursor-pointer updateBtn"
-                                    data-modal-target="updateteachermodal" data-modal-toggle="updateteachermodal"><img
-                                        width="38px" src="{{ asset('images/icons/update.svg') }}"
-                                        alt="update"></button>
+                                @if ($permissions['delete'])
+                                    <button delId="{{ $teacher->id }}" class="cursor-pointer delbtn"><img
+                                            width="38px" src="{{ asset('images/icons/delete.svg') }}"
+                                            alt="delete"></button>
+                                @endif
+                                @if ($permissions['update'])
+                                    <button updateId="{{ $teacher->id }}" class="cursor-pointer updateBtn"
+                                        data-modal-target="updateteachermodal"
+                                        data-modal-toggle="updateteachermodal"><img width="38px"
+                                            src="{{ asset('images/icons/update.svg') }}" alt="update"></button>
+                                @endif
                                 <span class="cursor-pointer" data-modal-target="teacherdetails{{ $i }}"
                                     data-modal-toggle="teacherdetails{{ $i }}"><img width="38px"
                                         src="{{ asset('images/icons/view.svg') }}" alt="View"></span>

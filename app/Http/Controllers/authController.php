@@ -158,6 +158,9 @@ class authController extends Controller
                     'user_image' => $user['user_image'],
 
                 ]]);
+                $permissionData = json_decode($user['permission'], true);  // Decode JSON string to array
+                session(['permissions' => $permissionData]);  // Store directly in the session
+
                 return  response()->json([
                     'token' => $token,
                     'message' => 'login  Successful',

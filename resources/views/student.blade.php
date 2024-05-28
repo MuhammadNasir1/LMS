@@ -6,6 +6,9 @@
 @else
     @include('admin.includes.nav')
 @endif
+@php
+    $permissions = session('permissions');
+@endphp
 
 
 <div class="mx-4 mt-12">
@@ -17,9 +20,12 @@
         <div>
             <div class="flex justify-between px-[20px] mb-3">
                 <h3 class="text-[20px] text-black">@lang('lang.Students_List')</h3>
-                <button data-modal-target="addstudentmodal" data-modal-toggle="addstudentmodal"
-                    class="bg-secondary cursor-pointer text-white h-12 px-5 rounded-[6px]  shadow-sm font-semibold ">+
-                    @lang('lang.Add_Student')</button>
+                @if ($permissions['insert'])
+                    <button data-modal-target="addstudentmodal" data-modal-toggle="addstudentmodal"
+                        class="bg-secondary cursor-pointer text-white h-12 px-5 rounded-[6px]  shadow-sm font-semibold ">+
+                        @lang('lang.Add_Student')</button>
+                @endif
+
             </div>
             <table id="datatable" class="overflow-scroll">
                 <thead class="py-6 bg-primary text-white">
@@ -51,12 +57,17 @@
                             <td>{{ $student->adress }}</td>
 
                             <td class="flex gap-5">
-                                <button class="cursor-pointer delbtn" delId="{{ $student->id }}"><img width="38px"
-                                        src="{{ asset('images/icons/delete.svg') }}" alt="delete"></button>
-                                <button updateId="{{ $student->id }}" data-modal-target="updatestudentmodal"
-                                    data-modal-toggle="updatestudentmodal" class="cursor-pointer updateBtn"
-                                    href="#"><img width="38px" src="{{ asset('images/icons/update.svg') }}"
-                                        alt="update"></button>
+                                @if ($permissions['delete'])
+                                    <button class="cursor-pointer delbtn" delId="{{ $student->id }}"><img
+                                            width="38px" src="{{ asset('images/icons/delete.svg') }}"
+                                            alt="delete"></button>
+                                @endif
+                                @if ($permissions['update'])
+                                    <button updateId="{{ $student->id }}" data-modal-target="updatestudentmodal"
+                                        data-modal-toggle="updatestudentmodal" class="cursor-pointer updateBtn"
+                                        href="#"><img width="38px" src="{{ asset('images/icons/update.svg') }}"
+                                            alt="update"></button>
+                                @endif
                                 <a class="cursor-pointer" data-modal-target="studendetails{{ $i }}"
                                     data-modal-toggle="studendetails{{ $i }}"><img width="38px"
                                         src="{{ asset('images/icons/view.svg') }}" alt="View"></a>
@@ -103,7 +114,7 @@
                                             </div>
                                             <div class="flex items-center justify-end  mt-5">
                                                 <div class="w-[200px]">
-                                                    <h3 class="text-[18px] font-normal">@lang('lang.Chinese_Name' ):</h3>
+                                                    <h3 class="text-[18px] font-normal">@lang('lang.Chinese_Name'):</h3>
                                                 </div>
                                                 <div class="w-[150px]  ">
                                                     <p class="text-[14px] text-[#323C47]">{{ $student->chinese_name }}
