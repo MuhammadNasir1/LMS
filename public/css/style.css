@@ -92,7 +92,7 @@ table.dataTable.no-footer {
     cursor: pointer !important;
 }
 
- /* select 2  styling */
+/* select 2  styling */
 
 .select2-results__option[aria-selected="true"] {
     background-color: #339b96 !important;
@@ -126,4 +126,49 @@ table.dataTable.no-footer {
     display: flex !important;
     gap: 10px;
     align-items: center;
+}
+
+/* teaching page custom  dropdown */
+.custom-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-btn {
+    background-color: white;
+    border: 1px solid #dee2e6 !important;
+    padding: 8px;
+    font-size: 14px;
+    font-weight: lighter;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    border-radius: 5px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 100%;
+    border: 1px solid #ccc;
+    z-index: 1;
+    max-height: 200px;
+    overflow-y: auto;
+    margin-top: 0 !important;
+}
+
+.custom-dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content label {
+    display: block;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.dropdown-content label:hover {
+    background-color: #339b96;
+    color: white;
 }

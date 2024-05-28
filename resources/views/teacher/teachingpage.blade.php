@@ -64,18 +64,34 @@
                     @endforeach
                 </select>
             </div>
-            <div>
+            {{-- <div>
                 <label for="word" class="text-[#808191] text-md ml-1 font-semibold ">@lang('lang.select_word')</label>
                 <select
                     class="w-full border-3  font-bold mt-2 rounded-[10px] focus:border-primary   h-[40px] text-[14px]"
-                    id="word">
-                    <option value="">@lang('lang.select_word')</option>
+                    id="wordselect_word')</option>
                     @foreach ($words as $word)
                         <option value="{{ $word->word }}" word_id="{{ $word->id }}">{{ $word->word }}
                         </option>
                     @endforeach
                 </select>
+            </div> --}}
+            <div>
+                <label for="customDropdown"
+                    class="text-[#808191] text-md ml-1 font-semibold ">@lang('lang.select_word')</label>
+                <div id="customDropdown"
+                    class="w-full border-3 font-bold mt-2 rounded-[10px] h-[40px] text-[14px] custom-dropdown mt-0">
+                    <button type="button" class="dropdown-btn">Select Words</button>
+                    <div class="dropdown-content">
+                        @foreach ($words as $word)
+                            <label>
+                                <input type="checkbox" value="{{ $word->word }}" word_id="{{ $word->id }}">
+                                {{ $word->word }}
+                            </label>
+                        @endforeach
+                    </div>
+                </div>
             </div>
+
             <div id="worksContainer"></div>
         </div>
         <div class=" flex justify-end  my-2">
@@ -232,86 +248,101 @@
     });
 
     $(document).ready(function() {
+        const $checkboxes = $('#customDropdown input[type="checkbox"]');
         $('.std_select_btn').click(function() {
             var student_id = $(this).attr('student_id');
             var student_name = $(this).attr('student_name');
             $('#student').val(student_name)
             $('#studentId').val(student_id)
         })
-        $('#word').change(function() {
+        $checkboxes.change(function() {
+
             var selectedOption = $(this).find(':selected');
-            var wordId = selectedOption.attr('word_id');
+            var wordId = $(this).attr('word_id');
             var url = "../getWords/" + wordId;
-            $.ajax({
-                type: "GET",
-                url: url,
-                success: function(response) {
-                    $('#wordsContainer').css('display', 'block');
-                    var wordsOutput = `<tr >
-                            <td class="px-6 py-5" >
-                        <input type="hidden" name="course_id[]" value="${response.words.course_id}">
-                        <input type="hidden" name="word_id[]" value="${response.words.id}">
-                        <input type="hidden" name="word[]" value="${response.words.word}">
-                        <input type="hidden" name="audio1[]" value="${response.words.audio_1}">
-                        <input type="hidden" name="audio2[]" value="${response.words.audio_2}">
-                        <input type="hidden" name="audio3[]" value="${response.words.audio_3}">                                ${response.words.course_id}</td>
-                            <td>${response.words.word}</td>
-                            <td>
-                                <div class="flex justify-center">
-        <div>
-            ${response.words.audio_1 ? `
-            <audio class="audio-player" src="../${response.words.audio_1}"></audio>
-            <button class="play-button">
-                <img height="40px" width="40px" src="{{ asset('images/icons/audio-1.svg') }}" alt="audio-1">
-            </button>` : ''}
-        </div>
-    </div>
-                            </td>
+            if ($(this).is(':checked')) {
+                $.ajax({
+                    type: "GET",
+                    url: url,
+                    success: function(response) {
 
-                            <td>
-    <div class="flex justify-center">
-        <div>
-            ${response.words.audio_2 ? `
-            <audio class="audio-player" src="../${response.words.audio_2}"></audio>
-            <button class="play-button">
-                <img height="40px" width="40px" src="{{ asset('images/icons/audio-1.svg') }}" alt="audio-1">
-            </button>` : ''}
-        </div>
-    </div>
-</td>
-<td>
-    <div class="flex justify-center">
-        <div>
-            ${response.words.audio_3 ? `
-            <audio class="audio-player" src="../${response.words.audio_3}"></audio>
-            <button class="play-button">
-                <img height="40px" width="40px" src="{{ asset('images/icons/audio-1.svg') }}" alt="audio-1">
-            </button>` : ''}
-        </div>
-    </div>
-</td>
-            <td class="">
-                  <div class="flex gap-5 justify-center">
-                              <button class="cursor-pointer delete-row" type="button"><img width="38px" src="{{ asset('images/icons/delete.svg') }}" alt="delete"></button>
-                     </div>
-                            </td>
-                </tr>`
-                    $('#wordsbody').append(wordsOutput);
+                        $('#wordsContainer').css('display', 'block');
+                        var wordsOutput = `<tr id="word-${wordId}" >
+                                                    <td class="px-6 py-5" >
+                                                <input type="hidden" name="course_id[]" value="${response.words.course_id}">
+                                                <input type="hidden" name="word_id[]" value="${response.words.id}">
+                                                <input type="hidden" name="word[]" value="${response.words.word}">
+                                                <input type="hidden" name="audio1[]" value="${response.words.audio_1}">
+                                                <input type="hidden" name="audio2[]" value="${response.words.audio_2}">
+                                                <input type="hidden" name="audio3[]" value="${response.words.audio_3}">                                ${response.words.course_id}</td>
+                                                    <td>${response.words.word}</td>
+                                                    <td>
+                                                        <div class="flex justify-center">
+                                <div>
+                                    ${response.words.audio_1 ? `
+                                    <audio class="audio-player" src="../${response.words.audio_1}"></audio>
+                                    <button class="play-button">
+                                        <img height="40px" width="40px" src="{{ asset('images/icons/audio-1.svg') }}" alt="audio-1">
+                                    </button>` : ''}
+                                </div>
+                            </div>
+                                                    </td>
 
-                    audioPlayer();
-                    deleteRow();
-                },
-                error: function(jqXHR) {
-                    let response = JSON.parse(jqXHR.responseText);
-                    console.log("error");
-                    Swal.fire(
-                        'Warning!',
-                        response.message,
-                        'warning'
-                    );
-                }
+                                                    <td>
+                            <div class="flex justify-center">
+                                <div>
+                                    ${response.words.audio_2 ? `
+                                    <audio class="audio-player" src="../${response.words.audio_2}"></audio>
+                                    <button class="play-button">
+                                        <img height="40px" width="40px" src="{{ asset('images/icons/audio-1.svg') }}" alt="audio-1">
+                                    </button>` : ''}
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="flex justify-center">
+                                <div>
+                                    ${response.words.audio_3 ? `
+                                    <audio class="audio-player" src="../${response.words.audio_3}"></audio>
+                                    <button class="play-button">
+                                        <img height="40px" width="40px" src="{{ asset('images/icons/audio-1.svg') }}" alt="audio-1">
+                                    </button>` : ''}
+                                </div>
+                            </div>
+                        </td>
+                                    <td class="">
+                                          <div class="flex gap-5 justify-center">
+                                                      <button class="cursor-pointer delete-row" type="button"><img width="38px" src="{{ asset('images/icons/delete.svg') }}" alt="delete"></button>
+                                             </div>
+                                                    </td>
+                                        </tr>`
 
-            });
+
+
+
+
+                        $('#wordsbody').append(wordsOutput);
+
+                        audioPlayer();
+                        deleteRow();
+                    },
+                    error: function(jqXHR) {
+                        let response = JSON.parse(jqXHR.responseText);
+                        console.log("error");
+                        Swal.fire(
+                            'Warning!',
+                            response.message,
+                            'warning'
+                        );
+                    }
+
+                });
+
+            } else {
+                // Checkbox is unchecked
+                $(`#word-${wordId}`).remove();
+
+            }
 
         });
 
