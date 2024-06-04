@@ -1,7 +1,3 @@
-<?php
-
-// dd(session('user_det'));
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -78,8 +74,12 @@
                 </div>
                 <div>
                     <div class="flex items-center gap-2 mt-1">
-                        <input class="accent-color" type="checkbox" name="term_cond  " id="term_condition">
-                        <p class="text-sm">Agree with <a href="" class="text-primary">Terms & Condition.</a></p>
+                        <input class="text-green-600 bg-gray-100" type="checkbox" name="term_cond" id="term_condition"
+                            required>
+                        <p class="text-sm">Agree with <span data-modal-target="default-modal"
+                                data-modal-toggle="default-modal" id="terms_condtion"
+                                class="text-primary cursor-pointer">Terms &
+                                Condition.</span></p>
                     </div>
                 </div>
                 <button type="submit" id="loginbutton"
@@ -109,6 +109,81 @@
         </div>
     </div>
 
+    <!-- Main modal -->
+    <div id="default-modal" tabindex="-1" aria-hidden="true"
+        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div class="relative p-4 w-full max-w-6xl max-h-full">
+            <!-- Modal content -->
+            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                <!-- Modal header -->
+                <div class="flex items-center justify-end px-4 py-2  border-b rounded-t bg-primary">
+                    <button type="button"
+                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                        data-modal-hide="default-modal">
+                        <svg class="w-3 h-3 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                            fill="none" viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                        </svg>
+                        <span class="sr-only">Close modal</span>
+                    </button>
+                </div>
+                <!-- Modal body -->
+                <div class="p-4 md:p-5 space-y-4">
+                    <div class="border-b border-blue-500 pb-3">
+                        <img width="150px" src="{{ asset('images/logo.svg') }}" alt="">
+                    </div>
+                    <h1 class="text-center text-lg underline">家長須知</h1>
+                    <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                    <ul class="list-disc">
+                        <li class="underline mt-4  list-none">上課守則</li>
+                        <li class="ml-4 text-sm mt-2">請學童準時出席，逾時出席, 恕不補時。</li>
+                        <li class="ml-4 text-sm mt-2">在課室內必須佩戴口罩及穿上襪子。</li>
+                        <li class="ml-4 text-sm mt-2">家長不可陪同上課。由於中心空間有限，請家長在門外等候。。</li>
+                        <li class="ml-4 text-sm mt-2">**所有已報讀的課堂將不設退款安排，亦不得轉讓他人、空缺席課堂只可補堂，不可順延。若需特別安排，本
+                            中心將收取總學費之百分之三十作為行政費用。本中心將保留一切有關課堂安排之最終決定權。</li>
+
+                        <li class="underlinemt mt-4 list-none">有關惡劣天氣之課堂安排</li>
+                        <li class="ml-4 text-sm mt-2">當天文台發出紅色暴雨警告或懸掛三號熱帶氣旋警告時，本中心仍會照常運作。</li>
+                        <li class="ml-4 text-sm mt-2">當天文台發出黑色暴雨警告或懸掛八號或以上的熱帶氣旋警告時，或根據教育局指引，學童無須返回本中心上
+                            課，當天的課堂不會額外安排補課。</li>
+
+                        <li class="underlinemt mt-4 list-none">有關調堂或請假安排</li>
+                        <li class="ml-4 text-sm mt-2">如需要調動整月時間，家長必須於一個月前通知及確認，例: 9月通知，整月調動須在10月該月份調動上課時間。</li>
+                        <li class="ml-4 text-sm mt-2">在一般情況下，學童如請事假或病假，家長必須在當天上課3小時前致電本中心請假，病假需要附上醫生證明，
+                            方可獲安排補堂。</li>
+                        <li class="ml-4 text-sm mt-2">**如家長沒有預先請假而缺席課堂，一律當自動放棄，不會被安排補堂。所有已報讀的課堂在任何情況下將不設
+                            退款安排，亦不得轉讓他人使用</li>
+                        <li class="underlinemt mt-4 list-none">補課須知</li>
+                        <li class="ml-4 text-sm mt-2">每星期一堂之學生，每月可安排補課合共1次。(該月份請假不可超過1堂，如多於1堂，本中心不會作出補堂安排)</li>
+                        <li class="ml-4 text-sm mt-2">每星期兩或三堂之學生，每月可安排補課合共2次。(該月份請假不可超過2堂，如多於2堂，本中心不會作出補堂安排)</li>
+                        <li class="ml-4 text-sm mt-2">本中心公眾假期休息，已繳交的公眾假期之學費，可與老師聯絡另行安排補堂。</li>
+                        <li class="ml-4 text-sm mt-2">任何補堂必須在報讀月份的3個月內完成，逾期作廢。</li>
+                        <li class="ml-4 text-sm mt-2">如學生即將停學，請在最後的繳費月內完成全部課堂，所有剩餘的課堂將不可順延。</li>
+
+                        <li class="underlinemt mt-4 list-none">因應新型冠狀病毒之特別安排</li>
+                        <li class="ml-4 text-sm mt-2">如因疫情教育局宣佈暫停面授課堂，家長可要求順延課堂或安排網課。若果家長選擇順延，當可回復面授後，學生
+                            也必須立即回來上課並在指定時間內完成餘下的課堂。(例如：7月1日回復面授，一星期一堂之學生成餘兩堂順延課
+                            堂及一堂補堂，必須在7月14日前完成課堂，逾期作廢。</li>
+                        <li class="ml-4 text-sm mt-2">由於在疫情期間本中心會繼續提供面授及網課，所以不論教育局有否宣佈暫停面授，已付費的課堂必須在報讀月份
+                            的6個月期限內完成，逾期作廢。(例如：如教育局宣報暫停面授9個月，學生也必須在6個月內完成課程。)</li>
+
+                        <li class="underlinemt list-none">*所有已的課堂將不設退款安排，亦不得聘他人使用。</li>
+                        <li class="underlinemt list-none">**本中心將保留一切有關課堂安排之最終決定權。</li>
+                        <li class="underlinemt list-none mt-4">謹此</li>
+                        <li class="underlinemt list-none mt-1">啟蒙教育</li>
+
+                    </ul>
+                    </p>
+                    <div class="mt-4 flex gap-2 items-center">
+                        <input type="checkbox" name="terms" id="terms" class="text-green-600 bg-gray-100"
+                            required>
+                        <label for="terms " class="text-sm">Agree with Terms & Condition.</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="{{ asset('javascript/script.js') }}"></script>
     <script src="{{ asset('javascript/jquery.js') }}"></script>
@@ -116,6 +191,15 @@
 
     <script>
         $(document).ready(function() {
+            $('#term_condition').click(function() {
+                $('#terms_condtion').click();
+
+            })
+            $('#terms').click(function() {
+                $('#terms_condtion').click();
+
+            })
+
             $("#register_data").submit(function(event) {
                 // Prevent the default form submission
                 event.preventDefault();
