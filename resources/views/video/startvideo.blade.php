@@ -1,5 +1,5 @@
 @php
-// dd(session('teachingData'));
+    // dd(session('teachingData'));
     try {
         $count = count(session('teachingData'));
     } catch (Throwable $e) {
@@ -14,27 +14,15 @@
         {{-- === whiteboard Action =====  --}}
         <div class=" absolute w-full z-50">
             <div class=" py-4 mx-6 mt-1   flex gap-5 justify-end ">
-                <button>
-                    <svg width="22px" xmlns="http://www.w3.org/2000/svg"
+                <button class="bg-green-700 px-2 py-2 rounded-md">
+                    <svg class="text-white" fill="white" width="22px" xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
                         <path
                             d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.7 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160V416c0 53 43 96 96 96H352c53 0 96-43 96-96V320c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H96z" />
                     </svg>
                 </button>
 
-                <button><svg width="22px" xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                        <path
-                            d="M48.5 224H40c-13.3 0-24-10.7-24-24V72c0-9.7 5.8-18.5 14.8-22.2s19.3-1.7 26.2 5.2L98.6 96.6c87.6-86.5 228.7-86.2 315.8 1c87.5 87.5 87.5 229.3 0 316.8s-229.3 87.5-316.8 0c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0c62.5 62.5 163.8 62.5 226.3 0s62.5-163.8 0-226.3c-62.2-62.2-162.7-62.5-225.3-1L185 183c6.9 6.9 8.9 17.2 5.2 26.2s-12.5 14.8-22.2 14.8H48.5z" />
-                    </svg></button>
-                <button>
-                    <svg width="22px" xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                        <path
-                            d="M386.3 160H336c-17.7 0-32 14.3-32 32s14.3 32 32 32H464c17.7 0 32-14.3 32-32V64c0-17.7-14.3-32-32-32s-32 14.3-32 32v51.2L414.4 97.6c-87.5-87.5-229.3-87.5-316.8 0s-87.5 229.3 0 316.8s229.3 87.5 316.8 0c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0c-62.5 62.5-163.8 62.5-226.3 0s-62.5-163.8 0-226.3s163.8-62.5 226.3 0L386.3 160z" />
-                    </svg>
-                </button>
-                <button><svg width="22px" xmlns="http://www.w3.org/2000/svg"
+                <button onclick="resize()"><svg width="22px" xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
                         <path
                             d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z" />
@@ -43,12 +31,14 @@
         </div>
 
 
-        <div class=" w-full h-full z-20">
+        <div class=" w-full h-full  relative">
 
-
+            <canvas id="canvas" class="absolute h-full w-full bg-red z-40">
+            </canvas>
             <div id="controls-carousel" class="relative w-full h-full controls-carousel " data-carousel="static">
                 <!-- Carousel wrapper -->
-                <div class="relative h-full overflow-hidden rounded-lg ">
+
+                <div class="relative h-full overflow-hidden rounded-lg z-20 ">
                     <!-- word 1 -->
                     @foreach (session('teachingData') as $teachingData)
                         @if ($count == 1)
@@ -64,12 +54,12 @@
                             {{-- audio controlls --}}
                             <div class="">
                                 <div class="ml-6 pr-12 absolute top-[85%] w-full">
-                                    <div class="mt-4 flex  {{ $count !== 1 ? 'justify-between' : 'justify-center' }}  ">
+                                    <div class="mt-4 flex  {{ $count !== 1 ? 'justify-center' : 'justify-center' }}  ">
                                         @if ($count !== 1)
-                                            <div class="flex items-center  gap-5">
+                                            {{-- <div class="flex items-center  gap-5 z-50">
                                                 <button id="preBtn"
-                                                    class="w-32 bg-secondary rounded-md h-12 text-white font-semibold text-xl">@lang('lang.Previous')</button>
-                                            </div>
+                                                    class="w-32  cursor-pointer bg-secondary rounded-md h-12 text-white font-semibold text-xl">@lang('lang.Previous')</button>
+                                            </div> --}}
                                         @endif
                                         <div class="flex gap-4">
                                             @if ($teachingData['audio_1'] !== 'null')
@@ -113,10 +103,10 @@
                                             </button>
                                         </div>
                                         @if ($count !== 1)
-                                            <div>
+                                            {{-- <div>
                                                 <button id="nBtn"
-                                                    class="w-32 bg-secondary rounded-md h-12 text-white font-semibold text-lg">@lang('lang.Next')</button>
-                                            </div>
+                                                    class="w-32 z-50 bg-secondary rounded-md h-12 text-white font-semibold text-lg">@lang('lang.Next')</button>
+                                            </div> --}}
                                         @endif
                                     </div>
                                 </div>
@@ -127,10 +117,11 @@
 
 
                 </div>
+
                 <!-- Slider controls -->
                 @if ($count !== 1)
                     <button type="button" id="CPrebtn"
-                        class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer "
+                        class="absolute top-0 start-0 z-40 flex items-center justify-center h-full px-4 cursor-pointer "
                         data-carousel-prev>
                         <span class="inline-flex items-center justify-center w-10 h-10 rounded-full ">
                             <svg class="w-8 h-8 text-primary " aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
@@ -142,7 +133,7 @@
                         </span>
                     </button>
                     <button type="button" id="CNexbtn"
-                        class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer "
+                        class="absolute top-0 end-0 z-40 flex items-center justify-center h-full px-4 cursor-pointer "
                         data-carousel-next>
                         <span class="inline-flex items-center justify-center w-10 h-10 rounded-full">
                             <svg class="w-8 h-8 text-primary " aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
@@ -238,6 +229,46 @@
 
     </div>
 </div>
+
+
+
+<script>
+    const ctx = document.getElementById('canvas').getContext('2d');
+    window.addEventListener('resize', resize);
+    resize();
+
+    let mousePos = {
+        x: 0,
+        y: 0
+    }
+
+    window.addEventListener('mousemove', draw);
+    window.addEventListener('mousedown', mousePosition);
+    window.addEventListener('mouseenter', mousePosition);
+
+    function mousePosition(e) {
+        mousePos.x = e.clientX;
+        mousePos.y = e.clientY;
+    }
+
+    function resize() {
+        ctx.canvas.width = window.innerWidth;
+        ctx.canvas.height = window.innerHeight;
+    }
+
+    function draw(e) {
+        if (e.buttons !== 1)
+            return;
+        ctx.beginPath();
+        ctx.lineCap = 'round';
+        ctx.strokeStyle = '#111';
+        ctx.lineWidth = 5;
+        ctx.moveTo(mousePos.x, mousePos.y);
+        mousePosition(e);
+        ctx.lineTo(mousePos.x, mousePos.y);
+        ctx.stroke();
+    }
+</script>
 @include('layouts.footer')
 <script src="https://cdn.WebRTC-Experiment.com/RecordRTC.js"></script>
 <script>

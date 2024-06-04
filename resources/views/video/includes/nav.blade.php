@@ -9,7 +9,7 @@ $role = session('user_det')['role'];
                 @if ($role === 'parent')
                     <a href="../" class="">
                     @else
-                        <a href="../teacher/teachingpage" class="">
+                        <a href="../teachingpage" class="">
                 @endif
                 <svg width="35" height="23" viewBox="0 0 35 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12.5 2L3 11L12.5 20.5" stroke="#EDBD58" stroke-width="4" stroke-linecap="round" />
