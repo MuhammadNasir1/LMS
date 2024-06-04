@@ -95,7 +95,11 @@
 
             <div id="worksContainer"></div>
         </div>
-        <div class=" flex justify-end  my-2">
+        <div class=" flex justify-between  my-2">
+            <div>
+                <button type="button" data-modal-target="addwordmodal" data-modal-toggle="addwordmodal"
+                    class="px-3 bg-secondary rounded-md h-12 text-white font-semibold text-lg">@lang('lang.add_more_word')</button>
+            </div>
             <button class="bg-secondary cursor-pointer text-white h-12 px-5 rounded-[6px]  shadow-sm font-semibold ">
                 @lang('lang.Start_Teaching')</button>
         </div>
@@ -122,6 +126,7 @@
             </div>
         </div>
     </form>
+
     <div class="shadow-dark mt-3  rounded-xl pt-8  bg-white">
         <div>
             <div class="flex justify-between px-[20px] mb-3">
@@ -236,39 +241,110 @@
 
     </div>
 </div>
-@include('layouts.footer')
-<script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script>
-<script>
-    const qrcode = new QRCode(document.getElementById('qrcode'), {
-        text: 'muhammadnasir.dev@gmail.com',
-        width: 128,
-        height: 128,
-        colorDark: '#000',
-        colorLight: '#fff',
-        correctLevel: QRCode.CorrectLevel.H
-    });
 
-    $(document).ready(function() {
-        const $checkboxes = $('#customDropdown input[type="checkbox"]');
-        $('.std_select_btn').click(function() {
-            var student_id = $(this).attr('student_id');
-            var student_name = $(this).attr('student_name');
-            $('#student').val(student_name)
-            $('#studentId').val(student_id)
-        })
-        $checkboxes.change(function() {
 
-            var selectedOption = $(this).find(':selected');
-            var wordId = $(this).attr('word_id');
-            var url = "../getWords/" + wordId;
-            if ($(this).is(':checked')) {
-                $.ajax({
-                    type: "GET",
-                    url: url,
-                    success: function(response) {
+<!-- add word modal -->
+<div id="addwordmodal" tabindex="-1" aria-hidden="true"
+    class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div class="relative p-4 w-full max-w-xl max-h-full">
+        <!-- Modal content -->
+        <div class="relative bg-white rounded-lg shadow-dark ">
+            <!-- Modal header -->
+            <div class="flex items-center justify-between   rounded-t">
+                <button type="button"
+                    class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                    data-modal-hide="addwordmodal">
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                    </svg>
+                </button>
+            </div>
+            <!-- Modal body -->
+            <div class="p-4 md:p-5 space-y-4">
+                <div class=" items-center   ">
+                    <label class="text-[14px] font-semibold" for="word">@lang('lang.Add_words')</label>
+                    <input type="text"
+                        class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
+                        id="extraWord" placeholder=" @lang('lang.Enter_Word')">
+                    <div class="flex justify-end mt-2">
+                        <button class="w-28   bg-secondary rounded-md h-10 text-white font-semibold text-xl"
+                            id="MwordAddBtn">@lang('lang.Add')</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-                        $('#wordsContainer').css('display', 'block');
-                        var wordsOutput = `<tr id="word-${wordId}" >
+
+    @include('layouts.footer')
+    <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script>
+    <script>
+        const qrcode = new QRCode(document.getElementById('qrcode'), {
+            text: 'muhammadnasir.dev@gmail.com',
+            width: 128,
+            height: 128,
+            colorDark: '#000',
+            colorLight: '#fff',
+            correctLevel: QRCode.CorrectLevel.H
+        });
+
+        $(document).ready(function() {
+
+            $('#MwordAddBtn').click(function() {
+                var word = $('#extraWord').val();
+                var wordId = 1;
+                console.log(word);
+                $('#wordsContainer').css('display', 'block');
+                var wordsOutput = `<tr id="word-${wordId}" >
+                                                    <td class="px-6 py-5" >
+                                                <input type="hidden" name="course_id[]" value="0">
+                                                <input type="hidden" name="word_id[]" value="0">
+                                                <input type="hidden" name="word[]" value="${word}">
+                                                <input type="hidden" name="audio1[]" value="null" >
+                                                <input type="hidden" name="audio2[]" value="null" >
+                                                <input type="hidden" name="audio3[]" value="null" >
+                                                    0
+                                                </td>
+                                                    <td>${word}</td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                    <td class="">
+                                          <div class="flex gap-5 justify-center">
+                                                      <button class="cursor-pointer delete-row" type="button"><img width="38px" src="{{ asset('images/icons/delete.svg') }}" alt="delete"></button>
+                                             </div>
+                                                    </td>
+                                        </tr>`
+
+                $('#wordsbody').append(wordsOutput);
+
+                deleteRow();
+
+
+
+            })
+            const $checkboxes = $('#customDropdown input[type="checkbox"]');
+            $('.std_select_btn').click(function() {
+                var student_id = $(this).attr('student_id');
+                var student_name = $(this).attr('student_name');
+                $('#student').val(student_name)
+                $('#studentId').val(student_id)
+            })
+            $checkboxes.change(function() {
+
+                var selectedOption = $(this).find(':selected');
+                var wordId = $(this).attr('word_id');
+                var url = "../getWords/" + wordId;
+                if ($(this).is(':checked')) {
+                    $.ajax({
+                        type: "GET",
+                        url: url,
+                        success: function(response) {
+
+                            $('#wordsContainer').css('display', 'block');
+                            var wordsOutput = `<tr id="word-${wordId}" >
                                                     <td class="px-6 py-5" >
                                                 <input type="hidden" name="course_id[]" value="${response.words.course_id}">
                                                 <input type="hidden" name="word_id[]" value="${response.words.id}">
@@ -281,10 +357,10 @@
                                                         <div class="flex justify-center">
                                 <div>
                                     ${response.words.audio_1 ? `
-                                    <audio class="audio-player" src="../${response.words.audio_1}"></audio>
-                                    <button class="play-button">
-                                        <img height="40px" width="40px" src="{{ asset('images/icons/audio-1.svg') }}" alt="audio-1">
-                                    </button>` : ''}
+                                                                                                                                                                                                                                                                                                <audio class="audio-player" src="../${response.words.audio_1}"></audio>
+                                                                                                                                                                                                                                                                                                <button class="play-button">
+                                                                                                                                                                                                                                                                                                    <img height="40px" width="40px" src="{{ asset('images/icons/audio-1.svg') }}" alt="audio-1">
+                                                                                                                                                                                                                                                                                                </button>` : ''}
                                 </div>
                             </div>
                                                     </td>
@@ -293,10 +369,10 @@
                             <div class="flex justify-center">
                                 <div>
                                     ${response.words.audio_2 ? `
-                                    <audio class="audio-player" src="../${response.words.audio_2}"></audio>
-                                    <button class="play-button">
-                                        <img height="40px" width="40px" src="{{ asset('images/icons/audio-1.svg') }}" alt="audio-1">
-                                    </button>` : ''}
+                                                                                                                                                                                                                                                                                                <audio class="audio-player" src="../${response.words.audio_2}"></audio>
+                                                                                                                                                                                                                                                                                                <button class="play-button">
+                                                                                                                                                                                                                                                                                                    <img height="40px" width="40px" src="{{ asset('images/icons/audio-1.svg') }}" alt="audio-1">
+                                                                                                                                                                                                                                                                                                </button>` : ''}
                                 </div>
                             </div>
                         </td>
@@ -304,10 +380,10 @@
                             <div class="flex justify-center">
                                 <div>
                                     ${response.words.audio_3 ? `
-                                    <audio class="audio-player" src="../${response.words.audio_3}"></audio>
-                                    <button class="play-button">
-                                        <img height="40px" width="40px" src="{{ asset('images/icons/audio-1.svg') }}" alt="audio-1">
-                                    </button>` : ''}
+                                                                                                                                                                                                                                                                                                <audio class="audio-player" src="../${response.words.audio_3}"></audio>
+                                                                                                                                                                                                                                                                                                <button class="play-button">
+                                                                                                                                                                                                                                                                                                    <img height="40px" width="40px" src="{{ asset('images/icons/audio-1.svg') }}" alt="audio-1">
+                                                                                                                                                                                                                                                                                                </button>` : ''}
                                 </div>
                             </div>
                         </td>
@@ -322,139 +398,139 @@
 
 
 
-                        $('#wordsbody').append(wordsOutput);
+                            $('#wordsbody').append(wordsOutput);
 
-                        audioPlayer();
-                        deleteRow();
-                    },
-                    error: function(jqXHR) {
-                        let response = JSON.parse(jqXHR.responseText);
-                        console.log("error");
-                        Swal.fire(
-                            'Warning!',
-                            response.message,
-                            'warning'
-                        );
+                            audioPlayer();
+                            deleteRow();
+                        },
+                        error: function(jqXHR) {
+                            let response = JSON.parse(jqXHR.responseText);
+                            console.log("error");
+                            Swal.fire(
+                                'Warning!',
+                                response.message,
+                                'warning'
+                            );
+                        }
+
+                    });
+
+                } else {
+                    // Checkbox is unchecked
+                    $(`#word-${wordId}`).remove();
+
+                }
+
+            });
+
+        })
+
+        function deleteRow() {
+            $('.delete-row').click(function() {
+                $(this).closest('tr').remove();
+            });
+
+        }
+        deleteRow()
+
+        function audioPlayer() {
+            var playButtons = document.querySelectorAll('.play-button');
+            console.log("run  audio  fnction");
+            playButtons.forEach(function(button) {
+                button.addEventListener('click', function() {
+
+                    console.log("run  audio  fnction");
+                    var audio = button.parentElement.querySelector('.audio-player');
+                    if (audio) {
+                        audio.play();
                     }
-
                 });
+            });
+        }
+        audioPlayer();
+    </script>
 
-            } else {
-                // Checkbox is unchecked
-                $(`#word-${wordId}`).remove();
 
-            }
+    <script>
+        $(document).ready(function() {
+            $('#course').change(function() {
+                var selectedOption = $(this).find(':selected');
+                var courseId = selectedOption.attr('course_id');
 
-        });
+                console.log(courseId);
+                // AJAX request to get levels
+                $.ajax({
+                    url: '../filter-options',
+                    type: 'GET',
+                    data: {
+                        course_id: courseId
+                    },
+                    success: function(response) {
+                        var levels = response.levels;
+                        var options = '<option value="" selected>Select Level</option>';
+                        for (var i = 0; i < levels.length; i++) {
+                            options += '<option value="' + levels[i].id + '" level_id="' +
+                                levels[i].id +
+                                '">' + levels[i]
+                                .level + '</option>';
+                        }
+                        $('#level').html(options);
+                        $('#lesson').html('<option value="" selected>Select Lesson</option>');
 
-    })
+                        var lessons = response.lessons;
+                        var options = '<option value="" selected>Select Lesson</option>';
+                        for (var i = 0; i < lessons.length; i++) {
+                            options += '<option value="' + lessons[i].lesson + '">' + lessons[i]
+                                .lesson + '</option>';
+                        }
+                        $('#lesson').html(options);
 
-    function deleteRow() {
-        $('.delete-row').click(function() {
-            $(this).closest('tr').remove();
-        });
+                        var words = response.words;
+                        console.log(response.words);
+                        var options = '<option value="" selected>Select Word</option>';
+                        for (var i = 0; i < lessons.length; i++) {
+                            options += '<option word_id="' + words[i].id + '" value="' + words[
+                                    i].word + '">' + words[i]
+                                .word + '</option>';
+                        }
+                        $('#word').html(options);
+                    }
+                });
+            });
 
-    }
-    deleteRow()
+            $('#level').change(function() {
+                // var levelId = $(this).val();
+                var selectedOption = $(this).find(':selected');
+                // var levelId = selectedOption.attr('level_id');
+                var levelId = selectedOption.html();
+                console.log(levelId);
+                // AJAX request to get lessons
+                $.ajax({
+                    url: '/filter-options',
+                    type: 'GET',
+                    data: {
+                        level_id: levelId
+                    },
+                    success: function(response) {
+                        var lessons = response.lessons;
+                        var options = '<option value="" selected>Select Lesson</option>';
+                        for (var i = 0; i < lessons.length; i++) {
+                            options += '<option value="' + lessons[i].lesson + '">' + lessons[i]
+                                .lesson + '</option>';
+                        }
+                        $('#lesson').html(options);
 
-    function audioPlayer() {
-        var playButtons = document.querySelectorAll('.play-button');
-        console.log("run  audio  fnction");
-        playButtons.forEach(function(button) {
-            button.addEventListener('click', function() {
-
-                console.log("run  audio  fnction");
-                var audio = button.parentElement.querySelector('.audio-player');
-                if (audio) {
-                    audio.play();
-                }
+                        var words = response.words;
+                        console.log(response.words);
+                        var options = '<option value="" selected>Select Word</option>';
+                        for (var i = 0; i < lessons.length; i++) {
+                            options += '<option word_id="' + words[i].id + '" value="' + words[
+                                    i].word + '">' + words[i]
+                                .word + '</option>';
+                        }
+                        $('#word').html(options);
+                    }
+                });
             });
         });
-    }
-    audioPlayer();
-</script>
-
-
-<script>
-    $(document).ready(function() {
-        $('#course').change(function() {
-            var selectedOption = $(this).find(':selected');
-            var courseId = selectedOption.attr('course_id');
-
-            console.log(courseId);
-            // AJAX request to get levels
-            $.ajax({
-                url: '../filter-options',
-                type: 'GET',
-                data: {
-                    course_id: courseId
-                },
-                success: function(response) {
-                    var levels = response.levels;
-                    var options = '<option value="" selected>Select Level</option>';
-                    for (var i = 0; i < levels.length; i++) {
-                        options += '<option value="' + levels[i].id + '" level_id="' +
-                            levels[i].id +
-                            '">' + levels[i]
-                            .level + '</option>';
-                    }
-                    $('#level').html(options);
-                    $('#lesson').html('<option value="" selected>Select Lesson</option>');
-
-                    var lessons = response.lessons;
-                    var options = '<option value="" selected>Select Lesson</option>';
-                    for (var i = 0; i < lessons.length; i++) {
-                        options += '<option value="' + lessons[i].lesson + '">' + lessons[i]
-                            .lesson + '</option>';
-                    }
-                    $('#lesson').html(options);
-
-                    var words = response.words;
-                    console.log(response.words);
-                    var options = '<option value="" selected>Select Word</option>';
-                    for (var i = 0; i < lessons.length; i++) {
-                        options += '<option word_id="' + words[i].id + '" value="' + words[
-                                i].word + '">' + words[i]
-                            .word + '</option>';
-                    }
-                    $('#word').html(options);
-                }
-            });
-        });
-
-        $('#level').change(function() {
-            // var levelId = $(this).val();
-            var selectedOption = $(this).find(':selected');
-            // var levelId = selectedOption.attr('level_id');
-            var levelId = selectedOption.html();
-            console.log(levelId);
-            // AJAX request to get lessons
-            $.ajax({
-                url: '/filter-options',
-                type: 'GET',
-                data: {
-                    level_id: levelId
-                },
-                success: function(response) {
-                    var lessons = response.lessons;
-                    var options = '<option value="" selected>Select Lesson</option>';
-                    for (var i = 0; i < lessons.length; i++) {
-                        options += '<option value="' + lessons[i].lesson + '">' + lessons[i]
-                            .lesson + '</option>';
-                    }
-                    $('#lesson').html(options);
-
-                    var words = response.words;
-                    console.log(response.words);
-                    var options = '<option value="" selected>Select Word</option>';
-                    for (var i = 0; i < lessons.length; i++) {
-                        options += '<option word_id="' + words[i].id + '" value="' + words[
-                                i].word + '">' + words[i]
-                            .word + '</option>';
-                    }
-                    $('#word').html(options);
-                }
-            });
-        });
-    });
-</script>
+    </script>

@@ -22,7 +22,6 @@ class teachingController extends Controller
                 "word_id" => "required",
                 "student_name" => "required",
                 "lesson_date" => "required",
-                "course" => "required",
                 "word" => "required",
             ]);
 
@@ -35,7 +34,7 @@ class teachingController extends Controller
                     "student_name" => $validatedData['student_name'],
                     "teacher_name" => $name,
                     "lesson_date" => $validatedData['lesson_date'],
-                    "course" => $validatedData['course'],
+                    "course" => $request['course'],
                     "course_id" => $request['course_id'][$i],
                     "word_id" => $validatedData['word_id'][$i],
                     "word" => $validatedData['word'][$i],
@@ -409,7 +408,7 @@ class teachingController extends Controller
             $students = students::where('parent_id', $parent_id)->get();
             $recordings = [];
 
-            foreach ($students as $student){
+            foreach ($students as $student) {
                 $recording = teacher_rec::where('student_id', $student->id)->get();
                 $recordings = $recording;
             }
