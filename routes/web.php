@@ -106,7 +106,7 @@ Route::middleware('custom')->group(function () {
         });
     });
 
-    Route::get('/teacher/teachingpage', [teachingController::class, 'teachingData']);
+    Route::get('/teachingpage', [teachingController::class, 'teachingData']);
     // teachers pages
     Route::middleware('teacherAuth')->group(function () {
         // Route::get('/teacher', function () {
