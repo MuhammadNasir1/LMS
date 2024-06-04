@@ -17,9 +17,8 @@ class AdminAuth
     {
         $role = session('user_det')['role'];
 
-        if($role !== 'admin'){
+        if ($role !== 'superAdmin' && $role !== 'admin') {
             return redirect('login');
-
         }
 
         return $next($request);
