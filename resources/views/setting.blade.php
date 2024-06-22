@@ -88,9 +88,9 @@
                             class="w-full mt-2 border-2 border-[#DEE2E6] rounded-[6px] focus:border-primary   h-[46px] text-[14px]"
                             name="language" id="language">
                             <option>@lang('lang.Select_Language')</option>
-                            <option {{ $user->language == 'english' ? 'selected' : '' }} value="english">English
+                            <option {{ $user->language == 'english' ? 'selected' : '' }} value="en">English
                             </option>
-                            <option {{ $user->language == 'chinese' ? 'selected' : '' }} value="chinese">Chinese
+                            <option {{ $user->language == 'chinese' ? 'selected' : '' }} value="zh">Chinese
                             </option>
                         </select>
                     </div>
@@ -210,5 +210,12 @@
                 }
             });
         });
+
+        $('#language').change(function() {
+            var selectedLanguage = $(this).val();
+            var url = "../lang?lang=" + selectedLanguage;
+            window.location.href = url;
+        });
+
     });
 </script>
