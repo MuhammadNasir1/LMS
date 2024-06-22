@@ -143,7 +143,7 @@ class teachingController extends Controller
         $students = students::all();
         $words = words::all();
         $courses = courses::all();
-        return view('teacher.teachingpage', ['students' => $students, 'courses' =>  $courses, 'words' => $words]);
+        return view('teachingpage', ['students' => $students, 'courses' =>  $courses, 'words' => $words]);
     }
 
 

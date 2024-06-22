@@ -235,20 +235,20 @@
                             <label class="text-[14px] font-normal" for="english_Name">@lang('lang.English_Name')</label>
                             <input type="text"
                                 class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                name="first_name" id="english_Name" placeholder=" @lang('lang.Enter_English_Name')">
+                                name="first_name" id="english_Name" placeholder=" @lang('lang.Enter_English_Name')" required>
                         </div>
                         <div class="grid grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
                             <label class="text-[14px] font-normal" for="dob">@lang('lang.Date_of_Birth')</label>
                             <input type="date"
                                 class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                name="dob" id="dob">
+                                name="dob" id="dob" required>
                         </div>
 
                         <div class="grid grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
                             <label class="text-[14px] font-normal" for="phoneNo">@lang('lang.Phone_no')</label>
                             <input type="number"
                                 class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                name="phone_no" id="phoneNo" placeholder="@lang('lang.Enter_Phone')">
+                                name="phone_no" id="phoneNo" placeholder="@lang('lang.Enter_Phone')" required>
                         </div>
 
                         <div class="grid select-container grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
@@ -310,13 +310,13 @@
                             <label class="text-[14px] font-normal" for="chinese_Name">@lang('lang.Chinese_Name')</label>
                             <input type="text"
                                 class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                name="last_name" id="chinese_Name" placeholder="@lang('lang.Enter_Chinese_Name')">
+                                name="last_name" id="chinese_Name" placeholder="@lang('lang.Enter_Chinese_Name')" required>
                         </div>
                         <div class="grid grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
                             <label class="text-[14px] font-normal" for="gender">@lang('lang.gender')</label>
                             <select
                                 class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                name="gender" id="gender">
+                                name="gender" id="gender" required>
                                 <option value="" selected disabled>@lang('lang.Select_Gender')</option>
                                 <option value="male">@lang('lang.male')</option>
                                 <option value="female">@lang('lang.female')</option>
@@ -327,20 +327,20 @@
                             <label class="text-[14px] font-normal" for="email">@lang('lang.email')</label>
                             <input type="email"
                                 class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                name="email" id="email" placeholder="@lang('lang.Enter_Email')">
+                                name="email" id="email" placeholder="@lang('lang.Enter_Email')" required>
                         </div>
 
                         <div class="grid grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
                             <label class="text-[14px] font-normal" for="joindate">@lang('lang.Join_Date')</label>
                             <input type="date"
                                 class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                name="join_date" id="joindate">
+                                name="join_date" id="joindate" required>
                         </div>
 
                         <div class="grid grid-cols-[100px_minmax(100px,_1fr)]  my-6  ">
                             <label class="text-[14px] font-normal" for="address">@lang('lang.Address')</label>
                             <textarea type="date" class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[85px] text-[14px]"
-                                name="address" id="address" placeholder="@lang('lang.Enter_Address')"></textarea>
+                                name="address" id="address" placeholder="@lang('lang.Enter_Address')" required></textarea>
                         </div>
 
                     </div>
@@ -409,20 +409,20 @@
                             <label class="text-[14px] font-normal" for="englishName">@lang('lang.English_Name')</label>
                             <input type="text"
                                 class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                name="first_name" id="englishName" placeholder=" @lang('lang.Enter_English_Name')">
+                                name="first_name" id="englishName" placeholder=" @lang('lang.Enter_English_Name')" required>
                         </div>
                         <div class="grid grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
                             <label class="text-[14px] font-normal" for="udob">@lang('lang.Date_of_Birth')</label>
                             <input type="date"
                                 class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                name="dob" id="udob">
+                                name="dob" id="udob" required>
                         </div>
 
                         <div class="grid grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
                             <label class="text-[14px] font-normal" for="uphoneNo">@lang('lang.Phone_no')</label>
                             <input type="number"
                                 class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                name="phone_no" id="uphoneNo" placeholder="@lang('lang.Enter_Phone')">
+                                name="phone_no" id="uphoneNo" placeholder="@lang('lang.Enter_Phone')" required>
                         </div>
 
                         <div class="grid select-container grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
@@ -484,13 +484,13 @@
                             <label class="text-[14px] font-normal" for="chineseName">@lang('lang.Chinese_Name')</label>
                             <input type="text"
                                 class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                name="last_name" id="chineseName" placeholder="@lang('lang.Enter_Chinese_Name')">
+                                name="last_name" id="chineseName" placeholder="@lang('lang.Enter_Chinese_Name')" required>
                         </div>
                         <div class="grid grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
                             <label class="text-[14px] font-normal" for="ugender">@lang('lang.gender')</label>
                             <select
                                 class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                name="gender" id="ugender">
+                                name="gender" id="ugender" required>
                                 <option value="" disabled>@lang('lang.Select_Gender')</option>
                                 <option value="male">@lang('lang.male')</option>
                                 <option value="female">@lang('lang.female')</option>
@@ -501,14 +501,14 @@
                             <label class="text-[14px] font-normal" for="uemail">@lang('lang.email')</label>
                             <input type="email"
                                 class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                name="email" id="uemail" placeholder="@lang('lang.Enter_Email')">
+                                name="email" id="uemail" placeholder="@lang('lang.Enter_Email')" required>
                         </div>
 
                         <div class="grid grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
                             <label class="text-[14px] font-normal" for="ujoindate">@lang('lang.Join_Date')</label>
                             <input type="date"
                                 class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                name="join_date" id="ujoindate">
+                                name="join_date" id="ujoindate" required>
                         </div>
 
                         <div class="grid grid-cols-[100px_minmax(100px,_1fr)]  my-6  ">
