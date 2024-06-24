@@ -368,7 +368,7 @@ class teachingController extends Controller
 
         try {
             $recentWords = recent_teaching::where('teacher_id', $teacher_id)->get()->toArray();
-            foreach ($recentWords as &$word) {
+            foreach ($recentWords as $word) {
                 $word['word'] = json_decode($word['word'], true);
             }
             return response()->json(['success' => true, 'message' => "Words Get Successfully", 'recentWords' =>  $recentWords], 200);
