@@ -506,14 +506,14 @@
                             <label class="text-[14px] font-normal" for="firstName">@lang('lang.English_Name')</label>
                             <input type="text"
                                 class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                name="full_name" id="fullName" placeholder=" @lang('lang.Enter_Student_Name')">
+                                name="full_name" required id="fullName" placeholder=" @lang('lang.Enter_Student_Name')">
                         </div>
 
                         <div class="grid grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
                             <label class="text-[14px] font-normal" for="Gender">@lang('lang.gender')</label>
                             <select
                                 class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                name="gender" id="Gender">
+                                name="gender" id="Gender" required>
                                 <option value="" selected disabled>@lang('lang.Select_Gender')</option>
                                 <option value="male">@lang('lang.male')</option>
                                 <option value="female">@lang('lang.female')</option>
@@ -524,7 +524,7 @@
                             <label class="text-[14px] font-normal" for="phoneNo">@lang('lang.Phone_no')</label>
                             <input type="number"
                                 class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                name="phone_no" id="phoneNo" placeholder="@lang('lang.Enter_Phone')">
+                                name="phone_no" required id="phoneNo" placeholder="@lang('lang.Enter_Phone')">
                         </div>
 
 
@@ -556,19 +556,19 @@
                             <label class="text-[14px] font-normal" for="chName">@lang('lang.Chinese_Name')</label>
                             <input type="text"
                                 class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                name="chinese_name" id="chName" placeholder="@lang('lang.Enter_Chinese_Name')">
+                                name="chinese_name" required id="chName" placeholder="@lang('lang.Enter_Chinese_Name')">
                         </div>
 
                         <div class="grid grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
                             <label class="text-[14px] font-normal" for="dob">@lang('lang.Date_of_Birth')</label>
                             <input type="date"
                                 class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                name="dob" id="dob">
+                                name="dob" required id="dob">
                         </div>
                         <div class="grid grid-cols-[100px_minmax(100px,_1fr)]  my-6  ">
                             <label class="text-[14px] font-normal" for="address">@lang('lang.Address')</label>
                             <textarea type="date" class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[85px] text-[14px]"
-                                name="address" id="address" placeholder="@lang('lang.Enter_Address')"></textarea>
+                                name="address" required id="address" placeholder="@lang('lang.Enter_Address')"></textarea>
                         </div>
 
                         {{-- Emergency Contact --}}
@@ -616,7 +616,7 @@
                         <div class="grid grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
                             <label class="text-[14px] font-normal" for="stud_no">@lang('lang.Student_No')</label>
                             <input type="number"
-                                class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
+                                class="w-full required border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
                                 name="student_no" id="stud_no" placeholder=" @lang('lang.Enter_Roll_no')">
                         </div>
 

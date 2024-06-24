@@ -153,7 +153,7 @@
 
     <div class="mt-8 mb-6  flex  justify-center">
         <div class="flex items-center  gap-5">
-            <a href="../teacher/teachingpage"> <button
+            <a href="../teachingpage"> <button
                     class=" bg-secondary px-4 rounded-md h-12 text-white font-semibold text-xl">@lang('lang.Teaching_Page')</button></a>
             <button
                 class=" bg-secondary px-4 rounded-md h-12 text-white font-semibold text-xl">@lang('lang.Games')</button>

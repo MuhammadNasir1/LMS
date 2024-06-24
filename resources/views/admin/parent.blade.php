@@ -343,12 +343,12 @@
                 <div class="grid grid-cols-2 mt-4 gap-10 px-10">
                     <div>
                         <div class="grid grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
-                            <label class="text-[14px] font-normal" for="firstName">@lang('lang.full_name')</label>
+                            <label class="text-[14px] font-normal" for="firstName">@lang('lang.English_Name')</label>
                             <div class="flex gap-4">
                                 <div class="w-full">
                                     <input type="text"
                                         class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                        name="first_name" id="firstName" placeholder=" @lang('lang.Enter_First_Name')">
+                                        name="first_name" required id="firstName" placeholder=" @lang('lang.Enter_English_Name')">
                                 </div>
                             </div>
                         </div>
@@ -356,7 +356,7 @@
                             <label class="text-[14px] font-normal" for="gender">@lang('lang.gender')</label>
                             <select
                                 class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                name="gender" id="gender">
+                                name="gender" required id="gender">
                                 <option value="" selected disabled>@lang('lang.Select_Gender')</option>
                                 <option value="male">@lang('lang.male')</option>
                                 <option value="female">@lang('lang.female')</option>
@@ -366,14 +366,14 @@
                         <div class="grid grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
                             <label class="text-[14px] font-normal" for="phoneNo">@lang('lang.Phone_no')</label>
                             <input type="number"
-                                class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                name="phone_no" id="phoneNo" placeholder="@lang('lang.Enter_Phone')">
+                                class="w-full  border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
+                                name="phone_no" required id="phoneNo" placeholder="@lang('lang.Enter_Phone')">
                         </div>
 
                         <div class="grid grid-cols-[100px_minmax(100px,_1fr)]  my-6  ">
                             <label class="text-[14px] font-normal" for="address">@lang('lang.Address')</label>
                             <textarea type="date" class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[85px] text-[14px]"
-                                name="address" id="address" placeholder="@lang('lang.Enter_Address')"></textarea>
+                                name="address" required id="address" placeholder="@lang('lang.Enter_Address')"></textarea>
                         </div>
 
 
@@ -387,21 +387,21 @@
                             <label class="text-[14px] font-normal" for="chinese_name">@lang('lang.Chinese_Name')</label>
                             <input type="text"
                                 class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                name="last_name" id="chinese_name" placeholder="@lang('lang.Chinese_Name')">
+                                name="last_name" required id="chinese_name" placeholder="@lang('lang.Chinese_Name')">
                         </div>
 
                         <div class="grid grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
                             <label class="text-[14px] font-normal" for="email">@lang('lang.email')</label>
                             <input type="email"
                                 class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                name="email" id="email" placeholder="@lang('lang.Enter_Email')">
+                                name="email" required id="email" placeholder="@lang('lang.Enter_Email')">
                         </div>
 
                         <div class="grid grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
                             <label class="text-[14px] font-normal" for="contact">@lang('lang.Contact')</label>
                             <input type="number"
                                 class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                name="contact" id="contact" placeholder="@lang('lang.Enter_Emergency_Phone')">
+                                name="contact" required id="contact" placeholder="@lang('lang.Enter_Emergency_Phone')">
                         </div>
 
                         <div class="grid select-container grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
