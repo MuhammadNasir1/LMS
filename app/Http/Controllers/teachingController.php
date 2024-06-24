@@ -130,10 +130,20 @@ class teachingController extends Controller
     }
 
 
-    public  function  getteacherrecording()
+    public  function  getRecording()
     {
+        $userRole = session('user_det')['role'];
+        $userId = session('user_det')['user_id'];
+        if ($userRole == "admin" && $userRole == "superAdmin") {
 
-        $recordingData = teacher_rec::all();
+            $recordingData = teacher_rec::all();
+        } else if ($userRole == "parent") {
+            $student = students::where('parent_id', $userId)->first();
+            $recording = teacher_rec::where('student_id', $student->id)->get();
+            $recordingData = $recording;
+        } else if ($userRole == "teacher") {
+            $recordingData = teacher_rec::where('teacher_id', $userId)->get();
+        }
         return view('std_recording',  ['recordingData' => $recordingData]);
     }
 

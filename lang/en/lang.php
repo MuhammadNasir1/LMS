@@ -237,7 +237,7 @@ return [
     "Sample_Excel_Sheet" => "Sample Excel Sheet",
     "Download_Example" => "Download Example",
     "Course_Name" => "Course Name",
-    "Level" => "階段",
+    "Level" => "Level",
     "Play" => "Play",
     "Contact_us" => "Contact us",
     "Excel_File" => "Excel File",

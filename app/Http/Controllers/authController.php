@@ -227,7 +227,7 @@ class authController extends Controller
             $user = User::where('id', $validatedData['user_id'])->first();
             $user->name = $validatedData['name'];
             $user->phone = $validatedData['phone'];
-            $user->city = $validatedData['city'];
+            $user->city = $valid階段atedData['city'];
             $user->country = $validatedData['country'];
             $user->language = $validatedData['language'];
 
