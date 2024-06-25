@@ -134,7 +134,7 @@ class teachingController extends Controller
     {
         $userRole = session('user_det')['role'];
         $userId = session('user_det')['user_id'];
-        if ($userRole == "admin" && $userRole == "superAdmin") {
+        if ($userRole == "admin" || $userRole == "superAdmin") {
 
             $recordingData = teacher_rec::all();
         } else if ($userRole == "parent") {
