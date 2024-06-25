@@ -177,3 +177,7 @@ Route::middleware('custom')->group(function () {
 Route::get('email', function () {
     return view("emails.parent");
 });
+
+Route::get('dictionary', function () {
+    return view("dictionary");
+});
