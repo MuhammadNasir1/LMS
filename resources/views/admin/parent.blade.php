@@ -65,6 +65,9 @@
                         <!--  parent  Details  modal -->
                         <div id="parentdetails{{ $x }}" data-modal-backdrop="static"
                             class="hidden overflow-y-auto overflow-x-hidden fixed  left-0 z-50 justify-center  w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                            <div class="fixed inset-0 transition-opacity">
+                                <div id="backdrop" class="absolute inset-0 bg-slate-800 opacity-75"></div>
+                            </div>
                             <div class="relative p-4 w-full max-w-7xl max-h-full ">
                                 @csrf
                                 <div class="relative bg-white rounded-lg shadow dark:bg-gray-700  ">
@@ -178,6 +181,9 @@
 <!-- Update  parent  modal -->
 <div id="updateparentmodal" data-modal-backdrop="static"
     class="hidden overflow-y-auto overflow-x-hidden fixed  left-0 z-50 justify-center  w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div class="fixed inset-0 transition-opacity">
+        <div id="backdrop" class="absolute inset-0 bg-slate-800 opacity-75"></div>
+    </div>
     <div class="relative p-4 w-full max-w-7xl max-h-full ">
         <form id="updateparent_data" method="post">
             @csrf
@@ -321,6 +327,9 @@
 <!-- Add  parent  modal -->
 <div id="addparentmodal" data-modal-backdrop="static"
     class="hidden overflow-y-auto overflow-x-hidden fixed  left-0 z-50 justify-center  w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div class="fixed inset-0 transition-opacity">
+        <div id="backdrop" class="absolute inset-0 bg-slate-800 opacity-75"></div>
+    </div>
     <div class="relative p-4 w-full max-w-7xl max-h-full ">
         <form id="parent_data" method="post">
             @csrf

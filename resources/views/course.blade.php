@@ -154,6 +154,9 @@
                         <!--  course  Details  modal -->
                         <div id="coursedetails{{ $i }}" data-modal-backdrop="static"
                             class="hidden overflow-y-auto overflow-x-hidden fixed  left-0 z-50 justify-center  w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                            <div class="fixed inset-0 transition-opacity">
+                                <div id="backdrop" class="absolute inset-0 bg-slate-800 opacity-75"></div>
+                            </div>
                             <div class="relative p-4 w-full max-w-3xl max-h-full ">
                                 <form action="#" method="post">
                                     @csrf
@@ -253,6 +256,9 @@
 {{-- ============ add  Excel modal  =========== --}}
 <div id="addExcelSheetmodal" data-modal-backdrop="static"
     class="hidden overflow-y-auto overflow-x-hidden fixed  left-0 z-50 justify-center  w-full md:inset-0 h-[calc(100%-1rem)] max-h-full ">
+    <div class="fixed inset-0 transition-opacity">
+        <div id="backdrop" class="absolute inset-0 bg-slate-800 opacity-75"></div>
+    </div>
     <div class="relative p-4 w-full   max-w-2xl max-h-full ">
         <form action="{{ url('course/import') }}" method="post" enctype="multipart/form-data">
             @csrf
@@ -318,6 +324,9 @@
 <!-- Update course  modal -->
 <div id="updatecoursemodal" data-modal-backdrop="static"
     class="hidden overflow-y-auto overflow-x-hidden fixed  left-0 z-50 justify-center  w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div class="fixed inset-0 transition-opacity">
+        <div id="backdrop" class="absolute inset-0 bg-slate-800 opacity-75"></div>
+    </div>
     <div class="relative p-4 w-full max-w-7xl max-h-full ">
         <form id="Updatecourse" method="post" enctype="multipart/form-data">
             @csrf
@@ -545,6 +554,9 @@
 <!-- Add  course  modal -->
 <div id="addcoursemodal" data-modal-backdrop="static"
     class="hidden overflow-y-auto overflow-x-hidden fixed  left-0 z-50 justify-center  w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div class="fixed inset-0 transition-opacity">
+        <div id="backdrop" class="absolute inset-0 bg-slate-800 opacity-75"></div>
+    </div>
     <div class="relative p-4 w-full max-w-7xl max-h-full ">
         <form id="courseData" method="post" enctype="multipart/form-data">
             @csrf
@@ -777,6 +789,9 @@
 
 <div id="excelDemo" data-modal-backdrop="static"
     class="hidden overflow-y-auto overflow-x-hidden fixed  left-0 z-50 justify-center  w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div class="fixed inset-0 transition-opacity">
+        <div id="backdrop" class="absolute inset-0 bg-slate-800 opacity-75"></div>
+    </div>
     <div class="relative p-4 w-full max-w-6xl max-h-full ">
 
         <div class="relative bg-white rounded-lg shadow dark:bg-gray-700  ">

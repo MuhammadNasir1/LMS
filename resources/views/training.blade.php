@@ -60,6 +60,9 @@
                         <!--  video  Details  modal -->
                         <div id="videodetails{{ $i }}" data-modal-backdrop="static"
                             class="hidden overflow-y-auto overflow-x-hidden fixed  left-0 z-50 justify-center  w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                            <div class="fixed inset-0 transition-opacity">
+                                <div id="backdrop" class="absolute inset-0 bg-slate-800 opacity-75"></div>
+                            </div>
                             <div class="relative p-4 w-full   max-w-4xl max-h-full ">
                                 <div class="relative bg-white rounded-lg shadow dark:bg-gray-700  ">
                                     <div
@@ -150,6 +153,9 @@
 
 <div id="updatetrainingmodal" data-modal-backdrop="static"
     class="hidden overflow-y-auto overflow-x-hidden fixed  left-0 z-50 justify-center  w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div class="fixed inset-0 transition-opacity">
+        <div id="backdrop" class="absolute inset-0 bg-slate-800 opacity-75"></div>
+    </div>
     <div class="relative p-4 w-full max-w-7xl max-h-full ">
         <form id="updatetraining" method="post">
             @csrf
@@ -240,6 +246,9 @@
 <!-- Add  courses  modal -->
 <div id="addcoursesmodal" data-modal-backdrop="static"
     class="hidden overflow-y-auto overflow-x-hidden fixed  left-0 z-50 justify-center  w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div class="fixed inset-0 transition-opacity">
+        <div id="backdrop" class="absolute inset-0 bg-slate-800 opacity-75"></div>
+    </div>
     <div class="relative p-4 w-full max-w-7xl max-h-full ">
         <form id="training_data" method="post">
             @csrf

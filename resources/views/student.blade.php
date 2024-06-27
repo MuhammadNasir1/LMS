@@ -78,6 +78,9 @@
                         <!--  studen  Details  modal -->
                         <div id="studendetails{{ $i }}" data-modal-backdrop="static"
                             class="hidden overflow-y-auto overflow-x-hidden fixed  left-0 z-50 justify-center  w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                            <div class="fixed inset-0 transition-opacity">
+                                <div id="backdrop" class="absolute inset-0 bg-slate-800 opacity-75"></div>
+                            </div>
                             <div class="relative p-4 w-full max-w-7xl max-h-full ">
                                 <form action="#" method="post">
                                     @csrf
@@ -242,6 +245,9 @@
 <!-- update  Student  modal -->
 <div id="updatestudentmodal" data-modal-backdrop="static"
     class="hidden overflow-y-auto overflow-x-hidden fixed  left-0 z-50 justify-center  w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div class="fixed inset-0 transition-opacity">
+        <div id="backdrop" class="absolute inset-0 bg-slate-800 opacity-75"></div>
+    </div>
     <div class="relative p-4 w-full max-w-7xl max-h-full ">
         <form id="studentupdatedata" method="post">
             @csrf
@@ -474,6 +480,9 @@
 <!-- Add  Student  modal -->
 <div id="addstudentmodal" data-modal-backdrop="static"
     class="hidden overflow-y-auto overflow-x-hidden fixed  left-0 z-50 justify-center  w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div class="fixed inset-0 transition-opacity">
+        <div id="backdrop" class="absolute inset-0 bg-slate-800 opacity-75"></div>
+    </div>
     <div class="relative p-4 w-full max-w-7xl max-h-full ">
         <form id="student_data" method="post">
             @csrf

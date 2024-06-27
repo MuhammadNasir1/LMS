@@ -67,6 +67,9 @@
                         <!--  Teacher  Details  modal -->
                         <div id="teacherdetails{{ $i }}" data-modal-backdrop="static"
                             class="hidden overflow-y-auto overflow-x-hidden fixed  left-0 z-50 justify-center  w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                            <div class="fixed inset-0 transition-opacity">
+                                <div id="backdrop" class="absolute inset-0 bg-slate-800 opacity-75"></div>
+                            </div>
                             <div class="relative p-4 w-full max-w-7xl max-h-full ">
 
                                 <div class="relative bg-white rounded-lg shadow dark:bg-gray-700  ">
@@ -210,6 +213,9 @@
 <!-- Add  Teacher  modal -->
 <div id="addteachermodal" data-modal-backdrop="static"
     class="hidden overflow-y-auto overflow-x-hidden fixed  left-0 z-50 justify-center  w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div class="fixed inset-0 transition-opacity">
+        <div id="backdrop" class="absolute inset-0 bg-slate-800 opacity-75"></div>
+    </div>
     <div class="relative p-4 w-full max-w-7xl max-h-full ">
         <form id="teacher_data" enctype="multipart/form-data" method="post">
             @csrf
@@ -257,8 +263,8 @@
                                 <div class="select-feild w-full">
                                     <select
                                         class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                        name="subject" id="subject">
-                                        <option value="">@lang('lang.subject')</option>
+                                        name="subject" id="subjects">
+                                        <option value="" disabled selected>@lang('lang.subject')</option>
                                     </select>
                                 </div>
                                 <input type="text"
@@ -274,13 +280,13 @@
 
 
                         <div class="grid select-container grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
-                            <label class="text-[14px] font-normal" for="skill">@lang('lang.Skills')</label>
+                            <label class="text-[14px] font-normal" for="skills">@lang('lang.Skills')</label>
                             <div class="flex gap-4">
                                 <div class="select-feild w-full">
                                     <select
                                         class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                        name="skill" id="skill">
-                                        <option value="">@lang('lang.add_Skills')</option>
+                                        name="skill" id="skills">
+                                        <option value="" selected disabled>@lang('lang.add_Skills')</option>
                                     </select>
                                 </div>
                                 <input type="text"
@@ -383,6 +389,9 @@
 <!-- update  Teacher  modal -->
 <div id="updateteachermodal" data-modal-backdrop="static"
     class="hidden overflow-y-auto overflow-x-hidden fixed  left-0 z-50 justify-center  w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div class="fixed inset-0 transition-opacity">
+        <div id="backdrop" class="absolute inset-0 bg-slate-800 opacity-75"></div>
+    </div>
     <div class="relative p-4 w-full max-w-7xl max-h-full ">
         <form id="teacherupdatedata" enctype="multipart/form-data" method="post">
             @csrf
