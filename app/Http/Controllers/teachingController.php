@@ -138,9 +138,14 @@ class teachingController extends Controller
 
             $recordingData = teacher_rec::all();
         } else if ($userRole == "parent") {
-            $student = students::where('parent_id', $userId)->first();
-            $recording = teacher_rec::where('student_id', $student->id)->get();
-            $recordingData = $recording;
+            try {
+
+                $student = students::where('parent_id', $userId)->first();
+                $recording = teacher_rec::where('student_id', $student->id)->get();
+                $recordingData = $recording;
+            } catch (\Exception $e) {
+                $recordingData = [];
+            }
         } else if ($userRole == "teacher") {
             $recordingData = teacher_rec::where('teacher_id', $userId)->get();
         }
