@@ -26,7 +26,9 @@
                         <th>@lang('lang.Teacher')</th>
                         <th>@lang('lang.Word')</th>
                         <th>@lang('lang.Date')</th>
-                        <th>@lang('lang.Action')</th>
+                        @if (session('user_det')['role'] == 'admin' || session('user_det')['role'] == 'admin')
+                            <th>@lang('lang.Action')</th>
+                        @endif
                     </tr>
                 </thead>
                 <tbody>
@@ -36,13 +38,16 @@
                             <td>{{ $data->teacher_name }}</td>
                             <td>{{ $data->word }}</td>
                             <td>{{ $data->created_at }}</td>
-                            <td>
-                                <a href="#">
-                                    <button class="cursor-pointer delbtn"><img width="38px"
-                                            src="{{ asset('images/icons/delete.svg') }}" alt="delete"></button>
-                                </a>
+                            @if (session('user_det')['role'] == 'admin' || session('user_det')['role'] == 'admin')
+                                <td>
 
-                            </td>
+                                    <a href="../deleteLecturers/{{ $data->id }}">
+                                        <button class="cursor-pointer delbtn"><img width="38px"
+                                                src="{{ asset('images/icons/delete.svg') }}" alt="delete"></button>
+                                    </a>
+
+                                </td>
+                            @endif
                         </tr>
                     @endforeach
                 </tbody>

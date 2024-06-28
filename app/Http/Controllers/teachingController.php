@@ -459,4 +459,11 @@ class teachingController extends Controller
         }
         return view('history', compact('words'));
     }
+
+    public function delWords($id)
+    {
+        $word = recent_teaching::find($id);
+        $word->delete();
+        return redirect('history');
+    }
 }
