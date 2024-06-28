@@ -257,6 +257,7 @@ return [
     "All_Recent_Lecturers" => "All Recent Lecturers",
     "Words" => "Words",
     "All_Lecturers" => "All Lecturers",
+    "Recent_Lecturers" => "Recent Lecturers",
 
 
 ];
