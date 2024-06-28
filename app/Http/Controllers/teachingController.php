@@ -435,4 +435,28 @@ class teachingController extends Controller
             return response()->json(['success' => false, 'message' =>  $e->getMessage()], 500);
         }
     }
+
+    public function getWords()
+    {
+
+        $userRole = session('user_det')['role'];
+        $userId = session('user_det')['user_id'];
+        if ($userRole == "admin" || $userRole == "superAdmin") {
+            $words = recent_teaching::all();
+        } else if ($userRole  == "teacher") {
+            $words = recent_teaching::where('teacher_id', $userId)->get();
+        } else if ($userRole == "parent") {
+            $words = [];
+            try {
+                $students = students::where('parent_id', $userId)->get();
+                foreach ($students as $student) {
+                    $allWords  = recent_teaching::where('student_id', $student->id)->first();
+                    $words[]  = $allWords;
+                }
+            } catch (\Exception $e) {
+                $words = [];
+            }
+        }
+        return view('history', compact('words'));
+    }
 }

@@ -241,8 +241,6 @@ return [
     "Play" => "Play",
     "Contact_us" => "Contact us",
     "Excel_File" => "Excel File",
-
-
     "English_Name" => "English Name",
     "Enter_Title" => "Enter Title",
     "Select_Video" => "Select Video",
@@ -255,6 +253,10 @@ return [
     "Permission" => "Permission",
     "Change_Permission" => "Change Permission",
 
+
+    "All_Recent_Lecturers" => "All Recent Lecturers",
+    "Words" => "Words",
+    "All_Lecturers" => "All Lecturers",
 
 
 ];
