@@ -90,5 +90,6 @@ Route::get('getAllWords', [teachingController::class, 'getAllWords']);
 // get Recording Data
 Route::get('getAllRecording', [teachingController::class, 'getAllRecording']);
 Route::get('getTeacherRecording/{teacher_id}', [teachingController::class, 'getTeacherRec']);
+Route::get('getParentRecording/{teacher_id}', [teachingController::class, 'getParentRecording']);
 // delete Recording
 Route::match(['get', 'post'], 'deleteRecording/{id}', [teachingController::class, 'delRecording']);
