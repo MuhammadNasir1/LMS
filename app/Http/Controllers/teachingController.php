@@ -375,7 +375,7 @@ class teachingController extends Controller
     {
 
         try {
-            $recentWords = recent_teaching::where('teacher_id', $teacher_id)->get()->toArray();
+            $recentWords = recent_teaching::where('teacher_id', $teacher_id)->get();
             foreach ($recentWords as $word) {
                 $word['word'] = json_decode($word['word'], true);
             }
