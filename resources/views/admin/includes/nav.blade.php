@@ -14,6 +14,8 @@
     <div class="flex  justify-center mt-[31px]">
         <a href="../admin"> <img src="{{ asset('images/sidebarlogo.svg') }}" alt="logo"></a>
     </div>
+
+
     <div class="h-full  py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
         <ul class="space-y-2  pl-3 pr-6 font-medium">
             <li>
