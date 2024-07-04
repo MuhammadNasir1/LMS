@@ -162,7 +162,7 @@ return [
     "Teaching_Page" => "教學",
     "Enter_Games" => "輸入遊戲",
     "Daily_Lessons" => "每日課堂",
-    "Earning" => "Earning",
+    "Earning" => "收益",
     "Top_Performer" => "最佳表現者",
     "Monthly" => "每月",
     "Weekly" => "每星期",
@@ -249,4 +249,9 @@ return [
     "Role" => "角色",
     "Permission" => "权限",
     "Change_Permission" => "更改权限",
+
+    "All_Recent_Lecturers" => "所有近期讲师",
+    "Words" => "词汇",
+    "All_Lecturers" => "所有讲师",
+    "Recent_Lecturers" => "近期讲师",
 ];

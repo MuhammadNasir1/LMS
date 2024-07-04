@@ -35,7 +35,7 @@
                     class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                     <svg class="w-[20px] h-[20px]" width="20" height="22" viewBox="0 0 20 22" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
-                        <path
+                        <pathvar totalDebits=0; var totalCredits=0;
                             d="M15.6017 3.53927C16.5574 3.53927 17.3322 2.76446 17.3322 1.8087C17.3322 0.852928 16.5574 0.078125 15.6017 0.078125C14.6459 0.078125 13.8711 0.852928 13.8711 1.8087C13.8711 2.76446 14.6459 3.53927 15.6017 3.53927Z"
                             fill="white" />
                         <path
@@ -479,9 +479,9 @@
                                 fill="#67748E" />
                         </svg>
 
-                        <div
+                        {{-- <div
                             class="absolute block w-3 h-3 bg-red-500 border-2 border-white rounded-full -top-0.5 start-2.5 dark:border-gray-900">
-                        </div>
+                        </div> --}}
                     </button>
 
                     <!-- Dropdown menu -->
