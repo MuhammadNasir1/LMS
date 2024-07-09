@@ -163,4 +163,14 @@ class teacherController extends Controller
             //throw $th;
         }
     }
+
+
+    ////
+
+    public function editTeacher($id)
+    {
+        $teachers = teacher::all();
+        $teacherData = teacher::find($id);
+        return view('admin.teacher', compact('teacherData',  'teachers'));
+    }
 }

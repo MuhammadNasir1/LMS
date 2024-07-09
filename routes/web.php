@@ -75,7 +75,8 @@ Route::middleware('custom')->group(function () {
 
 
         Route::get('teacherUpdataData/{id}', [teacherController::class, 'teacherUpdataData']);
-        Route::post('teacherUpdataData/{id}', [teacherController::class, 'updateteacher']);
+        Route::post('updateTeacher/{id}', [teacherController::class, 'updateteacher']);
+        Route::get('editTeacher/{id}', [teacherController::class, 'editTeacher']);
 
 
         // add  course
