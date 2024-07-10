@@ -118,4 +118,12 @@ class trainingController extends Controller
             return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
         }
     }
+
+    public function editTrainingData($id)
+    {
+
+        $trainingData = training::find($id);
+        $trainings = training::all();
+        return view('training', compact("trainings", "trainingData"));
+    }
 }
