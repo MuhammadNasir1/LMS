@@ -477,7 +477,7 @@
                         </svg>
                     </div>
                     <div id="text">
-                        @lang(isset($studentData) ? 'lang.Add' : 'lang.Update')
+                        @lang(!isset($studentData) ? 'lang.Add' : 'lang.Update')
                     </div>
 
                 </button>

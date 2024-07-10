@@ -131,4 +131,11 @@ class parentController extends Controller
             return response()->json(['success' => true,  'message' => $e->getMessage()], 500);
         }
     }
+
+    public function editParantData($id)
+    {
+        $parentData = parents::find($id);
+        $parents = parents::all();
+        return view('admin.parent', compact('parents',  'parentData'));
+    }
 }
