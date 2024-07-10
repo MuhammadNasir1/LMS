@@ -48,8 +48,9 @@ Route::middleware('custom')->group(function () {
     //  admnim pages
     Route::get('/student', [studentController::class, 'getstudentdata']);
     Route::post('addStudent', [studentController::class, 'addstudent']);
-    Route::get('studentUpdataData/{id}', [studentController::class, 'studentUpdataData']);
-    Route::post('studentUpdata/{id}', [studentController::class, 'updatestudent']);
+    Route::post('updatStudent/{id}', [studentController::class, 'updatestudent']);
+
+    Route::get('editStudent/{id}', [studentController::class, 'editStudentData']);
 
 
     Route::middleware('adminAuth')->group(function () {

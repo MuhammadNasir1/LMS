@@ -378,7 +378,7 @@
                         </svg>
                     </div>
                     <div id="text">
-                        @lang(isset($site) ? 'lang.Add' : 'lang.Update')
+                        @lang(isset($teacherData) ? 'lang.Add' : 'lang.Update')
                     </div>
 
                 </button>

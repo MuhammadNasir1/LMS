@@ -136,9 +136,16 @@ class studentController extends Controller
                 return response()->json(['success' =>  false, 'message' => "parent not found"]);
             }
 
-            return response()->json(['success' =>  true, 'message' => "Data get successfully" , 'students' => $students] , 200);
+            return response()->json(['success' =>  true, 'message' => "Data get successfully", 'students' => $students], 200);
         } catch (\Exception $e) {
             return response()->json(['success'  => false, 'message' => $e->getMessage()], 500);
         }
+    }
+
+    public function editStudentData($id)
+    {
+        $studentData = students::find($id);
+        $students = students::all();
+        return view('student', compact('studentData', 'students'));
     }
 }
