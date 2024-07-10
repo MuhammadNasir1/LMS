@@ -893,6 +893,7 @@
                         response.message,
                         'warning'
                     );
+
                     $('#text').removeClass('hidden');
                     $('#spinner').addClass('hidden');
                     $('#addBtn').attr('disabled', false);
