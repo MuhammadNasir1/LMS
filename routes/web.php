@@ -158,6 +158,7 @@ Route::middleware('custom')->group(function () {
     Route::get('/course', [coursesController::class, 'getcoursedata']);
     Route::get('/deleteCourseData/{id}', [coursesController::class, 'deleteCourse']);
     Route::post('/updateCoursedata/{id}', [coursesController::class, 'updateCourse']);
+    Route::get('/editCourse/{id}', [coursesController::class, 'editCourseData']);
 
     Route::post('/addteaching', [teachingController::class, 'addteachingdata']);
     Route::post('/teacherRec', [teachingController::class, 'teacherRecordingData']);

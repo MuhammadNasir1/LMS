@@ -183,4 +183,11 @@ class coursesController extends Controller
 
         return redirect()->back();
     }
+
+    public function editCourseData($id)
+    {
+        $courseData = words::find($id);
+        $courses =  words::all();
+        return view('course', compact("courses", "courseData"));
+    }
 }
