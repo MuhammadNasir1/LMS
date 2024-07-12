@@ -56,151 +56,12 @@
                                                 src="{{ asset('images/icons/update.svg') }}"
                                                 alt="update"></button></a>
                                 @endif
-                                <span class="cursor-pointer" data-modal-target="teacherdetails{{ $i }}"
-                                    data-modal-toggle="teacherdetails{{ $i }}"><img width="38px"
-                                        src="{{ asset('images/icons/view.svg') }}" alt="View"></span>
+                                <button class="cursor-pointer viewBtn" data-modal-target="teacherDetailsModal"
+                                    teacherId="{{ $teacher->id }}" data-modal-toggle="teacherDetailsModal"><img
+                                        width="38px" src="{{ asset('images/icons/view.svg') }}"
+                                        alt="View"></button>
                             </td>
                         </tr>
-
-
-
-                        <!--  Teacher  Details  modal -->
-                        <div id="teacherdetails{{ $i }}" data-modal-backdrop="static"
-                            class="hidden overflow-y-auto overflow-x-hidden fixed  left-0 z-50 justify-center  w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                            <div class="fixed inset-0 transition-opacity">
-                                <div id="backdrop" class="absolute inset-0 bg-slate-800 opacity-75"></div>
-                            </div>
-                            <div class="relative p-4 w-full max-w-7xl max-h-full ">
-
-                                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700  ">
-                                    <div
-                                        class="flex items-center   justify-endjustify-start  p-5  rounded-t dark:border-gray-600 bg-primary">
-                                        <h3 class="text-xl font-semibold text-white text-center">
-                                            @lang('lang.Teacher_Details')
-                                        </h3>
-                                        <button type="button"
-                                            class="cursor-pointer absolute right-2 text-white bg-transparent rounded-lg text-sm w-8 h-8 ms-auto "
-                                            data-modal-hide="teacherdetails{{ $i }}">
-                                            <svg class="w-4 h-4 text-white" aria-hidden="true"
-                                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                                                <path stroke="currentColor" stroke-linecap="round"
-                                                    stroke-linejoin="round" stroke-width="2"
-                                                    d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                                            </svg>
-                                        </button>
-                                    </div>
-                                    <div class="flex flex-col gap-5  items-center mt-4  pb-4">
-
-                                        <div class="flex flex-col gap-5">
-                                            <div>
-                                                <h2 class="text-pink text-[32px] font-semibold "><span
-                                                        class=" py-1">@lang('lang.About_Teacher') </span>
-                                                </h2>
-                                            </div>
-                                            <div class="flex items-center justify-end  mt-2">
-                                                <div class="w-[200px]">
-                                                    <h3 class="text-[18px] font-normal">@lang('lang.English_Name') :</h3>
-                                                </div>
-                                                <div class="w-[150px]  ">
-                                                    <p class="text-[14px] text-[#323C47]">{{ $teacher->first_name }}
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="flex items-center justify-end  mt-2">
-                                                <div class="w-[200px]">
-                                                    <h3 class="text-[18px] font-normal">@lang('lang.Chinese_Name') :</h3>
-                                                </div>
-                                                <div class="w-[150px]  ">
-                                                    <p class="text-[14px] text-[#323C47]">{{ $teacher->last_name }}</p>
-                                                </div>
-                                            </div>
-                                            <div class="flex items-center justify-end ">
-                                                <div class="w-[200px]">
-                                                    <h3 class="text-[18px] font-normal">@lang('lang.gender') :</h3>
-                                                </div>
-                                                <div class="w-[150px]  ">
-                                                    <p class="text-[14px] text-[#323C47]"> {{ $teacher->gender }} </p>
-                                                </div>
-                                            </div>
-                                            <div class="flex items-center justify-end ">
-                                                <div class="w-[200px]">
-                                                    <h3 class="text-[18px] font-normal">@lang('lang.Date_of_Birth') :</h3>
-                                                </div>
-                                                <div class="w-[150px]  ">
-                                                    <p class="text-[14px] text-[#323C47]">{{ $teacher->dob }} </p>
-                                                </div>
-                                            </div>
-                                            <div class="flex items-center justify-end ">
-                                                <div class="w-[200px]">
-                                                    <h3 class="text-[18px] font-normal">@lang('lang.Phone_no') :</h3>
-                                                </div>
-                                                <div class="w-[150px]  ">
-                                                    <p class="text-[14px] text-[#323C47]">{{ $teacher->phone_no }} </p>
-                                                </div>
-                                            </div>
-                                            <div class="flex items-center justify-end ">
-                                                <div class="w-[200px]">
-                                                    <h3 class="text-[18px] font-normal">@lang('lang.E-mail') :</h3>
-                                                </div>
-                                                <div class="w-[150px]  ">
-                                                    <p class="text-[14px] text-[#323C47]">{{ $teacher->email }} </p>
-                                                </div>
-                                            </div>
-                                            <div class="flex items-center justify-end ">
-                                                <div class="w-[200px]">
-                                                    <h3 class="text-[18px] font-normal">@lang('lang.subject') :</h3>
-                                                </div>
-                                                <div class="w-[150px]  ">
-                                                    <p class="text-[14px] text-[#323C47]">{{ $teacher->subject }} </p>
-                                                </div>
-                                            </div>
-                                            <div class="flex items-center justify-end ">
-                                                <div class="w-[200px]">
-                                                    <h3 class="text-[18px] font-normal">@lang('lang.Skills') :</h3>
-                                                </div>
-                                                <div class="w-[150px]  ">
-                                                    <p class="text-[14px] text-[#323C47]">{{ $teacher->skill }} </p>
-                                                </div>
-                                            </div>
-                                            <div class="flex items-center justify-end ">
-                                                <div class="w-[200px]">
-                                                    <h3 class="text-[18px] font-normal">@lang('lang.Join_Date') :</h3>
-                                                </div>
-                                                <div class="w-[150px]  ">
-                                                    <p class="text-[14px] text-[#323C47]">{{ $teacher->join_date }}
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="flex items-center justify-end ">
-                                                <div class="w-[200px]">
-                                                    <h3 class="text-[18px] font-normal">@lang('lang.Address') :</h3>
-                                                </div>
-                                                <div class="w-[150px]  ">
-                                                    <p class="text-[14px] text-[#323C47]">{{ $teacher->address }} </p>
-                                                </div>
-                                            </div>
-                                            <div class="flex items-center justify-end ">
-                                                <div class="w-[200px]">
-                                                    <h3 class="text-[18px] font-normal">@lang('lang.Teacher_CV') :</h3>
-                                                </div>
-                                                <div class="w-[150px]  ">
-                                                    @if ($teacher->teacher_cv)
-                                                        <a href="../{{ $teacher->teacher_cv }}" target="_blank"
-                                                            class="text-[14px] text-[#323C47]">CV File here can
-                                                            open</a>
-                                                    @endif
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div>
-
-                                </div>
-
-                            </div>
-                        </div>
                     @endforeach
                 </tbody>
             </table>
@@ -209,6 +70,137 @@
     </div>
 </div>
 
+
+<!--  Teacher  Details  modal -->
+<div id="teacherDetailsModal" data-modal-backdrop="static"
+    class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 hidden">
+    <div class="fixed inset-0 transition-opacity">
+        <div id="backdrop" class="absolute inset-0 bg-slate-800 opacity-75"></div>
+    </div>
+    <div class="relative p-4 w-full max-w-7xl max-h-full ">
+
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700  ">
+            <div class="flex items-center   justify-endjustify-start  p-5  rounded-t dark:border-gray-600 bg-primary">
+                <h3 class="text-xl font-semibold text-white text-center">
+                    @lang('lang.Teacher_Details')
+                </h3>
+                <button type="button"
+                    class="cursor-pointer absolute right-2 text-white bg-transparent rounded-lg text-sm w-8 h-8 ms-auto "
+                    data-modal-hide="teacherDetailsModal">
+                    <svg class="w-4 h-4 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                    </svg>
+                </button>
+            </div>
+            <div class="flex flex-col gap-5  items-center mt-4  pb-4">
+
+                <div class="flex flex-col gap-5">
+                    <div>
+                        <h2 class="text-pink text-[32px] font-semibold "><span class=" py-1">@lang('lang.About_Teacher') </span>
+                        </h2>
+                    </div>
+                    <div class="flex items-center justify-end  mt-2">
+                        <div class="w-[200px]">
+                            <h3 class="text-[18px] font-normal">@lang('lang.English_Name') :</h3>
+                        </div>
+                        <div class="w-[150px]  ">
+                            <p class="text-[14px] text-[#323C47]" id="englishName"></p>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-end  mt-2">
+                        <div class="w-[200px]">
+                            <h3 class="text-[18px] font-normal">@lang('lang.Chinese_Name') :</h3>
+                        </div>
+                        <div class="w-[150px]  ">
+                            <p class="text-[14px] text-[#323C47]" id="chineseName"></p>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-end ">
+                        <div class="w-[200px]">
+                            <h3 class="text-[18px] font-normal">@lang('lang.gender') :</h3>
+                        </div>
+                        <div class="w-[150px]  ">
+                            <p class="text-[14px] text-[#323C47]" id="gender"> </p>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-end ">
+                        <div class="w-[200px]">
+                            <h3 class="text-[18px] font-normal">@lang('lang.Date_of_Birth') :</h3>
+                        </div>
+                        <div class="w-[150px]  ">
+                            <p class="text-[14px] text-[#323C47]" id="dob"> </p>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-end ">
+                        <div class="w-[200px]">
+                            <h3 class="text-[18px] font-normal">@lang('lang.Phone_no') :</h3>
+                        </div>
+                        <div class="w-[150px]  ">
+                            <p class="text-[14px] text-[#323C47]" id="phoneNo"> </p>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-end ">
+                        <div class="w-[200px]">
+                            <h3 class="text-[18px] font-normal">@lang('lang.E-mail') :</h3>
+                        </div>
+                        <div class="w-[150px]  ">
+                            <p class="text-[14px] text-[#323C47]" id="email"> </p>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-end ">
+                        <div class="w-[200px]">
+                            <h3 class="text-[18px] font-normal">@lang('lang.subject') :</h3>
+                        </div>
+                        <div class="w-[150px]  ">
+                            <p class="text-[14px] text-[#323C47]" id="subject"> </p>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-end ">
+                        <div class="w-[200px]">
+                            <h3 class="text-[18px] font-normal">@lang('lang.Skills') :</h3>
+                        </div>
+                        <div class="w-[150px]  ">
+                            <p class="text-[14px] text-[#323C47]" id="skill"></p>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-end ">
+                        <div class="w-[200px]">
+                            <h3 class="text-[18px] font-normal">@lang('lang.Join_Date') :</h3>
+                        </div>
+                        <div class="w-[150px]  ">
+                            <p class="text-[14px] text-[#323C47]" id="joinDate"></p>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-end ">
+                        <div class="w-[200px]">
+                            <h3 class="text-[18px] font-normal">@lang('lang.Address') :</h3>
+                        </div>
+                        <div class="w-[150px]  ">
+                            <p class="text-[14px] text-[#323C47]" id="address"> </p>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-end ">
+                        <div class="w-[200px]">
+                            <h3 class="text-[18px] font-normal">@lang('lang.Teacher_CV') :</h3>
+                        </div>
+                        <div class="w-[150px]  ">
+
+                            <a href="../" target="_blank" class="text-[14px] text-[#323C47]">CV File here can
+                                open</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+
+        </div>
+
+    </div>
+</div>
 
 <!-- Add  Teacher  modal -->
 <div id="addteachermodal" data-modal-backdrop="static"
@@ -221,7 +213,7 @@
             <form id="teacher_form" enctype="multipart/form-data" method="post"
                 url="../updateTeacher/{{ $teacherData->id }}">
             @else
-                <form id="teacher_form" enctype="multipart/form-data" method="post" url="addteacher">
+                <form id="teacher_form" enctype="multipart/form-data" method="post" url="../addteacher">
         @endif
         @csrf
         <div class="relative bg-white rounded-lg shadow dark:bg-gray-700  ">
@@ -424,41 +416,42 @@
     </script>
 @endif
 <script>
-    // del teacher
-    $('.delbtn').click(function() {
-        var updateId = $(this).attr('delId');
-        var url = "../api/delTeacher/" + updateId;
+    $(document).ready(function() {
+        let table = $('#datatable').DataTable();
+        // del teacher
+        $('.delbtn').click(function() {
+            var updateId = $(this).attr('delId');
+            var url = "../api/delTeacher/" + updateId;
 
-        $.ajax({
-            type: "POST",
-            url: url,
-            dataType: "json",
-            success: function(response) {
-                if (response.success == true) {
-                    window.location.href = '../admin/teacher';
-                } else if (response.success == false) {
+            $.ajax({
+                type: "POST",
+                url: url,
+                dataType: "json",
+                success: function(response) {
+                    if (response.success == true) {
+                        window.location.href = '../admin/teacher';
+                    } else if (response.success == false) {
+                        Swal.fire(
+                            'Warning!',
+                            response.message,
+                            'warning'
+                        );
+                    }
+                },
+                error: function(jqXHR) {
+                    let response = JSON.parse(jqXHR.responseText);
+                    console.log("error");
                     Swal.fire(
                         'Warning!',
-                        response.message,
+                        'Teacher Not Found',
                         'warning'
                     );
                 }
-            },
-            error: function(jqXHR) {
-                let response = JSON.parse(jqXHR.responseText);
-                console.log("error");
-                Swal.fire(
-                    'Warning!',
-                    'Teacher Not Found',
-                    'warning'
-                );
-            }
 
-        });
+            });
 
-    })
-    // insert  teacher data
-    $(document).ready(function() {
+        })
+        // insert  teacher data
         $("#teacher_form").submit(function(event) {
             let url = $('#teacher_form').attr('url');
             console.log(url);
@@ -501,6 +494,41 @@
                     $('#addBtn').attr('disabled', false);
                 }
             });
+        });
+
+        function viewDataFun() {
+
+            $('.viewBtn').click(function() {
+                console.log("click");
+
+                $('#teacherDetailsModal').removeClass('hidden');
+                let dataId = $(this).attr('teacherId');
+                let url = "../teacherViewData/" + dataId;
+                $.ajax({
+                    type: "get",
+                    url: url,
+                    success: function(response) {
+                        let data = response.teacher;
+                        console.log(data);
+                        $('#englishName').text(data.first_name);
+                        $('#chineseName').text(data.last_name);
+                        $('#gender').text(data.gender);
+                        $('#dob').text(data.dob);
+                        $('#phoneNo').text(data.phone_no);
+                        $('#email').text(data.email);
+                        $('#subject').text(data.subject);
+                        $('#skill').text(data.skill);
+                        $('#joinDate').text(data.join_date);
+                        $('#address').text(data.address);
+
+                    }
+                });
+            });
+        }
+        viewDataFun()
+        table.on('draw', function() {
+            console.log("Table redrawn");
+            viewDataFun();
         });
     });
 </script>

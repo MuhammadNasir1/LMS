@@ -5,7 +5,7 @@
     <div>
         <h1 class=" font-semibold   text-2xl ">@lang('lang.Dashboard')</h1>
     </div>
-    <div class="grid grid-cols-4 gap-6  mt-4">
+    <div class="grid grid-cols-3 gap-6  mt-4">
         <div class="card-1 ">
             <div class="bg-white  border border-secondary rounded-[10px] py-5 px-8">
                 <div class="flex gap-1 justify-between items-center">
@@ -48,19 +48,6 @@
             </div>
         </div>
 
-        <div class="card-1 ">
-            <div class="bg-white  border border-secondary rounded-[10px] py-5 px-8">
-                <div class="flex gap-1 justify-between items-center">
-                    <div>
-                        <p class="text-sm text-[#808191]">@lang('lang.Total_Revenue')</p>
-                        <h2 class="text-2xl font-semibold mt-1">$0.00</h2>
-                    </div>
-                    <div>
-                        <img width="90px" height="90px" src="{{ asset('images/total_rev.svg') }}" alt="Revenue">
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
 </div>

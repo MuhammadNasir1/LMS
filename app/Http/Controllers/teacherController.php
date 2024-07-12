@@ -153,14 +153,13 @@ class teacherController extends Controller
         return view('admin.teacher', ['teachers' => $teachers]);
     }
 
-    public function teacherUpdataData(Request $request, $id)
+    public function teacherViewData(Request $request, $id)
     {
         try {
             $teacher = Teacher::find($id);
             return response()->json(['success' => true,  'message' => 'Data get successfull', 'teacher' => $teacher], 200);
         } catch (\Exception $e) {
             return response()->json(['success' => true,  'message' => $e->getMessage()], 500);
-            //throw $th;
         }
     }
 
