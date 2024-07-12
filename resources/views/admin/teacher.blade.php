@@ -502,6 +502,7 @@
                 console.log("click");
 
                 $('#teacherDetailsModal').removeClass('hidden');
+                $('#teacherDetailsModal').addClass('flex');
                 let dataId = $(this).attr('teacherId');
                 let url = "../teacherViewData/" + dataId;
                 $.ajax({
