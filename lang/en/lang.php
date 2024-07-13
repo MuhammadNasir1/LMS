@@ -252,12 +252,13 @@ return [
     "Role" => "Role",
     "Permission" => "Permission",
     "Change_Permission" => "Change Permission",
-
-
     "All_Recent_Lecturers" => "All Recent Lecturers",
     "Words" => "Words",
     "All_Lecturers" => "All Lecturers",
     "Recent_Lecturers" => "Recent Lecturers",
 
+    "Are_You_Sure" => "Are You Sure",
+    "Yes" => "Yes",
+    "No" => "No",
 
 ];

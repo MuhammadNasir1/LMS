@@ -39,7 +39,7 @@ Route::get('register/{role}', function () {
 
 
 
-
+Route::match(['get',  'post'], 'deleteTeacher/{teacher_id}', [teacherController::class, 'delTeacher']);
 Route::middleware('custom')->group(function () {
     Route::post('addCourse', [coursesController::class, 'addcourse']);
     Route::get('delRecording/{id}', [teachingController::class, 'delRecording']);

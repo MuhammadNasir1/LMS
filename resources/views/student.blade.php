@@ -253,7 +253,7 @@
     </div>
     <div class="relative p-4 w-full max-w-7xl max-h-full ">
         @if (isset($studentData))
-            <form id="studentForm" method="post" url="../updatStudent/{{ $student->id }}">
+            <form id="studentForm" method="post" url="../updatStudent/{{ $studentData->id }}">
             @else
                 <form id="studentForm" method="post" url="../addStudent">
         @endif

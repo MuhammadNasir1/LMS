@@ -32,7 +32,7 @@
                         <th>@lang('lang.Action')</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="tableBody">
 
                     @foreach ($teachers as $i => $teacher)
                         <tr class="pt-4">
@@ -46,13 +46,18 @@
 
                             <td class="flex gap-5">
                                 @if ($permissions['delete'])
-                                    <button delId="{{ $teacher->id }}" class="cursor-pointer delbtn"><img
+                                    {{-- <button delId="{{ $teacher->id }}" class="cursor-pointer delbtn"><img
                                             width="38px" src="{{ asset('images/icons/delete.svg') }}"
-                                            alt="delete"></button>
+                                            alt="delete"></button> --}}
+
+                                    <button class="deleteBtn" data-modal-target="deleteModal"
+                                        data-modal-toggle="deleteModal" delId="{{ $teacher->id }}"
+                                        class="cursor-pointer "><img width="38px"
+                                            src="{{ asset('images/icons/delete.svg') }}" alt="delete"></button>
                                 @endif
                                 @if ($permissions['update'])
-                                    <a href="../editTeacher/{{ $teacher->id }}"> <button
-                                            updateId="{{ $teacher->id }}" class="cursor-pointer "><img width="38px"
+                                    <a href="../editTeacher/{{ $teacher->id }}"> <button delId="{{ $teacher->id }}"
+                                            class="cursor-pointer "><img width="38px"
                                                 src="{{ asset('images/icons/update.svg') }}"
                                                 alt="update"></button></a>
                                 @endif
@@ -386,6 +391,54 @@
 </div>
 
 
+
+{{-- Delete Data Modal --}}
+
+<div id="deleteModal" data-modal-backdrop="static"
+    class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 hidden  ">
+    <div class="fixed inset-0 transition-opacity">
+        <div id="backdrop" class="absolute inset-0 bg-slate-800 opacity-75"></div>
+    </div>
+    <div class="relative p-4 w-full   max-w-lg max-h-full ">
+        <div class="relative bg-white shadow-dark rounded-lg  dark:bg-gray-700  ">
+            <div class="">
+
+                <button type="button"
+                    class=" absolute right-2 text-white bg-transparent rounded-lg text-sm w-8 h-8 ms-auto "
+                    data-modal-hide="deleteModal">
+                    <svg class="w-4 h-4 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                        fill="none" viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                    </svg>
+                </button>
+            </div>
+            <div class=" mx-6 my-6 pt-5">
+                <div class="">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100px" class="mx-auto" viewBox="0 0 512 512">
+                        <path
+                            d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7 .2 40.1S486.3 480 472 480H40c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8 .2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24V296c0 13.3 10.7 24 24 24s24-10.7 24-24V184c0-13.3-10.7-24-24-24zm32 224a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"
+                            fill="red" />
+                    </svg>
+                    <h1 class="text-center pt-3 text-4xl">@lang('lang.Are_You_Sure')</h1>
+                    <div class="flex  justify-center gap-5 mx-auto mt-5 pb-5">
+                        <button data-modal-hide="deleteModal" class="bg-primary px-7 py-3 text-white rounded-md">
+                            @lang('lang.No')
+                        </button>
+
+                        <button id="delDataBtn" url="" class=" bg-red-600 px-7 py-3 text-white rounded-md">
+                            @lang('lang.Yes')
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
 {{-- ================================================================= --}}
 <script>
     var selectContainers = document.querySelectorAll('.select-container');
@@ -417,6 +470,7 @@
 @endif
 <script>
     $(document).ready(function() {
+
         let table = $('#datatable').DataTable();
         // del teacher
         $('.delbtn').click(function() {
@@ -499,8 +553,6 @@
         function viewDataFun() {
 
             $('.viewBtn').click(function() {
-                console.log("click");
-
                 $('#teacherDetailsModal').removeClass('hidden');
                 $('#teacherDetailsModal').addClass('flex');
                 let dataId = $(this).attr('teacherId');
@@ -527,9 +579,39 @@
             });
         }
         viewDataFun()
+
+        function deleteDataFun() {
+            $(".deleteBtn").click(function() {
+                $('#deleteModal').removeClass('hidden');
+                $('#deleteModal').addClass('flex');
+                let delId = $(this).attr('delId');
+                let url = "../deleteTeacher/" + delId;
+                $('#delDataBtn').attr("url", url);
+
+
+            });
+        }
+        $("#delDataBtn").click(function() {
+            let url = $(this).attr('url');
+            $.ajax({
+                type: "get",
+                url: url,
+                success: function(response) {
+                    $("#tableBody").load(" #tableBody > *");
+                    $('#deleteModal').addClass('hidden');
+                    deleteDataFun();
+
+                }
+
+
+
+            });
+
+        })
+        deleteDataFun();
         table.on('draw', function() {
-            console.log("Table redrawn");
             viewDataFun();
+            deleteDataFun();
         });
     });
 </script>
