@@ -50,6 +50,8 @@ Route::middleware('custom')->group(function () {
     Route::post('addStudent', [studentController::class, 'addstudent']);
     Route::post('updatStudent/{id}', [studentController::class, 'updatestudent']);
 
+    Route::get('studentViewData/{id}', [studentController::class, 'studentViewData']);
+
     Route::get('editStudent/{id}', [studentController::class, 'editStudentData']);
 
 

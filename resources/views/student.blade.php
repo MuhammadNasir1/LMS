@@ -68,172 +68,12 @@
                                                 src="{{ asset('images/icons/update.svg') }}"
                                                 alt="update"></button></a>
                                 @endif
-                                <a class="cursor-pointer" data-modal-target="studendetails{{ $i }}"
-                                    data-modal-toggle="studendetails{{ $i }}"><img width="38px"
-                                        src="{{ asset('images/icons/view.svg') }}" alt="View"></a>
+                                <button class="cursor-pointer viewBtn" studentId="{{ $student->id }}"
+                                    data-modal-target="studenDetailsModal" data-modal-toggle="studenDetailsModal"><img
+                                        width="38px" src="{{ asset('images/icons/view.svg') }}"
+                                        alt="View"></button>
                             </td>
                         </tr>
-
-
-                        <!--  studen  Details  modal -->
-                        <div id="studendetails{{ $i }}" data-modal-backdrop="static"
-                            class="hidden overflow-y-auto overflow-x-hidden fixed  left-0 z-50 justify-center  w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                            <div class="fixed inset-0 transition-opacity">
-                                <div id="backdrop" class="absolute inset-0 bg-slate-800 opacity-75"></div>
-                            </div>
-                            <div class="relative p-4 w-full max-w-7xl max-h-full ">
-                                <form action="#" method="post">
-                                    @csrf
-                                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700  ">
-                                        <div
-                                            class="flex items-center   justify-endjustify-start  p-5  rounded-t dark:border-gray-600 bg-primary">
-                                            <h3 class="text-xl font-semibold text-white text-center">
-                                                @lang('lang.Student_Details')
-                                            </h3>
-                                            <button type="button"
-                                                class="cursor-pointer absolute right-2 text-white bg-transparent rounded-lg text-sm w-8 h-8 ms-auto "
-                                                data-modal-hide="studendetails{{ $i }}">
-                                                <svg class="w-4 h-4 text-white" aria-hidden="true"
-                                                    xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                    viewBox="0 0 14 14">
-                                                    <path stroke="currentColor" stroke-linecap="round"
-                                                        stroke-linejoin="round" stroke-width="2"
-                                                        d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                                                </svg>
-                                            </button>
-                                        </div>
-                                        <div class="flex flex-col gap-5  items-center mt-4  pb-4">
-                                            <h2 class="text-pink text-[32px] font-semibold "><span
-                                                    class=" py-1">@lang('lang.About') </span>
-                                                @lang('lang.Student')
-                                            </h2>
-                                            <div class="flex items-center justify-end  mt-5">
-                                                <div class="w-[200px]">
-                                                    <h3 class="text-[18px] font-normal">@lang('lang.English_Name') :</h3>
-                                                </div>
-                                                <div class="w-[150px]  ">
-                                                    <p class="text-[14px] text-[#323C47]">{{ $student->full_name }}</p>
-                                                </div>
-                                            </div>
-                                            <div class="flex items-center justify-end  mt-5">
-                                                <div class="w-[200px]">
-                                                    <h3 class="text-[18px] font-normal">@lang('lang.Chinese_Name'):</h3>
-                                                </div>
-                                                <div class="w-[150px]  ">
-                                                    <p class="text-[14px] text-[#323C47]">{{ $student->chinese_name }}
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="flex items-center justify-end ">
-                                                <div class="w-[200px]">
-                                                    <h3 class="text-[18px] font-normal">@lang('lang.gender') :</h3>
-                                                </div>
-                                                <div class="w-[150px]  ">
-                                                    <p class="text-[14px] text-[#323C47]">{{ $student->gender }}</p>
-                                                </div>
-                                            </div>
-                                            <div class="flex items-center justify-end ">
-                                                <div class="w-[200px]">
-                                                    <h3 class="text-[18px] font-normal">@lang('lang.Date_of_Birth') :</h3>
-                                                </div>
-                                                <div class="w-[150px]  ">
-                                                    <p class="text-[14px] text-[#323C47]">{{ $student->dob }}</p>
-                                                </div>
-                                            </div>
-                                            <div class="flex items-center justify-end ">
-                                                <div class="w-[200px]">
-                                                    <h3 class="text-[18px] font-normal">@lang('lang.Phone_no') :</h3>
-                                                </div>
-                                                <div class="w-[150px]  ">
-                                                    <p class="text-[14px] text-[#323C47]">{{ $student->phone_no }}</p>
-                                                </div>
-                                            </div>
-
-                                            <div class="flex items-center justify-end ">
-                                                <div class="w-[200px]">
-                                                    <h3 class="text-[18px] font-normal">@lang('lang.Address') :</h3>
-                                                </div>
-                                                <div class="w-[150px]  ">
-                                                    <p class="text-[14px] text-[#323C47]">{{ $student->adress }}</p>
-                                                </div>
-                                            </div>
-
-                                            <div class="flex items-center justify-end ">
-                                                <div class="w-[200px]">
-                                                    <h3 class="text-[18px] font-normal">@lang('lang.Emergency') <br>
-                                                        @lang('lang.Contact_Person') :</h3>
-                                                </div>
-                                                <div class="w-[150px]  ">
-                                                    <p class="text-[14px] text-[#323C47]">{{ $student->em_person }}</p>
-                                                </div>
-                                            </div>
-
-                                            <div class="flex items-center justify-end ">
-                                                <div class="w-[200px]">
-                                                    <h3 class="text-[18px] font-normal">@lang('lang.Emergency') <br>
-                                                        @lang('lang.Person_Relation') :</h3>
-                                                </div>
-                                                <div class="w-[150px]  ">
-                                                    <p class="text-[14px] text-[#323C47]">{{ $student->em_relation }}
-                                                    </p>
-                                                </div>
-                                            </div>
-
-                                            <div class="flex items-center justify-end ">
-                                                <div class="w-[200px]">
-                                                    <h3 class="text-[18px] font-normal">@lang('lang.Emergency_No') :</h3>
-                                                </div>
-                                                <div class="w-[150px]  ">
-                                                    <p class="text-[14px] text-[#323C47]">{{ $student->em_phone }}</p>
-                                                </div>
-                                            </div>
-
-                                            <div class="flex items-center justify-end ">
-                                                <div class="w-[200px]">
-                                                    <h3 class="text-[18px] font-normal">@lang('lang.Campus') :</h3>
-                                                </div>
-                                                <div class="w-[150px]  ">
-                                                    <p class="text-[14px] text-[#323C47]">{{ $student->campus }}</p>
-                                                </div>
-                                            </div>
-
-                                            <div class="flex items-center justify-end ">
-                                                <div class="w-[200px]">
-                                                    <h3 class="text-[18px] font-normal">@lang('lang.School_Attending') :</h3>
-                                                </div>
-                                                <div class="w-[150px]  ">
-                                                    <p class="text-[14px] text-[#323C47]">
-                                                        {{ $student->School_attending }}</p>
-                                                </div>
-                                            </div>
-
-                                            <div class="flex items-center justify-end ">
-                                                <div class="w-[200px]">
-                                                    <h3 class="text-[18px] font-normal">@lang('lang.Student_No') :</h3>
-                                                </div>
-                                                <div class="w-[150px]  ">
-                                                    <p class="text-[14px] text-[#323C47]">{{ $student->student_no }}
-                                                    </p>
-                                                </div>
-                                            </div>
-
-                                            <div class="flex items-center justify-end ">
-                                                <div class="w-[200px]">
-                                                    <h3 class="text-[18px] font-normal">@lang('lang.Grade') :</h3>
-                                                </div>
-                                                <div class="w-[150px]  ">
-                                                    <p class="text-[14px] text-[#323C47]">{{ $student->grade }}</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                                <div>
-
-                                </div>
-
-                            </div>
-                        </div>
                     @endforeach
                 </tbody>
             </table>
@@ -242,6 +82,158 @@
     </div>
 </div>
 
+<!--  studen  Details  modal -->
+<div id="studenDetailsModal" data-modal-backdrop="static"
+    class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 hidden  ">
+    <div class="fixed inset-0 transition-opacity">
+        <div id="backdrop" class="absolute inset-0 bg-slate-800 opacity-75"></div>
+    </div>
+    <div class="relative p-4 w-full max-w-7xl max-h-full ">
+        <form action="#" method="post">
+            @csrf
+            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700  ">
+                <div
+                    class="flex items-center   justify-endjustify-start  p-5  rounded-t dark:border-gray-600 bg-primary">
+                    <h3 class="text-xl font-semibold text-white text-center">
+                        @lang('lang.Student_Details')
+                    </h3>
+                    <button type="button"
+                        class="cursor-pointer absolute right-2 text-white bg-transparent rounded-lg text-sm w-8 h-8 ms-auto "
+                        data-modal-hide="studenDetailsModal">
+                        <svg class="w-4 h-4 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                            fill="none" viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="flex flex-col gap-5  items-center mt-4  pb-4">
+                    <h2 class="text-pink text-[32px] font-semibold "><span class=" py-1">@lang('lang.About') </span>
+                        @lang('lang.Student')
+                    </h2>
+                    <div class="flex items-center justify-end  mt-5">
+                        <div class="w-[200px]">
+                            <h3 class="text-[18px] font-normal">@lang('lang.English_Name') :</h3>
+                        </div>
+                        <div class="w-[150px]  ">
+                            <p class="text-[14px] text-[#323C47]" id="englishName"></p>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-end  mt-5">
+                        <div class="w-[200px]">
+                            <h3 class="text-[18px] font-normal">@lang('lang.Chinese_Name'):</h3>
+                        </div>
+                        <div class="w-[150px]  ">
+                            <p class="text-[14px] text-[#323C47]" id="chineseName"></p>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-end ">
+                        <div class="w-[200px]">
+                            <h3 class="text-[18px] font-normal">@lang('lang.gender') :</h3>
+                        </div>
+                        <div class="w-[150px]  ">
+                            <p class="text-[14px] text-[#323C47]" id="gender"></p>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-end ">
+                        <div class="w-[200px]">
+                            <h3 class="text-[18px] font-normal">@lang('lang.Date_of_Birth') :</h3>
+                        </div>
+                        <div class="w-[150px]  ">
+                            <p class="text-[14px] text-[#323C47]" id="dob"></p>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-end ">
+                        <div class="w-[200px]">
+                            <h3 class="text-[18px] font-normal">@lang('lang.Phone_no') :</h3>
+                        </div>
+                        <div class="w-[150px]  ">
+                            <p class="text-[14px] text-[#323C47]" id="PhoneNo"></p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-end ">
+                        <div class="w-[200px]">
+                            <h3 class="text-[18px] font-normal">@lang('lang.Address') :</h3>
+                        </div>
+                        <div class="w-[150px]  ">
+                            <p class="text-[14px] text-[#323C47]" id="addess"></p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-end ">
+                        <div class="w-[200px]">
+                            <h3 class="text-[18px] font-normal">@lang('lang.Emergency') <br>
+                                @lang('lang.Contact_Person') :</h3>
+                        </div>
+                        <div class="w-[150px]  ">
+                            <p class="text-[14px] text-[#323C47]" id="emPerson"></p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-end ">
+                        <div class="w-[200px]">
+                            <h3 class="text-[18px] font-normal">@lang('lang.Emergency') <br>
+                                @lang('lang.Person_Relation') :</h3>
+                        </div>
+                        <div class="w-[150px]  ">
+                            <p class="text-[14px] text-[#323C47]" id="emRelation"></p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-end ">
+                        <div class="w-[200px]">
+                            <h3 class="text-[18px] font-normal">@lang('lang.Emergency_No') :</h3>
+                        </div>
+                        <div class="w-[150px]  ">
+                            <p class="text-[14px] text-[#323C47]" id="emergencyNo"></p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-end ">
+                        <div class="w-[200px]">
+                            <h3 class="text-[18px] font-normal">@lang('lang.Campus') :</h3>
+                        </div>
+                        <div class="w-[150px]  ">
+                            <p class="text-[14px] text-[#323C47]" id="campus"></p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-end ">
+                        <div class="w-[200px]">
+                            <h3 class="text-[18px] font-normal">@lang('lang.School_Attending') :</h3>
+                        </div>
+                        <div class="w-[150px]  ">
+                            <p class="text-[14px] text-[#323C47]" id="schAttending"></p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-end ">
+                        <div class="w-[200px]">
+                            <h3 class="text-[18px] font-normal">@lang('lang.Student_No') :</h3>
+                        </div>
+                        <div class="w-[150px]  ">
+                            <p class="text-[14px] text-[#323C47]" id="studentNo"></p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-end ">
+                        <div class="w-[200px]">
+                            <h3 class="text-[18px] font-normal">@lang('lang.Grade') :</h3>
+                        </div>
+                        <div class="w-[150px]  ">
+                            <p class="text-[14px] text-[#323C47]" id="grade"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div>
+
+        </div>
+
+    </div>
+</div>
 
 {{-- ============================= --}}
 
@@ -558,6 +550,39 @@
 
     })
     //
+
+    function viewDataFun() {
+
+        $('.viewBtn').click(function() {
+            $('#studenDetailsModal').removeClass('hidden');
+            $('#studenDetailsModal').addClass('flex');
+            let dataId = $(this).attr('studentId');
+            let url = "../studentViewData/" + dataId;
+            $.ajax({
+                type: "get",
+                url: url,
+                success: function(response) {
+                    let data = response.student;
+                    console.log(data);
+                    $('#englishName').text(data.full_name);
+                    $('#chineseName').text(data.chinese_name);
+                    $('#gender').text(data.gender);
+                    $('#dob').text(data.dob);
+                    $('#PhoneNo').text(data.phone_no);
+                    $('#addess').text(data.adress);
+                    $('#emPerson').text(data.em_person);
+                    $('#emRelation').text(data.em_relation);
+                    $('#emergencyNo').text(data.em_phone);
+                    $('#campus').text(data.campus);
+                    $('#schAttending').text(data.School_attending);
+                    $('#studentNo').text(data.student_no);
+                    $('#grade').text(data.grade);
+
+                }
+            });
+        });
+    }
+    viewDataFun()
     $(document).ready(function() {
         $("#studentForm").submit(function(event) {
             event.preventDefault();

@@ -107,7 +107,7 @@ class studentController extends Controller
         return view('student', ['students' => $students, 'ParentStudents' => $ParentStudents]);
     }
 
-    public function studentUpdataData(Request $request, $id)
+    public function studentViewData(Request $request, $id)
     {
         try {
             $student = students::find($id);
