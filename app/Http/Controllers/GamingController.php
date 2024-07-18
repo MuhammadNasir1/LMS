@@ -57,6 +57,9 @@ class GamingController extends Controller
         try {
 
             $students = students::where('parent_id', $id)->get();
+            if (!$students) {
+                return response()->json(['success' => false, 'message', "parent students not found"], 500);
+            }
             $gamingData = [];
             foreach ($students as $student) {
                 $gaming = Gaming::where('student_id', $student->id)->get();
