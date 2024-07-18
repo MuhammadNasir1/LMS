@@ -40,4 +40,21 @@ class GamingController extends Controller
             return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
         }
     }
+
+    public function getRecordings()
+    {
+        try {
+
+            $gamingData = Gaming::all();
+            return response()->json(['success' => true, 'message' => "Data get successfully", "data" => $gamingData], 200);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => $e->getMessage()], 200);
+        }
+    }
+    public function getParentsRecordings(string $id)
+    {
+        try {
+        } catch (\Exception $e) {
+        }
+    }
 }
