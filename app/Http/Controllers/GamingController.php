@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Gaming;
+use App\Models\students;
 use Illuminate\Http\Request;
 
 class GamingController extends Controller
@@ -54,7 +55,19 @@ class GamingController extends Controller
     public function getParentsRecordings(string $id)
     {
         try {
+
+            $students = students::where('parent_id', $id)->get();
+            $gamingData = [];
+            foreach ($students as $student) {
+                $gaming = Gaming::where('student_id', $student->id)->get();
+                if (!$gaming->isEmpty()) {
+                    $gamingData = $gaming->toArray();
+                }
+            }
+
+            return response()->json(['success' => true, 'message' => 'data get successfully', "data" => $gamingData], 200);
         } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message', $e->getMessage()], 500);
         }
     }
 }
