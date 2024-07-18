@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\authController;
 use App\Http\Controllers\coursesController;
+use App\Http\Controllers\GamingController;
 use App\Http\Controllers\parentController;
 use App\Http\Controllers\studentController;
 use App\Http\Controllers\teacherController;
@@ -93,3 +94,7 @@ Route::get('getTeacherRecording/{teacher_id}', [teachingController::class, 'getT
 Route::get('getParentRecording/{teacher_id}', [teachingController::class, 'getParentRecording']);
 // delete Recording
 Route::match(['get', 'post'], 'deleteRecording/{id}', [teachingController::class, 'delRecording']);
+
+
+// Game
+Route::post('addGameRecording', [GamingController::class, 'addGamingRecording']);
