@@ -27,7 +27,8 @@ class authController extends Controller
                 'country' => 'nullable',
                 'language' => 'nullable',
                 'old_password' => 'nullable',
-                'confirm_password' => 'nullable',
+                'new_password' => 'nullable',
+                // 'confirm_password' => 'nullable',
                 'user_image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
             ]);
 
@@ -37,9 +38,11 @@ class authController extends Controller
             $user->country = $validatedData['country'];
             $user->language = $validatedData['language'];
 
-            if (isset($validatedData['old_password'])) {
+            if ($request->has('old_password')) {
                 if (Hash::check($validatedData['old_password'], $user->password)) {
-                    $user->password = Hash::make($validatedData['confirm_password']);
+                    $user->password = Hash::make($validatedData['new_password']);
+                } else {
+                    return response()->json(['success' => false, 'message' => 'Password and old password not match'], 500);
                 }
             }
 
@@ -227,7 +230,7 @@ class authController extends Controller
             $user = User::where('id', $validatedData['user_id'])->first();
             $user->name = $validatedData['name'];
             $user->phone = $validatedData['phone'];
-            $user->city = $valid階段atedData['city'];
+            $user->city = $validatedData['city'];
             $user->country = $validatedData['country'];
             $user->language = $validatedData['language'];
 
