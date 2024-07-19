@@ -73,4 +73,18 @@ class GamingController extends Controller
             return response()->json(['success' => false, 'message', $e->getMessage()], 500);
         }
     }
+
+    public function delete(string $id)
+    {
+        try {
+
+            $gamingData  = Gaming::find($id);
+
+            $gamingData->delete();
+            return response()->json(['success' => true, 'message' => 'Data delete successfully'], 200);
+        } catch (\Exception $e) {
+
+            return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
+        }
+    }
 }
