@@ -101,3 +101,6 @@ Route::post('addGameRecording', [GamingController::class, 'addGamingRecording'])
 Route::get('getAllGameRec', [GamingController::class, 'getRecordings']);
 Route::get('getParentGameRec/{id}', [GamingController::class, 'getParentsRecordings']);
 Route::match(['get', 'post'], 'deleteGaming/{id}', [GamingController::class, 'delete']);
+
+
+Route::get('getTeacherDashboard/{id}', [teachingController::class, 'getTeacherDashboardData']);

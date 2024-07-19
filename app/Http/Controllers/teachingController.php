@@ -9,6 +9,7 @@ use App\Models\teacher;
 use App\Models\teacher_rec;
 use App\Models\teaching;
 use App\Models\words;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class teachingController extends Controller
@@ -465,5 +466,19 @@ class teachingController extends Controller
         $word = recent_teaching::find($id);
         $word->delete();
         return redirect('recentLecturers');
+    }
+
+
+    public function getTeacherDashboardData(string $id)
+    {
+        try {
+            $lessons = teacher_rec::where('teacher_id', $id)->count();
+            $today = Carbon::today();
+            $today_lessons = teacher_rec::where('created_at', $today)->count();
+
+            return response()->json(['success' => true, 'message' => "Data get successfully", "totalLesson" => $lessons, "todayLessons" => $today_lessons], 200);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
+        }
     }
 }
