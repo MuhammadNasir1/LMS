@@ -11,7 +11,7 @@
                 <div class="flex gap-1 justify-between items-center">
                     <div>
                         <p class="text-sm text-[#808191]">@lang('lang.Todays_Lesson')</p>
-                        <h2 class="text-2xl font-semibold mt-1">05</h2>
+                        <h2 class="text-2xl font-semibold mt-1">{{ $today_lessons }}</h2>
                     </div>
                     <div>
                         <img width="80px" height="80px" src="{{ asset('images/lessonicon.svg') }}" alt="lesson">
@@ -25,7 +25,7 @@
                 <div class="flex gap-1 justify-between items-center">
                     <div>
                         <p class="text-sm text-[#808191]">@lang('lang.Complete_Lessons')</p>
-                        <h2 class="text-2xl font-semibold mt-1">00</h2>
+                        <h2 class="text-2xl font-semibold mt-1">{{ $lessons }}</h2>
                     </div>
                     <div>
                         <img width="80px" height="80px" src="{{ asset('images/lesson_com_icon.svg') }}"
@@ -67,7 +67,7 @@
     </div>
 
 </div>
-<div class="flex gap-10 mt-16 px-3 ">
+{{-- <div class="flex gap-10 mt-16 px-3 ">
     <div class="w-[60%] shadow-med p-3 rounded-xl">
         <h2 class="text-xl text-[#808191] font-semibold  ml-6">@lang('lang.Daily_Lessons')</h2>
         <div id="lessonChart" class="mt-3" style="height: 370px; width: 100%;"></div>
@@ -76,8 +76,7 @@
         <h2 class="text-xl text-[#808191] font-semibold ml-6">@lang('lang.Students')</h2>
         <div id="studentChart" class="mt-3" style="height: 370px; width: 100%;"></div>
     </div>
-</div>
-</div>
+</div> --}}
 
 <script>
     window.onload = function() {

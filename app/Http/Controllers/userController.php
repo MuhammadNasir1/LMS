@@ -14,6 +14,7 @@ use App\Models\teacher;
 use App\Models\teacher_rec;
 use App\Models\training;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class userController extends Controller
@@ -43,9 +44,14 @@ class userController extends Controller
 
     public function teacherDashboard()
     {
+        $id   = session("user_det")['user_id'];
+        $lessons = teacher_rec::where('teacher_id', $id)->count();
+        $today = Carbon::today();
+        $today_lessons = teacher_rec::where('created_at', $today)->orWhere('teacher_id', $id)->count();
+
         $trainingCount = training::count();
         $videoCount = teacher_rec::count();
-        return view('teacher.dashboard', compact('trainingCount', 'videoCount'));
+        return view('teacher.dashboard', compact('trainingCount', 'videoCount', 'lessons', 'today_lessons'));
     }
 
     // permission

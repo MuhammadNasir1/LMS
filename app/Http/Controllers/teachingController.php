@@ -474,7 +474,7 @@ class teachingController extends Controller
         try {
             $lessons = teacher_rec::where('teacher_id', $id)->count();
             $today = Carbon::today();
-            $today_lessons = teacher_rec::where('created_at', $today)->count();
+            $today_lessons = teacher_rec::where('created_at', $today)->orWhere('teacher_id', $id)->count();
 
             return response()->json(['success' => true, 'message' => "Data get successfully", "totalLesson" => $lessons, "todayLessons" => $today_lessons], 200);
         } catch (\Exception $e) {
