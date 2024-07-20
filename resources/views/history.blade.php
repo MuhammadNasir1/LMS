@@ -36,7 +36,12 @@
                         <tr>
                             <td>{{ $data->student_name }}</td>
                             <td>{{ $data->teacher_name }}</td>
-                            <td>{{ $data->word }}</td>
+                            <td>
+                                @php
+                                    $words = json_decode($data->word, true);
+                                @endphp
+                                {{ implode(',', $words) }}
+                            </td>
                             <td>{{ $data->created_at }}</td>
                             @if (session('user_det')['role'] == 'admin' || session('user_det')['role'] == 'admin')
                                 <td>
