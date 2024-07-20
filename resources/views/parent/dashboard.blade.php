@@ -11,7 +11,7 @@
                 <div class="flex gap-1 justify-between items-center">
                     <div>
                         <p class="text-sm text-[#808191]">@lang('lang.Children')</p>
-                        <h2 class="text-2xl font-semibold mt-1">05</h2>
+                        <h2 class="text-2xl font-semibold mt-1">00</h2>
                     </div>
                     <div>
                         <img width="80px" height="80px" src="{{ asset('images/totall_student.svg') }}" alt="Children">
@@ -40,7 +40,7 @@
                 <div class="flex gap-1 justify-between items-center">
                     <div>
                         <p class="text-sm text-[#808191]">@lang('lang.Recorded_Videos')</p>
-                        <h2 class="text-2xl font-semibold mt-1">05</h2>
+                        <h2 class="text-2xl font-semibold mt-1">00</h2>
                     </div>
                     <div>
                         <img width="80px" height="80px" src="{{ asset('images/recorded.svg') }}"
