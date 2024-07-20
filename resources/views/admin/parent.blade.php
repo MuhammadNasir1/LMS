@@ -229,8 +229,12 @@
                             class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
                             name="gender" required id="gender">
                             <option value="" selected disabled>@lang('lang.Select_Gender')</option>
-                            <option value="male">@lang('lang.male')</option>
-                            <option value="female">@lang('lang.female')</option>
+                            <option value="male"
+                                {{ isset($parentData->gender) && $parentData->gender == 'male' ? 'selected' : '' }}>
+                                @lang('lang.male')</option>
+                            <option value="female"
+                                {{ isset($parentData->gender) && $parentData->gender == 'female' ? 'selected' : '' }}>
+                                @lang('lang.female')</option>
                         </select>
                     </div>
 
@@ -283,7 +287,7 @@
                         <label class="text-[14px] font-normal" for="child">@lang('lang.Child')</label>
 
                         <div class="flex gap-4">
-                            <div class="select-feild w-full">
+                            <div class="select-feild w-full {{ isset($parentData->child_ren) ? 'hidden' : '' }}">
                                 <select
                                     class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
                                     name="child_ren" id="child">
@@ -291,7 +295,7 @@
                                 </select>
                             </div>
                             <input type="text"
-                                class="w-full hidden border-[#DEE2E6] rounded-[4px] focus:border-primary input-field   h-[40px] text-[14px]"
+                                class="w-full {{ isset($parentData->child_ren) ? '' : 'hidden' }} border-[#DEE2E6] rounded-[4px] focus:border-primary input-field   h-[40px] text-[14px]"
                                 name="child_ren" id="child_ren" value="{{ $parentData->child_ren ?? '' }}">
                             <div>
                                 <button type="button"

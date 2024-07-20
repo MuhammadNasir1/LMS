@@ -283,14 +283,19 @@
                             value="{{ $studentData->full_name ?? '' }}">
                     </div>
 
+
                     <div class="grid grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
                         <label class="text-[14px] font-normal" for="Gender">@lang('lang.gender')</label>
                         <select
                             class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
                             name="gender" id="Gender" required>
                             <option value="" selected disabled>@lang('lang.Select_Gender')</option>
-                            <option value="male">@lang('lang.male')</option>
-                            <option value="female">@lang('lang.female')</option>
+                            <option value="male"
+                                {{ isset($studentData->gender) && $studentData->gender == 'male' ? 'selected' : '' }}>
+                                @lang('lang.male')</option>
+                            <option value="female"
+                                {{ isset($studentData->gender) && $studentData->gender == 'female' ? 'selected' : '' }}>
+                                @lang('lang.female')</option>
                         </select>
                     </div>
 
@@ -374,7 +379,7 @@
                     <div class="select-container grid grid-cols-[100px_minmax(100px,_1fr)] items-center ">
                         <label class="text-[14px] font-normal" for="Campus">@lang('lang.Campus')</label>
                         <div class="flex gap-4">
-                            <div class="select-feild w-full">
+                            <div class="select-feild w-full {{ isset($studentData->campus) ? 'hidden' : '' }}">
                                 <select
                                     class=" border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
                                     name="Campus" id="campus">
@@ -382,7 +387,7 @@
                                 </select>
                             </div>
                             <input type="text"
-                                class="w-full hidden border-[#DEE2E6] rounded-[4px] focus:border-primary input-field   h-[40px] text-[14px]"
+                                class="w-full {{ isset($studentData->campus) ? '' : 'hidden' }} border-[#DEE2E6] rounded-[4px] focus:border-primary input-field   h-[40px] text-[14px]"
                                 name="Campus" id="campus" value="{{ $studentData->campus ?? '' }}">
                             <div>
                                 <button type="button"
@@ -409,7 +414,8 @@
                         <label class="text-[14px] font-normal" for="School_attending">@lang('lang.School_Attending')</label>
 
                         <div class="flex gap-4">
-                            <div class="select-feild w-full">
+                            <div
+                                class="select-feild w-full {{ isset($studentData->School_attending) ? 'hidden' : '' }} ">
                                 <select
                                     class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
                                     name="sch_attending" id="sAttending">
@@ -417,7 +423,7 @@
                                 </select>
                             </div>
                             <input type="text"
-                                class="w-full hidden border-[#DEE2E6] rounded-[4px] focus:border-primary input-field   h-[40px] text-[14px]"
+                                class="w-full {{ isset($studentData->School_attending) ? '' : 'hidden' }} border-[#DEE2E6] rounded-[4px] focus:border-primary input-field   h-[40px] text-[14px]"
                                 name="sch_attending" id="School_attending"
                                 value="{{ $studentData->School_attending ?? '' }}">
                             <div>
@@ -431,7 +437,7 @@
                     <div class="grid select-container grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
                         <label class="text-[14px] font-normal" for="grade">@lang('lang.Grade')</label>
                         <div class="flex gap-4">
-                            <div class="select-feild w-full">
+                            <div class="select-feild w-full {{ isset($studentData->grade) ? 'hidden' : '' }}">
                                 <select
                                     class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
                                     name="grade" id="grade" value="{{ $studentData->grade ?? '' }}">
@@ -439,7 +445,7 @@
                                 </select>
                             </div>
                             <input type="text"
-                                class="w-full hidden border-[#DEE2E6] rounded-[4px] focus:border-primary input-field   h-[40px] text-[14px]"
+                                class="w-full {{ isset($studentData->grade) ? '' : 'hidden' }} border-[#DEE2E6] rounded-[4px] focus:border-primary input-field   h-[40px] text-[14px]"
                                 name="grade" id="grade" value="{{ $studentData->grade ?? '' }}">
                             <div>
                                 <button type="button"

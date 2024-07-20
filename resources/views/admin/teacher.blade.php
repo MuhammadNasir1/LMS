@@ -264,7 +264,7 @@
                     <div class="grid select-container grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
                         <label class="text-[14px] font-normal" for="subject">@lang('lang.subject')</label>
                         <div class="flex gap-4">
-                            <div class="select-feild w-full">
+                            <div class="select-feild w-full {{ isset($teacherData->subject) ? 'hidden' : '' }}">
                                 <select
                                     class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
                                     name="subject" id="subjects">
@@ -272,7 +272,7 @@
                                 </select>
                             </div>
                             <input type="text"
-                                class="w-full hidden border-[#DEE2E6] rounded-[4px] focus:border-primary input-field   h-[40px] text-[14px]"
+                                class="w-full {{ isset($teacherData->subject) ? '' : 'hidden' }} border-[#DEE2E6] rounded-[4px] focus:border-primary input-field   h-[40px] text-[14px]"
                                 name="subject" id="subject" value="{{ $teacherData->subject ?? '' }}">
                             <div>
                                 <button type="button"
@@ -286,7 +286,7 @@
                     <div class="grid select-container grid-cols-[100px_minmax(100px,_1fr)] items-center my-6  ">
                         <label class="text-[14px] font-normal" for="skills">@lang('lang.Skills')</label>
                         <div class="flex gap-4">
-                            <div class="select-feild w-full">
+                            <div class="select-feild w-full {{ isset($teacherData->skill) ? 'hidden' : '' }}">
                                 <select
                                     class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
                                     name="skill" id="skills">
@@ -294,7 +294,7 @@
                                 </select>
                             </div>
                             <input type="text"
-                                class="w-full hidden border-[#DEE2E6] rounded-[4px] focus:border-primary input-field   h-[40px] text-[14px]"
+                                class="w-full {{ isset($teacherData->skill) ? '' : 'hidden' }} border-[#DEE2E6] rounded-[4px] focus:border-primary input-field   h-[40px] text-[14px]"
                                 name="skill" id="skill" value="{{ $teacherData->skill ?? '' }}">
                             <div>
                                 <button type="button"
@@ -329,8 +329,12 @@
                             class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
                             name="gender" id="gender" required>
                             <option value="" selected disabled>@lang('lang.Select_Gender')</option>
-                            <option value="male">@lang('lang.male')</option>
-                            <option value="female">@lang('lang.female')</option>
+                            <option value="male"
+                                {{ isset($teacherData->gender) && $teacherData->gender == 'male' ? 'selected' : '' }}>
+                                @lang('lang.male')</option>
+                            <option value="female"
+                                {{ isset($teacherData->gender) && $teacherData->gender == 'female' ? 'selected' : '' }}>
+                                @lang('lang.female')</option>
                         </select>
                     </div>
 
