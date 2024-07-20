@@ -26,24 +26,28 @@ class DatabaseSeeder extends Seeder
             'email' => 'superadmin@gmail.com',
             'password' => Hash::make('12345678'),
             'role' => 'superAdmin',
+            'permission' => '{"insert":true,"delete":true,"update":true}'
         ]);
         DB::table('users')->insert([
             'name' => 'Admin',
             'email' => 'admin@gmail.com',
             'password' => Hash::make('12345678'),
-            'role' => 'admin',
+            'role' => 'admin', 'permission' => '{"insert":true,"delete":true,"update":true}'
+
         ]);
         DB::table('users')->insert([
             'name' => 'Parent',
             'email' => 'parent@gmail.com',
             'password' => Hash::make('12345678'),
-            'role' => 'parent',
+            'role' => 'parent', 'permission' => '{"insert":true,"delete":true,"update":true}'
+
         ]);
         DB::table('users')->insert([
             'name' => 'Teacher',
             'email' => 'teacher@gmail.com',
             'password' => Hash::make('12345678'),
-            'role' => 'teacher',
+            'role' => 'teacher', 'permission' => '{"insert":true,"delete":true,"update":true}'
+
         ]);
     }
 }

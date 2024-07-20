@@ -139,16 +139,18 @@ class teachingController extends Controller
 
             $recordingData = teacher_rec::all();
         } else if ($userRole == "parent") {
-            try {
 
-                $students = students::where('parent_id', $userId)->get();
-                $recordingData  = [];
-                foreach ($students as $student) {
-                    $recording = teacher_rec::where('student_id', $student->id)->first();
+
+            $students = students::where('parent_id', $userId)->get();
+            $recordingData  = [];
+            foreach ($students as $student) {
+                $recording = teacher_rec::where('student_id', $student->id)->first();
+                if ($recording) {
+
                     $recordingData[] = $recording;
+                } else {
+                    $recordingData = [];
                 }
-            } catch (\Exception $e) {
-                $recordingData = [];
             }
         } else if ($userRole == "teacher") {
             $recordingData = teacher_rec::where('teacher_id', $userId)->get();
@@ -448,14 +450,15 @@ class teachingController extends Controller
             $words = recent_teaching::where('teacher_id', $userId)->get();
         } else if ($userRole == "parent") {
             $words = [];
-            try {
-                $students = students::where('parent_id', $userId)->get();
-                foreach ($students as $student) {
-                    $allWords  = recent_teaching::where('student_id', $student->id)->first();
+
+            $students = students::where('parent_id', $userId)->select('id')->get();
+            foreach ($students as $student) {
+                $allWords  = recent_teaching::where('student_id', $student->id)->first();
+                if ($allWords) {
                     $words[]  = $allWords;
+                } else {
+                    $words  = [];
                 }
-            } catch (\Exception $e) {
-                $words = [];
             }
         }
         return view('history', compact('words'));
