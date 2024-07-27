@@ -48,6 +48,7 @@ Route::middleware('custom')->group(function () {
     //  admnim pages
     Route::get('/student', [studentController::class, 'getstudentdata']);
     Route::post('addStudent', [studentController::class, 'addstudent']);
+    Route::post('student/import', [studentController::class, 'importStudent']);
     Route::post('updatStudent/{id}', [studentController::class, 'updatestudent']);
 
     Route::get('studentViewData/{id}', [studentController::class, 'studentViewData']);

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use  App\Models\students;
 use App\Models\words;
 use Illuminate\Validation\ValidationException;
+use Maatwebsite\Excel\Facades\Excel;
 
 class studentController extends Controller
 {
@@ -147,5 +148,44 @@ class studentController extends Controller
         $studentData = students::find($id);
         $students = students::all();
         return view('student', compact('studentData', 'students'));
+    }
+
+
+    // add data with ecxcel fil
+    public function importStudent(Request $request)
+    {
+        try {
+
+            $validateData = $request->validate([
+                'excel_file' => 'required|mimes:xlsx,xls',
+            ]);
+
+            $file = $request->file('excel_file');
+
+            $data = Excel::toArray([], $file);
+
+            foreach (array_slice($data[0], 1) as $row) {
+                students::create([
+                    'full_name' => $row[0],
+                    'chinese_name' => $row[1],
+                    'gender' => $row[2],
+                    'dob' => \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row[3])->format('Y-m-d'),
+                    'phone_no' => $row[4],
+                    'adress' => $row[5],
+                    'em_person' => $row[6],
+                    'em_relation' => $row[7],
+                    'em_phone' => $row[8],
+                    'campus' => $row[9],
+                    'School_attending' => $row[10],
+                    'student_no' => $row[11],
+                    'grade' => $row[12],
+                ]);
+            }
+
+            return redirect()->back();
+            // return response()->json("data Add successfully");
+        } catch (\Exception $e) {
+            return response()->json($e->getMessage());
+        }
     }
 }
