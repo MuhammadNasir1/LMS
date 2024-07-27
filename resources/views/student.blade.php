@@ -20,16 +20,20 @@
         <div>
             <div class="flex justify-between px-[20px] mb-3">
                 <h3 class="text-[20px] text-black">@lang('lang.Students_List')</h3>
-                <div>
+                <div class="flex">
                     @if ($permissions['insert'])
                         <button data-modal-target="studentmodal" data-modal-toggle="studentmodal"
                             class="bg-secondary cursor-pointer text-white h-12 px-5 rounded-[6px]  shadow-sm font-semibold ">+
                             @lang('lang.Add_Student')</button>
                     @endif
-                    <button class="bg-secondary ml-4  text-white h-12 px-5 rounded-[6px]  shadow-sm font-semibold "
-                        data-modal-target="addExcelSheetmodal" data-modal-toggle="addExcelSheetmodal">+
-                        @lang('lang.Import_Excel')
-                    </button>
+                    <div class="ml-4 flex flex-col">
+                        <button class="bg-primary   text-white h-12 px-5 rounded-[6px]  shadow-sm font-semibold "
+                            data-modal-target="addExcelSheetmodal" data-modal-toggle="addExcelSheetmodal">+
+                            @lang('lang.Import_From_Excel')
+                        </button>
+                        <a href="{{ asset('assets/students.xlsx') }}" class="float-end ml-1 font-semibold"
+                            download="Students">@lang('lang.Download_Example')</a>
+                    </div>
                 </div>
 
             </div>

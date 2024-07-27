@@ -13,17 +13,21 @@
         <div>
             <div class="flex justify-between px-[20px] mb-3">
                 <h3 class="text-[20px] text-black">@lang('lang.Parents_List')</h3>
-                <div>
+                <div class="flex">
                     @if ($permissions['insert'])
                         <button data-modal-target="parentModal" data-modal-toggle="parentModal"
                             class="bg-secondary text-white h-12 px-5 rounded-[6px]  shadow-sm font-semibold ">+
                             @lang('lang.Add_parents')
                         </button>
                     @endif
-                    <button class="bg-secondary ml-4  text-white h-12 px-5 rounded-[6px]  shadow-sm font-semibold "
-                        data-modal-target="addExcelSheetmodal" data-modal-toggle="addExcelSheetmodal">+
-                        @lang('lang.Import_Excel')
-                    </button>
+                    <div class="flex flex-col ml-4">
+                        <button class="bg-primary   text-white h-12 px-5 rounded-[6px]  shadow-sm font-semibold "
+                            data-modal-target="addExcelSheetmodal" data-modal-toggle="addExcelSheetmodal">+
+                            @lang('lang.Import_From_Excel')
+                        </button>
+                        <a href="{{ asset('assets/Parents.xlsx') }}" class="float-end ml-1 font-semibold"
+                            download="Parents">@lang('lang.Download_Example')</a>
+                    </div>
                 </div>
 
             </div>

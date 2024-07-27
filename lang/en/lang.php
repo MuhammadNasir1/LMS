@@ -260,5 +260,6 @@ return [
     "Are_You_Sure" => "Are You Sure",
     "Yes" => "Yes",
     "No" => "No",
+    "Import_From_Excel" => "Import From Excel",
 
 ];
