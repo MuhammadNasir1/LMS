@@ -25,15 +25,15 @@
                         <button data-modal-target="studentmodal" data-modal-toggle="studentmodal"
                             class="bg-secondary cursor-pointer text-white h-12 px-5 rounded-[6px]  shadow-sm font-semibold ">+
                             @lang('lang.Add_Student')</button>
+                        <div class="ml-4 flex flex-col">
+                            <button class="bg-primary   text-white h-12 px-5 rounded-[6px]  shadow-sm font-semibold "
+                                data-modal-target="addExcelSheetmodal" data-modal-toggle="addExcelSheetmodal">+
+                                @lang('lang.Import_From_Excel')
+                            </button>
+                            <a href="{{ asset('assets/students.xlsx') }}" class="float-end ml-1 font-semibold"
+                                download="Students">@lang('lang.Download_Example')</a>
+                        </div>
                     @endif
-                    <div class="ml-4 flex flex-col">
-                        <button class="bg-primary   text-white h-12 px-5 rounded-[6px]  shadow-sm font-semibold "
-                            data-modal-target="addExcelSheetmodal" data-modal-toggle="addExcelSheetmodal">+
-                            @lang('lang.Import_From_Excel')
-                        </button>
-                        <a href="{{ asset('assets/students.xlsx') }}" class="float-end ml-1 font-semibold"
-                            download="Students">@lang('lang.Download_Example')</a>
-                    </div>
                 </div>
 
             </div>

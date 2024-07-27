@@ -13,16 +13,21 @@
         <div>
             <div class="flex justify-between px-[20px] mb-3">
                 <h3 class="text-[20px] text-black">@lang('lang.Teachers_List')</h3>
-                <div>
+                <div class="flex ">
                     @if ($permissions['insert'])
                         <button id="addmodal" data-modal-target="addteachermodal" data-modal-toggle="addteachermodal"
                             class="bg-secondary text-white h-12 px-5 rounded-[6px]  shadow-sm font-semibold ">+
                             @lang('lang.Add_Teacher')</button>
+                        <div class="ml-4 flex flex-col ">
+
+                            <button class="bg-primary  text-white h-12 px-5 rounded-[6px]  shadow-sm font-semibold "
+                                data-modal-target="addExcelSheetmodal" data-modal-toggle="addExcelSheetmodal">+
+                                @lang('lang.Import_Excel')
+                            </button>
+                            <a href="{{ asset('assets/Parents.xlsx') }}" class="float-end ml-1 font-semibold"
+                                download="Parents">@lang('lang.Download_Example')</a>
+                        </div>
                     @endif
-                    <button class="bg-secondary ml-4  text-white h-12 px-5 rounded-[6px]  shadow-sm font-semibold "
-                        data-modal-target="addExcelSheetmodal" data-modal-toggle="addExcelSheetmodal">+
-                        @lang('lang.Import_Excel')
-                    </button>
                 </div>
             </div>
             <table id="datatable" class="overflow-scroll">
