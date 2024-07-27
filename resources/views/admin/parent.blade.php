@@ -30,7 +30,7 @@
                     </div>
                 </div>
 
-            </div>
+            </div>s
             <table id="datatable" class="overflow-scroll">
                 <thead class="py-6 bg-primary text-white">
                     <tr>
