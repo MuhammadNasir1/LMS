@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Hash;
+use Maatwebsite\Excel\Facades\Excel;
 
 class teacherController extends Controller
 {
@@ -171,5 +172,42 @@ class teacherController extends Controller
         $teachers = teacher::all();
         $teacherData = teacher::find($id);
         return view('admin.teacher', compact('teacherData',  'teachers'));
+    }
+
+
+    // add data with ecxcel fil
+    public function importTeacher(Request $request)
+    {
+        try {
+
+            $validateData = $request->validate([
+                'excel_file' => 'required|mimes:xlsx,xls',
+            ]);
+
+            $file = $request->file('excel_file');
+
+            $data = Excel::toArray([], $file);
+
+            foreach (array_slice($data[0], 1) as $row) {
+                teacher::create([
+                    'first_name' => $row[0],
+                    'last_name' => $row[1],
+                    'dob'      => \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row[2])->format('Y-m-d'),
+                    'gender' => $row[3],
+                    'phone_no' => $row[4],
+                    'email' => $row[5],
+                    'subject' => $row[6],
+                    'join_date' =>
+                    \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row[7])->format('Y-m-d'),
+                    'skill' => $row[8],
+                    'address' => $row[9],
+                ]);
+            }
+
+            // return redirect()->back();
+            return response()->json("Data add successfully");
+        } catch (\Exception $e) {
+            return response()->json($e->getMessage());
+        }
     }
 }

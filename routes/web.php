@@ -73,8 +73,10 @@ Route::middleware('custom')->group(function () {
             return view('admin.audio');
         });
         Route::post('addParent', [parentController::class, 'addparent']);
+        Route::post('parent/import', [parentController::class, 'importParent']);
         Route::post('addteacher', [teacherController::class, 'addteacher']);
 
+        Route::post('teacher/import', [teacherController::class, 'importTeacher']);
 
 
         Route::get('teacherViewData/{id}', [teacherController::class, 'teacherViewData']);

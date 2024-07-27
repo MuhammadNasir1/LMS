@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\parentMail;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Maatwebsite\Excel\Facades\Excel;
 
 class parentController extends Controller
 {
@@ -137,5 +138,38 @@ class parentController extends Controller
         $parentData = parents::find($id);
         $parents = parents::all();
         return view('admin.parent', compact('parents',  'parentData'));
+    }
+
+    // add data with ecxcel fil
+    public function importParent(Request $request)
+    {
+        try {
+
+            $validateData = $request->validate([
+                'excel_file' => 'required|mimes:xlsx,xls',
+            ]);
+
+            $file = $request->file('excel_file');
+
+            $data = Excel::toArray([], $file);
+
+            foreach (array_slice($data[0], 1) as $row) {
+                parents::create([
+                    'first_name' => $row[0],
+                    'last_name' => $row[1],
+                    'gender' => $row[2],
+                    'email' => $row[3],
+                    'phone_no' => $row[4],
+                    'contact' => $row[5],
+                    'address' => $row[6],
+                    'child_ren' => $row[7],
+                ]);
+            }
+
+            return redirect()->back();
+            // return response()->json("data Add successfully");
+        } catch (\Exception $e) {
+            return response()->json($e->getMessage());
+        }
     }
 }
