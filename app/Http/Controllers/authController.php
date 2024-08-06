@@ -38,7 +38,7 @@ class authController extends Controller
             $user->country = $request['country'];
             $user->language = $request['language'];
 
-            if ($request->has('old_password')) {
+            if ($request->filled('old_password')) {
                 if (Hash::check($validatedData['old_password'], $user->password)) {
                     $user->password = Hash::make($validatedData['new_password']);
                 } else {
