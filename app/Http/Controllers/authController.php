@@ -32,11 +32,11 @@ class authController extends Controller
                 'user_image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
             ]);
 
-            $user->name = $validatedData['name'];
-            $user->phone = $validatedData['phone'];
-            $user->city = $validatedData['city'];
-            $user->country = $validatedData['country'];
-            $user->language = $validatedData['language'];
+            $user->name = $request['name'];
+            $user->phone = $request['phone'];
+            $user->city = $request['city'];
+            $user->country = $request['country'];
+            $user->language = $request['language'];
 
             if ($request->has('old_password')) {
                 if (Hash::check($validatedData['old_password'], $user->password)) {
