@@ -94,7 +94,7 @@
 
 <!--  studen  Details  modal -->
 <div id="studenDetailsModal" data-modal-backdrop="static"
-    class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 hidden  ">
+    class="hidden overflow-y-auto overflow-x-hidden fixed top-0  left-0 z-50 justify-center  w-full md:inset-0 h-[calc(100%-1rem)] max-h-full ">
     <div class="fixed inset-0 transition-opacity">
         <div id="backdrop" class="absolute inset-0 bg-slate-800 opacity-75"></div>
     </div>
@@ -249,7 +249,7 @@
 
 <!-- Add  Student  modal -->
 <div id="studentmodal" data-modal-backdrop="static"
-    class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 hidden">
+    class="hidden overflow-y-auto overflow-x-hidden fixed top-0  left-0 z-50 justify-center  w-full md:inset-0 h-[calc(100%-1rem)] max-h-full ">
     <div class="fixed inset-0 transition-opacity">
         <div id="backdrop" class="absolute inset-0 bg-slate-800 opacity-75"></div>
     </div>
@@ -592,6 +592,7 @@
     <script>
         $(document).ready(function() {
             $('#studentmodal').removeClass("hidden");
+            $('#studentmodal').addClass("flex");
 
         });
     </script>
