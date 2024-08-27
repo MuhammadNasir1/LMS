@@ -21,7 +21,7 @@ class teacherController extends Controller
                 'dob' => 'required|date',
                 'gender' => 'required',
                 'phone_no' => 'required',
-                'email' => 'required|email',
+                'email' => 'required|email|unique:teacher,email',
                 'subject' => 'required',
                 'skill' => 'required',
                 'join_date' => 'required|date',
