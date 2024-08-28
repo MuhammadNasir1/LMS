@@ -7,6 +7,7 @@ use App\Models\words;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use Maatwebsite\Excel\Facades\Excel;
+use PhpParser\Node\Expr\Empty_;
 
 class coursesController extends Controller
 {
@@ -108,12 +109,20 @@ class coursesController extends Controller
     function  deleteCourse($id)
     {
         try {
-            $course = words::where('id', $id)->first();
-            if (!$course) {
-                return response()->json(['success' => false, 'message' =>  "course not found"], 200);
+            $word = words::where('id', $id)->first();
+            if (!$word) {
+                return response()->json(['success' => false, 'message' =>  "Word not found"], 200);
             }
+            $word->delete();
+            $course = Courses::where('id', $word->course_id)->first();
 
-            $course->delete();
+            if ($course) {
+                $check_course = Words::where('course_id', $course->id)->exists();
+                if (!$check_course) {
+                    $course->delete();
+                    return response()->json(['success' => true, 'message' => "Course deleted"], 200);
+                }
+            }
             return response()->json(['success' => true, 'message' =>  "course delete successfull"], 200);
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
