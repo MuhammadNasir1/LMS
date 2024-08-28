@@ -78,8 +78,11 @@ class parentController extends Controller
             $parent = parents::find($parent_id);
             if (!$parent) {
                 return response()->json(['success' => false, 'message' => 'parent not found'], 500);
+            } else {
+                $user  = User::where('email', $parent->email)->first();
+                $user->delete();
+                $parent->delete();
             }
-            $parent->delete();
             return response()->json(['success' => true, 'message' => 'parent successfully delete'], 200);
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => $e->getMessage()], 500);

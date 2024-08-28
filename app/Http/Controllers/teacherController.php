@@ -89,15 +89,18 @@ class teacherController extends Controller
             $teacher = teacher::find($teacher_id);
             if (!$teacher) {
                 return response()->json(['success' => false, 'message' => 'teacher not found'], 500);
-            }
-            // Delete  file from storage if it exists
-            if (!empty($teacher->teacher_cv)) {
-                $file_path = public_path($teacher->teacher_cv);
-                if (file_exists($file_path)) {
-                    unlink($file_path);
+            } else {
+                $user  = User::where('email', $teacher->email)->first();
+                $user->delete();
+                // Delete  file from storage if it exists
+                if (!empty($teacher->teacher_cv)) {
+                    $file_path = public_path($teacher->teacher_cv);
+                    if (file_exists($file_path)) {
+                        unlink($file_path);
+                    }
                 }
+                $teacher->delete();
             }
-            $teacher->delete();
             return response()->json(['success' => true, 'message' => 'teacher successfully delete'], 200);
         } catch (\Exception $e) {
             return redirect('../admin/teacher');
