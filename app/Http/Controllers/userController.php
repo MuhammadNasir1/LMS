@@ -91,4 +91,16 @@ class userController extends Controller
             return response()->json(['success' => false, 'message' => $e->getMessage()], 400);
         }
     }
+
+
+    public function getAdminDashboard()
+    {
+        $Total_Students = students::all()->count();
+        $Total_parents = parents::all()->count();
+        $Total_teachers = teacher::all()->count();
+        $Total_training = training::all()->count();
+
+        $data[] =  ['totalStudent' => $Total_Students, 'totalParents' => $Total_parents, 'totalTeacher' => $Total_teachers, 'totalTraining' =>  $Total_training];
+        return response()->json(['success' => true, 'message' => "Data get successfully",  "data" => $data], 200);
+    }
 }

@@ -104,3 +104,6 @@ Route::match(['get', 'post'], 'deleteGaming/{id}', [GamingController::class, 'de
 
 
 Route::get('getTeacherDashboard/{id}', [teachingController::class, 'getTeacherDashboardData']);
+
+
+Route::get('getAdminDashboard', [userController::class, 'getAdminDashboard']);
