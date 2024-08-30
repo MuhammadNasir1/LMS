@@ -29,6 +29,17 @@ class teacherController extends Controller
                 'teacher_cv' => 'nullable|mimes:jpeg,png,jpg,JPG,pdf',
             ]);
 
+
+            // Generate a password
+            $password = \Illuminate\Support\Str::random(8);
+
+            $user = User::create([
+                'name' => $validatedData['first_name'] . $validatedData['last_name'],
+                'email' => $validatedData['email'],
+                'role' => 'teacher',
+                'password' => Hash::make($password),
+
+            ]);
             $teacher = teacher::create([
                 'first_name' => $validatedData['first_name'],
                 'last_name' => $validatedData['last_name'],
@@ -40,17 +51,6 @@ class teacherController extends Controller
                 'skill' => $validatedData['skill'],
                 'join_date' => $validatedData['join_date'],
                 'address' => $validatedData['address'],
-            ]);
-
-            // Generate a password
-            $password = \Illuminate\Support\Str::random(8);
-
-            $user = User::create([
-                'name' => $validatedData['first_name'] . $validatedData['last_name'],
-                'email' => $validatedData['email'],
-                'role' => 'teacher',
-                'password' => Hash::make($password),
-
             ]);
 
             if ($request->hasFile('teacher_cv')) {
