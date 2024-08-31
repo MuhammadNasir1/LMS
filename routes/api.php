@@ -107,3 +107,5 @@ Route::get('getTeacherDashboard/{id}', [teachingController::class, 'getTeacherDa
 
 
 Route::get('getAdminDashboard', [userController::class, 'getAdminDashboard']);
+
+Route::get('getParentDashboard/{id}', [parentController::class, 'getParentDashboard']);

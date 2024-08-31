@@ -6,6 +6,8 @@ use App\Models\parents;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\parentMail;
+use App\Models\students;
+use App\Models\teacher_rec;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Facades\Excel;
@@ -174,5 +176,27 @@ class parentController extends Controller
         } catch (\Exception $e) {
             return response()->json($e->getMessage());
         }
+    }
+
+
+    // get data  for mobile app dashboad
+    public function getParentDashboard($id)
+    {
+        $ParentStudents = students::where('parent_id', $id)->count();
+        $training_vid = students::where('parent_id', $id)->count();
+
+        $students = students::where('parent_id', $id)->get();
+        if (!$students) {
+
+            return response()->json(['success' => false, 'message' => "Parent Not Found!"], 400);
+        }
+        $totalRecording = 0;
+        foreach ($students as $student) {
+            $recording = teacher_rec::where('student_id', $student->id)->count();
+            $totalRecording = $recording;
+        }
+
+        $data[] =  ['totalChildren' => $ParentStudents, 'totalRecording' => $totalRecording];
+        return response()->json(['success' => true, 'message' => "Data get successfully",  "data" => $data], 200);
     }
 }
