@@ -25,8 +25,8 @@
             <table id="datatable" class="overflow-scroll">
                 <thead class="py-6 bg-primary text-white">
                     <tr>
-                        <th>@lang('lg.Title')</th>
-                        <th>@lang('langan.Description')</th>
+                        <th>@lang('lang.Title')</th>
+                        <th>@lang('lang.Description')</th>
                         <th>@lang('lang.Date')</th>
                         <th>@lang('lang.Action')</th>
                     </tr>
