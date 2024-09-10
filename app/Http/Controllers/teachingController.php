@@ -449,13 +449,20 @@ class teachingController extends Controller
         }
     }
 
-    public function getWords()
+    public function getWords(Request $request)
     {
 
         $userRole = session('user_det')['role'];
         $userId = session('user_det')['user_id'];
+        $from = request('from');
+        $to = request('to');
         if ($userRole == "admin" || $userRole == "superAdmin") {
-            $words = recent_teaching::all();
+            if ($request->has('from')) {
+                $words = recent_teaching::whereBetween('created_at', [$from, $to])->get();
+            } else {
+
+                $words = recent_teaching::all();
+            }
         } else if ($userRole  == "teacher") {
             $words = recent_teaching::where('teacher_id', $userId)->get();
         } else if ($userRole == "parent") {
