@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\parents;
 use Illuminate\Http\Request;
 use  App\Models\students;
 use App\Models\words;
@@ -15,6 +16,7 @@ class studentController extends Controller
     {
         try {
             $validatedData = $request->validate([
+                "parent_id" => "required",
                 "full_name" => "required|string",
                 "gender" => "required|string",
                 "dob" => "required|date",
@@ -25,7 +27,7 @@ class studentController extends Controller
                 "grade" => "required",
             ]);
             $student = Students::create([
-                'parent_id' => $request['parent_id'],
+                'parent_id' => $validatedData['parent_id'],
                 'full_name' => $validatedData['full_name'],
                 'chinese_name' => $request['chinese_name'],
                 'gender' => $validatedData['gender'],
@@ -104,8 +106,10 @@ class studentController extends Controller
     {
         $userId = session('user_det')['user_id'];
         $students = students::all();
+        $parents = parents::all();
+
         $ParentStudents = students::where('parent_id', $userId)->get(); // Add get() to execute the query
-        return view('student', ['students' => $students, 'ParentStudents' => $ParentStudents]);
+        return view('student', ['students' => $students, 'ParentStudents' => $ParentStudents, 'parents' => $parents]);
     }
 
     public function studentViewData(Request $request, $id)

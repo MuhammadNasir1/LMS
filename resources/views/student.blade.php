@@ -260,9 +260,7 @@
                 <form id="studentForm" method="post" url="../addStudent">
         @endif
         @csrf
-        @if (session('user_det')['role'] == 'parent')
-            <input type="hidden" name="parent_id" value="{{ session('user_det')['user_id'] }}" readonly>
-        @endif
+
         <div class="relative bg-white rounded-lg shadow dark:bg-gray-700  ">
             <div class="flex items-center  justify-center  p-5  rounded-t dark:border-gray-600 bg-primary">
                 <h3 class="text-xl font-semibold text-white text-center">
@@ -280,8 +278,28 @@
             </div>
 
             {{-- Student Details --}}
+
             <div class="mt-4 px-10 font-semibold">
                 <h2 class="text-[18px]">@lang('lang.Student_Details')</h2>
+            </div>
+            <div class="mt-3 px-10">
+                @if (session('user_det')['role'] == 'parent')
+                    <input type="text" name="parent_id" value="{{ session('user_det')['user_id'] }}" readonly>
+                @else
+                    <div>
+                        <label class="text-[14px] font-normal" for="parent_id">@lang('lang.Parent_Name')</label>
+                        <select
+                            class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
+                            name="parent_id" id="parent_id" required>
+                            <option selected disabled>@lang('lang.Select_Parent')</option>
+                            @foreach ($parents as $parent)
+                                <option value="{{ $parent->id }}">{{ $parent->first_name }} -
+                                    {{ $parent->last_name }}</option>
+                            @endforeach
+
+                        </select>
+                    </div>
+                @endif
             </div>
             <div class="grid grid-cols-2 mt-1 gap-10 px-10">
                 <div>
