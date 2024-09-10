@@ -265,4 +265,8 @@ return [
 
 
     "Select_Parent" => "Select Parent",
+    "To_Date" => "To Date",
+    "From_Date" => "From Date",
+    "Filter" => "Filter",
+    "All" => "All",
 ];

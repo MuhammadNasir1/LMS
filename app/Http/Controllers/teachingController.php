@@ -131,13 +131,23 @@ class teachingController extends Controller
     }
 
 
-    public  function  getRecording()
+    public  function  getRecording(Request $request)
     {
         $userRole = session('user_det')['role'];
         $userId = session('user_det')['user_id'];
+        $from = request('from');
+        $to = request('to');
         if ($userRole == "admin" || $userRole == "superAdmin") {
 
+
             $recordingData = teacher_rec::all();
+
+            if ($request->has('from')) {
+                $recordingData = teacher_rec::whereBetween('lesson_date', [$from, $to])->get();
+            } else {
+
+                $recordingData = teacher_rec::all();
+            }
         } else if ($userRole == "parent") {
 
 
