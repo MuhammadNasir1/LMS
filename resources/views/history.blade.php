@@ -19,33 +19,37 @@
             <div>
                 <div class="flex justify-between px-[20px] mb-3 items-center">
                     <h3 class="text-[20px] text-black">@lang('lang.All_Lecturers')</h3>
-                    <form action="" method="get">
+                    @if (session('user_det')['role'] !== 'parent')
 
-                        <div class="flex gap-5 items-center">
-                            <div>
-                                <label class="text-[14px] font-normal" for="fromDate">@lang('lang.From_Date')</label>
-                                <input type="date"
-                                    class="w-full border-secondary rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                    name="from" id="fromDate" value="{{ request('from') }}">
-                            </div>
-                            <div>
-                                <label class="text-[14px] font-normal" for="fromDate">@lang('lang.To_Date')</label>
-                                <input type="date"
-                                    class="w-full border-secondary rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                                    name="to" id="fromDate" value="{{ request('to') }}">
-                            </div>
-                            <div>
-                                @if (request('from'))
-                                    <a href="../recentLecturers"><button type="button"
-                                            class="bg-secondary h-[42px] px-5 font-semibold text-white rounded-md mt-5">@lang('lang.All')</button></a>
-                                @else
-                                    <button
-                                        class="bg-secondary h-[42px] px-5 font-semibold text-white rounded-md mt-5">@lang('lang.Filter')</button>
-                                @endif
 
+                        <form action="" method="get">
+
+                            <div class="flex gap-5 items-center">
+                                <div>
+                                    <label class="text-[14px] font-normal" for="fromDate">@lang('lang.From_Date')</label>
+                                    <input type="date"
+                                        class="w-full border-secondary rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
+                                        name="from" id="fromDate" value="{{ request('from') }}">
+                                </div>
+                                <div>
+                                    <label class="text-[14px] font-normal" for="fromDate">@lang('lang.To_Date')</label>
+                                    <input type="date"
+                                        class="w-full border-secondary rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
+                                        name="to" id="fromDate" value="{{ request('to') }}">
+                                </div>
+                                <div>
+                                    @if (request('from'))
+                                        <a href="../recentLecturers"><button type="button"
+                                                class="bg-secondary h-[42px] px-5 font-semibold text-white rounded-md mt-5">@lang('lang.All')</button></a>
+                                    @else
+                                        <button
+                                            class="bg-secondary h-[42px] px-5 font-semibold text-white rounded-md mt-5">@lang('lang.Filter')</button>
+                                    @endif
+
+                                </div>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    @endif
                 </div>
                 <table id="datatable" class="overflow-scroll">
                     <thead class="py-6 bg-primary text-white">

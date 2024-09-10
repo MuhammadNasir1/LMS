@@ -163,7 +163,12 @@ class teachingController extends Controller
                 }
             }
         } else if ($userRole == "teacher") {
-            $recordingData = teacher_rec::where('teacher_id', $userId)->get();
+            if ($request->has('from')) {
+                $recordingData = teacher_rec::where('teacher_id', $userId)->whereBetween('lesson_date', [$from, $to])->get();
+            } else {
+
+                $recordingData = teacher_rec::where('teacher_id', $userId)->get();
+            }
         }
         return view('std_recording',  ['recordingData' => $recordingData]);
     }
@@ -464,7 +469,12 @@ class teachingController extends Controller
                 $words = recent_teaching::all();
             }
         } else if ($userRole  == "teacher") {
-            $words = recent_teaching::where('teacher_id', $userId)->get();
+            if ($request->has('from')) {
+                $words = recent_teaching::where('teacher_id', $userId)->whereBetween('created_at', [$from, $to])->get();
+            } else {
+
+                $words = recent_teaching::where('teacher_id', $userId)->get();
+            }
         } else if ($userRole == "parent") {
             $words = [];
 
