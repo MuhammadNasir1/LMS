@@ -17,6 +17,45 @@
 
     <div class="shadow-dark mt-3  rounded-xl pt-8  bg-white">
         <div>
+            <form method="get">
+                <div class="flex gap-5 items-center px-[20px] mb-3">
+                    <div class="min-w-[160px]">
+                        <label class="text-[14px] font-semibold mb-1  block" for="course">@lang('lang.Course')</label>
+                        <select name="course" id="course ">
+                            <option disabled selected>@lang('lang.Select_course')</option>
+
+                            @foreach ($courses as $coursename)
+                                <option>{{ $coursename->course_name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="min-w-[160px]">
+                        <label class="text-[14px] font-semibold mb-1  block" for="Level">@lang('lang.Level')</label>
+                        <select name="level" id="Level">
+                            <option disabled selected>@lang('lang.Select_level')</option>
+                            @foreach ($courses as $levelname)
+                                <option>{{ $levelname->level }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="min-w-[160px]">
+                        <label class="text-[14px] font-semibold mb-1  block" for="Lesson">@lang('lang.Lesson')</label>
+                        <select name="lesson" id="Lesson">
+                            <option disabled selected>@lang('lang.Select_lesson')</option>
+                            @foreach ($courses as $lessonname)
+                                <option>{{ $lessonname->lesson }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div>
+
+                        <button
+                            class="bg-secondary h-[42px] px-5 font-semibold text-white rounded-md mt-5">@lang('lang.Filter')</button>
+
+                    </div>
+                </div>
+
+            </form>
             <div class="flex justify-between px-[20px] mb-3">
                 <h3 class="text-[20px] text-black">@lang('lang.Course_List')</h3>
                 @if ($permissions['insert'])

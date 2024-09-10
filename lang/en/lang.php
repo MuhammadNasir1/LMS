@@ -125,7 +125,7 @@ return [
     "Enter_Book_Name" => "Enter Book Name",
     "Course_Name" => "Course Name",
     "no_of_levels" => "No. of Levels",
-    "Select_level" => "No. of Levels",
+    "Select_level" => "Select level",
     "Enter_Level" => "Enter Level",
     "no_of_pages" => "Enter No. of pages",
     "Enter_Version" => "Enter  Version",
