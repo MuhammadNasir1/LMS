@@ -24,8 +24,8 @@
                                 data-modal-target="addExcelSheetmodal" data-modal-toggle="addExcelSheetmodal">+
                                 @lang('lang.Import_Excel')
                             </button>
-                            <a href="{{ asset('assets/Parents.xlsx') }}" class="float-end ml-1 font-semibold"
-                                download="Parents">@lang('lang.Download_Example')</a>
+                            <a href="{{ asset('assets/teacher.xlsx') }}" class="float-end ml-1 font-semibold"
+                                download="Teachers">@lang('lang.Download_Example')</a>
                         </div>
                     @endif
                 </div>
