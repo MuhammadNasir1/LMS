@@ -393,6 +393,16 @@
     }
 
     $(document).ready(function() {
+        $('#CNexbtn').on('click', function() {
+            resize();
+
+        });
+        $('#CPrebtn').on('click', function() {
+            resize();
+
+        });
+
+
         let Cnextbtn = $('#CNexbtn');
         let Cprebtn = $('#CPrebtn');
         let prebtn = $('#preBtn');
