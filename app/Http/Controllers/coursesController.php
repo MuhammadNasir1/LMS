@@ -128,10 +128,22 @@ class coursesController extends Controller
             return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
         }
     }
-    public function getcoursedata()
+    public function getcoursedata(Request $request)
     {
-        $courses =  words::all();
-
+        if ($request->has('course')) {
+            $courses = words::when($request->query('course'), function ($query, $course) {
+                return $query->where('course_id', $course);
+            })
+                ->when($request->query('level'), function ($query, $level) {
+                    return $query->where('level', $level);
+                })
+                ->when($request->query('lesson'), function ($query, $lesson) {
+                    return $query->where('lesson', $lesson);
+                })
+                ->get();
+        } else {
+            $courses =  words::all();
+        }
 
         return view('course', ['courses' => $courses]);
     }

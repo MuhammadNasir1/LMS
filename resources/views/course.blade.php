@@ -25,7 +25,7 @@
                             <option disabled selected>@lang('lang.Select_course')</option>
 
                             @foreach ($courses as $coursename)
-                                <option>{{ $coursename->course_name }}</option>
+                                <option value="{{ $coursename->course_id }}">{{ $coursename->course_name }}</option>
                             @endforeach
                         </select>
                     </div>
