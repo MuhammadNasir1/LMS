@@ -25,6 +25,7 @@ class students extends Model
         'School_attending',
         'student_no',
         'grade',
+        'verification',
     ];
 
     public $timestamps = true;

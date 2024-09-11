@@ -27,6 +27,7 @@ return new class extends Migration
             $table->string('School_attending')->nullable();
             $table->string('student_no');
             $table->string('grade');
+            $table->string('verification');
             $table->timestamps();
         });
     }

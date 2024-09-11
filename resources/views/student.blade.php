@@ -49,6 +49,7 @@
                         <th>@lang('lang.Grade')</th>
                         <th>@lang('lang.Phone_no')</th>
                         <th>@lang('lang.Address')</th>
+                        <th>@lang('lang.Verification')</th>
                         <th>@lang('lang.Action')</th>
                     </tr>
                 </thead>
@@ -65,6 +66,10 @@
                             <td>{{ $student->grade }}</td>
                             <td>{{ $student->phone_no }}</td>
                             <td>{{ $student->adress }}</td>
+                            <td><button
+                                    class="{{ session('user_det')['role'] == 'admin' || session('user_det')['role'] == 'superAdmin' ? 'verBtn' : '' }}  {{ $student->verification == 'Pending' ? 'text-red-700' : 'text-green-500' }} font-semibold"
+                                    stdId="{{ $student->id }}" id="status">{{ $student->verification }}</button>
+                            </td>
 
                             <td class="flex gap-5">
                                 @if ($permissions['delete'])
@@ -586,6 +591,60 @@
 </div>
 
 
+
+{{-- change verifiction  status modal  --}}
+<button data-modal-target="verifictionModal" data-modal-toggle="verifictionModal">
+
+</button>
+<div id="verifictionModal" data-modal-backdrop="static"
+    class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 hidden  ">
+    <div class="fixed inset-0 transition-opacity">
+        <div id="backdrop" class="absolute inset-0 bg-slate-800 opacity-75"></div>
+    </div>
+    <div class="relative p-4 w-full   max-w-lg max-h-full ">
+        <div class="relative bg-white shadow-dark rounded-lg  dark:bg-gray-700  ">
+            <div class="">
+
+                <button type="button"
+                    class=" absolute right-2 text-white bg-transparent rounded-lg text-sm w-8 h-8 ms-auto "
+                    data-modal-hide="verifictionModal">
+                    <svg class="w-4 h-4 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                        fill="none" viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                    </svg>
+                </button>
+            </div>
+            <div class=" mx-6 my-6 pt-5">
+                <div class="">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100px" class="mx-auto" viewBox="0 0 512 512">
+                        <path
+                            d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7 .2 40.1S486.3 480 472 480H40c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8 .2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24V296c0 13.3 10.7 24 24 24s24-10.7 24-24V184c0-13.3-10.7-24-24-24zm32 224a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"
+                            fill="red" />
+                    </svg>
+                    <h1 class="text-center pt-3 text-2xl">@lang('lang.Change_Status_To') <span id="statusType"
+                            class="font-semibold"></span></h1>
+                    <div class="flex  justify-center gap-5 mx-auto mt-5 pb-5">
+                        <button data-modal-hide="verifictionModal" class="bg-primary px-7 py-3 text-white rounded-md">
+                            @lang('lang.No')
+                        </button>
+                        <form class="" id="ChangeVerBtn" action="" method="POST">
+                            @csrf
+                            <input type="hidden" name="status" id="changedStatus">
+                            <button class=" bg-red-600 px-7 py-3 text-white rounded-md">
+                                @lang('lang.Yes')
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
 <script>
     var selectContainers = document.querySelectorAll('.select-container');
 
@@ -616,88 +675,45 @@
     </script>
 @endif
 <script>
-    // delete studeny
-    $('.delbtn').click(function() {
-        var updateId = $(this).attr('delId');
-        var url = "../api/delStudent/" + updateId;
-
-        $.ajax({
-            type: "POST",
-            url: url,
-            dataType: "json",
-            success: function(response) {
-                if (response.success == true) {
-                    window.location.href = '../student';
-                } else if (response.success == false) {
-                    Swal.fire(
-                        'Warning!',
-                        response.message,
-                        'warning'
-                    );
-                }
-            },
-            error: function(jqXHR) {
-                let response = JSON.parse(jqXHR.responseText);
-                console.log("error");
-                Swal.fire(
-                    'Warning!',
-                    'Student Not Found',
-                    'warning'
-                );
-            }
-
-        });
-
-    })
-    //
-
-    function viewDataFun() {
-
-        $('.viewBtn').click(function() {
-            $('#studenDetailsModal').removeClass('hidden');
-            $('#studenDetailsModal').addClass('flex');
-            let dataId = $(this).attr('studentId');
-            let url = "../studentViewData/" + dataId;
-            $.ajax({
-                type: "get",
-                url: url,
-                success: function(response) {
-                    let data = response.student;
-                    console.log(data);
-                    $('#englishName').text(data.full_name);
-                    $('#chineseName').text(data.chinese_name);
-                    $('#gender').text(data.gender);
-                    $('#dob').text(data.dob);
-                    $('#PhoneNo').text(data.phone_no);
-                    $('#addess').text(data.adress);
-                    $('#emPerson').text(data.em_person);
-                    $('#emRelation').text(data.em_relation);
-                    $('#emergencyNo').text(data.em_phone);
-                    $('#campus').text(data.campus);
-                    $('#schAttending').text(data.School_attending);
-                    $('#studentNo').text(data.student_no);
-                    $('#grade').text(data.grade);
-
-                }
-            });
-        });
-    }
-    viewDataFun()
     $(document).ready(function() {
-        $("#studentForm").submit(function(event) {
-            event.preventDefault();
-            var formData = $(this).serialize();
-            var url = $('#studentForm').attr('url');
+        function changestdstatus() {
+
+            $('.verBtn').click(function() {
+                let status = $(this).html()
+                console.log(status);
+                if (status == "Pending") {
+                    status = "Approved";
+                } else {
+                    status = "Pending";
+
+                }
+
+
+                let id = $(this).attr('stdId');
+                $('#verifictionModal').removeClass("hidden");
+                $('#verifictionModal').addClass("flex");
+                $('#statusType').text(status);
+                $('#changedStatus').val(status);
+
+
+                $('#ChangeVerBtn').attr('action', '../changeStdStatus/' + id);
+
+            })
+        }
+
+        changestdstatus();
+        $('#datatable').on('draw.dt', function() {
+            changestdstatus();
+        });
+
+        $('.delbtn').click(function() {
+            var updateId = $(this).attr('delId');
+            var url = "../api/delStudent/" + updateId;
+
             $.ajax({
                 type: "POST",
                 url: url,
-                data: formData,
                 dataType: "json",
-                beforeSend: function() {
-                    $('#spinner').removeClass('hidden');
-                    $('#text').addClass('hidden');
-                    $('#addBtn').attr('disabled', true);
-                },
                 success: function(response) {
                     if (response.success == true) {
                         window.location.href = '../student';
@@ -706,23 +722,97 @@
                             'Warning!',
                             response.message,
                             'warning'
-                        )
+                        );
                     }
                 },
                 error: function(jqXHR) {
-
                     let response = JSON.parse(jqXHR.responseText);
-                    console.log("eror");
+                    console.log("error");
                     Swal.fire(
                         'Warning!',
-                        response.message,
+                        'Student Not Found',
                         'warning'
                     );
-
-                    $('#text').removeClass('hidden');
-                    $('#spinner').addClass('hidden');
-                    $('#addBtn').attr('disabled', false);
                 }
+
+            });
+
+        })
+        //
+
+        function viewDataFun() {
+
+            $('.viewBtn').click(function() {
+                $('#studenDetailsModal').removeClass('hidden');
+                $('#studenDetailsModal').addClass('flex');
+                let dataId = $(this).attr('studentId');
+                let url = "../studentViewData/" + dataId;
+                $.ajax({
+                    type: "get",
+                    url: url,
+                    success: function(response) {
+                        let data = response.student;
+                        console.log(data);
+                        $('#englishName').text(data.full_name);
+                        $('#chineseName').text(data.chinese_name);
+                        $('#gender').text(data.gender);
+                        $('#dob').text(data.dob);
+                        $('#PhoneNo').text(data.phone_no);
+                        $('#addess').text(data.adress);
+                        $('#emPerson').text(data.em_person);
+                        $('#emRelation').text(data.em_relation);
+                        $('#emergencyNo').text(data.em_phone);
+                        $('#campus').text(data.campus);
+                        $('#schAttending').text(data.School_attending);
+                        $('#studentNo').text(data.student_no);
+                        $('#grade').text(data.grade);
+
+                    }
+                });
+            });
+        }
+        viewDataFun()
+        $(document).ready(function() {
+            $("#studentForm").submit(function(event) {
+                event.preventDefault();
+                var formData = $(this).serialize();
+                var url = $('#studentForm').attr('url');
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: formData,
+                    dataType: "json",
+                    beforeSend: function() {
+                        $('#spinner').removeClass('hidden');
+                        $('#text').addClass('hidden');
+                        $('#addBtn').attr('disabled', true);
+                    },
+                    success: function(response) {
+                        if (response.success == true) {
+                            window.location.href = '../student';
+                        } else if (response.success == false) {
+                            Swal.fire(
+                                'Warning!',
+                                response.message,
+                                'warning'
+                            )
+                        }
+                    },
+                    error: function(jqXHR) {
+
+                        let response = JSON.parse(jqXHR.responseText);
+                        console.log("eror");
+                        Swal.fire(
+                            'Warning!',
+                            response.message,
+                            'warning'
+                        );
+
+                        $('#text').removeClass('hidden');
+                        $('#spinner').addClass('hidden');
+                        $('#addBtn').attr('disabled', false);
+                    }
+                });
             });
         });
     });

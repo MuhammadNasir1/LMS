@@ -41,6 +41,7 @@ class studentController extends Controller
                 'School_attending' => $request['sch_attending'],
                 'student_no' => $validatedData['student_no'],
                 'grade' => $validatedData['grade'],
+                'verification' => "Pending",
             ]);
             return response()->json(['success' => true, 'message' => 'Data added successfully', 'student'  => $student], 200);
         } catch (\Exception $e) {
@@ -183,6 +184,7 @@ class studentController extends Controller
                     'School_attending' => $row[10],
                     'student_no' => $row[11],
                     'grade' => $row[12],
+                    'verification' => "Approved",
                 ]);
             }
 
@@ -191,5 +193,14 @@ class studentController extends Controller
         } catch (\Exception $e) {
             return response()->json($e->getMessage());
         }
+    }
+
+
+    public function changeVerifictionStatus(Request $request, $id)
+    {
+        $student = students::find($id);
+        $student->verification = $request['status'];
+        $student->update();
+        return redirect()->back();
     }
 }

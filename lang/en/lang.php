@@ -269,4 +269,6 @@ return [
     "From_Date" => "From Date",
     "Filter" => "Filter",
     "All" => "All",
+    "Verification" => "Verification",
+    "Change_Status_To" => "Change Status To",
 ];

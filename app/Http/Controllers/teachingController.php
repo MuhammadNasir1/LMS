@@ -176,7 +176,7 @@ class teachingController extends Controller
 
     public function teachingData()
     {
-        $students = students::all();
+        $students = students::where('verification', 'Approved')->get();
         $words = words::all();
         $courses = courses::all();
         return view('teachingpage', ['students' => $students, 'courses' =>  $courses, 'words' => $words]);
