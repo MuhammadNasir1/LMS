@@ -102,7 +102,8 @@
         </div>
         <div class=" flex justify-between  my-2">
             <div>
-                <button type="button" data-modal-target="addwordmodal" data-modal-toggle="addwordmodal"
+                <button id="extraWordAddBtn" type="button" data-modal-target="addwordmodal"
+                    data-modal-toggle="addwordmodal"
                     class="px-3 bg-secondary rounded-md h-12 text-white font-semibold text-lg">@lang('lang.add_more_word')</button>
             </div>
             <button class="bg-secondary cursor-pointer text-white h-12 px-5 rounded-[6px]  shadow-sm font-semibold ">
@@ -328,7 +329,8 @@
                                         </tr>`
 
                 $('#wordsbody').append(wordsOutput);
-
+                $('#extraWord').val('');
+                $('#extraWordAddBtn').click();
                 deleteRow();
 
 
@@ -366,10 +368,10 @@
                                                         <div class="flex justify-center">
                                 <div>
                                     ${response.words.audio_1 ? `
-                                                                                                                                                                                                                                                                                                                                                                    <audio class="audio-player" src="../${response.words.audio_1}"></audio>
-                                                                                                                                                                                                                                                                                                                                                                    <button class="play-button">
-                                                                                                                                                                                                                                                                                                                                                                        <img height="40px" width="40px" src="{{ asset('images/icons/audio-1.svg') }}" alt="audio-1">
-                                                                                                                                                                                                                                                                                                                                                                    </button>` : ''}
+                                                                                                                                                                                                                                                                                                                                                                                                    <audio class="audio-player" src="../${response.words.audio_1}"></audio>
+                                                                                                                                                                                                                                                                                                                                                                                                    <button class="play-button">
+                                                                                                                                                                                                                                                                                                                                                                                                        <img height="40px" width="40px" src="{{ asset('images/icons/audio-1.svg') }}" alt="audio-1">
+                                                                                                                                                                                                                                                                                                                                                                                                    </button>` : ''}
                                 </div>
                             </div>
                                                     </td>
@@ -378,10 +380,10 @@
                             <div class="flex justify-center">
                                 <div>
                                     ${response.words.audio_2 ? `
-                                                                                                                                                                                                                                                                                                                                                                    <audio class="audio-player" src="../${response.words.audio_2}"></audio>
-                                                                                                                                                                                                                                                                                                                                                                    <button class="play-button">
-                                                                                                                                                                                                                                                                                                                                                                        <img height="40px" width="40px" src="{{ asset('images/icons/audio-1.svg') }}" alt="audio-1">
-                                                                                                                                                                                                                                                                                                                                                                    </button>` : ''}
+                                                                                                                                                                                                                                                                                                                                                                                                    <audio class="audio-player" src="../${response.words.audio_2}"></audio>
+                                                                                                                                                                                                                                                                                                                                                                                                    <button class="play-button">
+                                                                                                                                                                                                                                                                                                                                                                                                        <img height="40px" width="40px" src="{{ asset('images/icons/audio-1.svg') }}" alt="audio-1">
+                                                                                                                                                                                                                                                                                                                                                                                                    </button>` : ''}
                                 </div>
                             </div>
                         </td>
@@ -389,10 +391,10 @@
                             <div class="flex justify-center">
                                 <div>
                                     ${response.words.audio_3 ? `
-                                                                                                                                                                                                                                                                                                                                                                    <audio class="audio-player" src="../${response.words.audio_3}"></audio>
-                                                                                                                                                                                                                                                                                                                                                                    <button class="play-button">
-                                                                                                                                                                                                                                                                                                                                                                        <img height="40px" width="40px" src="{{ asset('images/icons/audio-1.svg') }}" alt="audio-1">
-                                                                                                                                                                                                                                                                                                                                                                    </button>` : ''}
+                                                                                                                                                                                                                                                                                                                                                                                                    <audio class="audio-player" src="../${response.words.audio_3}"></audio>
+                                                                                                                                                                                                                                                                                                                                                                                                    <button class="play-button">
+                                                                                                                                                                                                                                                                                                                                                                                                        <img height="40px" width="40px" src="{{ asset('images/icons/audio-1.svg') }}" alt="audio-1">
+                                                                                                                                                                                                                                                                                                                                                                                                    </button>` : ''}
                                 </div>
                             </div>
                         </td>
