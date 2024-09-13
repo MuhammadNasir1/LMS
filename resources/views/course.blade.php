@@ -87,6 +87,26 @@
             <table id="datatable" class="overflow-scroll">
                 <thead class="py-6 bg-primary text-white">
                     <tr>
+                        <th class="flex justify-center items-center min-w-"><input disabled id="checkboxHeading"
+                                type="checkbox"
+                                class="w-5 h-5  text-primary bg-gray-100 border-gray-300 rounded focus:ring-primary  focus:ring-2
+                            ">
+
+                            <form id="delMultipleCourse" method="post" enctype="multipart/form-data">
+                                {{-- <form action="../deleteMultipleCourses" method="post"> --}}
+                                @csrf
+                                <button id="deleteSelected" class="mt-1 hidden">
+                                    <svg width="36" height="36" viewBox="0 0 36 36" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="18" cy="18" r="18" fill="#D11A2A" />
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M23.4905 13.7433C23.7356 13.7433 23.9396 13.9468 23.9396 14.2057V14.4451C23.9396 14.6977 23.7356 14.9075 23.4905 14.9075H13.0493C12.8036 14.9075 12.5996 14.6977 12.5996 14.4451V14.2057C12.5996 13.9468 12.8036 13.7433 13.0493 13.7433H14.8862C15.2594 13.7433 15.5841 13.478 15.6681 13.1038L15.7642 12.6742C15.9137 12.0889 16.4058 11.7002 16.9688 11.7002H19.5704C20.1273 11.7002 20.6249 12.0889 20.7688 12.6433L20.8718 13.1032C20.9551 13.478 21.2798 13.7433 21.6536 13.7433H23.4905ZM22.5573 22.4946C22.7491 20.7073 23.0849 16.4611 23.0849 16.4183C23.0971 16.2885 23.0548 16.1656 22.9709 16.0667C22.8808 15.9741 22.7669 15.9193 22.6412 15.9193H13.9028C13.7766 15.9193 13.6565 15.9741 13.5732 16.0667C13.4886 16.1656 13.447 16.2885 13.4531 16.4183C13.4542 16.4261 13.4663 16.5757 13.4864 16.8258C13.5759 17.9366 13.8251 21.0305 13.9861 22.4946C14.1001 23.5731 14.8078 24.251 15.8328 24.2756C16.6238 24.2938 17.4387 24.3001 18.272 24.3001C19.0569 24.3001 19.854 24.2938 20.6696 24.2756C21.7302 24.2573 22.4372 23.5914 22.5573 22.4946Z"
+                                            fill="white" />
+                                    </svg></button>
+                                <input type="hidden" name="course_ids" id="courseDelArray">
+                            </form>
+
+                        </th>
                         <th>@lang('lang.Course_ID')</th>
                         <th>@lang('lang.Course_Name')</th>
                         <th>@lang('lang.Level')</th>
@@ -101,6 +121,11 @@
                 <tbody>
                     @foreach ($courses as $i => $course)
                         <tr class="pt-4">
+                            <th>
+                                <input id="vue-checkbox-list" type="checkbox" value="{{ $course->id }}"
+                                    class="w-5 h-5 text-primary bg-gray-100 border-gray-300 rounded focus:ring-secondary focus:ring-2">
+                            </th>
+
                             <td>{{ $course->course_id }}</td>
                             <td>{{ $course->course_name }}</td>
                             <td>{{ $course->level }}</td>
@@ -155,8 +180,8 @@
                                         <div>
                                             <audio class="audio-player" src="../{{ $course->audio_3 }}"></audio>
                                             <button class="play-button">
-                                                <svg width="46" height="46" viewBox="0 0 29 29" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
+                                                <svg width="46" height="46" viewBox="0 0 29 29"
+                                                    fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd"
                                                         d="M15 28C21.9035 28 27.5 22.4035 27.5 15.5C27.5 8.59644 21.9035 3 15 3C8.09644 3 2.5 8.59644 2.5 15.5C2.5 22.4035 8.09644 28 15 28Z"
                                                         fill="#339B96" />
@@ -733,7 +758,47 @@
     audioPlayer();
 
     $(document).ready(function() {
+        $('#deleteSelected').click(function() {
+            var selectedCourses = [];
+            $('input[type="checkbox"]:checked').each(function() {
+                selectedCourses.push($(this).val());
+                $('#courseDelArray').val(selectedCourses);
+                // console.log(selectedCourses);
+            });
 
+
+        });
+        $('input[type="checkbox"]').on('change', function() {
+            if ($('input[type="checkbox"]:checked').length > 0) {
+                $('#checkboxHeading').addClass('hidden');
+                $('#deleteSelected').removeClass('hidden');
+            } else {
+                $('#checkboxHeading').removeClass('hidden');
+                $('#deleteSelected').addClass('hidden');
+            }
+        });
+
+
+        $("#delMultipleCourse").submit(function(event) {
+            event.preventDefault();
+            let formData = new FormData(this);
+            $.ajax({
+                url: '/deleteMultipleCourses',
+                method: 'post',
+                data: formData,
+                dataType: "json",
+                contentType: false,
+                processData: false,
+                success: function(response) {
+                    window.location.href = '../course';
+
+
+                },
+                error: function(response) {
+                    alert('Something went wrong.');
+                }
+            });
+        });
 
         //  add course  data
         $("#courseData").submit(function(event) {

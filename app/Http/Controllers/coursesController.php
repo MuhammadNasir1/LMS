@@ -211,4 +211,50 @@ class coursesController extends Controller
         $courses =  words::all();
         return view('course', compact("courses", "courseData"));
     }
+
+    public function deleteMultipleCourses(Request $request)
+    {
+        try {
+            // $courseIds = $request['course_ids'];
+            // $courseIdsArray = explode(',', $courseIds);
+            // foreach ($courseIdsArray as $courseId) {
+            //     $word = words::where('id', $courseId)->first();
+            //     $word->delete(); // Delete the course
+            //     $course = Courses::where('id', $word->course_id)->first();
+            //     if ($course) {
+            //         $check_course = Words::where('course_id', $course->id)->exists();
+            //         if (!$check_course) {
+            //             $course->delete();
+            //         }
+            //     }
+            // }
+
+            $courseIds = $request['course_ids'];
+            $courseIdsArray = explode(',', $courseIds);
+
+            foreach ($courseIdsArray as $courseId) {
+                $word = words::where('id', $courseId)->first();
+                if (!$word) {
+                    return response()->json(['success' => false, 'message' =>  "Word not found"], 200);
+                }
+                $word->delete();
+                $course = Courses::find($word->course_id);
+
+
+                if ($course) {
+                    $check_course = Words::where('course_id', $course->id)->exists();
+                    if (!$check_course) {
+                        $course->delete();
+                    }
+                }
+            }
+
+
+
+
+            return response()->json(['success' => true, 'message' =>  "course delete successfull"], 200);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
+        }
+    }
 }

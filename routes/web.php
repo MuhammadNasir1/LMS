@@ -185,6 +185,7 @@ Route::middleware('custom')->group(function () {
 
     Route::match(['get',  'post'], 'deleteTeacher/{teacher_id}', [teacherController::class, 'delTeacher']);
     Route::post('changeStdStatus/{id}', [studentController::class, 'changeVerifictionStatus']);
+    Route::post('/deleteMultipleCourses', [coursesController::class, 'deleteMultipleCourses']);
 });
 
 
