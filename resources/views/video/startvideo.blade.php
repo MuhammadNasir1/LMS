@@ -33,7 +33,7 @@
 
         <div class=" w-full h-full  relative">
 
-            <canvas id="canvas" class="absolute h-full w-full bg-red z-40">
+            <canvas id="canvas" class="absolute h-[90%] w-full bg-red z-40">
             </canvas>
             <div id="controls-carousel" class="relative w-full h-full controls-carousel " data-carousel="static">
                 <!-- Carousel wrapper -->
@@ -53,7 +53,7 @@
                             </div>
                             {{-- audio controlls --}}
                             <div class="">
-                                <div class="ml-6 pr-12 absolute top-[85%] w-full">
+                                <div class="ml-6 pr-12 absolute top-[85%] w-full z-50">
                                     <div class="mt-4 flex  {{ $count !== 1 ? 'justify-center' : 'justify-center' }}  ">
                                         @if ($count !== 1)
                                             {{-- <div class="flex items-center  gap-5 z-50">
