@@ -61,8 +61,8 @@ class teachingController extends Controller
                     "lesson_date" => $validatedData['lesson_date'],
                 ],
             ]);
-            // return response()->json(['success' => true, 'message'  => "data add successfully", 'teachingData'  =>   $teachingData], 200);
-            return redirect('../video');
+            return response()->json(['success' => true, 'message'  => "data add successfully"], 200);
+            // return redirect('../video');
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message'  => $e->getMessage()], 500);
         }
