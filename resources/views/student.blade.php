@@ -289,7 +289,7 @@
             </div>
             <div class="mt-3 px-10">
                 @if (session('user_det')['role'] == 'parent')
-                    <input type="text" name="parent_id" value="{{ session('user_det')['user_id'] }}" readonly>
+                    <input type="hidden" name="parent_id" value="{{ session('user_det')['user_id'] }}" readonly>
                 @else
                     <div>
                         <label class="text-[14px] font-normal" for="parent_id">@lang('lang.Parent_Name')</label>

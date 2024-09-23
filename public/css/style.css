@@ -172,3 +172,7 @@ table.dataTable.no-footer {
     background-color: #339b96;
     color: white;
 }
+
+div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-confirm) {
+    background-color: #7066e0 !important;
+}
