@@ -199,23 +199,14 @@
             data: [{
                 type: "column",
                 yValueFormatString: "#,##0.0#\"\"",
-                dataPoints: [{
-                        label: "Jan",
+                dataPoints: [
+                    @foreach ($studentsMonthCount as $student)
 
-                        y: 78
-                    },
-                    {
-                        label: "Feb",
-                        y: 55
-                    },
-                    {
-                        label: "Mar",
-                        y: 80
-                    },
-                    {
-                        label: "Apr",
-                        y: 60
-                    },
+                        {
+                            label: "{{ $student->month_name }}",
+                            y: {{ $student->count }}
+                        },
+                    @endforeach
 
 
                 ]

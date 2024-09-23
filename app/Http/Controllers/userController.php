@@ -16,6 +16,7 @@ use App\Models\training;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class userController extends Controller
 {
@@ -33,8 +34,17 @@ class userController extends Controller
         $parentsCount = parents::count();
         $studentsCount = students::count();
         $teachersCount = teacher::count();
+        $studentsMonthCount = DB::table('students')
+            ->select(DB::raw('MONTH(created_at) as month, COUNT(*) as count'))
+            ->where('created_at', '>=', Carbon::now()->subMonths(4))
+            ->groupBy('month')
+            ->get()
+            ->map(function ($item) {
+                $item->month_name = Carbon::create()->month($item->month)->format('M');
+                return $item;
+            });
 
-        return view('admin.dashboard', compact('parentsCount', 'studentsCount', 'teachersCount'));
+        return view('admin.dashboard', compact('parentsCount', 'studentsCount', 'teachersCount', 'studentsMonthCount'));
     }
 
     public function parentDashboard()
