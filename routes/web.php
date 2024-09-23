@@ -100,9 +100,8 @@ Route::middleware('custom')->group(function () {
 
     // parent pages
     Route::middleware('parentAuth')->group(function () {
-        Route::get('/', function () {
-            return view('parent.dashboard');
-        });
+
+        Route::get('/', [userController::class, 'parentDashboard']);
         Route::get('/games', function () {
             return view('parent.games');
         });

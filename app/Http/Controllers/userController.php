@@ -60,7 +60,25 @@ class userController extends Controller
 
     public function parentDashboard()
     {
-        return view('parent.dashboard');
+        $id = session('user_det')['user_id'];
+        $ParentStudents = students::where('parent_id', $id)->count();
+        $training_vid = students::where('parent_id', $id)->count();
+
+        $students = students::where('parent_id', $id)->get();
+        if (!$students) {
+
+            return response()->json(['success' => false, 'message' => "Parent Not Found!"], 400);
+        }
+        $totalRecording = 0;
+        foreach ($students as $student) {
+            $recording = teacher_rec::where('student_id', $student->id)->count();
+            $recent_lesson = recent_teaching::where('student_id', $student->id)->count();
+            $totalRecording = $recording;
+            $total_lesson = $recent_lesson;
+        }
+
+        $data =  ['totalChildren' => $ParentStudents, 'totalRecording' => $totalRecording, "CompleteLessons" => $total_lesson];
+        return view('parent.dashboard', compact('data'));
     }
 
     public function teacherDashboard()

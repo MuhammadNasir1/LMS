@@ -11,7 +11,7 @@
                 <div class="flex gap-1 justify-between items-center">
                     <div>
                         <p class="text-sm text-[#808191]">@lang('lang.Children')</p>
-                        <h2 class="text-2xl font-semibold mt-1">00</h2>
+                        <h2 class="text-2xl font-semibold mt-1">{{ $data['totalChildren'] }}</h2>
                     </div>
                     <div>
                         <img width="80px" height="80px" src="{{ asset('images/totall_student.svg') }}" alt="Children">
@@ -24,8 +24,8 @@
             <div class="bg-white  border border-secondary rounded-[10px] py-5 px-8">
                 <div class="flex gap-1 justify-between items-center">
                     <div>
-                        <p class="text-sm text-[#808191]">@lang('lang.Pending_Lessons')</p>
-                        <h2 class="text-2xl font-semibold mt-1">00</h2>
+                        <p class="text-sm text-[#808191]">@lang('lang.Complete_Lessons')</p>
+                        <h2 class="text-2xl font-semibold mt-1">{{ $data['CompleteLessons'] }}</h2>
                     </div>
                     <div>
                         <img width="80px" height="80px" src="{{ asset('images/lesson_com_icon.svg') }}"
@@ -40,7 +40,7 @@
                 <div class="flex gap-1 justify-between items-center">
                     <div>
                         <p class="text-sm text-[#808191]">@lang('lang.Recorded_Videos')</p>
-                        <h2 class="text-2xl font-semibold mt-1">00</h2>
+                        <h2 class="text-2xl font-semibold mt-1">{{ $data['totalRecording'] }}</h2>
                     </div>
                     <div>
                         <img width="80px" height="80px" src="{{ asset('images/recorded.svg') }}"
