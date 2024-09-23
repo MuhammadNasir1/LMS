@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\courses;
 use App\Models\words;
+use Doctrine\Inflector\Rules\Word;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use Maatwebsite\Excel\Facades\Excel;
@@ -24,9 +25,17 @@ class coursesController extends Controller
                 "audio_2" => "nullable|max:2048",
                 "audio_3" => "nullable|max:2048",
             ]);
-            $course = courses::create([
-                'course_name' => $validatedData['course_name'],
-            ]);
+            // $course = courses::create([
+            //     'course_name' => $validatedData['course_name'],
+            // ]);
+            $course = courses::where('course_name', $validatedData['course_name'])->first();
+
+            if (!$course) {
+                // If course doesn't exist, create a new course
+                $course = courses::create([
+                    'course_name' => $validatedData['course_name'],
+                ]);
+            }
             foreach ($request['word'] as $j => $wordData) {
                 $word = words::create([
                     'course_id' => $course->id,
@@ -145,7 +154,9 @@ class coursesController extends Controller
             $courses =  words::all();
         }
 
-        return view('course', ['courses' => $courses]);
+        $course_name =  courses::all();
+        $level_lesson = words::select('level', 'lesson')->distinct()->get();
+        return view('course', ['courses' => $courses, "course_name"  =>  $course_name, 'level_lesson' => $level_lesson]);
     }
 
     public function getteachingWords($id)

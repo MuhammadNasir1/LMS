@@ -24,8 +24,8 @@
                         <select name="course" id="course ">
                             <option disabled selected>@lang('lang.Select_course')</option>
 
-                            @foreach ($courses as $coursename)
-                                <option value="{{ $coursename->course_id }}">{{ $coursename->course_name }}</option>
+                            @foreach ($course_name as $coursename)
+                                <option value="{{ $coursename->id }}">{{ $coursename->course_name }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -33,7 +33,7 @@
                         <label class="text-[14px] font-semibold mb-1  block" for="Level">@lang('lang.Level')</label>
                         <select name="level" id="Level">
                             <option disabled selected>@lang('lang.Select_level')</option>
-                            @foreach ($courses as $levelname)
+                            @foreach ($level_lesson as $levelname)
                                 <option>{{ $levelname->level }}</option>
                             @endforeach
                         </select>
@@ -42,7 +42,7 @@
                         <label class="text-[14px] font-semibold mb-1  block" for="Lesson">@lang('lang.Lesson')</label>
                         <select name="lesson" id="Lesson">
                             <option disabled selected>@lang('lang.Select_lesson')</option>
-                            @foreach ($courses as $lessonname)
+                            @foreach ($level_lesson as $lessonname)
                                 <option>{{ $lessonname->lesson }}</option>
                             @endforeach
                         </select>
