@@ -70,6 +70,7 @@ class userController extends Controller
             return response()->json(['success' => false, 'message' => "Parent Not Found!"], 400);
         }
         $totalRecording = 0;
+        $total_lesson = 0;
         foreach ($students as $student) {
             $recording = teacher_rec::where('student_id', $student->id)->count();
             $recent_lesson = recent_teaching::where('student_id', $student->id)->count();
