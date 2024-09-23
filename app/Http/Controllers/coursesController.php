@@ -140,12 +140,9 @@ class coursesController extends Controller
                 ->when($request->query('lesson'), function ($query, $lesson) {
                     return $query->where('lesson', $lesson);
                 })
-                ->distinct('course_id', 'level', 'lesson') // Ensure uniqueness based on these columns
                 ->get();
         } else {
-            $courses = words::select('course_id', 'level', 'lesson') // Select only the relevant columns
-                ->distinct() // Ensure distinct rows
-                ->get();
+            $courses =  words::all();
         }
 
         return view('course', ['courses' => $courses]);
