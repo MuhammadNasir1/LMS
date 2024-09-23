@@ -9,9 +9,11 @@ use Illuminate\Validation\ValidationException;
 use  Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\OtpMail;
+use App\Models\recent_teaching;
 use App\Models\students;
 use App\Models\teacher;
 use App\Models\teacher_rec;
+use App\Models\teaching;
 use App\Models\training;
 use App\Models\User;
 use Carbon\Carbon;
@@ -43,8 +45,17 @@ class userController extends Controller
                 $item->month_name = Carbon::create()->month($item->month)->format('M');
                 return $item;
             });
+        $topTeachersIds = recent_teaching::select('teacher_id')
+            ->groupBy('teacher_id')
+            ->orderByRaw('COUNT(*) DESC')->take(5)
+            ->get();;
 
-        return view('admin.dashboard', compact('parentsCount', 'studentsCount', 'teachersCount', 'studentsMonthCount'));
+        $topTeachers = [];
+        foreach ($topTeachersIds as $teacher) {
+            $topTeachers[] = User::where('id', $teacher->teacher_id)->first();
+        }
+
+        return view('admin.dashboard', compact('parentsCount', 'studentsCount', 'teachersCount', 'studentsMonthCount',  'topTeachers'));
     }
 
     public function parentDashboard()

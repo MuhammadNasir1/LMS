@@ -57,31 +57,10 @@
     <div class="w-[60%]">
 
         <div class=" shadow-med p-3 py-5   rounded-xl min-h-[448px]">
-            <div class="flex justify-between px-6">
+            <div class="flex justify-between px-6 pb-2 border-b-secondary border-b">
                 <h2 class="text-xl  font-semibold ">@lang('lang.Top_Performer')</h2>
             </div>
             <div>
-
-
-                <div class="text-sm font-medium text-center text-gray-500 border-b border-gray mt-4">
-                    <ul class="flex gap-2 ml-3">
-                        <li class="me-2">
-                            <a href="#"
-                                class=" font-semibold inline-block p-2 text-dblue border-b-2 border-dblue rounded-t-lg active">@lang('lang.Monthly')</a>
-                        </li>
-                        <li class="me-2">
-                            <a href="#"
-                                class=" font-semibold inline-block p-2 border-b-2 border-transparent rounded-t-lg ">@lang('lang.Weekly')</a>
-                        </li>
-                        <li class="me-2">
-                            <a href="#"
-                                class=" font-semibold inline-block p-2 border-b-2 border-transparent rounded-t-lg  ">@lang('lang.Today')</a>
-                        </li>
-
-                    </ul>
-                </div>
-
-
                 <div>
 
 
@@ -97,7 +76,7 @@
                                         @lang('lang.Name')
                                     </th>
                                     <th class="px-6 py-3">
-                                        @lang('lang.Standard')
+                                        @lang('lang.email')
                                     </th>
                                     <th class="px-6 py-3">
                                         @lang('lang.Rank')
@@ -105,56 +84,26 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="bg-white ">
-                                    <td class="px-6 py-3 ">
-                                        <div class="flex justify-center">
-                                            <img height="40px" width="40px" src="{{ asset('images/teacher.svg') }}"
-                                                alt="user">
-                                        </div>
-                                    </td>
-                                    <td class="px-6 py-3">
-                                        John Smith
-                                    </td>
-                                    <td class="px-6 py-3">
-                                        7th Class
-                                    </td>
-                                    <td class="px-6 py-3">
-                                        <div class="flex items-center justify-center flex-col">
-                                            <div>
-                                                <p class="text-dblue flex">95.06%</p>
-                                                <div class="bg-green-100 rounded-xl w-36 h-3 relative  mt-1">
-                                                    <div class="bg-dblue w-[70%] rounded-xl h-full"></div>
-                                                </div>
+                                @foreach ($topTeachers as $teacher)
+                                    <tr class="bg-white ">
+                                        <td class="px-6 py-3 ">
+                                            <div class="flex justify-center">
+                                                <img height="40px" width="40px"
+                                                    src="{{ asset($teacher->user_image ? $teacher->user_image : 'images/teacher.svg') }}"
+                                                    alt="user">
                                             </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr class="bg-white ">
-                                    <td class="px-6 py-3 ">
-                                        <div class="flex justify-center">
-                                            <img height="40px" width="40px" src="{{ asset('images/teacher.svg') }}"
-                                                alt="user">
-                                        </div>
-                                    </td>
-                                    <td class="px-6 py-3">
-                                        John Smith
-                                    </td>
-                                    <td class="px-6 py-3">
-                                        7th Class
-                                    </td>
-                                    <td class="px-6 py-3">
-                                        <div class="flex items-center justify-center flex-col">
-                                            <div>
-                                                <p class="text-dblue flex">95.06%</p>
-                                                <div class="bg-green-100 rounded-xl w-36 h-3 relative  mt-1">
-                                                    <div class="bg-dblue w-[70%] rounded-xl h-full"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-
-
+                                        </td>
+                                        <td class="px-6 py-3">
+                                            {{ $teacher->name }}
+                                        </td>
+                                        <td class="px-6 py-3">
+                                            {{ $teacher->email }}
+                                        </td>
+                                        <td class="px-6 py-3">
+                                            {{ $loop->iteration }}
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
